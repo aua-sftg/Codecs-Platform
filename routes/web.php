@@ -15,8 +15,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('home_page');
+})->name('home');
+
+Route::get('/meta-inventory', function () {
+    return view('meta_inventory_home');
+})->name('meta_inventory_home');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
