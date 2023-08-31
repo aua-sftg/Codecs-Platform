@@ -4,7 +4,7 @@ This repository is fo the CODECS platform.
 
 Steps to perform:
 
-1. git clone git@g.sftgroup.gr:codecs/codecs-platform-laravel-9.git
+1. `git clone git@g.sftgroup.gr:codecs/codecs-platform-laravel-9.git`
 2. run `composer update`
 3. run `./vendor/bin/sail up --build -d`
 4. run `./vendor/bin/sail npm install` [the first time to build breeze filer]
