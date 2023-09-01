@@ -4,6 +4,7 @@ namespace App\Logic;
 
 use App\Models\Desira;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 
 class DesiraCrawler
@@ -100,7 +101,7 @@ class DesiraCrawler
 
         } catch (\Exception $e) {
             // Log the exception instead of dying
-            \Log::error('Error processing data for ID ' . $desired_id . ': ' . $e->getMessage());
+            Log::error('Error processing data for ID ' . $desired_id . ': ' . $e->getMessage());
             return null;
         }
     }
