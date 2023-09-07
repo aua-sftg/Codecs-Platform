@@ -11,7 +11,11 @@ use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
+    use \Backpack\CRUD\app\Models\Traits\CrudTrait;
     use HasApiTokens, HasFactory, Notifiable;
+
+    protected $connection='mongodb';
+    protected $collection = 'users';
 
     /**
      * The attributes that are mass assignable.
