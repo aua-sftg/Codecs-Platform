@@ -51,7 +51,7 @@
         <div class="modal-dialog modal-xl" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="calculatorModalLabel">Calculator</h5>
+                    <h5 class="modal-title" id="calculatorModalLabel">Scenario creation tool</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -68,10 +68,14 @@
                     </div>
 
                     <div id="preview-results"></div>
+                    <div class="text-center d-none" id="loading-indicator">
+                        <em>Searching...</em>
+                        <img src="{{asset('img/loading.gif')}}" alt="loading icon">
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <a href="javascript:run()">Run Query</a>
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-secondary" onclick="closeModal()">Close</button>
                     <button type="button" class="btn btn-primary" id="useThisButton">Use this</button>
                 </div>
             </div>
@@ -87,6 +91,26 @@
         const $input = $('input[name="{{ $field['name'] }}"]');
         const $modal = $('#calculatorModal');
         const $preview = $('#preview-results');
+        const $loading = $('#loading-indicator');
+        let post_request = null;
+
+
+        const closeModal = ()=>{
+            init();
+            $modal.modal('hide');
+        }
+        const show_loader = (status)=>{
+            if(status)
+            {
+                $loading.removeClass('d-none');
+                $preview.addClass('d-none');
+            }
+            else
+            {
+                $loading.addClass('d-none');
+                $preview.removeClass('d-none');
+            }
+        }
 
         const getRules = ()=>{
             return {
@@ -97,15 +121,34 @@
         };
 
         const run = ()=>{
-            $.post(
+            if(post_request!=null)
+                post_request.abort();
+
+            show_loader(true);
+            post_request = $.post(
                 '{{route('run-query')}}',
                 {
                     rules: getRules()
                 },
                 function(data){
+                    show_loader(false);
                     $preview.html(data);
                 }
             );
+        }
+
+        const init = ()=>{
+            if($input.val()!='')
+            {
+                let rules = JSON.parse($input.val());
+                @foreach(\App\Logic\MetaInventory::VENDORS as $vendor)
+                if(rules['{{$vendor['key']}}']!=undefined)
+                    $('#{{$vendor['key']}}-query-builder').queryBuilder('setRules', rules['{{$vendor['key']}}']);
+                @endforeach
+            }
+
+            $preview.html('');
+            show_loader(false);
         }
 
         $('#useThisButton').click(function() {
@@ -119,30 +162,11 @@
         $(document).ready(function(){
             @foreach(\App\Logic\MetaInventory::VENDORS as $vendor)
                 $('#{{$vendor['key']}}-query-builder').queryBuilder({
-                    filters: [
-                        {
-                            id: 'title',
-                            label: 'title',
-                            name: 'title',
-                            type: 'string',
-                        },{
-                            id: 'keywords',
-                            label: 'keywords',
-                            name: 'keywords',
-                            type: 'string',
-                        },
-                    ]
+                    filters:@json($vendor['filters'])
                 });
             @endforeach
 
-            if($input.val()!='')
-            {
-                let rules = JSON.parse($input.val());
-                @foreach(\App\Logic\MetaInventory::VENDORS as $vendor)
-                    if(rules['{{$vendor['key']}}']!=undefined)
-                        $('#{{$vendor['key']}}-query-builder').queryBuilder('setRules', rules['{{$vendor['key']}}']);
-                @endforeach
-            }
+            init();
         });
 
         function bpFieldInitDummyFieldElement(element) {

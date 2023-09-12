@@ -20,7 +20,5 @@ Route::group([
     Route::crud('user', 'UserCrudController');
     Route::crud('scenario', 'ScenarioCrudController');
 
-    Route::post('/run-query',function(Request $request){
-        return view('welcome');
-    })->name('run-query');
+    Route::post('/run-query',[App\Http\Controllers\Admin\ScenarioCrudController::class,'run_query'])->name('run-query');
 }); // this should be the absolute last line of this file

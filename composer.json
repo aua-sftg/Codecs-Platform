@@ -11,7 +11,8 @@
         "laravel/framework": "^9.19",
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
-        "mongodb/laravel-mongodb": "^3.9"
+        "mongodb/laravel-mongodb": "^3.9",
+        "timgws/query-builder-parser": "^2.0"
     },
     "require-dev": {
         "backpack/generators": "dev-mongodb-support",

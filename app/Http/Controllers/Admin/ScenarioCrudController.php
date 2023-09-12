@@ -3,9 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\ScenarioRequest;
+use App\Logic\MetaInventory;
 use App\Logic\ScenarioHelper;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
+use Illuminate\Support\Facades\DB;
+use timgws\QueryBuilderParser;
 
 /**
  * Class ScenarioCrudController
@@ -76,5 +79,23 @@ class ScenarioCrudController extends CrudController
         // define how deep the admin is allowed to nest the items
         // for infinite levels, set it to 0
         CRUD::set('reorder.max_level', 1);
+    }
+
+    public function run_query(ScenarioRequest $request)
+    {
+        $criteria = [];
+        $request->collect('rules')->each(function($item,$key) use (&$criteria){
+            if($item==null) return;
+            $criteria[]=[
+                'collection'=>$key,
+                'rules'=>$item
+            ];
+        });
+
+        return view('vendor.backpack.base.scenario_results',[
+            'results'=>MetaInventory::search_results_transform(
+                MetaInventory::search(collect($criteria))
+            )
+        ]);
     }
 }
