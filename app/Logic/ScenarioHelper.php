@@ -5,6 +5,7 @@ namespace App\Logic;
 use App\Interfaces\BackpackFieldsInterface;
 use App\Traits\BackpackFieldsTrait;
 use Illuminate\Support\Collection;
+use App\Models\Scenario;
 
 class ScenarioHelper implements BackpackFieldsInterface
 {
@@ -27,12 +28,24 @@ class ScenarioHelper implements BackpackFieldsInterface
 
     /**
      *  Retrieve the active scenarios from the database order by lft asc and return the collection
+     * Use the parameter $status to choose which scenarios you want(active, inactive, all)
      * @mike shall we cache this? to be discussed
      * @return Collection
      */
-    public static function get_scenarios() : Collection
+    public static function get_scenarios($status = 'active') : Collection
     {
-        //TODO: @mike - write the code to retrieve the scenarios here and use this in the frontend!
+        // Define a query builder for scenarios
+        $query = Scenario::query();
+
+        // Conditionally add a where clause for status
+        if ($status === 'active') {
+            $query->where('status', 'active');
+        } elseif ($status === 'inactive') {
+            $query->where('status', 'inactive');
+        }
+
+        // Order the scenarios by 'lft' in ascending order
+        return $query->orderBy('lft', 'asc')->get();
     }
 
     /**

@@ -58,7 +58,7 @@
                                     </div>
                                 </div>
                                 <p class="font-weight-light text-3-5 mb-3-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque rutrum pellentesque imperdiet. Nulla lacinia. </p>
-                                <a href="demo-construction-services-detail.html" class="custom-view-more d-inline-flex font-weight-medium text-color-primary text-decoration-none">
+                                <a {{ (request()->routeIs('meta_inventory_home')) ? ' active' : '' }}" href="{{route('meta_inventory_home')}}" class="custom-view-more d-inline-flex font-weight-medium text-color-primary text-decoration-none">
                                     Explore
                                     <img width="27" height="27" src="{{ asset('img/demos/construction/icons/arrow-right.svg') }}" alt="" data-icon data-plugin-options="{'onlySVG': true, 'extraClass': 'svg-fill-color-primary ms-2'}" />
                                 </a>

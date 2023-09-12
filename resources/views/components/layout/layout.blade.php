@@ -171,7 +171,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="{{route('meta_inventory_home')}}" class="text-color-hover-primary">
+                            <a class="text-color-hover-primary {{ (request()->routeIs('meta_inventory_home')) ? ' active' : '' }}" href="{{route('meta_inventory_home')}}">
                                 Meta-inventory
                             </a>
                         </li>
