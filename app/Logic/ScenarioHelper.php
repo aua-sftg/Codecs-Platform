@@ -21,7 +21,6 @@ class ScenarioHelper implements BackpackFieldsInterface
     const VALIDATION_RULES = [
         'name' => 'required|string|max:255',
         'description' => 'required|string|min:10',
-        'image' => 'required',
         'status' => 'required',
     ];
 

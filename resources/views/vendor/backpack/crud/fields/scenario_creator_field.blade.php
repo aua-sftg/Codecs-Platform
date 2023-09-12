@@ -10,10 +10,10 @@
     <div class="d-flex">
         <input
             type="text"
-               name="{{ $field['name'] }}"
-               data-init-function="bpFieldInitDummyFieldElement"
-               value="{{ $field['value'] }}"
-               disabled="disabled"
+            name="{{ $field['name'] }}"
+            data-init-function="bpFieldInitDummyFieldElement"
+            value="{{ old($field['name']) ? old($field['name']) : (isset($field['value']) ? $field['value'] : (isset($field['default']) ? $field['default'] : '' )) }}"
+            readonly
             @include('crud::fields.inc.attributes')>
 
         <a href="javascript:void(0)" class="btn btn-primary" data-toggle="modal" data-target="#calculatorModal">Calc</a>
@@ -57,7 +57,16 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <div id="query-builder"></div>
+                    <div class="row mt-3">
+                        @foreach(\App\Logic\MetaInventory::VENDORS as $vendor)
+                            <div class="col-4" id="{{$vendor['key']}}-container">
+                                <h4 class="title">{{$vendor['label']}}</h4>
+                                <div id="{{$vendor['key']}}-query-builder"></div>
+                            </div>
+                        @endforeach
+
+                    </div>
+
                     <div id="preview-results"></div>
                 </div>
                 <div class="modal-footer">
@@ -75,42 +84,65 @@
     <script type="text/javascript" src="{{asset('js/query-builder.js')}}"></script>
     <script>
 
+        const $input = $('input[name="{{ $field['name'] }}"]');
+        const $modal = $('#calculatorModal');
+        const $preview = $('#preview-results');
 
-        function run() {
-            let result = $('#query-builder').queryBuilder('getRules');
-            $.post('{{route('run-query')}}',{query:result},function(data){
-                $('#preview-results').html(data);
-            });
+        const getRules = ()=>{
+            return {
+                @foreach(\App\Logic\MetaInventory::VENDORS as $vendor)
+                '{{$vendor['key']}}': $('#{{$vendor['key']}}-query-builder').queryBuilder('getRules'),
+                @endforeach
+            };
+        };
+
+        const run = ()=>{
+            $.post(
+                '{{route('run-query')}}',
+                {
+                    rules: getRules()
+                },
+                function(data){
+                    $preview.html(data);
+                }
+            );
         }
 
         $('#useThisButton').click(function() {
-            let result = JSON.stringify($('#query-builder').queryBuilder('getRules'));
-            $('input[name="{{ $field['name'] }}"]').val(result);
-            $('#calculatorModal').modal('hide');
+            let rules = getRules();
+            let result = JSON.stringify(rules);
+            $input.val(result);
+            $modal.modal('hide');
         });
 
+
         $(document).ready(function(){
-            $('#query-builder').queryBuilder({
-                filters: [
-                    {
-                        id: 'name',
-                        label: 'S: Name',
-                        type: 'string',
-                        optgroup: 'SmartAKIS'
-                    },
-                    {
-                        id: 'age',
-                        label: 'S: Age',
-                        type: 'integer',
-                        optgroup: 'SmartAKIS'
-                    },
-                    {
-                        id: 'created_at',
-                        label: 'Creation Date',
-                        type: 'datetime'
-                    }
-                ]
-            });
+            @foreach(\App\Logic\MetaInventory::VENDORS as $vendor)
+                $('#{{$vendor['key']}}-query-builder').queryBuilder({
+                    filters: [
+                        {
+                            id: 'title',
+                            label: 'title',
+                            name: 'title',
+                            type: 'string',
+                        },{
+                            id: 'keywords',
+                            label: 'keywords',
+                            name: 'keywords',
+                            type: 'string',
+                        },
+                    ]
+                });
+            @endforeach
+
+            if($input.val()!='')
+            {
+                let rules = JSON.parse($input.val());
+                @foreach(\App\Logic\MetaInventory::VENDORS as $vendor)
+                    if(rules['{{$vendor['key']}}']!=undefined)
+                        $('#{{$vendor['key']}}-query-builder').queryBuilder('setRules', rules['{{$vendor['key']}}']);
+                @endforeach
+            }
         });
 
         function bpFieldInitDummyFieldElement(element) {
@@ -118,8 +150,6 @@
             // present as data-init-function in the HTML above; the
             // element parameter here will be the jQuery wrapped
             // element where init function was defined
-            console.log(element.val());
-
 
         }
     </script>
