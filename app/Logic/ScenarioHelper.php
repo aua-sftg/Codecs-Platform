@@ -36,12 +36,9 @@ class ScenarioHelper implements BackpackFieldsInterface
         // Define a query builder for scenarios
         $query = Scenario::query();
 
-        // Conditionally add a where clause for status
-        if ($status === 'active') {
-            $query->where('status', 'active');
-        } elseif ($status === 'inactive') {
-            $query->where('status', 'inactive');
-        }
+        in_array($status, ['active', 'inactive'])
+            ? $query->where('status', $status)
+            : null;
 
         // Order the scenarios by 'lft' in ascending order
         return $query->orderBy('lft', 'asc')->get();
