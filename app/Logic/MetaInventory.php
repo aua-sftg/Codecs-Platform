@@ -2,6 +2,7 @@
 
 namespace App\Logic;
 
+use App\Models\Scenario;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 use timgws\QueryBuilderParser;
@@ -150,6 +151,21 @@ class MetaInventory
         ],
     ];
 
+    public static function cached(Scenario $scenario) : Collection
+    {
+        $results = collect();
+
+        foreach ($scenario->meta_inventory as $collection=>$ids)
+        {
+            $table = DB::table($collection);
+            $results = $results->merge(
+                $table->whereIn('_id',$ids)->get()
+            );
+        }
+
+        return $results;
+    }
+
     /**
      *
      * Given the criteria it queries the collections passed and returns the results
@@ -192,5 +208,18 @@ class MetaInventory
                 'desc'=> $vendor == 'fairshare' ? $record['desc'] : ($vendor=='smartakis' ? $record['description'] : $record['Description']),
             ];
         });
+    }
+
+    public static function extractCriteria(array $filters)
+    {
+        $criteria = [];
+        collect($filters)->each(function($item,$key) use (&$criteria){
+            if($item==null) return;
+            $criteria[]=[
+                'collection'=>$key,
+                'rules'=>$item
+            ];
+        });
+        return $criteria;
     }
 }

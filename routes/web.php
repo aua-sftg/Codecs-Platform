@@ -32,4 +32,11 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+Route::get('/cache',function(){
+//    event(new \App\Events\ScenarioChanged(\App\Models\Scenario::find('65003d917e29494a6b0a90d2')));
+    $scenario = \App\Models\Scenario::find('65003d917e29494a6b0a90d2');
+
+    dump(\App\Logic\ScenarioHelper::get_results(scenario: $scenario,cache: true));
+});
+
 require __DIR__.'/auth.php';

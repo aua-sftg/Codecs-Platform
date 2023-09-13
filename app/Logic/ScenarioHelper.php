@@ -3,8 +3,10 @@
 namespace App\Logic;
 
 use App\Interfaces\BackpackFieldsInterface;
+use App\Models\Scenario;
 use App\Traits\BackpackFieldsTrait;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\DB;
 
 class ScenarioHelper implements BackpackFieldsInterface
 {
@@ -94,5 +96,19 @@ class ScenarioHelper implements BackpackFieldsInterface
                 'create'=>true
             ],
         ]);
+    }
+
+    public static function get_results(Scenario $scenario, bool $cache=true):Collection
+    {
+
+        if($cache && array($scenario->meta_inventory))
+        {
+            return MetaInventory::cached($scenario);
+        }else{
+            $criteria = MetaInventory::extractCriteria(
+                json_decode($scenario->filters,true)
+            );
+            return MetaInventory::search(collect($criteria));
+        }
     }
 }

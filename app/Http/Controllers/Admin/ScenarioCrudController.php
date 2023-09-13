@@ -83,14 +83,7 @@ class ScenarioCrudController extends CrudController
 
     public function run_query(ScenarioRequest $request)
     {
-        $criteria = [];
-        $request->collect('rules')->each(function($item,$key) use (&$criteria){
-            if($item==null) return;
-            $criteria[]=[
-                'collection'=>$key,
-                'rules'=>$item
-            ];
-        });
+        $criteria = MetaInventory::extractCriteria($request->rules);
 
         return view('vendor.backpack.base.scenario_results',[
             'results'=>MetaInventory::search_results_transform(

@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Events\ScenarioChanged;
+use App\Models\Scenario;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -18,6 +20,9 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
+        ScenarioChanged::class=>[
+            \App\Listeners\UpdateScenarioCache::class
+        ]
     ];
 
     /**
@@ -27,7 +32,7 @@ class EventServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        Scenario::observe(\App\Observers\ScenarioObserver::class);
     }
 
     /**
