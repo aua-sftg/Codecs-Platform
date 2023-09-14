@@ -11,14 +11,6 @@ class ScenarioHelper implements BackpackFieldsInterface
 {
     use BackpackFieldsTrait;
 
-    const STATUS_ACTIVE = 'active';
-    const STATUS_INACTIVE = 'inactive';
-
-    const STATUS_LABELS_ARRAY = [
-        self::STATUS_ACTIVE => 'Active',
-        self::STATUS_INACTIVE => 'Inactive',
-    ];
-
     const VALIDATION_RULES = [
         'name' => 'required|string|max:255',
         'description' => 'required|string|min:10',
@@ -31,12 +23,12 @@ class ScenarioHelper implements BackpackFieldsInterface
      * @mike shall we cache this? to be discussed
      * @return Collection
      */
-    public static function get_scenarios(string $status = 'active') : Collection
+    public static function get_scenarios(string $status = Status::STATUS_ACTIVE) : Collection
     {
         // Define a query builder for scenarios
         $query = Scenario::query();
 
-        in_array($status, ['active', 'inactive'])
+        in_array($status, [Status::STATUS_ACTIVE, Status::STATUS_INACTIVE])
             ? $query->where('status', $status)
             : null;
 
@@ -83,9 +75,9 @@ class ScenarioHelper implements BackpackFieldsInterface
                 'name'        => 'status',
                 'label'       => "Status",
                 'type'        => 'select_from_array',
-                'options'     => self::STATUS_LABELS_ARRAY,
+                'options'     => Status::STATUS_LABELS_ARRAY,
                 'allows_null' => false,
-                'default'     => self::STATUS_ACTIVE,
+                'default'     => Status::STATUS_ACTIVE,
                 'create'=>true,
                 'list'=>true,
             ],[

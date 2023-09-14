@@ -122,7 +122,21 @@ class DatasetHelper implements BackpackFieldsInterface
                 'model'     => "App\Models\Audience", // foreign key model
                 'attribute' => 'name', // foreign key attribute that is shown to user
                 'create'=>true,
-            ]
+            ],[
+                'name'        => 'status',
+                'label'       => "Status",
+                'type'        => 'select_from_array',
+                'options'     => Status::STATUS_LABELS_ARRAY,
+                'allows_null' => false,
+                'default'     => Status::STATUS_ACTIVE,
+                'create'=>true,
+                'list'=>true,
+            ],[
+                'name'  => 'uploaded_by',
+                'type'  => 'hidden',
+                'value' => backpack_user()->id,
+                'create'=>true
+            ],
         ]);
     }
 }
