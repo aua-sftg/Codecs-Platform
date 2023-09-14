@@ -3,3 +3,7 @@
 
 {{--<li class="nav-item"><a class="nav-link" href="{{ backpack_url('user') }}"><i class="nav-icon la la-question"></i> Users</a></li>--}}
 <li class="nav-item"><a class="nav-link" href="{{ backpack_url('scenario') }}"><i class="nav-icon la la-scroll"></i> Scenarios</a></li>
+
+<li class="nav-item"><a class="nav-link" href="{{ backpack_url('dataset') }}"><i class="nav-icon la la-database"></i> Datasets</a></li>
+
+<li class="nav-item"><a class="nav-link" href="{{ backpack_url('audience') }}"><i class="nav-icon la la-question"></i> Audiences</a></li>
