@@ -43,6 +43,26 @@ class DatasetHelper implements BackpackFieldsInterface
                 'model'     => "App\Models\DataFormat", // foreign key model
                 'attribute' => 'name', // foreign key attribute that is shown to user
                 'create'=>true,
+            ],[  // Select
+                'label'     => "Organization",
+                'type'      => 'select',
+                'name'      => 'organization_id', // the db column for the foreign key
+
+                // optional
+                // 'entity' should point to the method that defines the relationship in your Model
+                // defining entity will make Backpack guess 'model' and 'attribute'
+                'entity'    => 'organization',
+
+                // optional - manually specify the related model and attribute
+                'model'     => "App\Models\Organization", // related model
+                'attribute' => 'name', // foreign key attribute that is shown to user
+
+                // optional - force the related options to be a custom query, instead of all();
+                'options'   => (function ($query) {
+                    return $query->orderBy('name', 'ASC')->get();
+                }), //  you can use this to filter the results show in the select
+                'create'=>true,
+                'list'=>true,
             ]
         ]);
     }

@@ -3,11 +3,9 @@
 namespace App\Models;
 
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Jenssegers\Mongodb\Eloquent\Model;
-use Jenssegers\Mongodb\Relations\BelongsToMany;
 
-class Dataset extends Model
+class Organization extends Model
 {
     use CrudTrait;
 
@@ -17,12 +15,10 @@ class Dataset extends Model
     |--------------------------------------------------------------------------
     */
 
-    protected $connection= 'mongodb';
-
-    protected $collection = 'datasets';
+    protected $collection = 'organizations';
     // protected $primaryKey = 'id';
     // public $timestamps = false;
-    protected $guarded = ['id'];
+    protected $guarded = ['_id'];
     // protected $fillable = [];
     // protected $hidden = [];
     // protected $dates = [];
@@ -38,21 +34,6 @@ class Dataset extends Model
     | RELATIONS
     |--------------------------------------------------------------------------
     */
-
-    public function audiences():BelongsToMany
-    {
-        return $this->belongsToMany(Audience::class, null, 'dataset_ids', 'audience_ids');
-    }
-
-    public function data_formats():BelongsToMany
-    {
-        return $this->belongsToMany(DataFormat::class, null, 'dataset_ids', 'data_format_ids');
-    }
-
-    public function organization():BelongsTo
-    {
-        return $this->belongsTo(Organization::class, 'organization_id', '_id');
-    }
 
     /*
     |--------------------------------------------------------------------------
