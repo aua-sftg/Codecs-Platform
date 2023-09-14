@@ -52,6 +52,14 @@ return [
             'throw' => false,
         ],
 
+        'datasets' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/datasets'),
+            'url' => env('APP_URL').'/storage/datasets',
+            'visibility' => 'public',
+            'throw' => false,
+        ],
+
         's3' => [
             'driver' => 's3',
             'key' => env('AWS_ACCESS_KEY_ID'),

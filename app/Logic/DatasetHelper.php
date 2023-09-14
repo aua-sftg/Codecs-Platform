@@ -24,6 +24,13 @@ class DatasetHelper implements BackpackFieldsInterface
     {
         return collect([
             [
+                'name'      => 'file',
+                'label'     => 'Dataset File',
+                'type'      => 'upload',
+                'upload'    => true,
+                'disk'      => 'datasets',
+                'create'=>true,
+            ],[
                 'type'=>'text',
                 'name'=>'name',
                 'label'=>'Dataset Name',

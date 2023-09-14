@@ -71,4 +71,12 @@ class Dataset extends Model
     | MUTATORS
     |--------------------------------------------------------------------------
     */
+    public function setFileAttribute($value)
+    {
+        $attribute_name = "file";
+        $disk = "datasets";
+        $destination_path = "/";
+
+        $this->uploadFileToDisk($value, $attribute_name, $disk, $destination_path, $fileName = null);
+    }
 }
