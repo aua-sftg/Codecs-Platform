@@ -51,9 +51,7 @@ class DatasetCrudController extends CrudController
      */
     protected function setupCreateOperation()
     {
-        CRUD::setValidation([
-            // 'name' => 'required|min:2',
-        ]);
+        CRUD::setValidation(DatasetHelper::VALIDATION_RULES);
 
         $this->crud->addFields(DatasetHelper::create_fields());
     }

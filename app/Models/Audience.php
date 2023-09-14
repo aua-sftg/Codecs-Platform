@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Jenssegers\Mongodb\Eloquent\Model;
+use Jenssegers\Mongodb\Relations\BelongsToMany;
 
 class Audience extends Model
 {
@@ -31,6 +32,11 @@ class Audience extends Model
     | RELATIONS
     |--------------------------------------------------------------------------
     */
+
+    public function datasets():BelongsToMany
+    {
+        return $this->belongsToMany(Dataset::class, null, 'audience_ids', 'dataset_ids');
+    }
 
     /*
     |--------------------------------------------------------------------------
