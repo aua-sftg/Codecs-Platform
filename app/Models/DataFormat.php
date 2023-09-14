@@ -6,7 +6,7 @@ use Backpack\CRUD\app\Models\Traits\CrudTrait;
 use Jenssegers\Mongodb\Eloquent\Model;
 use Jenssegers\Mongodb\Relations\BelongsToMany;
 
-class Dataset extends Model
+class DataFormat extends Model
 {
     use CrudTrait;
 
@@ -16,12 +16,11 @@ class Dataset extends Model
     |--------------------------------------------------------------------------
     */
 
-    protected $connection= 'mongodb';
-
-    protected $collection = 'datasets';
+    protected $connection = 'mongodb';
+    protected $collection = 'data_formats';
     // protected $primaryKey = 'id';
     // public $timestamps = false;
-    protected $guarded = ['id'];
+    protected $guarded = ['_id'];
     // protected $fillable = [];
     // protected $hidden = [];
     // protected $dates = [];
@@ -38,14 +37,9 @@ class Dataset extends Model
     |--------------------------------------------------------------------------
     */
 
-    public function audiences():BelongsToMany
+    public function datasets():BelongsToMany
     {
-        return $this->belongsToMany(Audience::class, null, 'dataset_ids', 'audience_ids');
-    }
-
-    public function data_formats():BelongsToMany
-    {
-        return $this->belongsToMany(DataFormat::class, null, 'dataset_ids', 'data_format_ids');
+        return $this->belongsToMany(Dataset::class, null, 'data_format_ids', 'dataset_ids');
     }
 
     /*

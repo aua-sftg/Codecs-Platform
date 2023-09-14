@@ -23,7 +23,7 @@ class DatasetHelper implements BackpackFieldsInterface
                 'label'=>'Dataset Name',
                 'create'=>true,
                 'list'=>true,
-            ],[   // SelectMultiple = n-n relationship (with pivot table)
+            ],[
                 'label'     => "Audiences",
                 'type'      => 'select_multiple',
                 'name'      => 'audiences', // the method that defines the relationship in your Model
@@ -31,6 +31,16 @@ class DatasetHelper implements BackpackFieldsInterface
                 // optional
                 'entity'    => 'audiences', // the method that defines the relationship in your Model
                 'model'     => "App\Models\Audience", // foreign key model
+                'attribute' => 'name', // foreign key attribute that is shown to user
+                'create'=>true,
+            ],[
+                'label'     => "Data formats",
+                'type'      => 'select_multiple',
+                'name'      => 'data_formats', // the method that defines the relationship in your Model
+
+                // optional
+                'entity'    => 'data_formats', // the method that defines the relationship in your Model
+                'model'     => "App\Models\DataFormat", // foreign key model
                 'attribute' => 'name', // foreign key attribute that is shown to user
                 'create'=>true,
             ]

@@ -7,3 +7,4 @@
 <li class="nav-item"><a class="nav-link" href="{{ backpack_url('dataset') }}"><i class="nav-icon la la-database"></i> Datasets</a></li>
 
 <li class="nav-item"><a class="nav-link" href="{{ backpack_url('audience') }}"><i class="nav-icon la la-question"></i> Audiences</a></li>
+<li class="nav-item"><a class="nav-link" href="{{ backpack_url('data-format') }}"><i class="nav-icon la la-question"></i> Data formats</a></li>
