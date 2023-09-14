@@ -21,8 +21,14 @@ class OrganizationHelper implements BackpackFieldsInterface
         return collect([
             [
                 'type'=>'text',
+                'name'=>'short_name',
+                'label'=>'Organization short name',
+                'create'=>true,
+                'list'=>true,
+            ],[
+                'type'=>'text',
                 'name'=>'name',
-                'label'=>'Organization Name',
+                'label'=>'Organization full name',
                 'create'=>true,
                 'list'=>true,
             ],[

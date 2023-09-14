@@ -19,6 +19,7 @@ class OrganizationsSeeder extends Seeder
             \DB::beginTransaction();
             foreach ($this->pool() as $organization){
                 \App\Models\Organization::create([
+                    'short_name'=>$organization,
                     'name'=>$organization
                 ]);
             }
