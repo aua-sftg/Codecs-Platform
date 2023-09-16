@@ -17,3 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+Route::post('/sector', [App\Http\Controllers\Admin\SectorCrudController::class,'api_sectors']);
+Route::post('/sector/{id}', [App\Http\Controllers\Admin\SectorCrudController::class,'api_sectors_show']);

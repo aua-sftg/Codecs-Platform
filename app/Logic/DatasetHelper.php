@@ -24,6 +24,22 @@ class DatasetHelper implements BackpackFieldsInterface
     {
         return collect([
             [
+                'label'       => "Sector", // Table column heading
+                'type'        => "select2_from_ajax_multiple",
+                'name'        => 'sector', // a unique identifier (usually the method that defines the relationship in your Model)
+                'entity'      => 'sector', // the method that defines the relationship in your Model
+                'attribute'   => "name", // foreign key attribute that is shown to user
+                'data_source' => url("api/sector"), // url to controller search function (with /{id} should return model)
+                'tags'=>false,
+                // OPTIONAL
+                'delay' => 500, // the minimum amount of time between ajax requests when searching in the field
+                'model'                      => "App\Models\Sector", // foreign key model
+                'placeholder'                => "Type sector...", // placeholder for the select
+                'minimum_input_length'       => 2, // minimum characters to type before querying results
+                'method'                  => 'POST', // optional - HTTP method to use for the AJAX call (GET, POST)
+                'create'=>true,
+            ],
+            [
                 'name'      => 'file',
                 'label'     => 'Dataset File',
                 'type'      => 'upload',

@@ -15,3 +15,5 @@
         <li class="nav-item"><a class="nav-link" href="{{ backpack_url('organization') }}"><i class="nav-icon la la-university"></i> Organizations</a></li>
     </ul>
 </li>
+
+<li class="nav-item"><a class="nav-link" href="{{ backpack_url('sector') }}"><i class="nav-icon la la-question"></i> Sectors</a></li>
