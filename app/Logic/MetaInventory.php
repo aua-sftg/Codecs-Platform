@@ -222,4 +222,14 @@ class MetaInventory
         });
         return $criteria;
     }
+
+    public static function statistics():array
+    {
+        $stats = [];
+        foreach (self::VENDORS as $vendor)
+        {
+            $stats[$vendor['key']] = DB::collection($vendor['key'])->count();
+        }
+        return $stats;
+    }
 }
