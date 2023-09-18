@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Requests\DatasetRequest;
 use App\Logic\ArticleHelper;
 use App\Logic\DatasetHelper;
+use App\Logic\KeywordHelper;
 use App\Logic\MediaHelper;
 use App\Logic\SectorHelper;
 use App\Models\Dataset;
@@ -89,6 +90,12 @@ class DatasetCrudController extends CrudController
                         $request->get('sector',[])
                     )
                 );
+
+                $this->crud->entry->keywords()->sync(
+                    KeywordHelper::getKeywordIDS(
+                        $request->get('keywords',[])
+                    )
+                );
             }
 
 
@@ -111,13 +118,17 @@ class DatasetCrudController extends CrudController
             //run default update method
             $response = $this->traitUpdate();
 
-            (
-                Dataset::findOrFail($request->get('_id'))
-            )
-            ->sector()
-            ->sync(
+            $dataset = Dataset::findOrFail($request->get('_id'));
+
+            $dataset->sector()->sync(
                 SectorHelper::getSectorIDS(
                     $request->get('sector',[])
+                )
+            );
+
+            $dataset->keywords()->sync(
+                KeywordHelper::getKeywordIDS(
+                    $request->get('keywords',[])
                 )
             );
 

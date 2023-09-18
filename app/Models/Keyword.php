@@ -3,11 +3,10 @@
 namespace App\Models;
 
 use Backpack\CRUD\app\Models\Traits\CrudTrait;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Jenssegers\Mongodb\Eloquent\Model;
 use Jenssegers\Mongodb\Relations\BelongsToMany;
 
-class Dataset extends Model
+class Keyword extends Model
 {
     use CrudTrait;
 
@@ -17,9 +16,7 @@ class Dataset extends Model
     |--------------------------------------------------------------------------
     */
 
-    protected $connection= 'mongodb';
-
-    protected $collection = 'datasets';
+    protected $table = 'keywords';
     // protected $primaryKey = 'id';
     // public $timestamps = false;
     protected $guarded = ['id'];
@@ -39,29 +36,9 @@ class Dataset extends Model
     |--------------------------------------------------------------------------
     */
 
-    public function audiences():BelongsToMany
+    public function datasets():BelongsToMany
     {
-        return $this->belongsToMany(Audience::class, null, 'dataset_ids', 'audience_ids');
-    }
-
-    public function data_formats():BelongsToMany
-    {
-        return $this->belongsToMany(DataFormat::class, null, 'dataset_ids', 'data_format_ids');
-    }
-
-    public function organization():BelongsTo
-    {
-        return $this->belongsTo(Organization::class, 'organization_id', '_id');
-    }
-
-    public function sector():BelongsToMany
-    {
-        return $this->belongsToMany(Sector::class, null, 'dataset_ids', 'sector_ids');
-    }
-
-    public function keywords():BelongsToMany
-    {
-        return $this->belongsToMany(Keyword::class, null, 'dataset_ids', 'keyword_ids');
+        return $this->belongsToMany(Dataset::class, null, 'keyword_ids', 'dataset_ids');
     }
 
     /*
@@ -81,12 +58,4 @@ class Dataset extends Model
     | MUTATORS
     |--------------------------------------------------------------------------
     */
-    public function setFileAttribute($value)
-    {
-        $attribute_name = "file";
-        $disk = "datasets";
-        $destination_path = "/";
-
-        $this->uploadFileToDisk($value, $attribute_name, $disk, $destination_path, $fileName = null);
-    }
 }

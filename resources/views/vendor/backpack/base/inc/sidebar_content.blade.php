@@ -11,9 +11,9 @@
     <a class="nav-link nav-dropdown-toggle" href="#"><i class="nav-icon la la-users"></i> Dataset lists</a>
     <ul class="nav-dropdown-items">
         <li class="nav-item"><a class="nav-link" href="{{ backpack_url('audience') }}"><i class="nav-icon la la-bullseye"></i> Audiences</a></li>
-        <li class="nav-item"><a class="nav-link" href="{{ backpack_url('data-format') }}"><i class="nav-icon la la-tags"></i> Data formats</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ backpack_url('data-format') }}"><i class="nav-icon la la-file-video"></i> Data formats</a></li>
         <li class="nav-item"><a class="nav-link" href="{{ backpack_url('organization') }}"><i class="nav-icon la la-university"></i> Organizations</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ backpack_url('sector') }}"><i class="nav-icon la la-code-branch"></i> Sectors</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{ backpack_url('keyword') }}"><i class="nav-icon la la-tags"></i> Keywords</a></li>
     </ul>
 </li>
-
-<li class="nav-item"><a class="nav-link" href="{{ backpack_url('sector') }}"><i class="nav-icon la la-question"></i> Sectors</a></li>

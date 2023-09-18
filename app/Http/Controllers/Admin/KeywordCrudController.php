@@ -2,25 +2,27 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\SectorRequest;
+use App\Http\Requests\KeywordRequest;
 use App\Logic\Agrovoc;
-use App\Logic\SectorHelper;
+use App\Logic\KeywordHelper;
+use App\Models\Keyword;
 use App\Models\Sector;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 use Illuminate\Http\Request;
 
 /**
- * Class SectorCrudController
+ * Class KeywordCrudController
  * @package App\Http\Controllers\Admin
  * @property-read \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $crud
  */
-class SectorCrudController extends CrudController
+class KeywordCrudController extends CrudController
 {
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\UpdateOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
+    use \Backpack\CRUD\app\Http\Controllers\Operations\ShowOperation;
 
     /**
      * Configure the CrudPanel object. Apply settings to all operations.
@@ -29,9 +31,9 @@ class SectorCrudController extends CrudController
      */
     public function setup()
     {
-        CRUD::setModel(\App\Models\Sector::class);
-        CRUD::setRoute(config('backpack.base.route_prefix') . '/sector');
-        CRUD::setEntityNameStrings('sector', 'sectors');
+        CRUD::setModel(\App\Models\Keyword::class);
+        CRUD::setRoute(config('backpack.base.route_prefix') . '/keyword');
+        CRUD::setEntityNameStrings('keyword', 'keywords');
     }
 
     /**
@@ -42,19 +44,16 @@ class SectorCrudController extends CrudController
      */
     protected function setupListOperation()
     {
-
-
         $this->crud->addFilter([
             'name'  => 'source',
             'type'  => 'select2',
             'label' => 'Source'
         ], function () {
-            return Sector::select('source')->pluck('source','source')->toArray();
+            return Keyword::select('source')->pluck('source','source')->toArray();
         }, function ($value) { // if the filter is active
-             $this->crud->addClause('where', 'source', $value);
+            $this->crud->addClause('where', 'source', $value);
         });
-
-        $this->crud->addColumns(SectorHelper::list_fields());
+        $this->crud->addColumns(KeywordHelper::list_fields());
     }
 
     /**
@@ -65,9 +64,9 @@ class SectorCrudController extends CrudController
      */
     protected function setupCreateOperation()
     {
-        CRUD::setValidation(SectorHelper::VALIDATION_RULES);
+        CRUD::setValidation(KeywordHelper::VALIDATION_RULES);
 
-        $this->crud->addFields(SectorHelper::create_fields());
+        $this->crud->addFields(KeywordHelper::create_fields());
     }
 
     /**
@@ -81,23 +80,23 @@ class SectorCrudController extends CrudController
         $this->setupCreateOperation();
     }
 
-    public function api_sectors(Request $request)
+    public function api_keywords(Request $request)
     {
         $keyword = $request->q;
-        $dbSectors = Sector::select('id','name')->where("name","LIKE","%$keyword%")->get();
+        $dbKeywords = Keyword::select('id','name')->where("name","LIKE","%$keyword%")->get();
 
-        $results = Agrovoc::search(keyword: $keyword, except: $dbSectors->pluck('name')->toArray());
+        $results = Agrovoc::search(keyword: $keyword, except: $dbKeywords->pluck('name')->toArray());
 
-        $dbSectors->map(function ($sector) use ($results) {
+        $dbKeywords->map(function ($dbKeyword) use ($results) {
             $results->push([
                 '_id' => json_encode([
                     'vendor'=>'db',
-                    'id'=>$sector->id,
+                    'id'=>$dbKeyword->id,
                     'url'=>'',
-                    'label'=>$sector->name,
+                    'label'=>$dbKeyword->name,
                     'new'=>false,
                 ]),
-                'name' => $sector->name
+                'name' => $dbKeyword->name
             ]);
         });
 
@@ -115,10 +114,5 @@ class SectorCrudController extends CrudController
         return response()->json(
             $results->toArray()
         );
-    }
-
-    public function api_sectors_show($id)
-    {
-        return Sector::find($id);
     }
 }
