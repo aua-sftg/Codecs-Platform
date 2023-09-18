@@ -2,17 +2,16 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\UserRequest;
-use App\Logic\UserHelper;
+use App\Http\Requests\PermissionRequest;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 
 /**
- * Class UserCrudController
+ * Class PermissionCrudController
  * @package App\Http\Controllers\Admin
  * @property-read \Backpack\CRUD\app\Library\CrudPanel\CrudPanel $crud
  */
-class UserCrudController extends CrudController
+class PermissionCrudController extends CrudController
 {
     use \Backpack\CRUD\app\Http\Controllers\Operations\ListOperation;
     use \Backpack\CRUD\app\Http\Controllers\Operations\CreateOperation;
@@ -26,9 +25,9 @@ class UserCrudController extends CrudController
      */
     public function setup()
     {
-        CRUD::setModel(\App\Models\User::class);
-        CRUD::setRoute(config('backpack.base.route_prefix') . '/user');
-        CRUD::setEntityNameStrings('user', 'users');
+        CRUD::setModel(\App\Models\Permission::class);
+        CRUD::setRoute(config('backpack.base.route_prefix') . '/permission');
+        CRUD::setEntityNameStrings('permission', 'permissions');
     }
 
     /**
@@ -39,7 +38,7 @@ class UserCrudController extends CrudController
      */
     protected function setupListOperation()
     {
-        $this->crud->addColumns(UserHelper::list_fields());
+        $this->crud->addColumns(['name','guard_name']);
     }
 
     /**
@@ -50,9 +49,19 @@ class UserCrudController extends CrudController
      */
     protected function setupCreateOperation()
     {
-        CRUD::setValidation(UserRequest::class);
+        CRUD::setValidation([
+             'name' => 'required|min:2',
+        ]);
 
-        $this->crud->addFields(UserHelper::create_fields());
+        $this->crud->addFields([
+            [
+                'name'=>'name',
+                'type'=>'text',
+            ],[
+                'name'=>'guard_name',
+                'type'=>'text',
+            ],
+        ]);
     }
 
     /**

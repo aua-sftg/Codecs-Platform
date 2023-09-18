@@ -7,6 +7,7 @@ use App\Logic\ArticleHelper;
 use App\Logic\DatasetHelper;
 use App\Logic\KeywordHelper;
 use App\Logic\MediaHelper;
+use App\Logic\PermissionHelper;
 use App\Logic\SectorHelper;
 use App\Models\Dataset;
 use App\Models\Media;
@@ -14,6 +15,7 @@ use App\Models\Sector;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 use Prologue\Alerts\Facades\Alert;
 
 /**
@@ -38,6 +40,11 @@ class DatasetCrudController extends CrudController
         CRUD::setModel(\App\Models\Dataset::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/dataset');
         CRUD::setEntityNameStrings('dataset', 'datasets');
+
+        if(Gate::forUser(backpack_user())->allows(PermissionHelper::PERMISSION_UPLOAD_DATASETS)===false)
+        {
+            abort(403);
+        }
     }
 
     /**

@@ -4,10 +4,12 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\ScenarioRequest;
 use App\Logic\MetaInventory;
+use App\Logic\PermissionHelper;
 use App\Logic\ScenarioHelper;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Gate;
 use timgws\QueryBuilderParser;
 
 /**
@@ -34,6 +36,12 @@ class ScenarioCrudController extends CrudController
         CRUD::setModel(\App\Models\Scenario::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/scenario');
         CRUD::setEntityNameStrings('scenario', 'scenarios');
+
+        if(Gate::forUser(backpack_user())->allows(PermissionHelper::PERMISSION_MANAGE_SCENARIOS)===false)
+        {
+            abort(403);
+        }
+
     }
 
     /**
