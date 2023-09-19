@@ -1,4 +1,4 @@
-<section>
+<section class="position-sticky" style="top:120px;">
     <a href="{{route('profile.edit')}}" class="d-flex align-items-center gap-3 m-0 p-2 selected-link">
         <img src="{{asset('img/icons/account_circle.svg')}}"/>
         <h4 class="m-0">{{__('My Profile')}}</h4>
