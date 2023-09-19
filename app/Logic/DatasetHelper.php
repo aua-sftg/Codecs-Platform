@@ -32,14 +32,15 @@ class DatasetHelper implements BackpackFieldsInterface
                 'upload'    => true,
                 'disk'      => 'datasets',
                 'create'=>true,
-                'order'=>1
+                'order'=>1,
             ],[
                 'type'=>'text',
                 'name'=>'name',
                 'label'=>'Dataset Name',
                 'create'=>true,
                 'list'=>true,
-                'order'=>10
+                'order'=>10,
+                'tab'=>'General Information'
             ],[
                 'label'       => "Sector", // Table column heading
                 'type'        => "select2_from_ajax_multiple",
@@ -56,6 +57,7 @@ class DatasetHelper implements BackpackFieldsInterface
                 'method'                  => 'POST', // optional - HTTP method to use for the AJAX call (GET, POST)
                 'create'=>true,
                 'order'=>20,
+                'tab'=>'General Information',
                 'hint'=>'Type sector name and select from the list or create a new one. Agrovoc terms are also available.'
             ],[
                 'label'       => "Keywords", // Table column heading
@@ -73,23 +75,27 @@ class DatasetHelper implements BackpackFieldsInterface
                 'method'                  => 'POST', // optional - HTTP method to use for the AJAX call (GET, POST)
                 'create'=>true,
                 'order'=>50,
+                'tab'=>'Description',
                 'hint'=>'Type keyword and select from the list or create a new one. Agrovoc terms are also available.'
             ],[
                 'name'=>'abstract',
                 'type'=>'textarea',
                 'label'=>'Abstract',
+                'tab'=>'Description',
                 'create'=>true,
                 'order'=>30
             ],[
                 'name'=>'description',
                 'type'=>'textarea',
                 'label'=>'Description',
+                'tab'=>'Description',
                 'create'=>true,
                 'order'=>40
             ],[   // Date
                 'name'  => 'release_date',
                 'label' => 'Date of release',
                 'type'  => 'date',
+                'tab'=>'General Information',
                 'create'=>true,
                 'list'=>true,
                 'order'=>60
@@ -102,6 +108,7 @@ class DatasetHelper implements BackpackFieldsInterface
                 'entity'    => 'data_formats', // the method that defines the relationship in your Model
                 'model'     => "App\Models\DataFormat", // foreign key model
                 'attribute' => 'name', // foreign key attribute that is shown to user
+                'tab'=>'General Information',
                 'create'=>true,
                 'order'=>70
             ],[  // Select
@@ -122,6 +129,12 @@ class DatasetHelper implements BackpackFieldsInterface
                 'options'   => (function ($query) {
                     return $query->orderBy('name', 'ASC')->get();
                 }), //  you can use this to filter the results show in the select
+                'searchLogic'=>function($query, $column, $searchTerm){
+                    return $query->orWhereHas('organization',function($query) use ($searchTerm){
+                        $query->where('name','like','%'.$searchTerm.'%');
+                    });
+                },
+                'tab'=>'General Information',
                 'create'=>true,
                 'list'=>true,
                 'order'=>80
@@ -129,24 +142,28 @@ class DatasetHelper implements BackpackFieldsInterface
                 'type'=>'url',
                 'name'=>'license_scheme',
                 'label'=>'Licensing Scheme',
+                'tab'=>'Description',
                 'create'=>true,
                 'order'=>90
             ],[
                 'type'=>'textarea',
                 'label'=>'Data collection method',
                 'name'=>'data_collection_method',
+                'tab'=>'Description',
                 'create'=>true,
                 'order'=>100
             ],[
                 'type'=>'number',
                 'label'=>'Version',
                 'name'=>'version',
+                'tab'=>'General Information',
                 'create'=>true,
                 'order'=>110
             ],[
                 'type'=>'text',
                 'label'=>'DOI/ ROR/ ISSN ',
                 'name'=>'reference_link',
+                'tab'=>'General Information',
                 'create'=>true,
                 'order'=>120,
                 'hint'=>'Full url. Example: https://doi.org/10.5281/zenodo.4555343'
@@ -154,6 +171,7 @@ class DatasetHelper implements BackpackFieldsInterface
                 'type'=>'text',
                 'label'=>'OECD Frascati classification',
                 'name'=>'oecd_frascati_classification',
+                'tab'=>'Description',
                 'create'=>true,
                 'order'=>130
             ],[
@@ -162,6 +180,7 @@ class DatasetHelper implements BackpackFieldsInterface
                 'name'=>'external_data_source',
                 'create'=>true,
                 'order'=>140,
+                'tab'=>'Description',
                 'hint'=>'Full url. Example: https://www.oecd.org/sti/inno/38235147.pdf'
             ],[
                 'label'     => "Audiences",
@@ -172,6 +191,7 @@ class DatasetHelper implements BackpackFieldsInterface
                 'entity'    => 'audiences', // the method that defines the relationship in your Model
                 'model'     => "App\Models\Audience", // foreign key model
                 'attribute' => 'name', // foreign key attribute that is shown to user
+                'tab'=>'Description',
                 'create'=>true,
                 'order'=>150
             ],[
@@ -184,12 +204,29 @@ class DatasetHelper implements BackpackFieldsInterface
                 'create'=>true,
                 'list'=>true,
                 'order'=>300
-            ],[
-                'name'  => 'uploaded_by',
-                'type'  => 'hidden',
-                'value' => backpack_user()->id,
-                'create'=>true
-            ],
+            ],[  // Select2
+                'label'     => "Uploaded By",
+                'type'      => 'select2',
+                'list_type' => 'select',
+                'name'      => 'uploaded_by', // the db column for the foreign key
+
+                // optional
+                'entity'    => 'uploadedBy', // the method that defines the relationship in your Model
+                'model'     => "App\Models\User", // foreign key model
+                'attribute' => 'name', // foreign key attribute that is shown to user
+                // also optional
+                'options'   => (function ($query) {
+                    return $query->orderBy('name', 'ASC')->get();
+                }), // force the related options to be a custom query, instead of all(); you can use this to filter the results show in the select
+                'searchLogic'=>function($query, $column, $searchTerm){
+                    return $query->orWhereHas('uploadedBy',function($query) use ($searchTerm){
+                        $query->where('name','like','%'.$searchTerm.'%');
+                    });
+                },
+                'order'=>310,
+                'create'=>true,
+                'list'=>true,
+            ]
         ]);
     }
 }

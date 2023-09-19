@@ -64,6 +64,11 @@ class Dataset extends Model
         return $this->belongsToMany(Keyword::class, null, 'dataset_ids', 'keyword_ids');
     }
 
+    public function uploadedBy():BelongsTo
+    {
+        return $this->belongsTo(User::class,'uploaded_by','_id');
+    }
+
     /*
     |--------------------------------------------------------------------------
     | SCOPES

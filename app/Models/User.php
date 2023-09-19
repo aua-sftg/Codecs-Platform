@@ -9,6 +9,7 @@ use Jenssegers\Mongodb\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Jenssegers\Mongodb\Eloquent\SoftDeletes;
 use Jenssegers\Mongodb\Relations\BelongsToMany;
+use Jenssegers\Mongodb\Relations\HasMany;
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
@@ -52,6 +53,11 @@ class User extends Authenticatable
     public function permissions():BelongsToMany
     {
         return $this->belongsToMany(Permission::class, null, 'user_ids', 'permission_ids');
+    }
+
+    public function datasets():HasMany
+    {
+        return $this->hasMany(Dataset::class, 'uploaded_by', '_id');
     }
 
     public function hasPermissionTo(string $permission):bool

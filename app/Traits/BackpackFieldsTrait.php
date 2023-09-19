@@ -14,6 +14,12 @@ trait BackpackFieldsTrait
 
     public static function list_fields() : array
     {
-        return self::fields()->where('list','=',true)->sortBy('order')->toArray();
+        return self::fields()
+            ->where('list','=',true)
+            ->map(function($field){
+                $field['type']=$field['list_type']??$field['type'];
+                return $field;
+            })
+            ->sortBy('order')->toArray();
     }
 }
