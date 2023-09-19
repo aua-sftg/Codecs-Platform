@@ -19,8 +19,10 @@ Route::get('/', function () {
 })->name('home');
 
 Route::get('/meta-inventory', function () {
-    return view('meta_inventory_home');
+    return view('components.metainventory.meta_inventory_home');
 })->name('meta_inventory_home');
+
+Route::get('/meta-inventory/{scenario:name}', [\App\Http\Controllers\MetaInventoryController::class, 'index'])->name('meta_inventory_list');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

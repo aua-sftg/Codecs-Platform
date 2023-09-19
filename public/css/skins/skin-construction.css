@@ -1035,7 +1035,7 @@ html .nav-pills-light > li.active > a:focus {
 }
 
 html .badge-primary {
-	background-color: #BCD364;
+	background-color: #a0b63c;
 }
 
 html .badge-secondary {
@@ -7238,7 +7238,6 @@ pre,
 .pager li > a,
 .pager li > span,
 .label,
-.badge,
 .container .jumbotron,
 .container-fluid .jumbotron,
 .thumbnail,
@@ -7313,8 +7312,6 @@ select,
 .card-header:first-child,
 .card-footer:last-child,
 .card-img,
-.badge,
-.badge-pill,
 .jumbotron,
 .alert,
 .progress,
