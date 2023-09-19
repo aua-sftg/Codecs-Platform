@@ -1,6 +1,10 @@
+@props(['livewire_enable'=>false])
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    @if ($livewire_enable)
+        @livewireStyles
+    @endif
 
     <!-- Basic -->
     <meta charset="utf-8">
@@ -178,7 +182,7 @@
                             </a>
                         </li>
                         <li>
-                            <a class="text-color-hover-primary {{ (request()->routeIs('meta_inventory_home')) ? ' active' : '' }}" href="{{route('meta_inventory_home')}}">
+                            <a class="text-color-hover-primary" href="{{route('meta_inventory_home')}}">
                                 Meta-inventory
                             </a>
                         </li>
@@ -279,6 +283,10 @@
 
 <!-- Theme Initialization Files -->
 <script src="{{ asset('js/theme.init.js') }}"></script>
+
+@if ($livewire_enable)
+    @livewireScripts
+@endif
 
 </body>
 </html>

@@ -155,12 +155,14 @@ class MetaInventory
     {
         $results = collect();
 
-        foreach ($scenario->meta_inventory as $collection=>$ids)
-        {
-            $table = DB::table($collection);
-            $results = $results->merge(
-                $table->whereIn('_id',$ids)->get()
-            );
+        if ($scenario->meta_inventory) {
+            foreach ($scenario->meta_inventory as $collection=>$ids)
+            {
+                $table = DB::table($collection);
+                $results = $results->merge(
+                    $table->whereIn('_id',$ids)->get()
+                );
+            }
         }
 
         return $results;
@@ -206,6 +208,22 @@ class MetaInventory
                 'vendor'=> $vendor,
                 'title'=>$vendor=='desira'?$record['ToolName']:($vendor=='fairshare'?$record['name']:$record['title']),
                 'desc'=> $vendor == 'fairshare' ? $record['desc'] : ($vendor=='smartakis' ? $record['description'] : $record['Description']),
+            ];
+        });
+    }
+
+    public static function results_transform(Collection $results):Collection {
+        return $results->map(function($record){
+            $vendor = isset($record['fairshare_id']) ? 'fairshare' : (isset($record['smartakis_id']) ? 'smartakis' : 'desira');
+            return [
+                'vendor'=> $vendor,
+                'id'=>$record['_id'],
+                'title'=>$vendor=='desira'?$record['ToolName']:($vendor=='fairshare'?$record['name']:$record['title']),
+                'short_desc'=> $vendor == 'fairshare' ? $record['title'] : ($vendor=='smartakis' ? $record['shortDescription'] : $record['Description']),
+                'keywords'=>$vendor == 'fairshare' ? explode(',', $record['keywords']) : ($vendor=='smartakis' ? $record['croppingSystem'] : $record['Keywords']),
+                'image'=>$vendor == 'fairshare' ? $record['imagePath'][0] : ($vendor=='smartakis' ? $record['picAddress'][0] : asset('img/Logo-Desira.png')),
+                'update_date'=>$vendor == 'desira' ? $record['updated_at'] : $record['updatedAt'],
+                'source'=>$vendor=='desira'?'Desira': ($vendor =='fairshare'?'Fairshare' :($vendor=='smartakis'?'smartAKIS':$vendor)),
             ];
         });
     }
