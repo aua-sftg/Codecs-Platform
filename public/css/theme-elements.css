@@ -4941,7 +4941,7 @@ hr.invisible {
 }
 
 .divider.divider-small {
-	margin: 22px auto;
+	margin: 10px auto;
 	background: transparent;
 }
 
@@ -4949,6 +4949,7 @@ hr.invisible {
 	width: 50px;
 	height: 3px;
 	background: #555;
+    margin: 10px 0;
 }
 
 .divider.divider-small.divider-small-center {
