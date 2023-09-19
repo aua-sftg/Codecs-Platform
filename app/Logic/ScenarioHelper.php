@@ -49,6 +49,7 @@ class ScenarioHelper implements BackpackFieldsInterface
         return collect([
             [
                 'name'      => 'name',
+                'type'=>'text',
                 'label'     => 'Scenario Name',
                 'list'=>true,
                 'create'=>true,
@@ -83,10 +84,12 @@ class ScenarioHelper implements BackpackFieldsInterface
             ],[
                 'name'      => 'created_by',
                 'label'     => 'Creator',
+                'type'=>'text',
                 'list'=>true,
                 'create'=>false,
             ],[
                 'name'      => 'lft',
+                'type'=>'text',
                 'label'     => 'Order',
                 'list'=>true
             ],[   // Hidden
