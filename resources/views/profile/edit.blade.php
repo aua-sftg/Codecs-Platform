@@ -1,29 +1,44 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Profile') }}
-        </h2>
-    </x-slot>
+<x-layout.layout>
+    <x-slot:title>
+        Codecs | Meta-Inventory
+    </x-slot:title>
+    <x-slot:keywords>
+        Codecs, meta-inventory
+    </x-slot:keywords>
+    <x-slot:description>
+        Codecs | Meta-Inventory
+    </x-slot:description>
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
-            <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                <div class="max-w-xl">
-                    @include('profile.partials.update-profile-information-form')
+    <x-slot:hero_section>
+        <x-layout.hero_simple>
+            <x-slot:current_view>
+                {{auth()->user()->name.' '. __('Profile') }}
+            </x-slot:current_view>
+        </x-layout.hero_simple>
+    </x-slot:hero_section>
+
+    <x-slot:main_body>
+        <div class="container py-4">
+            <div class="row ">
+                <div class="col-md-6 col-lg-3 mb-5 mb-lg-0 shadow p-3">
+                    @include('profile.partials.sidebar')
                 </div>
-            </div>
-
-            <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                <div class="max-w-xl">
-                    @include('profile.partials.update-password-form')
-                </div>
-            </div>
-
-            <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                <div class="max-w-xl">
-                    @include('profile.partials.delete-user-form')
+                <div class="col-md-6 col-lg-9 mb-5 mb-lg-0">
+                    <div class="p-3" id="/user-information">
+                        @include('profile.partials.update-profile-information-form')
+                    </div>
+                    <hr>
+                    <div class="p-3 mt-2" id="/password-reset">
+                        @include('profile.partials.update-password-form')
+                    </div>
+                    <hr>
+                    <div class="p-3 mt-2" id="delete-user">
+                        @include('profile.partials.delete-user-form')
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</x-app-layout>
+    </x-slot:main_body>
+
+
+</x-layout.layout>

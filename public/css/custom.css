@@ -9,3 +9,8 @@
 .appl_scen_img {
     height: 150px;
 }
+
+.selected-link
+{
+    background-color:#BCD364;
+}

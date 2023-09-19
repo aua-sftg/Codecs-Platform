@@ -48,7 +48,8 @@
 
     <!-- Head Libs -->
     <script src="{{ asset('vendor/modernizr/modernizr.min.js') }}"></script>
-
+    <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('vendor/bootstrap/js/bootstrap.min.js') }}"></script>
 </head>
 <body data-plugin-scroll-spy data-plugin-options="{'target': '#sidebar'}">
 
@@ -115,6 +116,12 @@
                             </div>
                             <div class="header-nav-features header-nav-features-no-border header-nav-features-sm-show-border ms-3 ps-4 order-2 order-lg-3">
                                 <div class="header-nav-feature header-nav-features-search d-inline-flex">
+
+                                    <a href="{{route('profile.edit')}}" class="mx-2">
+                                        <img src="{{asset('img/icons/account_circle.svg')}}" alt="">
+                                    </a>
+
+
                                     <a href="#" class="header-nav-features-toggle text-decoration-none" data-focus="headerSearch" aria-label="Search">
                                         <i class="icons icon-magnifier header-nav-top-icon text-3-5 text-color-dark text-color-hover-primary font-weight-semibold top-3"></i>
                                     </a>
@@ -256,6 +263,7 @@
     </div>
 
 </div>
+<script src="{{ asset('vendor/bootstrap/js/bootstrap.min.js') }}"></script>
 
 <!-- Vendor -->
 <script src="{{ asset('vendor/plugins/js/plugins.min.js') }}"></script>
