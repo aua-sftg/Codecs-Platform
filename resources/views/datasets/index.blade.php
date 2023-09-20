@@ -1,4 +1,4 @@
-<x-layout.layout>
+<x-layout.layout :livewire_enable="true">
     <x-slot:title>
         Codecs | Meta-Inventory
     </x-slot:title>
