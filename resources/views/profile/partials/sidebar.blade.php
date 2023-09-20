@@ -1,18 +1,18 @@
 <section class="position-sticky" style="top:120px;">
-    <a href="{{route('profile.edit')}}" class="d-flex align-items-center gap-3 m-0 p-2 selected-link">
-        <img src="{{asset('img/icons/account_circle.svg')}}"/>
-        <h4 class="m-0">{{__('My Profile')}}</h4>
-    </a>
 
-    <a href="{{route('profile.edit')}}" class="d-flex align-items-center gap-3 m-0 p-2 mt-3 ">
-        <img src="{{asset('img/icons/account_circle.svg')}}"/>
-        <h4 class="m-0">{{__('My Uploads')}}</h4>
-    </a>
 
-    <a href="{{route('profile.edit')}}" class="d-flex align-items-center gap-3 m-0 p-2  mt-3">
-        <img src="{{asset('img/icons/account_circle.svg')}}"/>
-        <h4 class="m-0">{{__('My Favorites')}}</h4>
-    </a>
+    @foreach(\App\Logic\LinkList::profile_sidebar() as $link)
+        <a href="{{route($link['route'])}}"
+           @class([
+               'd-flex align-items-center gap-3 m-0 p-2',
+               'selected-link' => request()->routeIs($link['route']),
+               'mt-3'=>!$loop->first
+           ])
+           >
+            <img alt="{{$link['label']}} menu item icon" loading="lazy" src="{{$link['icon']}}"/>
+            <h4 class="m-0">{{$link['label']}}</h4>
+        </a>
+    @endforeach
 
     <form action="{{route('logout')}}" method="post">
         @csrf

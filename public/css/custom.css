@@ -115,3 +115,8 @@
 {
     background-color:#BCD364;
 }
+
+.bg-yellow{
+    background: var(--unnamed-color-f4c01e) 0% 0% no-repeat padding-box;
+    background: #F4C01E 0% 0% no-repeat padding-box;
+}
