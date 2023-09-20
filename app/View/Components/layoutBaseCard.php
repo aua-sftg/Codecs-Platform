@@ -4,17 +4,17 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class datasetCard extends Component
+class layoutBaseCard extends Component
 {
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public $keywords;
-    public function __construct($keywords)
+
+    public function __construct(public string $title, public array $keywords, public string $exceptr, public string $containerClass='', public string|null $image=null)
     {
-        $this->keywords = $keywords;
+
     }
 
     /**
@@ -24,6 +24,7 @@ class datasetCard extends Component
      */
     public function render()
     {
-        return view('components.metainventory.dataset-card');
+
+        return view('components.layout.base-card');
     }
 }
