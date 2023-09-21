@@ -6,12 +6,24 @@ use Livewire\Component;
 use App\Logic\ScenarioHelper;
 use App\Models\Scenario;
 use App\Logic\MetaInventory;
+use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Collection;
+use Livewire\WithPagination;
+
 class MetaInventoryList extends Component
 {
+    use WithPagination;
+
     public $scenario;
     public $searchTerm='';
     public $metaFilters;
+    public $currentPage = 1;
+    public $perPage = 2;
 
+    public $startPage;
+    public $endPage;
+
+    public $queryString = ['currentPage'];
 
     protected $listeners = ['searchParam' => 'searchParam', 'metaFilters' => 'metaFilters'];
 
@@ -80,8 +92,31 @@ class MetaInventoryList extends Component
         }
 
         $results = MetaInventory::results_transform($datasets);
+        $results = $results->sortBy('title');
 
-        return view('livewire.meta-inventory-list', compact("results"));
+
+        $perPage = $this->perPage;
+        $filteredDatasets = $results->forPage($this->currentPage, $perPage);
+        $total = $results->count();
+
+
+        $paginatedResults = new LengthAwarePaginator(
+            $filteredDatasets,
+            $total,
+            $perPage,
+            $this->currentPage,
+            [
+                'path' => route('meta_inventory_list', ['scenario' => $this->scenario]),
+            ]
+        );
+
+        //I use this to only display up to 3 numbered button for choosing pages
+        $this->startPage = max(1, $this->currentPage - 1);
+        $this->endPage = min($this->startPage + 2, $paginatedResults->lastPage());
+
+
+        return view('livewire.meta-inventory-list', compact('paginatedResults'));
+
     }
 
     public function searchParam($searchTerm) {
@@ -91,5 +126,20 @@ class MetaInventoryList extends Component
 
     public function metaFilters($metaFilters) {
         $this->metaFilters = $metaFilters;
+    }
+
+    public function gotoPage($page)
+    {
+        $this->currentPage = $page; // Update the Livewire component's currentPage property
+    }
+
+    public function nextPage()
+    {
+        $this->currentPage++; // Increment the currentPage
+    }
+
+    public function previousPage()
+    {
+        $this->currentPage--; // Decrement the currentPage
     }
 }

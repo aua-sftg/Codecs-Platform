@@ -5,7 +5,6 @@ namespace App\Logic;
 use App\Models\Scenario;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
-use timgws\QueryBuilderParser;
 
 class MetaInventory
 {

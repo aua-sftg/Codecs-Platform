@@ -3,11 +3,18 @@
 namespace App\Logic;
 
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Cache;
 
 class MetaInventoryFilterHelper
 {
-    public static function getDistinctCountries()
+    public static function getDistinctCountries($countriesToRemove, $useCached = true)
     {
+
+        $cacheKey = 'distinct_countries';
+        if ($useCached && Cache::has($cacheKey)) {
+            return Cache::get($cacheKey);
+        }
+
         $distinctCountries = [];
 
         // Define the collections and field names
@@ -35,8 +42,17 @@ class MetaInventoryFilterHelper
         // Keep unique values
         $distinctCountries = array_unique($distinctCountries);
 
+        if(!empty($countriesToRemove)) {
+            $distinctCountries = array_diff($distinctCountries, $countriesToRemove);
+        }
+
         // Sort alphabetically
         sort($distinctCountries);
+
+        // Cache the result
+        Cache::rememberForever($cacheKey, function () use ($distinctCountries) {
+            return $distinctCountries;
+        });
         return $distinctCountries;
     }
 

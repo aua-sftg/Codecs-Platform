@@ -22,6 +22,9 @@ class MetaInventoryFilters extends Component
         'countries' => [],
     ];
 
+    //Countries that we want to remove from the list (temporary)
+    public array $countriesToRemove= ['African Countries','All Baltic States','All Europe','Central America','Europe','European Union','Latin America','Multiple countries'];
+
     public function toggleFilter($value,$key)
     {
         if (in_array($value, $this->filters[$key])) {
@@ -47,7 +50,7 @@ class MetaInventoryFilters extends Component
 
     public function render()
     {
-        $this->filterOptions['countries'] = MetaInventoryFilterHelper::getDistinctCountries();
+        $this->filterOptions['countries'] = MetaInventoryFilterHelper::getDistinctCountries($this->countriesToRemove);
         return view('livewire.meta-inventory-filters');
     }
 }

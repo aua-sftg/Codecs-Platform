@@ -283,7 +283,6 @@
 
 <!-- Theme Initialization Files -->
 <script src="{{ asset('js/theme.init.js') }}"></script>
-
 @if ($livewire_enable)
     @livewireScripts
 @endif

@@ -26,6 +26,8 @@ Route::get('/meta-inventory', function () {
 
 Route::get('/meta-inventory/{scenario:name}', [\App\Http\Controllers\MetaInventoryController::class, 'index'])->name('meta_inventory_list');
 
+Route::get('/meta-inventory-details/{meta_inv_title}/{meta_inv_id}/{meta_inv_source}', [\App\Http\Controllers\MetaInventoryController::class, 'show'])->name('meta_inventory_detailed');
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');

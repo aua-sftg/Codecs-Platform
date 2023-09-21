@@ -4,7 +4,7 @@
             <div class="col-sm-4 mb-4 mb-sm-0 align-self-center">
                 <div class="product mb-0">
                     <div class="product-thumb-info border-0 mb-0">
-                        <a href="shop-product-sidebar-left.html">
+                        <a href="{{$link}}">
                             <div class="product-thumb-info-image">
                                 <img alt="" class="img-fluid" src="{{ $image }}">
 
@@ -22,7 +22,7 @@
             ])>
             <div class="summary entry-summary">
 
-                <h2 class="mb-0 font-weight-bold text-6"><a href="shop-product-sidebar-left.html" class="text-color-dark text-color-hover-primary text-decoration-none">{{ $title }}</a></h2>
+                <h2 class="mb-0 font-weight-bold text-6"><a href="{{$link}}" class="text-color-dark text-color-hover-primary text-decoration-none">{{ $title }}</a></h2>
                 {{$afterTitle??''}}
 
                 <div class="divider divider-small">

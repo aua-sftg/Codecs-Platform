@@ -4,17 +4,16 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class layoutBaseCard extends Component
+class MetaInventoryDetailed extends Component
 {
     /**
      * Create a new component instance.
      *
      * @return void
      */
-
-    public function __construct(public string $title, public array $keywords, public string $exceptr, public string $containerClass='', public string|null $image=null, public string $link="#")
+    public function __construct()
     {
-
+        //
     }
 
     /**
@@ -24,7 +23,6 @@ class layoutBaseCard extends Component
      */
     public function render()
     {
-
-        return view('components.layout.base-card');
+        return view('components.metainventory.meta_inventory_detailed');
     }
 }
