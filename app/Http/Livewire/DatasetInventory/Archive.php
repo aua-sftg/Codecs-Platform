@@ -13,13 +13,16 @@ class Archive extends Component
 
     public function render()
     {
+        $datasets = auth()
+            ->user()
+            ->datasets()
+            ->with(['keywords','organization'])
+            ->get();
+
         return view('livewire.dataset-inventory.archive',[
-            'datasets'=> auth()
-                ->user()
-                ->datasets()
-                ->with(['keywords','organization'])
-                ->get()
-                ->sortBy($this->sort_by)
+            'datasets'=> $this->sort_by=='created_at'
+                ? $datasets->sortByDesc($this->sort_by,)
+                : $datasets->sortBy($this->sort_by)
         ]);
     }
 }

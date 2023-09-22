@@ -10,8 +10,8 @@
             </div>
         </div>
 
-        <a href="#" class="bg-yellow fw-bold fs-6 text-decoration-none p-3 px-3 text-white  rounded-pill">
-            <img src="{{asset('img/icons/file_upload.svg')}}" alt="upload dataset icon">Upload new dataset
+        <a href="{{route('datasets.form')}}" class="bg-yellow fw-bold fs-6 text-decoration-none p-3 px-3 text-white  rounded-pill">
+            <img src="{{asset('img/icons/file_upload.svg')}}" alt="upload dataset icon"> Upload new dataset
         </a>
     </div>
     <div class="dataset-archive mt-3">

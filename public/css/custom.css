@@ -123,3 +123,8 @@
     background: var(--unnamed-color-f4c01e) 0% 0% no-repeat padding-box;
     background: #F4C01E 0% 0% no-repeat padding-box;
 }
+
+.bg-blue{
+    background: var(--unnamed-color-007cc2) 0% 0% no-repeat padding-box;
+    background: #007CC2 0% 0% no-repeat padding-box;
+}

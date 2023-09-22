@@ -36,6 +36,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::get('/datasets', [\App\Http\Controllers\DatasetController::class, 'index'])->name('datasets.index');
+    Route::get('/datasets/form', [\App\Http\Controllers\DatasetController::class, 'form'])->name('datasets.form');
 });
 
 Route::get('/cache',function(){

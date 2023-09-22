@@ -10,4 +10,9 @@ class DatasetController extends Controller
     {
         return view('datasets.index');
     }
+
+    public function form()
+    {
+        return view('datasets.form');
+    }
 }

@@ -6,12 +6,14 @@ class Status
 {
 
 
-    const STATUS_ACTIVE = 'active';
-    const STATUS_INACTIVE = 'inactive';
+    const STATUS_PUBLISHED = 'published';
+    const STATUS_UNPUBLISHED = 'unpublished';
+    const STATUS_DRAFT = 'draft';
 
     const STATUS_LABELS_ARRAY = [
-        self::STATUS_ACTIVE => 'Active',
-        self::STATUS_INACTIVE => 'Inactive',
+        self::STATUS_PUBLISHED => 'Published',
+        self::STATUS_UNPUBLISHED => 'Unpublished',
+        self::STATUS_DRAFT => 'Draft',
     ];
 
 

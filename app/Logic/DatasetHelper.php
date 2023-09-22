@@ -22,6 +22,22 @@ class DatasetHelper implements BackpackFieldsInterface
         'license_scheme'=>'nullable|url',
     ];
 
+    public static function stepped_fields(): Collection
+    {
+        return DatasetHelper::fields()
+            ->where('create',true)
+            ->where('step')
+            ->sortBy('step')
+            ->groupBy('step');
+    }
+
+    public static function required_fields(): array
+    {
+        return collect(\App\Logic\DatasetHelper::VALIDATION_RULES)->filter(function($value,$key){
+            return str_contains($value, 'required');
+        })->keys()->toArray();
+    }
+
     public static function fields(): Collection
     {
         return collect([
@@ -31,8 +47,11 @@ class DatasetHelper implements BackpackFieldsInterface
                 'type'      => 'upload',
                 'upload'    => true,
                 'disk'      => 'datasets',
+                'exclude_from_form_save'=>true,
                 'create'=>true,
                 'order'=>1,
+                'step'=>3,
+                'tab'=>'Upload',
             ],[
                 'type'=>'text',
                 'name'=>'name',
@@ -40,7 +59,8 @@ class DatasetHelper implements BackpackFieldsInterface
                 'create'=>true,
                 'list'=>true,
                 'order'=>10,
-                'tab'=>'General Information'
+                'tab'=>'General Information',
+                'step'=>1
             ],[
                 'label'       => "Sector", // Table column heading
                 'type'        => "select2_from_ajax_multiple",
@@ -49,6 +69,7 @@ class DatasetHelper implements BackpackFieldsInterface
                 'attribute'   => "name", // foreign key attribute that is shown to user
                 'data_source' => url("api/sector"), // url to controller search function (with /{id} should return model)
                 'tags'=>false,
+                'exclude_from_form_save'=>true,
                 // OPTIONAL
                 'delay' => 500, // the minimum amount of time between ajax requests when searching in the field
                 'model'                      => "App\Models\Sector", // foreign key model
@@ -58,7 +79,8 @@ class DatasetHelper implements BackpackFieldsInterface
                 'create'=>true,
                 'order'=>20,
                 'tab'=>'General Information',
-                'hint'=>'Type sector name and select from the list or create a new one. Agrovoc terms are also available.'
+                'hint'=>'Type sector name and select from the list or create a new one. Agrovoc terms are also available.',
+                'step'=>1
             ],[
                 'label'       => "Keywords", // Table column heading
                 'type'        => "select2_from_ajax_multiple",
@@ -67,6 +89,7 @@ class DatasetHelper implements BackpackFieldsInterface
                 'attribute'   => "name", // foreign key attribute that is shown to user
                 'data_source' => url("api/keywords"), // url to controller search function (with /{id} should return model)
                 'tags'=>false,
+                'exclude_from_form_save'=>true,
                 // OPTIONAL
                 'delay' => 500, // the minimum amount of time between ajax requests when searching in the field
                 'model'                      => "App\Models\Keyword", // foreign key model
@@ -76,21 +99,24 @@ class DatasetHelper implements BackpackFieldsInterface
                 'create'=>true,
                 'order'=>50,
                 'tab'=>'Description',
-                'hint'=>'Type keyword and select from the list or create a new one. Agrovoc terms are also available.'
+                'hint'=>'Type keyword and select from the list or create a new one. Agrovoc terms are also available.',
+                'step'=>2
             ],[
                 'name'=>'abstract',
                 'type'=>'textarea',
                 'label'=>'Abstract',
                 'tab'=>'Description',
                 'create'=>true,
-                'order'=>30
+                'order'=>30,
+                'step'=>2
             ],[
                 'name'=>'description',
                 'type'=>'textarea',
                 'label'=>'Description',
                 'tab'=>'Description',
                 'create'=>true,
-                'order'=>40
+                'order'=>40,
+                'step'=>2
             ],[   // Date
                 'name'  => 'release_date',
                 'label' => 'Date of release',
@@ -98,7 +124,8 @@ class DatasetHelper implements BackpackFieldsInterface
                 'tab'=>'General Information',
                 'create'=>true,
                 'list'=>true,
-                'order'=>60
+                'order'=>60,
+                'step'=>1
             ],[
                 'label'     => "Data formats",
                 'type'      => 'select2_multiple',
@@ -109,8 +136,10 @@ class DatasetHelper implements BackpackFieldsInterface
                 'model'     => "App\Models\DataFormat", // foreign key model
                 'attribute' => 'name', // foreign key attribute that is shown to user
                 'tab'=>'General Information',
+                'exclude_from_form_save'=>true,
                 'create'=>true,
-                'order'=>70
+                'order'=>70,
+                'step'=>1
             ],[  // Select
                 'label'     => "Creator",
                 'type'      => 'select',
@@ -137,28 +166,32 @@ class DatasetHelper implements BackpackFieldsInterface
                 'tab'=>'General Information',
                 'create'=>true,
                 'list'=>true,
-                'order'=>80
+                'order'=>80,
+                'step'=>1
             ],[
                 'type'=>'url',
                 'name'=>'license_scheme',
                 'label'=>'Licensing Scheme',
                 'tab'=>'Description',
                 'create'=>true,
-                'order'=>90
+                'order'=>90,
+                'step'=>2
             ],[
                 'type'=>'textarea',
                 'label'=>'Data collection method',
                 'name'=>'data_collection_method',
                 'tab'=>'Description',
                 'create'=>true,
-                'order'=>100
+                'order'=>100,
+                'step'=>2
             ],[
                 'type'=>'number',
                 'label'=>'Version',
                 'name'=>'version',
                 'tab'=>'General Information',
                 'create'=>true,
-                'order'=>110
+                'order'=>110,
+                'step'=>1
             ],[
                 'type'=>'text',
                 'label'=>'DOI/ ROR/ ISSN ',
@@ -166,14 +199,16 @@ class DatasetHelper implements BackpackFieldsInterface
                 'tab'=>'General Information',
                 'create'=>true,
                 'order'=>120,
-                'hint'=>'Full url. Example: https://doi.org/10.5281/zenodo.4555343'
+                'hint'=>'Full url. Example: https://doi.org/10.5281/zenodo.4555343',
+                'step'=>1
             ],[
                 'type'=>'text',
                 'label'=>'OECD Frascati classification',
                 'name'=>'oecd_frascati_classification',
                 'tab'=>'Description',
                 'create'=>true,
-                'order'=>130
+                'order'=>130,
+                'step'=>2
             ],[
                 'type'=>'url',
                 'label'=>'External data source',
@@ -181,29 +216,32 @@ class DatasetHelper implements BackpackFieldsInterface
                 'create'=>true,
                 'order'=>140,
                 'tab'=>'Description',
-                'hint'=>'Full url. Example: https://www.oecd.org/sti/inno/38235147.pdf'
+                'hint'=>'Full url. Example: https://www.oecd.org/sti/inno/38235147.pdf',
+                'step'=>2
             ],[
                 'label'     => "Audiences",
                 'type'      => 'select2_multiple',
                 'name'      => 'audiences', // the method that defines the relationship in your Model
-
                 // optional
                 'entity'    => 'audiences', // the method that defines the relationship in your Model
                 'model'     => "App\Models\Audience", // foreign key model
                 'attribute' => 'name', // foreign key attribute that is shown to user
                 'tab'=>'Description',
                 'create'=>true,
-                'order'=>150
+                'exclude_from_form_save'=>true,
+                'order'=>150,
+                'step'=>2
             ],[
                 'name'        => 'status',
                 'label'       => "Status",
                 'type'        => 'select_from_array',
                 'options'     => Status::STATUS_LABELS_ARRAY,
                 'allows_null' => false,
-                'default'     => Status::STATUS_ACTIVE,
+                'default'     => Status::STATUS_PUBLISHED,
                 'create'=>true,
                 'list'=>true,
-                'order'=>300
+                'order'=>300,
+                'step'=>3
             ],[  // Select2
                 'label'     => "Uploaded By",
                 'type'      => 'select2',
@@ -223,6 +261,7 @@ class DatasetHelper implements BackpackFieldsInterface
                         $query->where('name','like','%'.$searchTerm.'%');
                     });
                 },
+                'exclude_from_form_save'=>true,
                 'order'=>310,
                 'create'=>true,
                 'list'=>true,

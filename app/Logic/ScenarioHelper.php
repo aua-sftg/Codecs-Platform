@@ -23,12 +23,12 @@ class ScenarioHelper implements BackpackFieldsInterface
      * @mike shall we cache this? to be discussed
      * @return Collection
      */
-    public static function get_scenarios(string $status = Status::STATUS_ACTIVE) : Collection
+    public static function get_scenarios(string $status = Status::STATUS_PUBLISHED) : Collection
     {
         // Define a query builder for scenarios
         $query = Scenario::query();
 
-        in_array($status, [Status::STATUS_ACTIVE, Status::STATUS_INACTIVE])
+        in_array($status, [Status::STATUS_PUBLISHED, Status::STATUS_UNPUBLISHED])
             ? $query->where('status', $status)
             : null;
 
@@ -78,7 +78,7 @@ class ScenarioHelper implements BackpackFieldsInterface
                 'type'        => 'select_from_array',
                 'options'     => Status::STATUS_LABELS_ARRAY,
                 'allows_null' => false,
-                'default'     => Status::STATUS_ACTIVE,
+                'default'     => Status::STATUS_PUBLISHED,
                 'create'=>true,
                 'list'=>true,
             ],[

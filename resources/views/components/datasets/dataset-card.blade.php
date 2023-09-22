@@ -16,7 +16,9 @@
 
     <x-slot:afterTitle>
         <div class="d-flex gap-5">
-            <div class="">Creator: {{$dataset['organization']['name']}}</div>
+            @isset($dataset['organization']['name'])
+                <div class="">Creator: {{$dataset['organization']['name']}}</div>
+            @endisset
             <em>{{$dataset['created_at']->toDateTimeString()}}</em>
         </div>
     </x-slot:afterTitle>
