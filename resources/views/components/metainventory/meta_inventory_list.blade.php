@@ -6,7 +6,7 @@
         Codecs, meta-inventory, {{ $scenario->name }}
     </x-slot:keywords>
     <x-slot:description>
-        Codecs | Meta-Inventory / {{ $scenario->name }}
+        Codecs | Meta-Inventory / {{ $scenario->description }}
     </x-slot:description>
 
     <x-slot:hero_section>

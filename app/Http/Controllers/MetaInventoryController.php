@@ -22,23 +22,37 @@ class MetaInventoryController extends Controller
     }
 
     public function show($meta_inv_title, $meta_inv_id, $meta_inv_source) {
-        $this->handleInventoryDataset($meta_inv_id, $meta_inv_source);
-    }
-
-    private function handleInventoryDataset($meta_inv_id, $meta_inv_source) {
         $modelClass = $this->getModelClass($meta_inv_source);
 
-        if ($modelClass) {
-            $dataset = $modelClass::find($meta_inv_id);
-
-            if ($dataset) {
-                dd($dataset);
-                //return view('fairshare.show', ['dataset' => $dataset]);
-            }
+        if (!$modelClass) {
+            abort(404);
         }
-
-        abort(404);
+        $dataset = $modelClass::findOrFail($meta_inv_id);
+        //Used for the seo of the page
+        $meta = [
+            'title' => $meta_inv_title,
+            'keywords' => '',
+            'description' => '',
+        ];
+        if ($meta_inv_source == 'fairshare') {
+            $meta['keywords'] = $dataset['keywords'];
+            $meta['description'] = $dataset['title'];
+        }
+        elseif ($meta_inv_source == 'smartakis') {
+            $meta['keywords'] = $dataset['croppingSystem'];
+            $meta['description'] = $dataset['shortDescription'];
+        }
+        elseif ($meta_inv_source == 'desira') {
+            $meta['keywords'] = $dataset['Keywords'];
+            $meta['description'] = $dataset['Description'];
+        }
+        // Check if 'keywords' is an array and convert it to a string if needed
+        if (is_array($meta['keywords'])) {
+            $meta['keywords'] = implode(', ', $meta['keywords']);
+        }
+        return view('components.metainventory.meta_inventory_detailed', compact('dataset', 'meta'));
     }
+
 
     private function getModelClass($meta_inv_source)
     {

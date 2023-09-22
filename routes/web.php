@@ -20,13 +20,21 @@ Route::get('/', function () {
     return view('home_page');
 })->name('home');
 
-Route::get('/meta-inventory', function () {
-    return view('components.metainventory.meta_inventory_home');
-})->name('meta_inventory_home');
 
-Route::get('/meta-inventory/{scenario:name}', [\App\Http\Controllers\MetaInventoryController::class, 'index'])->name('meta_inventory_list');
+Route::group(['prefix' => 'meta-inventory'], function () {
+    // Route for Meta Inventory Home Page
+    Route::get('/', function () {
+        return view('components.metainventory.meta_inventory_home');
+    })->name('meta_inventory_home');
 
-Route::get('/meta-inventory-details/{meta_inv_title}/{meta_inv_id}/{meta_inv_source}', [\App\Http\Controllers\MetaInventoryController::class, 'show'])->name('meta_inventory_detailed');
+    // Route for Meta Inventory Details
+    Route::get('/details/{meta_inv_title}_{meta_inv_id}_{meta_inv_source}', [\App\Http\Controllers\MetaInventoryController::class, 'show'])->name('meta_inventory_detailed');
+
+    // Route for Meta Inventory List by Scenario
+    Route::get('/{scenario:slug}', [\App\Http\Controllers\MetaInventoryController::class, 'index'])->name('meta_inventory_list');
+});
+
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');

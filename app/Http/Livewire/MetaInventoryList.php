@@ -18,7 +18,7 @@ class MetaInventoryList extends Component
     public $searchTerm='';
     public $metaFilters;
     public $currentPage = 1;
-    public $perPage = 2;
+    public $perPage = 20;
 
     public $startPage;
     public $endPage;
