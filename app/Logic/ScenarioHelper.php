@@ -53,6 +53,15 @@ class ScenarioHelper implements BackpackFieldsInterface
                 'label'     => 'Scenario Name',
                 'list'=>true,
                 'create'=>true,
+            ], [   // Text
+                'name'  => 'slug',
+                'target'  => 'name', // will turn the title input into a slug
+                'label' => "Slug",
+                'type'  => 'slug',
+                'attributes' => [
+                    'readonly'=> 'readonly'
+                ],
+                'create'=>true,
             ],[
                 'name'      => 'description',
                 'label'     => 'Description',

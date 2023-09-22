@@ -1,24 +1,10 @@
 <div>
     <div class="products product-thumb-info-list" data-plugin-masonry data-plugin-options="{'layoutMode': 'fitRows'}">
-        @foreach($results as $dataset)
+        @foreach($paginatedResults->items()  as $dataset)
             <div class="column">
-                <x-metainventory.dataset-card :keywords="$dataset['keywords']">
-                    <x-slot:image>
-                        {{ $dataset['image'] }}
-                    </x-slot:image>
-                    <x-slot:title>
-                        {{ $dataset['title']  }}
-                    </x-slot:title>
-                    <x-slot:source>
-                        {{$dataset['source']}}
-                    </x-slot:source>
-                    <x-slot:date>
-                        {{$dataset['update_date']}}
-                    </x-slot:date>
-                    <x-slot:short_desc>
-                        {{$dataset['short_desc']}}
-                    </x-slot:short_desc>
-                </x-metainventory.dataset-card>
+                <x-metainventory.meta_inventory_card :dataset="$dataset">
+
+                </x-metainventory.meta_inventory_card>
 
                 <div class="col">
                     <hr class="my-4">
@@ -26,4 +12,30 @@
             </div>
         @endforeach
     </div>
+    <nav aria-label="Page navigation example" class="my-5">
+        <ul class="pagination justify-content-center">
+            @if ($paginatedResults->currentPage() > 1)
+                <li class="page-item">
+                    <a class="page-link" role="button" wire:click="gotoPage(1)">First</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" role="button" wire:click="previousPage" tabindex="-1">Previous</a>
+                </li>
+            @endif
+                @for ($page = $startPage; $page <= $endPage; $page++)
+                    <li class="page-item {{ $page == $paginatedResults->currentPage() ? 'active' : '' }}">
+                        <a class="page-link" role="button" wire:click="gotoPage({{ $page }})" >{{ $page }}</a>
+                    </li>
+                @endfor
+
+            @if ($paginatedResults->hasMorePages())
+                <li class="page-item">
+                    <a class="page-link" role="button" wire:click="nextPage" >Next</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link" role="button"  wire:click="gotoPage({{ $paginatedResults->lastPage() }})" href="#">Last</a>
+                </li>
+            @endif
+        </ul>
+    </nav>
 </div>
