@@ -12,7 +12,7 @@ class layoutBaseCard extends Component
      * @return void
      */
 
-    public function __construct(public string $title, public array $keywords, public string $exceptr, public string $containerClass='', public string|null $image=null)
+    public function __construct(public string $title, public array $keywords, public string $exceptr, public string $containerClass='', public string|null $image=null, public string $link="#")
     {
 
     }

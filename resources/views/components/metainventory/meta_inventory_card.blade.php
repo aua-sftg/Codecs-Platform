@@ -1,8 +1,13 @@
 <x-layout.base-card :title="$dataset['title']"
                     :keywords="$dataset['keywords']"
                     :exceptr="$dataset['short_desc']"
-                    containerClass="fairshare"
+                    :containerClass="$dataset['vendor']"
                     :image="$dataset['image']"
+                    :link="route('meta_inventory_detailed', [
+                        'meta_inv_title' => $dataset['title'],
+                        'meta_inv_id' => $dataset['id'],
+                        'meta_inv_source' => $dataset['vendor']
+                    ]) ?? '#'"
 >
     <x-slot:afterTitle>
         <div class="flex_row">
