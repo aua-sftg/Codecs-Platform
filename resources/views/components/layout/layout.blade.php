@@ -290,6 +290,7 @@
     @livewireScripts
 @endif
 
+@include('partials.sweet-alert-setup')
 
 {{$body_scripts??''}}
 </body>

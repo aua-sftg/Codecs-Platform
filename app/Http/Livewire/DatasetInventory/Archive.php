@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\DatasetInventory;
 
+use App\Logic\Toastr;
 use App\Models\Dataset;
 use App\Models\User;
 use Livewire\Component;
@@ -47,5 +48,9 @@ class Archive extends Component
     {
         Dataset::find($this->deleteID)->delete();
         $this->cancel_delete();
+        $this->dispatchBrowserEvent('toastr',[
+            'type'=>'success',
+            'message'=>'Dataset deleted successfully.'
+        ]);
     }
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Logic\DatasetHelper;
 use App\Logic\KeywordHelper;
 use App\Logic\SectorHelper;
+use App\Logic\Toastr;
 use App\Models\Dataset;
 use Illuminate\Http\Request;
 use PHPMailer\PHPMailer\Exception;
@@ -81,6 +82,7 @@ class DatasetController extends Controller
                 ]);
             }
 
+            Toastr::success('Dataset saved');
             \DB::commit();
             return redirect()->route('datasets.index');
         }catch (Exception $e)
