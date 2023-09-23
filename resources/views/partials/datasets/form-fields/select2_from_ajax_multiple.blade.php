@@ -4,17 +4,21 @@
     $options = $modelInstance->all()->sortBy($field['attribute'])->pluck($field['attribute'], $keyName);
 
     $name = $field['name'].'[]';
-    $tag_id = 'field-'.$field['name'];
+    $tag_id = 'field-'.time().'-'.$field['name'];
+
 @endphp
 <div class="">
     <div class="form-group" wire:ignore>
-        <label class="fw-bold" for="field-{{$field['name']}}">
+        <label class="fw-bold" for="{{$tag_id}}">
             {{$field['label']}}
             @if(in_array($field['name'], $required_fields))
                 <span class="text-danger">*</span>
             @endif
         </label>
-        <select name="{{$field['name']}}[]" multiple="multiple" wire:model="{{$wire_model_name??$field['name']}}" class="form-control" id="{{$tag_id}}">
+        <select name="{{$field['name']}}[]" multiple="multiple" class="form-control" id="{{$tag_id}}">
+            @foreach($value??[] as $key=>$label)
+                <option value="{{$key}}">{{$label}}</option>
+            @endforeach
         </select>
         @isset($field['hint'])
             <small class="text-muted">{{$field['hint']}}</small>
@@ -24,16 +28,7 @@
     </div>
 
     <script>
-
-        document.addEventListener('livewire:load', function () {
-            {{$field['name']}}_initializeSelect2();
-        });
-
-        document.addEventListener('livewire:update', function () {
-            {{$field['name']}}_initializeSelect2();
-        });
-
-        function {{$field['name']}}_initializeSelect2() {
+        $(document).ready(()=>{
             $('#{{$tag_id}}').select2({
                 placeholder: '{{$field['placeholder']??''}}',
                 minimumInputLength:2,
@@ -46,8 +41,6 @@
                     method:'POST',
 
                     processResults: (data)=>{
-                        console.log(data)
-
                         return{
                             results: $.map(data, function (item) {
                                 return {
@@ -58,14 +51,10 @@
                         };
 
                     }
-                    // Additional AJAX parameters go here; see the end of this chapter for the full code of this example
                 }
             });
-            $('#{{$tag_id}}').on('change',(e)=>{
-                @this.updateField('{{$field['name']}}', $('#{{$tag_id}}').select2().val());
-                $('#{{$tag_id}}').select2().cl
-            });
-        }
+            $('#{{$tag_id}}').val(@json(array_keys($value??[]))).trigger('change');
+        });
     </script>
 </div>
 

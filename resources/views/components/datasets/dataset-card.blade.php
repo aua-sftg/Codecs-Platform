@@ -24,7 +24,7 @@
     </x-slot:afterTitle>
 
     <x-slot:actions>
-        <a href="#" class="bg-yellow rounded-pill p-1 px-3 fw-bold text-4 text-white">
+        <a href="{{route('datasets.form.edit',$dataset)}}" class="bg-yellow rounded-pill p-1 px-3 fw-bold text-4 text-white">
             {{__('Edit')}}
         </a>
     </x-slot:actions>
