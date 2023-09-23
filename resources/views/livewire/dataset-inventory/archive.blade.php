@@ -19,4 +19,33 @@
             <x-datasets.dataset-card :dataset="$dataset"></x-datasets.dataset-card>
         @endforeach
     </div>
+
+
+    <div wire:ignore.self class="modal" id="myModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content p-5">
+                <div class="modal-body text-center">
+                    <strong>Are you sure you want to delete  dataset </strong>
+                    <div class="my-4">
+                        <em>
+                            {{$deleteName}}
+                        </em>
+                    </div>
+                    <button wire:click="cancel_delete" type="button" class="btn btn-default">Cancel</button>
+                    <button wire:click="perform_delete" type="button" class="btn btn-danger" data-dismiss="modal">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        window.addEventListener('show-delete-modal', event => {
+            $('#myModal').modal('show');
+        })
+
+        window.addEventListener('hide-delete-modal', event => {
+            $('#myModal').modal('hide');
+        })
+    </script>
+
 </div>

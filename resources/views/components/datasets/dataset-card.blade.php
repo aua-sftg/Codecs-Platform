@@ -16,6 +16,7 @@
 
     <x-slot:afterTitle>
         <div class="d-flex gap-5">
+            <strong>{{$dataset['status']}}</strong>
             @isset($dataset['organization']['name'])
                 <div class="">Creator: {{$dataset['organization']['name']}}</div>
             @endisset
@@ -24,6 +25,13 @@
     </x-slot:afterTitle>
 
     <x-slot:actions>
+        <a
+            href="javascript:void(0)"
+            wire:click.prevent="confirm_delete('{{$dataset['id']}}', '{{$dataset['name']}}')"
+            class="rounded-pill p-1 px-3 text-white bg-danger me-2"
+        >
+            <i class="fa fa-trash"></i>
+        </a>
         <a href="{{route('datasets.form.edit',$dataset)}}" class="bg-yellow rounded-pill p-1 px-3 fw-bold text-4 text-white">
             {{__('Edit')}}
         </a>
