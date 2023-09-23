@@ -4,10 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Logic\DatasetHelper;
 use App\Logic\KeywordHelper;
+use App\Logic\PermissionHelper;
 use App\Logic\SectorHelper;
 use App\Logic\Toastr;
 use App\Models\Dataset;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Date;
+use Illuminate\Support\Facades\Gate;
 use PHPMailer\PHPMailer\Exception;
 
 class DatasetController extends Controller
@@ -22,16 +25,24 @@ class DatasetController extends Controller
         return view('datasets.form');
     }
 
-    public function edit(Dataset $dataset)
+    public function edit(Dataset $dataset, Request $request)
     {
+        if($request->user()->id !== $dataset->uploaded_by)
+        {
+            Toastr::error('You do not have permission to edit this dataset');
+            return redirect()->route('datasets.index');
+        }
+
         return view('datasets.form',['dataset'=>$dataset]);
     }
 
     public function save(Request $request)
     {
+
         /**
-         * @todo move this to a service class
+         * @todo move this to a service class and authorize this request
          */
+
 
         try {
             \DB::beginTransaction();
