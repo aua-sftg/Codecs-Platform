@@ -10,24 +10,25 @@ use Livewire\Component;
 class Archive extends Component
 {
 
-    protected $queryString = ['sort_by'];
+    protected $queryString = ['sort_by','status'];
     public string $sort_by = 'created_at';
+    public string $status = '';
     public string|null $deleteID = null;
     public string $deleteName = '';
 
 
     public function render()
     {
-        $datasets = auth()
-            ->user()
-            ->datasets()
-            ->with(['keywords','organization'])
-            ->get();
-
         return view('livewire.dataset-inventory.archive',[
-            'datasets'=> $this->sort_by=='created_at'
-                ? $datasets->sortByDesc($this->sort_by,)
-                : $datasets->sortBy($this->sort_by)
+            'datasets'=>
+                auth()->user()
+                    ->datasets()
+                    ->with(['keywords', 'organization'])
+                    ->when($this->status != '', function ($query) {
+                        return $query->where('status', $this->status);
+                    })
+                    ->orderBy($this->sort_by, $this->sort_by == 'created_at' ? 'desc' : 'asc')
+                    ->get()
         ]);
     }
 

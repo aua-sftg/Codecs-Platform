@@ -5,6 +5,13 @@
                 <option value="name">{{__('Sort by name')}}</option>
                 <option value="created_at">{{__('Sort by creation date')}}</option>
             </select>
+
+            <select name="status" wire:model="status" class="form-control" style="width: auto;"  id="sort_by_select">
+                <option value="">Any status</option>
+                @foreach(\App\Logic\Status::STATUS_LABELS_ARRAY as $key=>$label)
+                    <option value="{{$key}}">{{$label}}</option>
+                @endforeach
+            </select>
             <div wire:loading>
                 <i class="fa fa-2x fa-spinner fa-spin"></i>
             </div>
