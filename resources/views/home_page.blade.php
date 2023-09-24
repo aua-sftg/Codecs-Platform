@@ -48,11 +48,11 @@
                         <div class="d-flex">
                             <div class="ps-4">
                                 <h3 class="text-color-dark font-weight-bold text-transform-none text-5 mb-2">Meta-inventory</h3>
-                                <img src="{{ asset('img/Inventory.jpg') }}" alt="Meta-Inventory Image" class="platform_img"/>
+                                <img src="{{ asset('img/metainventory.jpg') }}" alt="Meta-Inventory Image" class="platform_img"/>
                                 <div class="row counters gy-4 gy-md-0">
                                     <div class="col-md-auto mt-0">
                                         <div class="counter">
-                                            <strong class="text-color-secondary text-6" data-to="50" data-append="+" data-plugin-options="{'accY': -200}">0</strong>
+                                            <strong class="text-color-secondary text-6" data-to="1500" data-append="+" data-plugin-options="{'accY': -200}">0</strong>
 {{--                                            <span class="text-color-primary font-weight-bold text-4">Business Year</span>--}}
                                         </div>
                                     </div>
@@ -69,7 +69,7 @@
                         <div class="d-flex">
                             <div class="ps-3">
                                 <h3 class="text-color-dark font-weight-bold text-transform-none text-5 mb-2">Inventory of Datasets</h3>
-                                <img src="{{ asset('img/Datasets.jpg') }}" alt="Dataset-Inventory Image" class="platform_img"/>
+                                <img src="{{ asset('img/dataset.jpg') }}" alt="Dataset-Inventory Image" class="platform_img"/>
                                 <div class="row counters gy-4 gy-md-0">
                                     <div class="col-md-auto mt-0">
                                         <div class="counter">
