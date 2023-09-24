@@ -88,10 +88,14 @@ class Dataset extends Model
     */
     public function setFileAttribute($value)
     {
-        $attribute_name = "file";
-        $disk = "datasets";
-        $destination_path = "/";
+        if(is_string($value)){
+            $this->attributes['file']=$value;
+        }else{
+            $attribute_name = "file";
+            $disk = "datasets";
+            $destination_path = "/";
 
-        $this->uploadFileToDisk($value, $attribute_name, $disk, $destination_path, $fileName = null);
+            $this->uploadFileToDisk($value, $attribute_name, $disk, $destination_path, $fileName = null);
+        }
     }
 }

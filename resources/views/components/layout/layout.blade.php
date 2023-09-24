@@ -54,6 +54,7 @@
     <script src="{{ asset('vendor/modernizr/modernizr.min.js') }}"></script>
     <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('vendor/bootstrap/js/bootstrap.min.js') }}"></script>
+    {{$head_scripts??''}}
 </head>
 <body data-plugin-scroll-spy data-plugin-options="{'target': '#sidebar'}">
 
@@ -283,9 +284,14 @@
 
 <!-- Theme Initialization Files -->
 <script src="{{ asset('js/theme.init.js') }}"></script>
+
+
 @if ($livewire_enable)
     @livewireScripts
 @endif
 
+@include('partials.sweet-alert-setup')
+
+{{$body_scripts??''}}
 </body>
 </html>

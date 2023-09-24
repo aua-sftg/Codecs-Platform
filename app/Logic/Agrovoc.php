@@ -17,7 +17,7 @@ class Agrovoc
                 json_decode
                 (
                     file_get_contents($src)
-                )->results
+                )->results??[]
             )->map(function($result) use ($except){
                return in_array($result->prefLabel,$except)
                 ? false
