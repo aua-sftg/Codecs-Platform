@@ -21,7 +21,11 @@
         <div class="container pt-3 pb-2">
 
             <div class="row pt-2">
-                @dump($meta)
+                @if($meta['source'] == 'fairshare')
+                    <x-metainventory.meta_inventory_detailed_fairshare :dataset="$dataset">
+
+                    </x-metainventory.meta_inventory_detailed_fairshare>
+                @endif
             </div>
 
         </div>

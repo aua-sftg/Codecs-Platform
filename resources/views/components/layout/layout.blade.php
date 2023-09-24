@@ -12,9 +12,9 @@
 
     <title>{{ $title ?? 'Codecs | Maximising the CO-benefits  of agricultural Digitalisation  through conducive digital ECoSystems' }}</title>
 
-    <meta name="keywords" content="{{ $keywords ?? 'WebSite Template' }}" />
+    <meta name="keywords" content="{{ $keywords ?? 'Codecs, digital, agriculture' }}" />
     <meta name="description" content="{{ $description ?? 'Codecs | Maximising the CO-benefits  of agricultural Digitalisation  through conducive digital ECoSystems' }}">
-    <meta name="author" content="{{ $author ?? 'okler.net' }}">
+    <meta name="author" content="{{ $author ?? 'AUA Sftg' }}">
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="{{ asset('img/logos/cropped-codecs-32x32.png') }}">

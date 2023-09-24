@@ -33,6 +33,7 @@ class MetaInventoryController extends Controller
             'title' => $meta_inv_title,
             'keywords' => '',
             'description' => '',
+            'source' => $meta_inv_source,
         ];
         if ($meta_inv_source == 'fairshare') {
             $meta['keywords'] = $dataset['keywords'];
