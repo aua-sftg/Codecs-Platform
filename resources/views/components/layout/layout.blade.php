@@ -54,6 +54,7 @@
     <script src="{{ asset('vendor/modernizr/modernizr.min.js') }}"></script>
     <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('vendor/bootstrap/js/bootstrap.min.js') }}"></script>
+
     {{$head_scripts??''}}
 </head>
 <body data-plugin-scroll-spy data-plugin-options="{'target': '#sidebar'}">
@@ -89,17 +90,6 @@
                                                     Meta-inventory
                                                 </a>
                                             </li>
-{{--                                            <li class="dropdown">--}}
-{{--                                                <a class="nav-link dropdown-toggle" href="{{route('home')}}">--}}
-{{--                                                    Services--}}
-{{--                                                </a>--}}
-{{--                                                <ul class="dropdown-menu">--}}
-{{--                                                    <li><a class="dropdown-item" href="{{route('home')}}">Pre-Construction</a></li>--}}
-{{--                                                    <li><a class="dropdown-item" href="{{route('home')}}">General Construction</a></li>--}}
-{{--                                                    <li><a class="dropdown-item" href="{{route('home')}}">Plumbing</a></li>--}}
-{{--                                                    <li><a class="dropdown-item" href="{{route('home')}}">Painting</a></li>--}}
-{{--                                                </ul>--}}
-{{--                                            </li>--}}
                                             <li>
                                                 <a class="nav-link" href="{{route('home')}}">
                                                     Inventory of datasets
@@ -114,9 +104,9 @@
                             </div>
                             <div class="header-nav-features header-nav-features-no-border header-nav-features-lg-show-border d-none d-sm-flex ms-3 order-1 order-lg-2">
                                 <ul class="header-social-icons social-icons d-none d-sm-block social-icons-clean social-icons-medium ms-0">
-                                    <li class="social-icons-facebook"><a href="http://www.facebook.com/" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a></li>
-                                    <li class="social-icons-twitter"><a href="http://www.twitter.com/" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a></li>
-                                    <li class="social-icons-linkedin"><a href="http://www.linkedin.com/" target="_blank" title="Linkedin"><i class="fab fa-linkedin-in"></i></a></li>
+                                    <li class="social-icons-facebook"><a href="https://www.facebook.com/horizoneucodecs" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a></li>
+                                    <li class="social-icons-twitter"><a href="https://twitter.com/HORIZONCODECS" target="_blank" title="Twitter"><i class="fa-brands fa-x-twitter"></i></a></li>
+                                    <li class="social-icons-linkedin"><a href="https://www.linkedin.com/company/horizoncodecs/" target="_blank" title="Linkedin"><i class="fab fa-linkedin-in"></i></a></li>
                                 </ul>
                             </div>
                             <div class="header-nav-features header-nav-features-no-border header-nav-features-sm-show-border ms-3 ps-4 order-2 order-lg-3">
@@ -125,21 +115,6 @@
                                     <a href="{{route('profile.edit')}}" class="mx-2">
                                         <img src="{{asset('img/icons/account_circle.svg')}}" alt="">
                                     </a>
-
-
-                                    <a href="#" class="header-nav-features-toggle text-decoration-none" data-focus="headerSearch" aria-label="Search">
-                                        <i class="icons icon-magnifier header-nav-top-icon text-3-5 text-color-dark text-color-hover-primary font-weight-semibold top-3"></i>
-                                    </a>
-                                    <div class="header-nav-features-dropdown header-nav-features-dropdown-mobile-fixed border-radius-0" id="headerSearchDropdown">
-                                        <form role="search" action="page-search-results.html" method="get">
-                                            <div class="simple-search input-group">
-                                                <input class="form-control text-1" id="headerSearch" name="q" type="search" value="" placeholder="Search...">
-                                                <button class="btn" type="submit" aria-label="Search">
-                                                    <i class="icons icon-magnifier header-nav-top-icon text-color-dark text-color-hover-primary top-2"></i>
-                                                </button>
-                                            </div>
-                                        </form>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -215,20 +190,20 @@
                     </ul>
                 </div>
                 <div class="col-lg-4 mt-5">
-                    <p class="text-color-white text-3 mb-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    <p class="text-color-white text-3 mb-3">The CODECS platform is a dynamic hub for showcasing cutting-edge digital tools and research, promoting technology adoption in line with a sustainable digital vision. Its integrated infrastructure provides a centralized control panel, empowering users to conveniently access and oversee available resources through a unified interface.</p>
                 </div>
             </div>
             <div class="row">
                 <div class="col text-center mb-0">
                     <ul class="footer-social-icons social-icons social-icons-clean social-icons-medium mb-0">
-                        <li class="social-icons-instagram">
-                            <a href="http://www.instagram.com/" target="_blank" title="Instagram"><i class="fab fa-instagram text-4 text-color-white"></i></a>
+                        <li class="social-icons-facebook">
+                            <a href="https://www.facebook.com/horizoneucodecs" target="_blank" title="Facebook"><i class="fab fa-facebook-f text-4 text-color-white"></i></a>
                         </li>
                         <li class="social-icons-twitter">
-                            <a href="http://www.twitter.com/" target="_blank" title="Twitter"><i class="fab fa-twitter text-4 text-color-white"></i></a>
+                            <a href="https://twitter.com/HORIZONCODECS" target="_blank" title="Twitter"><i class="fa-brands fa-x-twitter text-4 text-color-white"></i></a>
                         </li>
-                        <li class="social-icons-facebook">
-                            <a href="http://www.facebook.com/" target="_blank" title="Facebook"><i class="fab fa-facebook-f text-4 text-color-white"></i></a>
+                        <li class="social-icons-linkedin">
+                            <a href="https://www.linkedin.com/company/horizoncodecs/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in text-4 text-color-white"></i></a>
                         </li>
                     </ul>
                     <p style="text-align: right">
@@ -253,7 +228,7 @@
             </div>
             <div class="row pb-0">
                 <div class="col text-center mb-0">
-                    <p class="text-color-white text-3 mb-0">Porto Construction © 2023. All Rights Reserved. </p>
+                    <p class="text-color-white text-3 mb-0">CODECS © 2023. All Rights Reserved. </p>
                 </div>
             </div>
         </div>
@@ -291,7 +266,15 @@
 @endif
 
 @include('partials.sweet-alert-setup')
-
+<script>
+    $(document).ready(function (){
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': '{{csrf_token()}}'
+            }
+        });
+    })
+</script>
 {{$body_scripts??''}}
 </body>
 </html>
