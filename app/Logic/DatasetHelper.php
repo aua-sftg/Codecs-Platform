@@ -60,6 +60,7 @@ class DatasetHelper implements BackpackFieldsInterface
                 'list'=>true,
                 'order'=>10,
                 'tab'=>'General Information',
+                'hint'=>'The name or title of your dataset',
                 'step'=>1
             ],[
                 'label'       => "Sector", // Table column heading
@@ -79,7 +80,7 @@ class DatasetHelper implements BackpackFieldsInterface
                 'create'=>true,
                 'order'=>20,
                 'tab'=>'General Information',
-                'hint'=>'Type sector name and select from the list or create a new one. Agrovoc terms are also available.',
+                'hint'=>'The industry or field to which the dataset belongs',
                 'step'=>1
             ],[
                 'label'       => "Keywords", // Table column heading
@@ -99,13 +100,14 @@ class DatasetHelper implements BackpackFieldsInterface
                 'create'=>true,
                 'order'=>50,
                 'tab'=>'Description',
-                'hint'=>'Type keyword and select from the list or create a new one. Agrovoc terms are also available.',
+                'hint'=>"Relevant keywords describing the dataset's content",
                 'step'=>2
             ],[
                 'name'=>'abstract',
                 'type'=>'textarea',
                 'label'=>'Abstract',
                 'tab'=>'Description',
+                'hint'=>"A concise summary of the dataset's main findings or purpose",
                 'create'=>true,
                 'order'=>30,
                 'step'=>2
@@ -114,6 +116,7 @@ class DatasetHelper implements BackpackFieldsInterface
                 'type'=>'textarea',
                 'label'=>'Description',
                 'tab'=>'Description',
+                'hint'=>"A more detailed explanation of the dataset's contents and context",
                 'create'=>true,
                 'order'=>40,
                 'step'=>2
@@ -122,6 +125,7 @@ class DatasetHelper implements BackpackFieldsInterface
                 'label' => 'Date of release',
                 'type'  => 'date',
                 'tab'=>'General Information',
+                'hint'=>'mm/dd/yyyy',
                 'create'=>true,
                 'list'=>true,
                 'order'=>60,
@@ -164,6 +168,7 @@ class DatasetHelper implements BackpackFieldsInterface
                     });
                 },
                 'tab'=>'General Information',
+                'hint'=>'The person or entity responsible for creating the dataset',
                 'create'=>true,
                 'list'=>true,
                 'order'=>80,
@@ -173,6 +178,7 @@ class DatasetHelper implements BackpackFieldsInterface
                 'name'=>'license_scheme',
                 'label'=>'Licensing Scheme',
                 'tab'=>'Description',
+                'hint'=>'The terms and conditions under which the dataset can be used',
                 'create'=>true,
                 'order'=>90,
                 'step'=>2
@@ -181,6 +187,7 @@ class DatasetHelper implements BackpackFieldsInterface
                 'label'=>'Data collection method',
                 'name'=>'data_collection_method',
                 'tab'=>'Description',
+                'hint'=>'The way that the dataset was gathered, collected, or generated',
                 'create'=>true,
                 'order'=>100,
                 'step'=>2
@@ -189,6 +196,7 @@ class DatasetHelper implements BackpackFieldsInterface
                 'label'=>'Version',
                 'name'=>'version',
                 'tab'=>'General Information',
+                'hint'=>'The version or iteration of the dataset',
                 'create'=>true,
                 'order'=>110,
                 'step'=>1
@@ -199,13 +207,14 @@ class DatasetHelper implements BackpackFieldsInterface
                 'tab'=>'General Information',
                 'create'=>true,
                 'order'=>120,
-                'hint'=>'Full url. Example: https://doi.org/10.5281/zenodo.4555343',
+                'hint'=>'A unique identifier for your dataset, making it easily citable. i.e https://doi.org/10.5281/zenodo.4555343',
                 'step'=>1
             ],[
                 'type'=>'text',
                 'label'=>'OECD Frascati classification',
                 'name'=>'oecd_frascati_classification',
                 'tab'=>'Description',
+                'hint'=>'The categorization of the dataset according to the OECD',
                 'create'=>true,
                 'order'=>130,
                 'step'=>2
@@ -227,6 +236,7 @@ class DatasetHelper implements BackpackFieldsInterface
                 'model'     => "App\Models\Audience", // foreign key model
                 'attribute' => 'name', // foreign key attribute that is shown to user
                 'tab'=>'Description',
+                'hint'=>'The intended audience or users of the dataset',
                 'create'=>true,
                 'exclude_from_form_save'=>true,
                 'order'=>150,
