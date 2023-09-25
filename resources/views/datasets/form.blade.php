@@ -1,3 +1,11 @@
+@php
+    /** @var \Illuminate\Support\Collection $steps */
+    $steps = \App\Logic\DatasetHelper::stepped_fields();
+
+    /** @var \App\Logic\DatasetHelper $required_fields */
+    $required_fields = \App\Logic\DatasetHelper::required_fields();
+@endphp
+
 <x-layout.layout :livewire_enable="true">
     <x-slot:title>
         Codecs | Meta-Inventory
@@ -21,18 +29,9 @@
         <div class="container py-4">
             <div class="row ">
                 <div class="col-md-12 col-lg-12 mb-5 mb-lg-0">
-                    @php
-                        /** @var \Illuminate\Support\Collection $steps */
-                        $steps = \App\Logic\DatasetHelper::stepped_fields();
-
-                        /** @var \App\Logic\DatasetHelper $required_fields */
-                        $required_fields = \App\Logic\DatasetHelper::required_fields();
-                    @endphp
-
                     <div class="stepper-wrapper pb-4">
                         @foreach($steps->keys() as $step)
                             <div
-
                                 @class([
                                     'stepper-item'=>true,
                                     'completed'=>$step==1,
@@ -50,14 +49,9 @@
                         <input type="hidden" name="dataset_id" value="{{$dataset->id??null}}">
                         @foreach($steps as $step=>$fields)
                             <div data-step="{{$step}}">
-                                <div class="d-flex align-items-center text-decoration-none justify-content-between">
-                                    <h3>Step {{$step}} - {{$fields[0]['tab']}}</h3>
-                                    <div class="d-flex gap-2 align-items-center">
-                                        <div class="invisible" wire:loading.class.remove="invisible">
-                                            <x-layout.loading-indicator></x-layout.loading-indicator>
-                                        </div>
-                                        <a href="javascript:Form.save_draft()" class="bg-yellow text-decoration-none save_draft_btn text-white rounded-pill px-4"><i class="fa fa-save"></i> Save draft</a>
-                                    </div>
+                                <div class="d-flex flex-column flex-md-row align-items-md-center align-items-start text-decoration-none justify-content-between ">
+                                    <h3 class="my-2">Step {{$step}} - {{$fields[0]['tab']}}</h3>
+                                    <a href="javascript:Form.save_draft()" class="bg-yellow text-decoration-none save_draft_btn text-white align-self-center my-3 rounded-pill px-4"><i class="fa fa-save"></i> Save draft</a>
                                 </div>
 
                                 @foreach($fields as $field)
