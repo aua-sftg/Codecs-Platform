@@ -10,11 +10,23 @@
     height: 150px;
 }
 
+
+/*Try images for hero section*/
+/*.section.section {*/
+/*    background-image: url(http://localhost/img/hero_section/andrej-lisakov-9fbZGo_E50I-unsplash.jpg);*/
+/*    background-size: cover;*/
+/*    background-position: center center;*/
+/*}*/
+
 /*Shadow for filters column*/
 .custom_shadow {
     box-shadow: 0px 0px 6px #00000029;
 }
 
+/*Text color for titles (blue) */
+.text-color-custom-blue {
+    color: #1c64b6;
+}
 
 /*Color for search button*/
 .orange_color_btn {
@@ -67,7 +79,7 @@
     background: #FFFFFF 0% 0% no-repeat padding-box;
     box-shadow: 0px 0px 6px #00000029;
     border-radius: 5px;
-    padding: 9px 9px 11px 20px;
+    padding: 9px 20px 11px 20px;
     border-left: 6px solid;
 }
 .dataset_card.fairshare {
@@ -114,10 +126,12 @@
     background: unset;
 }
 
-.flex_row {
+.flex_row,
+.flex_row_responsive{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
 }
 
 .selected-link
@@ -134,3 +148,112 @@
     background: var(--unnamed-color-007cc2) 0% 0% no-repeat padding-box;
     background: #007CC2 0% 0% no-repeat padding-box;
 }
+
+/* Css for add to favorites heart */
+.heart_custom {
+    font-size: 32px;
+    width: 32px;
+    height: 32px;
+    transition: color 0.3s;
+    color: #b2b2b2;
+}
+
+.heart_custom:hover,
+.heart_custom.enabled{
+    color: #F4C01E;
+}
+
+.card_column {
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 0px 0px 6px #00000029;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.card_subsection {
+    padding: 0 20px;
+    border-left: 3px solid;
+    border-left-color: #96c619;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    margin-left: 10px;
+    flex-grow: 1;
+}
+
+.card_subsection.desira {
+    border-left-color: #07C19A;
+}
+
+.card_subsection.smartakis {
+    border-left-color: #27c24c;
+}
+
+.col_width {
+    flex: 0 0 auto;
+    width: 64.6%;
+}
+
+.col_custom {
+    flex: 0 0 auto;
+    width: 32%;
+}
+
+.owl-carousel .owl-item img {
+    max-height: 414px;
+    object-fit: contain;
+}
+
+.keywords-container {
+    max-width: 420px;
+    overflow-x: auto;
+}
+
+.keywords-scroll {
+    white-space: nowrap;
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
+}
+
+.keywords-scroll::-webkit-scrollbar {
+    display: none;  /* Safari and Chrome */
+}
+
+/*Rules for responsive */
+@media screen and (max-width: 991px) {
+
+    .flex_row_responsive {
+        flex-direction: column;
+    }
+
+    .card_column_responsive {
+        width: 100%;
+    }
+
+    .col_width {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+
+    .col_width .flex_row {
+        flex-direction: column;
+    }
+
+    .owl-carousel .owl-item img {
+        max-height: 300px;
+    }
+
+    .flex_row_responsive2 {
+        flex-direction: column;
+    }
+
+    .col_custom {
+        width: 100%;
+    }
+}
+
+
+

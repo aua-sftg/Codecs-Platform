@@ -46,18 +46,18 @@
                 <div class="row">
                     <div class="col-md-6 mb-5 appear-animation box-shadow-2" data-appear-animation="fadeInUpShorterPlus" data-appear-animation-delay="550">
                         <div class="d-flex">
-                            <div class="ps-4">
+                            <div class="px-4 py-2">
                                 <h3 class="text-color-dark font-weight-bold text-transform-none text-5 mb-2">Meta-inventory</h3>
-                                <img src="{{ asset('img/Inventory.jpg') }}" alt="Meta-Inventory Image" class="platform_img"/>
+                                <img src="{{ asset('img/metainventory.jpg') }}" alt="Meta-Inventory Image" class="platform_img"/>
                                 <div class="row counters gy-4 gy-md-0">
                                     <div class="col-md-auto mt-0">
                                         <div class="counter">
-                                            <strong class="text-color-secondary text-6" data-to="50" data-append="+" data-plugin-options="{'accY': -200}">0</strong>
+                                            <strong class="text-color-secondary text-6" data-to="1500" data-append="+" data-plugin-options="{'accY': -200}">0</strong>
 {{--                                            <span class="text-color-primary font-weight-bold text-4">Business Year</span>--}}
                                         </div>
                                     </div>
                                 </div>
-                                <p class="font-weight-light text-3-5 mb-3-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque rutrum pellentesque imperdiet. Nulla lacinia. </p>
+                                <p class="font-weight-light text-3-5 mb-3-5">A comprehensive inventory of digital technologies, offering a centralized, tailored to the user needs overview of technologies, across various domains, supporting understanding of the dynamic technological landscape and the emerging trends, for better-informed decisions in technology adoption and innovation.</p>
                                 <a {{ (request()->routeIs('meta_inventory_home')) ? ' active' : '' }}" href="{{route('meta_inventory_home')}}" class="custom-view-more d-inline-flex font-weight-medium text-color-primary text-decoration-none">
                                     Explore
                                     <img width="27" height="27" src="{{ asset('img/demos/construction/icons/arrow-right.svg') }}" alt="" data-icon data-plugin-options="{'onlySVG': true, 'extraClass': 'svg-fill-color-primary ms-2'}" />
@@ -67,9 +67,9 @@
                     </div>
                     <div class="col-md-6 mb-5 appear-animation box-shadow-2" data-appear-animation="fadeInUpShorterPlus" data-appear-animation-delay="750">
                         <div class="d-flex">
-                            <div class="ps-3">
+                            <div class="px-4 py-2">
                                 <h3 class="text-color-dark font-weight-bold text-transform-none text-5 mb-2">Inventory of Datasets</h3>
-                                <img src="{{ asset('img/Datasets.jpg') }}" alt="Dataset-Inventory Image" class="platform_img"/>
+                                <img src="{{ asset('img/dataset.jpg') }}" alt="Dataset-Inventory Image" class="platform_img"/>
                                 <div class="row counters gy-4 gy-md-0">
                                     <div class="col-md-auto mt-0">
                                         <div class="counter">
@@ -78,7 +78,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <p class="font-weight-light text-3-5 mb-3-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque rutrum pellentesque imperdiet. Nulla lacinia. </p>
+                                <p class="font-weight-light text-3-5 mb-3-5">A structured digital repository for CODECS datasets, offering storing abilities to authorized users and centralized access for all its users to harness the potential of data sources and empower objective decision-making and conflict resolution related to various facets of digitalization.</p>
                                 <a href="demo-construction-services-detail.html" class="custom-view-more d-inline-flex font-weight-medium text-color-primary text-decoration-none">
                                     Explore
                                     <img width="27" height="27" src="{{ asset('img/demos/construction/icons/arrow-right.svg') }}" alt="" data-icon data-plugin-options="{'onlySVG': true, 'extraClass': 'svg-fill-color-primary ms-2'}" />

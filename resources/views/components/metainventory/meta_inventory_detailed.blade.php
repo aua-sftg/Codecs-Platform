@@ -20,14 +20,38 @@
     <x-slot:main_body>
         <div class="container pt-3 pb-2">
 
-            <div class="row pt-2">
-                @dump($meta)
+            <div class="row pt-2 mb-5">
+                @if($meta['source'] == 'fairshare')
+                    <x-metainventory.meta_inventory_detailed_fairshare :dataset="$dataset">
+
+                    </x-metainventory.meta_inventory_detailed_fairshare>
+                @elseif($meta['source'] == 'smartakis')
+                    <x-metainventory.meta_inventory_detailed_smartakis :dataset="$dataset">
+
+                    </x-metainventory.meta_inventory_detailed_smartakis>
+                @elseif($meta['source'] == 'desira')
+                    <x-metainventory.meta_inventory_detailed_deshira :dataset="$dataset">
+
+                    </x-metainventory.meta_inventory_detailed_deshira>
+                @endif
             </div>
 
         </div>
-
-
     </x-slot:main_body>
-
+    <x-slot:body_scripts>
+        <script>
+            $(document).ready(()=>{
+                $('.favorites_toggle_icon').click(function(){
+                    let $this = $(this);
+                    $.post('{{route('favorites.set')}}', {
+                        collection: $this.data('collection'),
+                        collection_id: $this.data('collection-id'),
+                    }, function (res){
+                        console.log(res)
+                    })
+                })
+            });
+        </script>
+    </x-slot:body_scripts>
 
 </x-layout.layout>

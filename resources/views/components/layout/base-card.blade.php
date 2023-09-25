@@ -22,14 +22,14 @@
             ])>
             <div class="summary entry-summary">
 
-                <h2 class="mb-0 font-weight-bold text-6"><a href="{{$link??'javascript:void(0)'}}" class="text-color-dark text-color-hover-primary text-decoration-none">{{ $title }}</a></h2>
+                <h2 class="mb-0 font-weight-bold text-6"><a href="{{$link??'javascript:void(0)'}}" class="text-color-custom-blue text-color-hover-primary text-decoration-none">{{ $title }}</a></h2>
                 {{$afterTitle??''}}
 
                 <div class="divider divider-small">
                     <hr class="bg-color-grey-scale-4">
                 </div>
 
-                <p class="text-3-5 mb-3">{{ $exceptr }}</p>
+                <p class="text-3-5 mb-3 text-justify">{{ $exceptr }}</p>
             </div>
         </div>
     </div>
