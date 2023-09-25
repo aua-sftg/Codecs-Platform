@@ -27,6 +27,19 @@
 
     <x-slot:main_body>
         <div class="container py-4">
+            @if($errors->any())
+                <div class="row mb-4 p-3 bg-danger">
+                    <div class="col-12">
+                        <div class="bg-danger">
+                            <strong class="title bg-danger text-white text-center">
+                                Please check all required fields on all steps!
+                            </strong>
+
+                        </div>
+                    </div>
+                </div>
+            @endif
+
             <div class="row ">
                 <div class="col-md-12 col-lg-12 mb-5 mb-lg-0">
                     <div class="stepper-wrapper pb-4">
