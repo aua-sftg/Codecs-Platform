@@ -50,7 +50,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/datasets/form/save', [\App\Http\Controllers\DatasetController::class, 'save'])->name('datasets.form.save');
     Route::get('/datasets/form/{dataset}/edit', [\App\Http\Controllers\DatasetController::class, 'edit'])->name('datasets.form.edit');
 
-    Route::post('/favorites/set', function (){return 'k';})->name('favorites.set');
+    Route::post('/favorites/set', [\App\Http\Controllers\FavoritesController::class,'set'])->name('favorites.set');
 });
 
 Route::get('/cache',function(){

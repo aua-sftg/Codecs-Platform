@@ -60,6 +60,11 @@ class User extends Authenticatable
         return $this->hasMany(Dataset::class, 'uploaded_by', '_id');
     }
 
+    public function favorites():HasMany
+    {
+        return $this->hasMany(Favorite::class, 'user_id', '_id');
+    }
+
     public function hasPermissionTo(string $permission):bool
     {
         return $this->permissions()->where('guard_name', $permission)->exists();

@@ -3,7 +3,9 @@
 namespace App\Logic;
 
 use App\Interfaces\BackpackFieldsInterface;
+use App\Models\Favorite;
 use App\Models\Permission;
+use App\Models\User;
 use App\Traits\BackpackFieldsTrait;
 use Illuminate\Support\Collection;
 
@@ -44,5 +46,23 @@ class UserHelper implements BackpackFieldsInterface
                 'list'=>true
             ]
         ]);
+    }
+
+    public static function hasFavorite(User $user,string $collection, string $collection_id):bool
+    {
+        return $user->favorites()->where('collection',$collection)->where('collection_id',$collection_id)->count()>0;
+    }
+
+    public static function attachFavorite(User $user, string $collection, string $collection_id): Favorite
+    {
+        return $user->favorites()->create([
+            'collection'=>$collection,
+            'collection_id'=>$collection_id,
+        ]);
+    }
+
+    public static function detachFavorite(User $user, string $collection, string $collection_id):bool
+    {
+        return $user->favorites()->where('collection',$collection)->where('collection_id',$collection_id)->delete();
     }
 }

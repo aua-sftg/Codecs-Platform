@@ -47,7 +47,14 @@
                         collection: $this.data('collection'),
                         collection_id: $this.data('collection-id'),
                     }, function (res){
-                        console.log(res)
+                        if(res.success)
+                        {
+                            res.action === 'add'
+                                ? $this.addClass('enabled')
+                                : $this.removeClass('enabled');
+                        }else{
+                            swal('error','Request failed','error');
+                        }
                     })
                 })
             });
