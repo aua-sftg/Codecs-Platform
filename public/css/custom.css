@@ -255,5 +255,7 @@
     }
 }
 
-
-
+.card-list-container > div
+{
+    margin-bottom: 20px;
+}

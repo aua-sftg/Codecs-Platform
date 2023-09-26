@@ -53,4 +53,9 @@ class ProfileController extends Controller
 
         return Redirect::to('/');
     }
+
+    public function favorites(Request $request)
+    {
+        return view('profile.favorites');
+    }
 }

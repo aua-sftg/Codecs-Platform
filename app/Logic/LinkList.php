@@ -21,7 +21,14 @@ class LinkList
                 'route'=>'datasets.index',
                 'icon' => asset('img/icons/account_circle.svg'),
                 'group' => 'profile_sidebar',
-                'order'=>1
+                'order'=>2
+            ],[
+                'label' => __('Favorites'),
+                'url' => route('profile.favorites'),
+                'route'=>'profile.favorites',
+                'icon' => asset('img/icons/favorite.svg'),
+                'group' => 'profile_sidebar',
+                'order'=>3
             ],
         ]);
     }

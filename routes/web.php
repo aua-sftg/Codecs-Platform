@@ -45,6 +45,8 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
+    Route::get('/profile/favorites', [ProfileController::class, 'favorites'])->name('profile.favorites');
+
     Route::get('/datasets', [\App\Http\Controllers\DatasetController::class, 'index'])->name('datasets.index');
     Route::get('/datasets/form', [\App\Http\Controllers\DatasetController::class, 'form'])->name('datasets.form');
     Route::post('/datasets/form/save', [\App\Http\Controllers\DatasetController::class, 'save'])->name('datasets.form.save');
