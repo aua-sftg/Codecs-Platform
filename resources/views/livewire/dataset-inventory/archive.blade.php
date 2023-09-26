@@ -21,7 +21,7 @@
             <img src="{{asset('img/icons/file_upload.svg')}}" alt="upload dataset icon"> Upload new dataset
         </a>
     </div>
-    <div class="dataset-archive mt-3">
+    <div class="dataset-archive mt-3 card-list-container">
         @foreach($datasets as $dataset)
             <x-datasets.dataset-card :dataset="$dataset"></x-datasets.dataset-card>
         @endforeach
