@@ -3,6 +3,7 @@
 namespace App\Logic;
 
 use App\Interfaces\BackpackFieldsInterface;
+use App\Models\Dataset;
 use App\Traits\BackpackFieldsTrait;
 use Illuminate\Support\Collection;
 
@@ -21,6 +22,26 @@ class DatasetHelper implements BackpackFieldsInterface
         'organization_id'=>'required',
         'license_scheme'=>'nullable|url',
     ];
+
+
+    /**
+     *  Retrieve the active datasets from the database order by lft asc and return the collection
+     * Use the parameter $status to choose which scenarios you want(published, unpublished, draft, all)
+     * @mike shall we cache this? to be discussed
+     * @return Collection
+     */
+    public static function get_datasets(string $status = Status::STATUS_PUBLISHED) : Collection
+    {
+        // Define a query builder for datasets
+        $query = Dataset::query();
+
+        in_array($status, [Status::STATUS_PUBLISHED, Status::STATUS_UNPUBLISHED])
+            ? $query->where('status', $status)
+            : null;
+
+        // Order the scenarios by 'lft' in ascending order
+        return $query->orderBy('lft', 'asc')->get();
+    }
 
     public static function stepped_fields(): Collection
     {

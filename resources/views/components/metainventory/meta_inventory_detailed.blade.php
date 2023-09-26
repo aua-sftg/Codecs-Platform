@@ -3,7 +3,7 @@
         Codecs | Meta-Inventory / {{ $meta['title'] }}
     </x-slot:title>
     <x-slot:keywords>
-        Codecs, meta-inventory / {{ $meta['keywords'] }}
+        Codecs, meta-inventory, {{ $meta['keywords'] }}
     </x-slot:keywords>
     <x-slot:description>
         Codecs | Meta-Inventory / {{ $meta['description'] }}
@@ -11,8 +11,17 @@
 
     <x-slot:hero_section>
         <x-layout.hero_simple>
+            <x-slot:sub_section>
+                <a role="button" href="{{route('meta_inventory_home')}}">Meta-Inventory</a>
+            </x-slot:sub_section>
             <x-slot:current_view>
-                Meta-inventory / Detailed View
+                @if($meta['source'] == 'fairshare')
+                    Fairshare Dataset
+                @elseif($meta['source'] == 'smartakis')
+                    smartAKIS Dataset
+                @elseif($meta['source'] == 'desira')
+                    Desira Dataset
+                @endif
             </x-slot:current_view>
         </x-layout.hero_simple>
     </x-slot:hero_section>

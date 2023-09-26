@@ -4,7 +4,7 @@
             <div class="col-7 col-md-5 position-relative">
                 <ul class="breadcrumb d-block ps-2 appear-animation" data-appear-animation="fadeInLeftShorterPlus" data-appear-animation-delay="200">
                     <li><a href="{{route('home')}}">Home</a></li>
-                    <li class="active">{{ $current_view ?? 'Codecs' }}</li>
+                    <li class="active">{{ $sub_section ?? '' }}</li>
                 </ul>
                 <h1 class="position-absolute top-100 left-0 text-color-light font-weight-bold text-6 line-height-3 text-end mt-5-5">
                     <span class="d-block position-relative z-index-1 pb-5 ps-lg-3 appear-animation" data-appear-animation="fadeInLeftShorterPlus" data-appear-animation-delay="800">{{ $current_view ?? 'Codecs' }}</span>

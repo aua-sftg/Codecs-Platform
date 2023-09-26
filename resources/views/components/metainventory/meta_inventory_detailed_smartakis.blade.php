@@ -2,7 +2,7 @@
 
 <div class="dataset_card smartakis mt-5">
     <div class="col-sm-12">
-        <div class="summary entry-summary flex-wrap flex_row">
+        <div class="summary entry-summary flex-wrap flex_row justify-content-start">
             <h2 class="mb-0 font-weight-bold text-6 text-color-custom-blue">{{ $dataset['title'] }}</h2>
             <div class="keywords-container">
                 @if(!empty($dataset['croppingSystem']))

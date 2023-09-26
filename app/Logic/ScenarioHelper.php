@@ -28,12 +28,12 @@ class ScenarioHelper implements BackpackFieldsInterface
         // Define a query builder for scenarios
         $query = Scenario::query();
 
-        in_array($status, [Status::STATUS_PUBLISHED, Status::STATUS_UNPUBLISHED])
+        in_array($status, [Status::STATUS_PUBLISHED, Status::STATUS_UNPUBLISHED], Status::STATUS_DRAFT)
             ? $query->where('status', $status)
             : null;
 
         // Order the scenarios by 'lft' in ascending order
-        return $query->orderBy('lft', 'asc')->get();
+        return $query->orderBy('name', 'asc')->get();
     }
 
     /**
