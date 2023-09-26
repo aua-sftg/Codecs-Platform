@@ -36,14 +36,17 @@
                                     </div>
                                 @endif
                             </div>
-                            <i
-                                data-collection='dataset'
-                                data-collection-id="{{$dataset['_id']}}"
-                                @class([
-                                    'fa-solid fa-heart heart_custom tooltip_custom favorites_toggle_icon'=>true,
-                                    'enabled'=>\App\Logic\UserHelper::hasFavorite(request()->user(), 'dataset', $dataset['_id'])
-                                ])
-                                type="button" data-toggle="tooltip" data-placement="top" title="Add to favorites"></i>
+                            @auth
+                                <i
+                                    data-collection='dataset'
+                                    data-collection-id="{{$dataset['_id']}}"
+                                    @class([
+                                        'fa-solid fa-heart heart_custom tooltip_custom favorites_toggle_icon'=>true,
+                                        'enabled'=>\App\Logic\UserHelper::hasFavorite(request()->user(), 'dataset', $dataset['_id'])
+                                    ])
+                                    type="button" data-toggle="tooltip" data-placement="top" title="Add to favorites"></i>
+                            @endauth
+
                         </div>
                         <p class="mb-0 text-color-dark">
                             {{$dataset['organization']['name']}}<span class="ms-5 text-color-dark">{{ date('d-m-Y', strtotime($dataset['release_date'])) }}</span>
