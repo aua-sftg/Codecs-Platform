@@ -12,14 +12,17 @@
                     </div>
                 @endif
             </div>
-            <i
-                data-collection='desira'
-                data-collection-id="{{$dataset['_id']}}"
-                @class([
-                    'fa-solid fa-heart heart_custom tooltip_custom favorites_toggle_icon'=>true,
-                    'enabled'=>\App\Logic\UserHelper::hasFavorite(request()->user(), 'desira', $dataset['_id'])
-                ])
-                type="button" data-toggle="tooltip" data-placement="top" title="Add to favorites"></i>
+            @auth
+                <i
+                    data-collection='desira'
+                    data-collection-id="{{$dataset['_id']}}"
+                    @class([
+                        'fa-solid fa-heart heart_custom tooltip_custom favorites_toggle_icon'=>true,
+                        'enabled'=>\App\Logic\UserHelper::hasFavorite(request()->user(), 'desira', $dataset['_id'])
+                    ])
+                    type="button" data-toggle="tooltip" data-placement="top" title="Add to favorites"></i>
+            @endauth
+
         </div>
         <div class="divider divider-small">
             <hr class="bg-color-grey-scale-4">

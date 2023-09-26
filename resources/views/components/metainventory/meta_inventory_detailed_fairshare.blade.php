@@ -18,14 +18,17 @@
                     </div>
                 @endif
             </div>
-            <i
-                data-collection='fairshare'
-                data-collection-id="{{$dataset['_id']}}"
-                @class([
-                    'fa-solid fa-heart heart_custom tooltip_custom favorites_toggle_icon'=>true,
-                    'enabled'=>\App\Logic\UserHelper::hasFavorite(request()->user(), 'fairshare', $dataset['_id'])
-                ])
-                type="button" data-toggle="tooltip" data-placement="top" title="Add to favorites"></i>
+            @auth
+                <i
+                    data-collection='fairshare'
+                    data-collection-id="{{$dataset['_id']}}"
+                    @class([
+                        'fa-solid fa-heart heart_custom tooltip_custom favorites_toggle_icon'=>true,
+                        'enabled'=>\App\Logic\UserHelper::hasFavorite(request()->user(), 'fairshare', $dataset['_id'])
+                    ])
+                    type="button" data-toggle="tooltip" data-placement="top" title="Add to favorites"></i>
+            @endauth
+
         </div>
         <p class="mb-0">
             <a target="_blank" class="text-color-dark" href="{{$providerWebsite[0]}}">{{$dataset['providerName']}}</a><span class="ms-5 text-color-dark">{{$dataset['launchYear']}}</span>
