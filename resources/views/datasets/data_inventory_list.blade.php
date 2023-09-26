@@ -1,21 +1,18 @@
 <x-layout.layout :livewire_enable="true">
     <x-slot:title>
-        Codecs | Meta-Inventory / {{ $scenario->name }}
+        Codecs | Inventory of Datasets
     </x-slot:title>
     <x-slot:keywords>
-        Codecs, meta-inventory, {{ $scenario->name }}
+        Codecs, Inventory, Datasets, agriculture, digitalization
     </x-slot:keywords>
     <x-slot:description>
-        Codecs | Meta-Inventory / {{ $scenario->description }}
+        Codecs | Inventory of Datasets, A structured digital repository for CODECS datasets
     </x-slot:description>
 
     <x-slot:hero_section>
         <x-layout.hero_simple>
-            <x-slot:sub_section>
-                <a role="button" href="{{route('meta_inventory_home')}}">Meta-Inventory</a>
-            </x-slot:sub_section>
             <x-slot:current_view>
-                {{ $scenario->name }}
+                Inventory of Datasets
             </x-slot:current_view>
         </x-layout.hero_simple>
     </x-slot:hero_section>
@@ -24,10 +21,10 @@
         <div class="container pt-3 pb-2">
 
             <div class="row pt-2">
-                @livewire('meta-inventory-filters')
+{{--                @livewire('meta-inventory-filters')--}}
                 <div class="col-lg-9">
                     @livewire('meta-inventory-search')
-                    @livewire('meta-inventory-list', ['scenario' => $scenario])
+                    @livewire('dataset-inventory.datasets-inventory-list')
 
                 </div>
 

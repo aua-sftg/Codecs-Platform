@@ -91,7 +91,7 @@
                                                 </a>
                                             </li>
                                             <li>
-                                                <a class="nav-link" href="{{route('home')}}">
+                                                <a class="nav-link {{ (request()->routeIs('inventory_of_datasets')) ? ' active' : '' }}" href="{{route('inventory_of_datasets')}}">
                                                     Inventory of datasets
                                                 </a>
                                             </li>
@@ -163,7 +163,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="{{route('home')}}" class="text-color-hover-primary">
+                            <a class="text-color-hover-primary" href="{{route('inventory_of_datasets')}}">
                                 Inventory of datasets
                             </a>
                         </li>

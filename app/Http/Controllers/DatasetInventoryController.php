@@ -2,61 +2,57 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Scenario;
-use App\Models\Fairshare;
-use App\Models\Smartakis;
-use App\Models\Desira;
-use Illuminate\Http\Request;
 
-class MetaInventoryController extends Controller
+use Illuminate\Http\Request;
+use App\Models\Dataset;
+
+class DatasetInventoryController extends Controller
 {
 
-    protected array $sourceModelMap = [
-        'fairshare' => Fairshare::class,
-        'smartakis' => Smartakis::class,
-        'desira' => Desira::class,
-    ];
-
-    public function index(Scenario $scenario) {
-        return view('components.metainventory.meta_inventory_list', compact('scenario'));
+    public function index() {
+        return view('datasets.data_inventory_list');
     }
 
-    public function show($meta_inv_title, $meta_inv_id, $meta_inv_source) {
-        $modelClass = $this->getModelClass($meta_inv_source);
+    public function show($data_inv_title, $data_inv_id) {
 
-        if (!$modelClass) {
-            abort(404);
+        $dataset = Dataset::findOrFail($data_inv_id);
+
+        $keywords = $dataset['keywords']->map(function($keyword){
+            return $keyword->name;
+        })->toArray();
+
+        $data_formats= $dataset['data_formats']->map(function ($data_format){
+            return $data_format->name;
+        })->toArray();
+
+        if(isset($dataset['audiences'])){
+            $audiences= $dataset['audiences']->map(function ($audience){
+                return $audience->name;
+            })->toArray();
         }
-        $dataset = $modelClass::findOrFail($meta_inv_id);
+        else {
+            $audiences=[];
+        }
+
+
+        $sectors= $dataset['sector']->map(function ($sector){
+            return $sector->name;
+        })->toArray();
+
+
         //Used for the seo of the page
         $meta = [
-            'title' => $meta_inv_title,
-            'keywords' => '',
-            'description' => '',
-            'source' => $meta_inv_source,
+            'title' => $data_inv_title,
+            'keywords' => $keywords,
+            'description' => $dataset['abstract'] ?? $dataset['description'],
         ];
-        if ($meta_inv_source == 'fairshare') {
-            $meta['keywords'] = $dataset['keywords'];
-            $meta['description'] = $dataset['title'];
-        }
-        elseif ($meta_inv_source == 'smartakis') {
-            $meta['keywords'] = $dataset['croppingSystem'];
-            $meta['description'] = $dataset['shortDescription'];
-        }
-        elseif ($meta_inv_source == 'desira') {
-            $meta['keywords'] = $dataset['Keywords'];
-            $meta['description'] = $dataset['Description'];
-        }
+
         // Check if 'keywords' is an array and convert it to a string if needed
         if (is_array($meta['keywords'])) {
             $meta['keywords'] = implode(', ', $meta['keywords']);
         }
-        return view('components.metainventory.meta_inventory_detailed', compact('dataset', 'meta'));
+
+        return view('datasets.dataset_inventory_detailed', compact('dataset', 'meta','keywords','data_formats','audiences','sectors'));
     }
 
-
-    private function getModelClass($meta_inv_source)
-    {
-        return $this->sourceModelMap[$meta_inv_source] ?? null;
-    }
 }

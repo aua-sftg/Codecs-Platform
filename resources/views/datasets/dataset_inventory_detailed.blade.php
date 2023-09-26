@@ -22,11 +22,112 @@
 
     <x-slot:main_body>
         <div class="container pt-3 pb-2">
-
             <div class="row pt-2 mb-5">
-{{--                <x-metainventory.meta_inventory_detailed_fairshare :dataset="$dataset">--}}
+                <div class="dataset_card dataset mt-5">
+                    <div class="col-sm-12">
+                        <div class="summary entry-summary flex-wrap flex_row justify-content-start">
+                            <h2 class="mb-0 font-weight-bold text-6 text-color-custom-blue">{{ $dataset['name'] }}</h2>
+                            <div class="keywords-container">
+                                @if(!empty($keywords))
+                                    <div class="keywords-scroll overflow-auto">
+                                        @foreach ($keywords as $keyword)
+                                            <span class="badge rounded-pill badge-primary">{{ $keyword }}</span>
+                                        @endforeach
+                                    </div>
+                                @endif
+                            </div>
+                            <i
+                                data-collection='dataset'
+                                data-collection-id="{{$dataset['_id']}}"
+                                @class([
+                                    'fa-solid fa-heart heart_custom tooltip_custom favorites_toggle_icon'=>true,
+                                    'enabled'=>\App\Logic\UserHelper::hasFavorite(request()->user(), 'dataset', $dataset['_id'])
+                                ])
+                                type="button" data-toggle="tooltip" data-placement="top" title="Add to favorites"></i>
+                        </div>
+                        <p class="mb-0 text-color-dark">
+                            {{$dataset['organization']['name']}}<span class="ms-5 text-color-dark">{{ date('d-m-Y', strtotime($dataset['release_date'])) }}</span>
+                        </p>
+                        <div class="divider divider-small">
+                            <hr class="bg-color-grey-scale-4">
+                        </div>
+                        <p class="text-3-5 mb-3 text-justify">{{ $dataset['description'] }}</p>
+                    </div>
+                </div>
 
-{{--                </x-metainventory.meta_inventory_detailed_fairshare>--}}
+                {{--TODO create component for card_subsection--}}
+                <div class="col-sm-12 my-4 flex_row_responsive px-0 align-items-stretch">
+                    <div class="card_column col-sm-4 card_column_responsive">
+                        <div class="card_subsection dataset col-sm-12">
+                            <h4 class="mb-0 font-weight-semi-bold text-4 text-color-custom-blue">Sector</h4>
+                            <ul class="text-3-5 mb-3 list-unstyled">
+                                @foreach($sectors as $sector)
+                                    <li>{{$sector}}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                        @if(!empty($dataset['reference_link']))
+                            <div class="card_subsection dataset col-sm-12">
+                                <h4 class="mb-0 font-weight-semi-bold text-4 text-color-custom-blue">DOI/ ROR/ ISSN</h4>
+                                <a target="_blank" class="text-3-5" href="{{$dataset['reference_link']}}" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block; max-width: 100%;">{{$dataset['reference_link']}}</a>
+                            </div>
+                        @endif
+                    </div>
+                    <div class="col_width">
+                        <div class="card_column card_column_responsive justify-content-start h-100">
+                            <div class="flex_row align-items-stretch">
+                                @if(!empty($audiences))
+                                    <div class="card_subsection dataset col_custom">
+                                        <h4 class="mb-0 font-weight-semi-bold text-4 text-color-custom-blue">Target Audiences</h4>
+                                        <ul class="text-3-5 mb-3 list-unstyled">
+                                            @foreach($audiences as $audience)
+                                                <li>{{$audience}}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                @endif
+                                @if(!empty($dataset['data_collection_method']))
+                                        <div class="card_subsection dataset col_custom">
+                                            <h4 class="mb-0 font-weight-semi-bold text-4 text-color-custom-blue">Data Collection Method</h4>
+                                            <p class="text-3-5 mb-3">{{$dataset['data_collection_method']}}</p>
+                                        </div>
+                                @endif
+
+                                <div class="card_subsection dataset col_custom">
+                                    <h4 class="mb-0 font-weight-semi-bold text-4 text-color-custom-blue">Data Formats</h4>
+                                    <ul class="text-3-5 mb-3 list-unstyled">
+                                        @foreach($data_formats as $data_format)
+                                            <li>{{$data_format}}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="flex_row align-items-stretch">
+                                @if(!empty($dataset['external_data_source']))
+                                    <div class="card_subsection dataset col_custom">
+                                        <h4 class="mb-0 font-weight-semi-bold text-4 text-color-custom-blue">External data source</h4>
+                                        <a target="_blank" class="text-3-5" href="{{$dataset['external_data_source']}}" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block; max-width: 100%;">{{$dataset['external_data_source']}}</a>
+                                    </div>
+                                @endif
+                                @if(!empty($dataset['oecd_frascati_classification']))
+                                        <div class="card_subsection dataset col_custom">
+                                            <h4 class="mb-0 font-weight-semi-bold text-4 text-color-custom-blue">OECD Frascati classification</h4>
+                                            <p class="text-3-5 mb-3">
+                                                {{$dataset['oecd_frascati_classification']}}
+                                            </p>
+                                        </div>
+                                @endif
+                                @if(!empty($dataset['license_scheme']))
+                                    <div class="card_subsection dataset col_custom">
+                                        <h4 class="mb-0 font-weight-semi-bold text-4 text-color-custom-blue">Licensing Scheme</h4>
+                                        <a target="_blank" class="text-3-5" href="{{$dataset['license_scheme']}}" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block; max-width: 100%;">{{$dataset['license_scheme']}}</a>
+                                    </div>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
 
         </div>
