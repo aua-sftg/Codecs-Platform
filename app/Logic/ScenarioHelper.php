@@ -28,7 +28,7 @@ class ScenarioHelper implements BackpackFieldsInterface
         // Define a query builder for scenarios
         $query = Scenario::query();
 
-        in_array($status, [Status::STATUS_PUBLISHED, Status::STATUS_UNPUBLISHED], Status::STATUS_DRAFT)
+        in_array($status, [Status::STATUS_PUBLISHED, Status::STATUS_UNPUBLISHED])
             ? $query->where('status', $status)
             : null;
 

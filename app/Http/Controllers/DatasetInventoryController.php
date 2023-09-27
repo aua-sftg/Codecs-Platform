@@ -17,27 +17,19 @@ class DatasetInventoryController extends Controller
 
         $dataset = Dataset::findOrFail($data_inv_id);
 
-        $keywords = $dataset['keywords']->map(function($keyword){
-            return $keyword->name;
-        })->toArray();
 
-        $data_formats= $dataset['data_formats']->map(function ($data_format){
-            return $data_format->name;
-        })->toArray();
+        $keywords = $dataset->keywords->pluck('name');
+
+        $data_formats= $dataset->data_formats->pluck('name');
 
         if(isset($dataset['audiences'])){
-            $audiences= $dataset['audiences']->map(function ($audience){
-                return $audience->name;
-            })->toArray();
+            $audiences = $dataset->audiences->pluck('name');
         }
         else {
             $audiences=[];
         }
 
-
-        $sectors= $dataset['sector']->map(function ($sector){
-            return $sector->name;
-        })->toArray();
+        $sectors= $dataset->sector->pluck('name');
 
 
         //Used for the seo of the page
