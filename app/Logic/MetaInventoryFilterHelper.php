@@ -48,6 +48,7 @@ class MetaInventoryFilterHelper
 
         // Sort alphabetically
         sort($distinctCountries);
+        usort($distinctCountries, 'strnatcasecmp');
 
         // Cache the result
         Cache::rememberForever($cacheKey, function () use ($distinctCountries) {

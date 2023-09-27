@@ -34,6 +34,10 @@
     background-color: #F4C01E;
 }
 
+.filter .orange_color_btn {
+    padding: 6px;
+}
+
 .filters_color {
     background-color: #A0B63C;
     color: #FFF;

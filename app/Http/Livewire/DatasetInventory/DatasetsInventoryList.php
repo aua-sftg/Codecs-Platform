@@ -14,7 +14,7 @@ class DatasetsInventoryList extends Component
     use WithPagination;
 
     public $searchTerm='';
-    public $metaFilters;
+    public $dataFilters;
     public $currentPage = 1;
     public $perPage = 20;
 
@@ -23,7 +23,7 @@ class DatasetsInventoryList extends Component
 
     public $queryString = ['currentPage'];
 
-    protected $listeners = ['searchParam' => 'searchParam', 'metaFilters' => 'metaFilters'];
+    protected $listeners = ['searchParam' => 'searchParam', 'dataFilters' => 'dataFilters'];
 
 
     public function render()
@@ -36,51 +36,58 @@ class DatasetsInventoryList extends Component
 
                 return ((isset($dataset['name']) && stripos($dataset['name'], $this->searchTerm) !==false) ||
                     (isset($dataset['abstract']) && stripos($dataset['abstract'], $this->searchTerm) !==false) ||
-                    (isset($dataset['ToolName']) && stripos($dataset['ToolName'], $this->searchTerm) !==false) ||
                     (isset($dataset['description']) && stripos($dataset['description'], $this->searchTerm) !==false) ||
                     (isset($dataset['data_collection_method']) && stripos($dataset['data_collection_method'], $this->searchTerm) !==false));
 
             });
         }
 
-        //Apply metaFilters
-//        if (!empty($this->metaFilters)) {
-//            $datasets = $datasets->filter(function ($dataset) {
-//                $showDataset = true;
-//
-//                foreach ($this->metaFilters as $key => $values) {
-//                    if (!empty($values)) {
-//                        switch ($key) {
-//                            case 'sources':
-//                                // Find the count of the common elements between selected sources($values) and the set of keys in the dataset array
-//                                // E.g. $values=[fairshare_id] $dataset=[fairshare_id=>...]
-//                                //Count of this intersect returns 1 which means that this dataset is from Fairshare collection (similarly for smartAKIS, Desira)
-//                                $showDataset = count(
-//                                        array_intersect(
-//                                            $values, array_keys($dataset)
-//                                        )
-//                                    )>0;
-//                                break;
-//                            case 'countries':
-//                                // Find the appropriate key for the dataset from the list of values['countries','country','CountriesUsed']
-//                                $datasetCountries = array_intersect(
-//                                    ['countries','country','CountriesUsed'], array_keys($dataset)
-//                                );
-//                                //If we found the datasets country key and at least one of the selected countries (values) intersects (exists) in the dataset value key show the dataset
-//                                $showDataset = count($datasetCountries) == 1 && count(
-//                                        array_intersect(
-//                                            $dataset[current($datasetCountries)], $values
-//                                        )
-//                                    ) > 0;
-//
-//                                break;
-//                        }
-//                    }
-//                }
-//
-//                return $showDataset;
-//            });
-//        }
+        //Apply dataFilters
+        if (!empty($this->dataFilters)) {
+            $datasets = $datasets->filter(function ($dataset) {
+                $showDataset = true;
+
+                foreach ($this->dataFilters as $key => $values) {
+                    if (!empty($values)) {
+                        switch ($key) {
+                            case 'sectors':
+                                $sectors = $dataset->sector->pluck('name')->toArray();
+                                $showDataset = count(
+                                        array_intersect(
+                                            $sectors, $values
+                                        )
+                                    ) > 0;
+
+                                break;
+                            case 'data_formats':
+                                $data_formats = $dataset->data_formats->pluck('name')->toArray();
+                                $showDataset = count(
+                                        array_intersect(
+                                            $data_formats, $values
+                                        )
+                                    ) > 0;
+
+                                break;
+                            case 'creators':
+                                $organization = $dataset['organization']['name'];
+                                $showDataset = in_array($organization, $values);
+                                break;
+                            case 'audiences':
+                                $audiences = $dataset->audiences->pluck('name')->toArray();
+                                $showDataset = count(
+                                        array_intersect(
+                                            $audiences, $values
+                                        )
+                                    ) > 0;
+
+                                break;
+                        }
+                    }
+                }
+
+                return $showDataset;
+            });
+        }
 
 
         $perPage = $this->perPage;
@@ -112,8 +119,8 @@ class DatasetsInventoryList extends Component
         $this->searchTerm = $searchTerm;
     }
 
-    public function metaFilters($metaFilters) {
-        $this->metaFilters = $metaFilters;
+    public function dataFilters($dataFilters) {
+        $this->dataFilters = $dataFilters;
     }
 
     public function gotoPage($page)

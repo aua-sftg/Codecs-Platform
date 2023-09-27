@@ -10,6 +10,7 @@ use App\Logic\Toastr;
 use App\Models\Dataset;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Date;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Gate;
 use PHPMailer\PHPMailer\Exception;
 
@@ -45,7 +46,7 @@ class DatasetController extends Controller
 
 
         try {
-            \DB::beginTransaction();
+            DB::beginTransaction();
 
             if($request->get('status',null) == 'published')
             {

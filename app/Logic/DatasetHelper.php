@@ -35,7 +35,7 @@ class DatasetHelper implements BackpackFieldsInterface
         // Define a query builder for datasets
         $query = Dataset::query();
 
-        in_array($status, [Status::STATUS_PUBLISHED, Status::STATUS_UNPUBLISHED])
+        in_array($status, [Status::STATUS_PUBLISHED, Status::STATUS_UNPUBLISHED, Status::STATUS_DRAFT])
             ? $query->where('status', $status)
             : null;
 
