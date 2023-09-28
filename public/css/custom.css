@@ -13,7 +13,7 @@
 
 /*Try images for hero section*/
 /*.section.section {*/
-/*    background-image: url(http://localhost/img/hero_section/andrej-lisakov-9fbZGo_E50I-unsplash.jpg);*/
+/*    background-image: url(http://localhost/img/hero_section/matthew-smith-Rfflri94rs8-unsplash.jpg);*/
 /*    background-size: cover;*/
 /*    background-position: center center;*/
 /*}*/
@@ -222,17 +222,30 @@
 .keywords-container {
     max-width: 420px;
     /*overflow-x: auto;*/
-    margin-left: 20px;
+    /*margin-left: 20px;*/
 }
 
 .keywords-scroll {
     white-space: nowrap;
-    /*-ms-overflow-style: none;  !* Internet Explorer 10+ *!*/
-    /*scrollbar-width: none;  !* Firefox *!*/
-}
+    scrollbar-width: thin; /* for Firefox */
+    scrollbar-color: #ccc transparent; /* for Firefox */
 
-.keywords-scroll::-webkit-scrollbar {
-    /*display: none;  !* Safari and Chrome *!*/
+    /* For Webkit-based browsers like Chrome and Safari */
+    &::-webkit-scrollbar {
+        height: 4px; /* Set the width of the scrollbar */
+    }
+
+    /* For Webkit-based browsers like Chrome and Safari */
+    &::-webkit-scrollbar-thumb {
+        background-color: #ccc; /* Color of the scrollbar thumb */
+        border-radius: 4px; /* Rounded corners for the thumb */
+        margin-top: 10px;
+    }
+
+    /* For Webkit-based browsers like Chrome and Safari */
+    &::-webkit-scrollbar-track {
+        background-color: transparent; /* Color of the scrollbar track */
+    }
 }
 
 /*Rules for responsive */
@@ -267,6 +280,12 @@
 
     .col_custom {
         width: 100%;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .keywords-container {
+        max-width: 300px;
     }
 }
 

@@ -42,6 +42,10 @@ Route::group(['prefix' => 'inventory-of-datasets'], function(){
     Route::get('/details/{data_inv_title}_{data_inv_id}', [\App\Http\Controllers\DatasetInventoryController::class, 'show'])->name('dataset_inventory_detailed');
 });
 
+Route::get('/privacy-policy', function () {
+    return view('privacy-policy');
+})->name('privacy-policy');
+
 
 
 Route::get('/dashboard', function () {

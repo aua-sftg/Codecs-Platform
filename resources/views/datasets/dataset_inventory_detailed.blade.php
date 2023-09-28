@@ -26,12 +26,12 @@
                 <div class="dataset_card dataset mt-5">
                     <div class="col-sm-12">
                         <div class="summary entry-summary flex-wrap flex_row justify-content-start">
-                            <h2 class="mb-0 font-weight-bold text-6 text-color-custom-blue">{{ $dataset['name'] }}</h2>
+                            <h2 class="mb-0 me-4 font-weight-bold text-6 text-color-custom-blue">{{ $dataset['name'] }}</h2>
                             <div class="keywords-container">
-                                @if(!empty($keywords))
-                                    <div class="keywords-scroll overflow-auto">
-                                        @foreach ($keywords as $keyword)
-                                            <span class="badge rounded-pill badge-primary">{{ $keyword }}</span>
+                                @if (!empty($keywords))
+                                    <div class="{{ count($keywords) > 4 ? 'overflow-x-auto keywords-scroll' : '' }}">
+                                        @foreach ($keywords as $index => $keyword)
+                                            <span class="badge rounded-pill badge-primary">{{ strlen($keyword) > 25 ? substr($keyword, 0, 25) . '...' : $keyword }}</span>
                                         @endforeach
                                     </div>
                                 @endif
