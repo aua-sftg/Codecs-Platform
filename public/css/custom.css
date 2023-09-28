@@ -78,6 +78,10 @@
     background-color: rgba(38, 38, 38, 0.09);
 }
 
+.column {
+    width: 100%;
+}
+
 /*Set the left border for the cards*/
 .dataset_card {
     background: #FFFFFF 0% 0% no-repeat padding-box;
@@ -111,6 +115,7 @@
 /*Set max height for images of list-items*/
 .product .product-thumb-info img {
     max-height: 200px;
+    margin-bottom: 15px;
 }
 
 .mr-1 {
@@ -216,18 +221,18 @@
 
 .keywords-container {
     max-width: 420px;
-    overflow-x: auto;
+    /*overflow-x: auto;*/
     margin-left: 20px;
 }
 
 .keywords-scroll {
     white-space: nowrap;
-    -ms-overflow-style: none;  /* Internet Explorer 10+ */
-    scrollbar-width: none;  /* Firefox */
+    /*-ms-overflow-style: none;  !* Internet Explorer 10+ *!*/
+    /*scrollbar-width: none;  !* Firefox *!*/
 }
 
 .keywords-scroll::-webkit-scrollbar {
-    display: none;  /* Safari and Chrome */
+    /*display: none;  !* Safari and Chrome *!*/
 }
 
 /*Rules for responsive */
