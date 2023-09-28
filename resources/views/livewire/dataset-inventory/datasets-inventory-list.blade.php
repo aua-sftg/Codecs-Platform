@@ -1,6 +1,6 @@
 <div>
     <div class="products product-thumb-info-list" data-plugin-masonry data-plugin-options="{'layoutMode': 'fitRows'}">
-        @foreach($paginatedResults->items()  as $dataset)
+        @forelse($paginatedResults->items()  as $dataset)
             <div class="column">
                 <x-datasets.dataset-card :dataset="$dataset" :showStatus="false" :showActions="false">
 
@@ -10,7 +10,12 @@
                     <hr class="my-4">
                 </div>
             </div>
-        @endforeach
+        @empty
+            <div class="w-100 text-center">
+                <img src="{{ asset('img/undraw_loading_re_5axr.svg') }}" alt="No results found" class="w-100" style="max-width: 300px"/>
+                <p class="mb-0">No results found.</p>
+            </div>
+        @endforelse
     </div>
     <nav aria-label="Page navigation example" class="my-5">
         <ul class="pagination justify-content-center">
@@ -39,4 +44,7 @@
         </ul>
     </nav>
 </div>
+
+
+
 
