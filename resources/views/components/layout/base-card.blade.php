@@ -39,7 +39,7 @@
                 <img class="mr-1" src="{{ asset('img/keywords-icon.svg') }}">
                 <strong class="text-color-dark mr_2">Keywords: </strong>
                 @foreach ($keywords as $keyword)
-                    <span class="badge rounded-pill badge-primary">{{ $keyword }}</span>
+                    <span class="badge rounded-pill badge-primary">{{ strlen($keyword) > 25 ? substr($keyword, 0, 25) . '...' : $keyword }}</span>
                 @endforeach
             @endif
         </div>
