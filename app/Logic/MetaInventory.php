@@ -214,24 +214,29 @@ class MetaInventory
 
     public static function results_transform(Collection $results):Collection {
         return $results->map(function($record){
-            $vendor = isset($record['fairshare_id']) ? 'fairshare' : (isset($record['smartakis_id']) ? 'smartakis' : 'desira');
-
-            $image = match($vendor) {
-                'fairshare'=>   isset($record['imagePath'][0]) ? $record['imagePath'][0] : asset('img/fairshare-logo-light.png'),
-                'smartakis'=> isset($record['picAddress'][0]) ? $record['picAddress'][0] : asset('img/smartakis=log.png'),
-                'desira'=> asset('img/Logo-Desira.png')
-            };
-            return [
-                'vendor'=> $vendor,
-                'id'=>$record['_id'],
-                'title'=>$vendor=='desira'?$record['ToolName']:($vendor=='fairshare'?$record['name']:$record['title']),
-                'short_desc'=> $vendor == 'fairshare' ? $record['title'] : ($vendor=='smartakis' ? $record['shortDescription'] : $record['Description']),
-                'keywords'=>$vendor == 'fairshare' ? array_filter(explode(',', $record['keywords']), 'trim') : ($vendor=='smartakis' ? $record['croppingSystem'] : $record['Keywords']),
-                'image'=>$image,
-                'update_date'=>$vendor == 'desira' ? $record['updated_at'] : $record['updatedAt'],
-                'source'=>$vendor=='desira'?'Desira': ($vendor =='fairshare'?'Fairshare' :($vendor=='smartakis'?'smartAKIS':$vendor)),
-            ];
+            return self::result_transform($record);
         });
+    }
+
+    public static function result_transform(array $record):array
+    {
+        $vendor = isset($record['fairshare_id']) ? 'fairshare' : (isset($record['smartakis_id']) ? 'smartakis' : 'desira');
+
+        $image = match($vendor) {
+            'fairshare'=>   isset($record['imagePath'][0]) ? $record['imagePath'][0] : asset('img/fairshare-logo-light.png'),
+            'smartakis'=> isset($record['picAddress'][0]) ? $record['picAddress'][0] : asset('img/smartakis=log.png'),
+            'desira'=> asset('img/Logo-Desira.png')
+        };
+        return [
+            'vendor'=> $vendor,
+            'id'=>$record['_id'],
+            'title'=>$vendor=='desira'?$record['ToolName']:($vendor=='fairshare'?$record['name']:$record['title']),
+            'short_desc'=> $vendor == 'fairshare' ? $record['title'] : ($vendor=='smartakis' ? $record['shortDescription'] : $record['Description']),
+            'keywords'=>$vendor == 'fairshare' ? array_filter(explode(',', $record['keywords']), 'trim') : ($vendor=='smartakis' ? $record['croppingSystem'] : $record['Keywords']),
+            'image'=>$image,
+            'update_date'=>$vendor == 'desira' ? $record['updated_at'] : $record['updatedAt'],
+            'source'=>$vendor=='desira'?'Desira': ($vendor =='fairshare'?'Fairshare' :($vendor=='smartakis'?'smartAKIS':$vendor)),
+        ];
     }
 
     public static function extractCriteria(array $filters)

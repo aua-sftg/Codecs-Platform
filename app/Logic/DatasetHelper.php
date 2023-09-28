@@ -5,6 +5,7 @@ namespace App\Logic;
 use App\Interfaces\BackpackFieldsInterface;
 use App\Models\Dataset;
 use App\Traits\BackpackFieldsTrait;
+use Dflydev\DotAccessData\Data;
 use Illuminate\Support\Collection;
 
 class DatasetHelper implements BackpackFieldsInterface
@@ -298,5 +299,22 @@ class DatasetHelper implements BackpackFieldsInterface
                 'list'=>true,
             ]
         ]);
+    }
+
+    public static function card_data(Dataset $dataset, $desc_limit=200): array
+    {
+        return [
+            'vendor'=> 'datasets',
+            'id'=>$dataset->dataset_id,
+            'dataset_id'=>$dataset->dataset_id,
+            'name'=> $dataset->name,
+            'description'=> \Str::limit($dataset->description,$desc_limit),
+            'status'=> $dataset->status,
+            'keywords'=> $dataset->keywords->pluck('name'),
+            'image'=>null,
+            'update_date'=>$dataset->updated_at,
+            'release_date'=>$dataset->created_at,
+            'source'=>'datasets'
+        ];
     }
 }
