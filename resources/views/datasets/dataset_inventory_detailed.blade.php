@@ -38,11 +38,11 @@
                             </div>
                             @auth
                                 <i
-                                    data-collection='dataset'
+                                    data-collection='datasets'
                                     data-collection-id="{{$dataset['_id']}}"
                                     @class([
                                         'fa-solid fa-heart heart_custom tooltip_custom favorites_toggle_icon'=>true,
-                                        'enabled'=>\App\Logic\UserHelper::hasFavorite(request()->user(), 'dataset', $dataset['_id'])
+                                        'enabled'=>\App\Logic\UserHelper::hasFavorite(request()->user(), 'datasets', $dataset['_id'])
                                     ])
                                     type="button" data-toggle="tooltip" data-placement="top" title="Add to favorites"></i>
                             @endauth
