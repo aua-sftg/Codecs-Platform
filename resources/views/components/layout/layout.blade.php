@@ -53,7 +53,9 @@
     <!-- Head Libs -->
     <script src="{{ asset('vendor/modernizr/modernizr.min.js') }}"></script>
     <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
+{{--    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>--}}
     <script src="{{ asset('vendor/bootstrap/js/bootstrap.min.js') }}"></script>
+
 
     {{$head_scripts??''}}
 </head>
@@ -173,20 +175,20 @@
                     <h4 class="text-color-white font-weight-bold mb-4-5">ABOUT US</h4>
                     <ul class="list list-unstyled columns-lg-1">
                         <li>
-                            <a href="demo-construction.html" class="text-color-hover-primary">
+                            <a href="https://www.horizoncodecs.eu/" target="_blank" class="text-color-hover-primary">
                                 About CODECS
                             </a>
                         </li>
                         <li>
-                            <a href="demo-construction-company.html" class="text-color-hover-primary">
+                            <a href="mailto:aua.developers@gmail.com" class="text-color-hover-primary">
                                 Help
                             </a>
                         </li>
-                        <li>
-                            <a href="demo-construction-services.html" class="text-color-hover-primary">
-                                Contact us
-                            </a>
-                        </li>
+{{--                        <li>--}}
+{{--                            <a href="demo-construction-services.html" class="text-color-hover-primary">--}}
+{{--                                Contact us--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
                     </ul>
                 </div>
                 <div class="col-lg-4 mt-5">
@@ -207,21 +209,21 @@
                         </li>
                     </ul>
                     <p style="text-align: right">
-                        <a href="demo-construction-services.html" class="text-color-hover-primary">
-                            Terms and conditions
-                        </a>
-                        <span class="text-color-white">|</span>
-                        <a href="demo-construction-services.html" class="text-color-hover-primary">
+{{--                        <a href="demo-construction-services.html" class="text-color-hover-primary">--}}
+{{--                            Terms and conditions--}}
+{{--                        </a>--}}
+{{--                        <span class="text-color-white">|</span>--}}
+                        <a href="{{route('privacy-policy')}}" class="text-color-hover-primary">
                             Privacy Policy
                         </a>
-                        <span class="text-color-white">|</span>
-                        <a href="demo-construction-services.html" class="text-color-hover-primary">
-                            Cookies policy
-                        </a>
-                        <span class="text-color-white">|</span>
-                        <a href="demo-construction-services.html" class="text-color-hover-primary">
-                            Disclaimer
-                        </a>
+{{--                        <span class="text-color-white">|</span>--}}
+{{--                        <a href="demo-construction-services.html" class="text-color-hover-primary">--}}
+{{--                            Cookies policy--}}
+{{--                        </a>--}}
+{{--                        <span class="text-color-white">|</span>--}}
+{{--                        <a href="demo-construction-services.html" class="text-color-hover-primary">--}}
+{{--                            Disclaimer--}}
+{{--                        </a>--}}
                     </p>
                 </div>
 

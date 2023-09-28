@@ -3,12 +3,12 @@
 <div class="dataset_card smartakis mt-5">
     <div class="col-sm-12">
         <div class="summary entry-summary flex-wrap flex_row justify-content-start">
-            <h2 class="mb-0 font-weight-bold text-6 text-color-custom-blue">{{ $dataset['title'] }}</h2>
+            <h2 class="mb-0 me-4 font-weight-bold text-6 text-color-custom-blue">{{ $dataset['title'] }}</h2>
             <div class="keywords-container">
-                @if(!empty($dataset['croppingSystem']))
-                    <div class="keywords-scroll overflow-auto">
-                        @foreach ($dataset['croppingSystem'] as $keyword)
-                            <span class="badge rounded-pill badge-primary">{{ $keyword }}</span>
+                @if (!empty($dataset['croppingSystem']))
+                    <div class="{{ count($dataset['croppingSystem']) > 4 ? 'overflow-x-auto keywords-scroll' : '' }}">
+                        @foreach ($dataset['croppingSystem'] as $index => $keyword)
+                            <span class="badge rounded-pill badge-primary">{{ strlen($keyword) > 25 ? substr($keyword, 0, 25) . '...' : $keyword }}</span>
                         @endforeach
                     </div>
                 @endif

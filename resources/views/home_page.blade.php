@@ -3,7 +3,7 @@
         Codecs | Maximising the CO-benefits  of agricultural Digitalisation  through conducive digital ECoSystems
     </x-slot:title>
     <x-slot:keywords>
-        Codecs | Maximising the CO-benefits  of agricultural Digitalisation  through conducive digital ECoSystems
+        Codecs, Maximising, CO-benefits ,agricultural, Digitalisation,  ,digital ,ECoSystems, privacy policy
     </x-slot:keywords>
     <x-slot:description>
         Codecs | Maximising the CO-benefits  of agricultural Digitalisation  through conducive digital ECoSystems

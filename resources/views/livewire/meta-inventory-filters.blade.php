@@ -42,8 +42,19 @@
                 </div>
             </div>
             <div class="filter">
-                <button class="btn orange_color_btn mt-4" wire:click="clearFilters">Clear All</button>
+                <button id="clear-all-button" class="btn orange_color_btn mt-4" wire:click="clearFilters">Clear All</button>
             </div>
         </div>
     </aside>
+    <script>
+        $(document).ready(()=>{
+            $('#clear-all-button').click(function(){
+                let $this = $(this);
+                var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+                checkboxes.forEach(function (checkbox) {
+                    checkbox.checked = false;
+                });
+            })
+        });
+    </script>
 </div>
