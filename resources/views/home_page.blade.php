@@ -52,7 +52,7 @@
                                 <div class="row counters gy-4 gy-md-0">
                                     <div class="col-md-auto mt-0">
                                         <div class="counter">
-                                            <strong class="text-color-secondary text-6" data-to="1500" data-append="+" data-plugin-options="{'accY': -200}">0</strong>
+                                            <strong class="text-color-secondary text-6" data-to="1960" data-append="+" data-plugin-options="{'accY': -200}">0</strong>
 {{--                                            <span class="text-color-primary font-weight-bold text-4">Business Year</span>--}}
                                         </div>
                                     </div>

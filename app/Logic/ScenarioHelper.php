@@ -33,7 +33,7 @@ class ScenarioHelper implements BackpackFieldsInterface
             : null;
 
         // Order the scenarios by 'lft' in ascending order
-        return $query->orderBy('name', 'asc')->get();
+        return $query->orderBy('lft', 'asc')->get();
     }
 
     /**

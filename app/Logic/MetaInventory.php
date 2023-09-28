@@ -226,7 +226,7 @@ class MetaInventory
                 'id'=>$record['_id'],
                 'title'=>$vendor=='desira'?$record['ToolName']:($vendor=='fairshare'?$record['name']:$record['title']),
                 'short_desc'=> $vendor == 'fairshare' ? $record['title'] : ($vendor=='smartakis' ? $record['shortDescription'] : $record['Description']),
-                'keywords'=>$vendor == 'fairshare' ? explode(',', $record['keywords']) : ($vendor=='smartakis' ? $record['croppingSystem'] : $record['Keywords']),
+                'keywords'=>$vendor == 'fairshare' ? array_filter(explode(',', $record['keywords']), 'trim') : ($vendor=='smartakis' ? $record['croppingSystem'] : $record['Keywords']),
                 'image'=>$image,
                 'update_date'=>$vendor == 'desira' ? $record['updated_at'] : $record['updatedAt'],
                 'source'=>$vendor=='desira'?'Desira': ($vendor =='fairshare'?'Fairshare' :($vendor=='smartakis'?'smartAKIS':$vendor)),
