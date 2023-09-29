@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\UserRequest;
+use App\Logic\PermissionHelper;
 use App\Logic\UserHelper;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
+use Illuminate\Support\Facades\Gate;
 
 /**
  * Class UserCrudController
@@ -29,6 +31,11 @@ class UserCrudController extends CrudController
         CRUD::setModel(\App\Models\User::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/user');
         CRUD::setEntityNameStrings('user', 'users');
+
+        if(Gate::forUser(backpack_user())->allows(PermissionHelper::PERMISSION_ADMIN_PERMISSIONS)===false)
+        {
+            abort(403);
+        }
     }
 
     /**
