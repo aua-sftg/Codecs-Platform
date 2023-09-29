@@ -1,5 +1,21 @@
 @props(['dataset'])
-
+@php
+    if (!empty($dataset['vendorWebsite'])) {
+        if (!preg_match("~^(?:f|ht)tps?://~i", $dataset['vendorWebsite'])) {
+        $dataset['vendorWebsite'] = "https://" . $dataset['vendorWebsite'];
+        }
+    }
+    if (!empty($dataset['website'])) {
+        if (!preg_match("~^(?:f|ht)tps?://~i", $dataset['website'])) {
+        $dataset['website'] = "https://" . $dataset['website'];
+        }
+    }
+    foreach ($dataset['supportingLinks'] as $index=>$link) {
+        if (!preg_match("~^(?:f|ht)tps?://~i", $link)) {
+        $dataset['supportingLinks'][$index] = "https://" . $link;
+        }
+    }
+@endphp
 <div class="dataset_card smartakis mt-5">
     <div class="col-sm-12">
         <div class="summary entry-summary flex-wrap flex_row justify-content-start">

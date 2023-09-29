@@ -1,4 +1,12 @@
 @props(['dataset'])
+
+@php
+    if (!empty($dataset['URL'])) {
+        if (!preg_match("~^(?:f|ht)tps?://~i", $dataset['URL'])) {
+        $dataset['URL'] = "https://" . $dataset['URL'];
+        }
+    }
+@endphp
 <div class="dataset_card desira mt-5">
     <div class="col-sm-12">
         <div class="summary entry-summary flex-wrap flex_row justify-content-start">
