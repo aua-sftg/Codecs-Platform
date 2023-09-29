@@ -248,6 +248,10 @@
     }
 }
 
+.keywords {
+    align-items: start;
+}
+
 /*Rules for responsive */
 @media screen and (max-width: 991px) {
 
@@ -286,6 +290,10 @@
 @media screen and (max-width: 450px) {
     .keywords-container {
         max-width: 300px;
+    }
+
+    .keywords {
+        flex-wrap: wrap;
     }
 }
 
