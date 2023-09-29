@@ -16,18 +16,31 @@ use PHPMailer\PHPMailer\Exception;
 
 class DatasetController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
+        if(Gate::forUser($request->user())->denies(PermissionHelper::PERMISSION_UPLOAD_DATASETS))
+        {
+            abort(403);
+        }
         return view('datasets.index');
     }
 
-    public function form()
+    public function form(Request $request)
     {
+        if(Gate::forUser($request->user())->denies(PermissionHelper::PERMISSION_UPLOAD_DATASETS))
+        {
+            abort(403);
+        }
         return view('datasets.form');
     }
 
     public function edit(Dataset $dataset, Request $request)
     {
+        if(Gate::forUser($request->user())->denies(PermissionHelper::PERMISSION_UPLOAD_DATASETS))
+        {
+            abort(403);
+        }
+
         if($request->user()->id !== $dataset->uploaded_by)
         {
             Toastr::error('You do not have permission to edit this dataset');
@@ -40,6 +53,10 @@ class DatasetController extends Controller
     public function save(Request $request)
     {
 
+        if(Gate::forUser($request->user())->denies(PermissionHelper::PERMISSION_UPLOAD_DATASETS))
+        {
+            abort(403);
+        }
         /**
          * @todo move this to a service class and authorize this request
          */

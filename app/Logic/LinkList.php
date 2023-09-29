@@ -21,7 +21,8 @@ class LinkList
                 'route'=>'datasets.index',
                 'icon' => asset('img/icons/account_circle.svg'),
                 'group' => 'profile_sidebar',
-                'order'=>2
+                'order'=>2,
+                'gate'=>PermissionHelper::PERMISSION_UPLOAD_DATASETS
             ],[
                 'label' => __('Favorites'),
                 'url' => route('profile.favorites'),

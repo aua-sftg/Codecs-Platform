@@ -2,16 +2,17 @@
 
 
     @foreach(\App\Logic\LinkList::profile_sidebar() as $link)
-        <a href="{{route($link['route'])}}"
-           @class([
-               'd-flex align-items-center gap-3 m-0 p-2',
-               'selected-link' => request()->routeIs($link['route']),
-               'mt-3'=>!$loop->first
-           ])
-           >
-            <img alt="{{$link['label']}} menu item icon" loading="lazy" src="{{$link['icon']}}"/>
-            <h4 class="m-0">{{$link['label']}}</h4>
-        </a>
+            @continue(isset($link['gate']) && \Illuminate\Support\Facades\Gate::forUser(auth()->user())->denies($link['gate']))
+            <a href="{{route($link['route'])}}"
+                @class([
+                    'd-flex align-items-center gap-3 m-0 p-2',
+                    'selected-link' => request()->routeIs($link['route']),
+                    'mt-3'=>!$loop->first
+                ])
+            >
+                <img alt="{{$link['label']}} menu item icon" loading="lazy" src="{{$link['icon']}}"/>
+                <h4 class="m-0">{{$link['label']}}</h4>
+            </a>
     @endforeach
 
     <form action="{{route('logout')}}" method="post">
