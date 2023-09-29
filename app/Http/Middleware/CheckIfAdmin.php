@@ -2,7 +2,9 @@
 
 namespace App\Http\Middleware;
 
+use App\Logic\PermissionHelper;
 use Closure;
+use Illuminate\Support\Facades\Gate;
 
 class CheckIfAdmin
 {
@@ -27,8 +29,7 @@ class CheckIfAdmin
      */
     private function checkIfUserIsAdmin($user)
     {
-        // return ($user->is_admin == 1);
-        return true;
+        return Gate::forUser($user)->allows(PermissionHelper::PERMISSION_ADMIN_PERMISSIONS);
     }
 
     /**
