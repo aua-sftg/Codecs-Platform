@@ -30,14 +30,12 @@
     </aside>
 
     <script>
-        $(document).ready(()=>{
-            $('#clear-all-button').click(function(){
-                let $this = $(this);
-                var checkboxes = document.querySelectorAll('input[type="checkbox"]');
-                checkboxes.forEach(function (checkbox) {
-                    checkbox.checked = false;
-                });
-            })
-        });
+        window.addEventListener('clear-checkboxes', event => {
+            let $this = $(this);
+            var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+            checkboxes.forEach(function (checkbox) {
+                checkbox.checked = false;
+            });
+        })
     </script>
 </div>

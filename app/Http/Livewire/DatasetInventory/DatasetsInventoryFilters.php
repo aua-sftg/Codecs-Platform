@@ -45,6 +45,7 @@ class DatasetsInventoryFilters extends Component
 
         // Emit the event to apply filters
         $this->emit('dataFilters', $this->filters);
+        $this->dispatchBrowserEvent('clear-checkboxes');
     }
 
     public function render()
