@@ -2,9 +2,12 @@
 
 namespace App\Http\Livewire\DatasetInventory;
 
+use App\Logic\DatasetHelper;
 use App\Logic\Toastr;
 use App\Models\Dataset;
+use App\Models\Favorite;
 use App\Models\User;
+use Dflydev\DotAccessData\Data;
 use Livewire\Component;
 
 class Archive extends Component
@@ -48,6 +51,7 @@ class Archive extends Component
     public function perform_delete()
     {
         Dataset::find($this->deleteID)->delete();
+        DatasetHelper::removeFromFavorites($this->deleteID);
         $this->cancel_delete();
         $this->dispatchBrowserEvent('toastr',[
             'type'=>'success',

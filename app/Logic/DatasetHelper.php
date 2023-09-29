@@ -4,6 +4,7 @@ namespace App\Logic;
 
 use App\Interfaces\BackpackFieldsInterface;
 use App\Models\Dataset;
+use App\Models\Favorite;
 use App\Traits\BackpackFieldsTrait;
 use Dflydev\DotAccessData\Data;
 use Illuminate\Support\Collection;
@@ -23,6 +24,13 @@ class DatasetHelper implements BackpackFieldsInterface
         'organization_id'=>'required',
         'license_scheme'=>'nullable|url',
     ];
+
+    public static function removeFromFavorites(string $dataset_id)
+    {
+        Favorite::where('collection','=','datasets')
+            ->where('collection_id','=',$dataset_id)
+            ->delete();
+    }
 
 
     /**

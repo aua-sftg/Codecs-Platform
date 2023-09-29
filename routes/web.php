@@ -39,7 +39,7 @@ Route::group(['prefix' => 'inventory-of-datasets'], function(){
     Route::get('/', [\App\Http\Controllers\DatasetInventoryController::class, 'index'])->name('inventory_of_datasets');
 
     // Route for Meta Inventory Details
-    Route::get('/details/{data_inv_title}_{data_inv_id}', [\App\Http\Controllers\DatasetInventoryController::class, 'show'])->name('dataset_inventory_detailed');
+    Route::get('/details/{data_inv_title}/{data_inv_id}', [\App\Http\Controllers\DatasetInventoryController::class, 'show'])->name('dataset_inventory_detailed');
 });
 
 Route::get('/privacy-policy', function () {

@@ -6,8 +6,10 @@ use App\Logic\DatasetHelper;
 use App\Logic\KeywordHelper;
 use App\Logic\PermissionHelper;
 use App\Logic\SectorHelper;
+use App\Logic\Status;
 use App\Logic\Toastr;
 use App\Models\Dataset;
+use App\Models\Favorite;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\DB;
@@ -86,6 +88,7 @@ class DatasetController extends Controller
                 ]
             ));
             $dataset->save();
+            $dataset->update(['dataset_id'=>$dataset->id]);
 
             $dataset->data_formats()->sync($request->get('data_formats',[]));
             $dataset->audiences()->sync($request->get('audiences',[]));
@@ -109,6 +112,11 @@ class DatasetController extends Controller
                 $dataset->update([
                     'file'=>$filename,
                 ]);
+            }
+
+            if($dataset->status != Status::STATUS_PUBLISHED)
+            {
+                DatasetHelper::removeFromFavorites($dataset->id);
             }
 
             Toastr::success('Dataset saved');

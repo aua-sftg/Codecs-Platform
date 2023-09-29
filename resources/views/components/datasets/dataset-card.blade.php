@@ -14,7 +14,7 @@
     containerClass="dataset"
     :link="route('dataset_inventory_detailed', [
                         'data_inv_title' => $dataset['name'],
-                        'data_inv_id' => $dataset['dataset_id']
+                        'data_inv_id' => $dataset['_id']??$dataset['dataset_id']
                     ]) ?? '#'"
 >
 
