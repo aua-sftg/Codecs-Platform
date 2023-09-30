@@ -46,6 +46,7 @@ class MetaInventoryFilters extends Component
 
         // Emit the event to apply filters
         $this->emit('metaFilters', $this->filters);
+        $this->dispatchBrowserEvent('clear-checkboxes');
     }
 
     public function render()

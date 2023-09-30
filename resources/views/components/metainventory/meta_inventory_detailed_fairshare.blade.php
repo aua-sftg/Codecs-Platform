@@ -3,7 +3,18 @@
 @php
     $keywords = explode(',', $dataset['keywords']);
     $providerWebsite = explode('\n', $dataset['providerWebsite']);
-    $videos = explode('\n', $dataset['videos'])
+    if (!preg_match("~^(?:f|ht)tps?://~i", $providerWebsite[0])) {
+        $providerWebsite[0] = "https://" . $providerWebsite[0];
+    }
+    if (!preg_match("~^(?:f|ht)tps?://~i", $dataset['website'])) {
+        $dataset['website'] = "https://" . $dataset['website'];
+    }
+    $videos = explode('\n', $dataset['videos']);
+    foreach ($videos as $index=>$video) {
+        if (!preg_match("~^(?:f|ht)tps?://~i", $video)) {
+        $videos[$index] = "https://" . $video;
+        }
+    }
 @endphp
 <div class="dataset_card fairshare mt-5">
     <div class="col-sm-12">
@@ -164,7 +175,9 @@
                         <li> <a target="_blank" class="text-3-5" href="{{$document}}">Document {{ $index + 1 }}</a></li>
                     @endforeach
                     @foreach($videos as $index=>$video)
-                        <li> <a target="_blank" class="text-3-5" href="{{$video}}">Video {{ $index + 1 }}</a></li>
+                        @if(!($video=='null' || $video=='https://null'))
+                            <li> <a target="_blank" class="text-3-5" href="{{$video}}">Video {{ $index + 1 }}</a></li>
+                        @endif
                     @endforeach
                 </ul>
             </div>
