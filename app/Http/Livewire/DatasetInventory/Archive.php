@@ -51,7 +51,7 @@ class Archive extends Component
     public function perform_delete()
     {
         Dataset::find($this->deleteID)->delete();
-        DatasetHelper::removeFromFavorites($this->deleteID);
+
         $this->cancel_delete();
         $this->dispatchBrowserEvent('toastr',[
             'type'=>'success',

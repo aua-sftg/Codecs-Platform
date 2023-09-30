@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Events\ScenarioChanged;
+use App\Models\Dataset;
 use App\Models\Scenario;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
@@ -33,6 +34,7 @@ class EventServiceProvider extends ServiceProvider
     public function boot()
     {
         Scenario::observe(\App\Observers\ScenarioObserver::class);
+        Dataset::observe(\App\Observers\DatasetObserver::class);
     }
 
     /**

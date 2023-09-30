@@ -114,11 +114,6 @@ class DatasetController extends Controller
                 ]);
             }
 
-            if($dataset->status != Status::STATUS_PUBLISHED)
-            {
-                DatasetHelper::removeFromFavorites($dataset->id);
-            }
-
             Toastr::success('Dataset saved');
             \DB::commit();
             return redirect()->route('datasets.index');
