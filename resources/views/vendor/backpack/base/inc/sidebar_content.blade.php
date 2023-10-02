@@ -24,3 +24,5 @@
 </li>
 <li class="nav-item"><a class="nav-link" href="{{ backpack_url('permission') }}"><i class="nav-icon la la-shield-alt"></i> Permissions</a></li>
 @endif
+
+<li class="nav-item"><a class="nav-link" href="{{ backpack_url('pages') }}"><i class="nav-icon la la-file"></i> Pages</a></li>

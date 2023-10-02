@@ -42,11 +42,6 @@ Route::group(['prefix' => 'inventory-of-datasets'], function(){
     Route::get('/details/{data_inv_title}/{data_inv_id}', [\App\Http\Controllers\DatasetInventoryController::class, 'show'])->name('dataset_inventory_detailed');
 });
 
-Route::get('/privacy-policy', function () {
-    return view('privacy-policy');
-})->name('privacy-policy');
-
-
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -73,5 +68,7 @@ Route::get('/cache',function(){
 
     dump(\App\Logic\ScenarioHelper::get_results(scenario: $scenario,cache: true));
 });
+
+Route::get('{page:slug}', [\App\Http\Controllers\PageController::class, 'show'])->name('page.show');
 
 require __DIR__.'/auth.php';

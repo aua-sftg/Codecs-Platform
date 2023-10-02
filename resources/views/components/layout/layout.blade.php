@@ -152,43 +152,28 @@
                     </div>
                 </div>
                 <div class="col-lg-3 offset-lg-0 mt-5">
-                    <h4 class="text-color-white font-weight-bold mb-4-5">Navigation</h4>
+                    <h4 class="text-color-white font-weight-bold mb-4-5">Digital Repository</h4>
                     <ul class="list list-unstyled columns-lg-1">
-                        <li>
-                            <a href="{{route('home')}}" class="text-color-hover-primary">
-                                Home
-                            </a>
-                        </li>
-                        <li>
-                            <a class="text-color-hover-primary" href="{{route('meta_inventory_home')}}">
-                                Meta-inventory
-                            </a>
-                        </li>
-                        <li>
-                            <a class="text-color-hover-primary" href="{{route('inventory_of_datasets')}}">
-                                Inventory of datasets
-                            </a>
-                        </li>
+                        @foreach(\App\Logic\LinkList::footer_navigation() as $menu)
+                            <li>
+                                <a href="{{$menu['url']}}" class="text-color-hover-primary">
+                                    {{$menu['label']}}
+                                </a>
+                            </li>
+                        @endforeach
                     </ul>
                 </div>
                 <div class="col-lg-3 offset-lg-0 mt-5">
                     <h4 class="text-color-white font-weight-bold mb-4-5">ABOUT US</h4>
                     <ul class="list list-unstyled columns-lg-1">
-                        <li>
-                            <a href="https://www.horizoncodecs.eu/" target="_blank" class="text-color-hover-primary">
-                                About CODECS
-                            </a>
-                        </li>
-                        <li>
-                            <a href="mailto:aua.developers@gmail.com" class="text-color-hover-primary">
-                                Help
-                            </a>
-                        </li>
-{{--                        <li>--}}
-{{--                            <a href="demo-construction-services.html" class="text-color-hover-primary">--}}
-{{--                                Contact us--}}
-{{--                            </a>--}}
-{{--                        </li>--}}
+                        @foreach(\App\Logic\LinkList::footer_about_links() as $menu)
+                            <li>
+                                <a href="{{$menu['url']}}" target="_blank" class="text-color-hover-primary">
+                                    {{$menu['label']}}
+                                </a>
+                            </li>
+                        @endforeach
+
                     </ul>
                 </div>
                 <div class="col-lg-4 mt-5">
@@ -213,7 +198,7 @@
 {{--                            Terms and conditions--}}
 {{--                        </a>--}}
 {{--                        <span class="text-color-white">|</span>--}}
-                        <a href="{{route('privacy-policy')}}" class="text-color-hover-primary">
+                        <a href="{{route('page.show',['page'=>'privacy-policy'])}}" class="text-color-hover-primary">
                             Privacy Policy
                         </a>
 {{--                        <span class="text-color-white">|</span>--}}

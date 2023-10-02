@@ -30,6 +30,41 @@ class LinkList
                 'icon' => asset('img/icons/favorite.svg'),
                 'group' => 'profile_sidebar',
                 'order'=>3
+            ],[
+                'label' => __('Home'),
+                'url' => route('home'),
+                'group' => 'footer_navigation',
+                'order'=>1
+            ],[
+                'label' => __('Meta-inventory'),
+                'url' => route('meta_inventory_home'),
+                'group' => 'footer_navigation',
+                'order'=>2
+            ],[
+                'label' => __('Inventory of datasets'),
+                'url' => route('inventory_of_datasets'),
+                'group' => 'footer_navigation',
+                'order'=>3
+            ],[
+                'label' => __('Imprints'),
+                'url' => route('page.show',['page'=>'imprints']),
+                'group' => 'footer_navigation',
+                'order'=>4
+            ],
+
+
+
+            //FOOTER ABOUT LINKS
+            [
+                'label' => __('About CODECS'),
+                'url' => 'https://www.horizoncodecs.eu/',
+                'group' => 'footer_about_links',
+                'order'=>1
+            ],[
+                'label' => __('Help'),
+                'url' => 'mailto:aua.developers@gmail.com',
+                'group' => 'footer_about_links',
+                'order'=>2
             ],
         ]);
     }
@@ -42,5 +77,15 @@ class LinkList
     public static function profile_sidebar():Collection
     {
         return self::get('profile_sidebar');
+    }
+
+    public static function footer_navigation():Collection
+    {
+        return self::get('footer_navigation');
+    }
+
+    public static function footer_about_links():Collection
+    {
+        return self::get('footer_about_links');
     }
 }
