@@ -29,7 +29,10 @@ class CheckIfAdmin
      */
     private function checkIfUserIsAdmin($user)
     {
-        return Gate::forUser($user)->allows(PermissionHelper::PERMISSION_ADMIN_PERMISSIONS);
+        return Gate::forUser($user)->any([
+            PermissionHelper::PERMISSION_ADMIN_PERMISSIONS,
+            PermissionHelper::PERMISSION_MANAGE_SCENARIOS
+        ]);
     }
 
     /**

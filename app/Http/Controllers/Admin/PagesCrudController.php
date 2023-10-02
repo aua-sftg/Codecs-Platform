@@ -4,9 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\PagesRequest;
 use App\Logic\PagesHelper;
+use App\Logic\PermissionHelper;
 use Backpack\CRUD\app\Http\Controllers\CrudController;
 use Backpack\CRUD\app\Http\Controllers\Operations\DeleteOperation;
 use Backpack\CRUD\app\Library\CrudPanel\CrudPanelFacade as CRUD;
+use Illuminate\Support\Facades\Gate;
 
 /**
  * Class PagesCrudController
@@ -30,6 +32,11 @@ class PagesCrudController extends CrudController
         CRUD::setModel(\App\Models\Page::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/pages');
         CRUD::setEntityNameStrings('pages', 'pages');
+
+        if(Gate::forUser(backpack_user())->allows(PermissionHelper::PERMISSION_ADMIN_PERMISSIONS)===false)
+        {
+            abort(403);
+        }
     }
 
     /**

@@ -1,7 +1,12 @@
 {{-- This file is used to store sidebar items, inside the Backpack admin panel --}}
 <li class="nav-item"><a class="nav-link" href="{{ backpack_url('dashboard') }}"><i class="la la-home nav-icon"></i> {{ trans('backpack::base.dashboard') }}</a></li>
 
-<li class="nav-item"><a class="nav-link" href="{{ backpack_url('user') }}"><i class="nav-icon la la-user-alt"></i> Users</a></li>
+
+@if(Gate::forUser(backpack_user())->allows(\App\Logic\PermissionHelper::PERMISSION_ADMIN_PERMISSIONS))
+    <li class="nav-item"><a class="nav-link" href="{{ backpack_url('user') }}"><i class="nav-icon la la-user-alt"></i> Users</a></li>
+    <li class="nav-item"><a class="nav-link" href="{{ backpack_url('pages') }}"><i class="nav-icon la la-file"></i> Pages</a></li>
+@endif
+
 
 @if(\Illuminate\Support\Facades\Gate::forUser(backpack_user())->allows(\App\Logic\PermissionHelper::PERMISSION_MANAGE_SCENARIOS))
     <li class="nav-item"><a class="nav-link" href="{{ backpack_url('scenario') }}"><i class="nav-icon la la-scroll"></i> Scenarios</a></li>
@@ -24,5 +29,3 @@
 </li>
 <li class="nav-item"><a class="nav-link" href="{{ backpack_url('permission') }}"><i class="nav-icon la la-shield-alt"></i> Permissions</a></li>
 @endif
-
-<li class="nav-item"><a class="nav-link" href="{{ backpack_url('pages') }}"><i class="nav-icon la la-file"></i> Pages</a></li>

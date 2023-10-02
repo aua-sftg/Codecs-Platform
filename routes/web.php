@@ -69,6 +69,6 @@ Route::get('/cache',function(){
     dump(\App\Logic\ScenarioHelper::get_results(scenario: $scenario,cache: true));
 });
 
-Route::get('{page:slug}', [\App\Http\Controllers\PageController::class, 'show'])->name('page.show');
-
 require __DIR__.'/auth.php';
+
+Route::get('{page:slug}', [\App\Http\Controllers\PageController::class, 'show'])->name('page.show');
