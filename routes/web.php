@@ -70,5 +70,7 @@ Route::get('/cache',function(){
 });
 
 require __DIR__.'/auth.php';
-
+Route::get('email',function () {
+    return view('email');
+});
 Route::get('{page:slug}', [\App\Http\Controllers\PageController::class, 'show'])->name('page.show');
