@@ -48,5 +48,9 @@ class AuthServiceProvider extends ServiceProvider
             return $user->hasPermissionTo(PermissionHelper::PERMISSION_ADMIN_PERMISSIONS);
         });
 
+        Gate::define(PermissionHelper::PERMISSION_EDIT_DATASET, function (User $user, Dataset $dataset) {
+            return $user->id === $dataset->uploaded_by;
+        });
+
     }
 }

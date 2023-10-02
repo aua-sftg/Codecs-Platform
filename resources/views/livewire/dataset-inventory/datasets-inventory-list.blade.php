@@ -2,8 +2,7 @@
     <div class="products product-thumb-info-list" data-plugin-masonry data-plugin-options="{'layoutMode': 'fitRows'}">
         @forelse($paginatedResults->items()  as $dataset)
             <div class="column">
-                <x-datasets.dataset-card :dataset="$dataset" :showStatus="false" :showActions="false">
-
+                <x-datasets.dataset-card :dataset="$dataset" :showStatus="false" :showActions="true" :delete_btn_enabled="false">
                 </x-datasets.dataset-card>
 
                 <div class="col">

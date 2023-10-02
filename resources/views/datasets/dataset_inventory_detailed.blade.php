@@ -22,6 +22,14 @@
 
     <x-slot:main_body>
         <div class="container pt-3 pb-2">
+            @can(\App\Logic\PermissionHelper::PERMISSION_EDIT_DATASET, $dataset)
+                <div class="text-end">
+                    <a href="{{route('datasets.form.edit',$dataset)}}" class="bg-yellow rounded-pill p-1 px-3 fw-bold text-4 text-white">
+                        {{__('Edit')}}
+                    </a>
+                </div>
+            @endcan
+
             <div class="row pt-2 mb-5">
                 <div class="dataset_card dataset mt-5">
                     <div class="col-sm-12">
