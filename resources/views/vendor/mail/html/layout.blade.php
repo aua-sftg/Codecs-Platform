@@ -29,7 +29,7 @@ width: 100% !important;
 <tr>
 <td align="center">
 <table class="content" width="100%" cellpadding="0" cellspacing="0" role="presentation">
-    <img src="{{asset('img/logos/horizontal/Logo-Codec-horizontal-light.png')}}" alt="">
+    <img style="max-width:80%; height: 90px; width:auto;" src="{{asset('img/logos/horizontal/Logo-Codec-horizontal-light.png')}}" alt="">
 
 <!-- Email Body -->
 <tr>

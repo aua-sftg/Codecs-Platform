@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use Carbon\Carbon;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Password;
 use Illuminate\View\View;
 
@@ -35,6 +37,12 @@ class PasswordResetLinkController extends Controller
         $status = Password::sendResetLink(
             $request->only('email')
         );
+
+        DB::table('password_resets')
+            ->where('email', $request->email)
+            ->update([
+                'created_at' => Carbon::now()->toDateTimeString()
+            ]);
 
         return $status == Password::RESET_LINK_SENT
                     ? back()->with('status', __($status))
