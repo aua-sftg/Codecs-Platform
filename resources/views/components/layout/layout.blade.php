@@ -53,7 +53,21 @@
     <!-- Head Libs -->
     <script src="{{ asset('vendor/modernizr/modernizr.min.js') }}"></script>
     <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
-{{--    <script src="{{asset('js/popper2.9.2.min.js')}}"></script>--}}
+
+
+
+    <!-- Cookie Consent by TermsFeed https://www.TermsFeed.com -->
+    <script type="text/javascript" src="//www.termsfeed.com/public/cookie-consent/4.1.0/cookie-consent.js" charset="UTF-8"></script>
+    <script type="text/javascript" charset="UTF-8">
+        document.addEventListener('DOMContentLoaded', function () {
+            cookieconsent.run({"notice_banner_type":"simple","consent_type":"express","palette":"light","language":"en","page_load_consent_levels":["strictly-necessary"],"notice_banner_reject_button_hide":false,"preferences_center_close_button_hide":false,"page_refresh_confirmation_buttons":false,"website_name":"CODECS","website_privacy_policy_url":"https://digital-agriculture.horizoncodecs.eu/privacy-policy"});
+        });
+    </script>
+
+    <noscript>Free cookie consent management tool by <a href="https://www.termsfeed.com/">TermsFeed</a></noscript>
+    <!-- End Cookie Consent by TermsFeed https://www.TermsFeed.com -->
+
+        {{--    <script src="{{asset('js/popper2.9.2.min.js')}}"></script>--}}
 {{--    <script src="{{ asset('vendor/bootstrap/js/bootstrap.min.js') }}"></script>--}}
 
 
@@ -201,10 +215,8 @@
                         <a href="{{route('page.show',['page'=>'privacy-policy'])}}" class="text-color-hover-primary">
                             Privacy Policy
                         </a>
-{{--                        <span class="text-color-white">|</span>--}}
-{{--                        <a href="demo-construction-services.html" class="text-color-hover-primary">--}}
-{{--                            Cookies policy--}}
-{{--                        </a>--}}
+                        <span class="text-color-white">|</span>
+                        <a href="#" class="text-color-hover-primary" id="open_preferences_center">Update Cookies Preferences</a>
 {{--                        <span class="text-color-white">|</span>--}}
 {{--                        <a href="demo-construction-services.html" class="text-color-hover-primary">--}}
 {{--                            Disclaimer--}}
