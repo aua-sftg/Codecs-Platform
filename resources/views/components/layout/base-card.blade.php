@@ -6,7 +6,7 @@
                     <div class="product-thumb-info border-0 mb-0">
                         <a href="{{$link??'javascript:void(0)'}}">
                             <div class="product-thumb-info-image">
-                                <img alt="" class="img-fluid" src="{{ $image }}">
+                                <img alt="" loading="lazy" class="img-fluid" src="{{ $image }}">
 
                             </div>
                         </a>

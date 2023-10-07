@@ -158,7 +158,7 @@
             <div class="row pt-4 mb-1 gy-4">
                 <div class="col-lg-2 align-self-center">
                     <a href="{{route('home')}}">
-                        <img alt="Codecs" class="img-fluid logo" width="123" height="48" src="{{ asset('img/logos/vertical/Logo-Codec-blanc.png') }}">
+                        <img alt="Codecs" loading="lazy" class="img-fluid logo" width="123" height="48" src="{{ asset('img/logos/vertical/Logo-Codec-blanc.png') }}">
                     </a>
                     <div>
                         <p class="text-color-primary text-3 mb-1 mt-2">Project Coordinator</p>
@@ -238,7 +238,7 @@
 {{--        </div>--}}
     </footer>
     <div class="row pb-2 pt-2">
-        <img alt="Codecs" style="max-width: 300px" src="{{ asset('img/co-funded-by-the-eu.svg') }}">
+        <img alt="Codecs" style="max-width: 300px" loading="lazy" src="{{ asset('img/co-funded-by-the-eu.svg') }}">
     </div>
 
 </div>
