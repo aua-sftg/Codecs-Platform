@@ -2,9 +2,12 @@
 
 namespace App\Console\Commands;
 
+use App\Logic\MetaInventory;
 use App\Models\Fairshare;
+use App\Models\Favorite;
 use Illuminate\Console\Command;
 use GuzzleHttp\Client;
+use Illuminate\Support\Collection;
 
 
 class CrawlFairshare extends Command
@@ -22,6 +25,10 @@ class CrawlFairshare extends Command
      * @var string
      */
     protected $description = 'Retrieve Fairshare DATS using the API\'s get Tools function ';
+
+    private Collection|null $db_ids = null;
+
+    private const INVENTORY_ID = 'fairshare_id';
 
     /**
      * Execute the console command.
@@ -61,7 +68,21 @@ class CrawlFairshare extends Command
                         $tool['createdAt'] = now()->toDateTimeString();
                         $tool['updatedAt'] = now()->toDateTimeString();
                         $tool = array_merge(['fairshare_id' => $tool['fairshare_id'],'createdAt' => $tool['createdAt'], 'updatedAt' => $tool['updatedAt']], $tool);
-                        Fairshare::insert($tool);
+                        if($this->recordExists($tool[self::INVENTORY_ID])){
+                            $this->info('Record with id '.$tool[self::INVENTORY_ID].' will be updated');
+                            Fairshare::where(self::INVENTORY_ID,$tool[self::INVENTORY_ID])->update($tool);
+                        }else{
+                            $this->info('Record with id '.$tool[self::INVENTORY_ID].' will be inserted');
+                            Fairshare::insert($tool);
+                        }
+                    }else{
+                        if($this->recordExists($tool['_id'])){
+                            $this->info('Record with id '.$tool['_id'].' is draft and will removed from favorites');
+                            //if is draft  and exists in the database update as draft
+                            $this->info('Record with id '.$tool['_id'].' will be updated as draft');
+                            Fairshare::where(self::INVENTORY_ID,$tool['_id'])->update(['isDraft'=>true]);
+                            MetaInventory::removeFromFavorites('fairshare',$tool['_id']);
+                        }
                     }
                 }
             }
@@ -72,5 +93,14 @@ class CrawlFairshare extends Command
             $this->error('Failed to fetch data from the API.');
         }
 
+    }
+
+    public function recordExists($id): bool
+    {
+        if (!$this->db_ids) {
+            $this->db_ids = Fairshare::all()->pluck(self::INVENTORY_ID);
+        }
+
+        return $this->db_ids->contains($id);
     }
 }
