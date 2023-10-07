@@ -6,6 +6,24 @@
     $name = $field['name'].'[]';
     $tag_id = 'field-'.time().'-'.$field['name'];
 
+    $select_options = [];
+    foreach ($value??[] as $key=>$label){
+        // if the value is in json format then it's a value from old function
+        // so the key is the json value in order for the save controller to handle it
+        // and the label is within the json, so we need to decode it and extract it.
+        if(\Illuminate\Support\Str::isJson($label)){
+            $key = $label;
+            $label = json_decode($label, true);
+            $label = $label['label'];
+        } elseif(is_int($key) && is_string($label)) {
+            // it is record id from the database so i need to find the appropriate label
+            $key = $label;
+            $label = $options->get($key);
+        }
+        $select_options[$key] = $label;
+    }
+
+    $value = $select_options;
 @endphp
 <div class="">
     <div class="form-group" wire:ignore>

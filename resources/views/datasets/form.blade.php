@@ -238,10 +238,22 @@
                     $('[data-step="'+step+'"]').fadeIn();
                     $('[data-step-icon="'+step+'"]').addClass('active');
                     $("html, body").animate({ scrollTop: 0 }, 1000);
+                    Form.toggle_nav_buttons();
+                },
+                toggle_nav_buttons : ()=>{
+                    if(Form.CURRENT_STEP===1) {
+                        $('#prev_btn').addClass('d-none');
+                    }else{
+                        $('#prev_btn').removeClass('d-none');
+                    }
+
                     if(Form.CURRENT_STEP===Form.LAST_STEP)
                     {
                         $('#next_btn').addClass('d-none');
                         $('#submit_btn').removeClass('d-none');
+                    }else{
+                        $('#next_btn').removeClass('d-none');
+                        $('#submit_btn').addClass('d-none');
                     }
                 },
                 save_draft : ()=>{
