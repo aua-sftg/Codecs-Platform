@@ -33,9 +33,19 @@ class CrawlDesira extends Command
      */
     public function handle()
     {
-        $this->parseArguments();
-        $crawler = new DesiraCrawler($this->from_id, $this->to_id);
-        $crawler->run();
+        try {
+            \DB::beginTransaction();
+
+            $this->parseArguments();
+            $crawler = new DesiraCrawler($this->from_id, $this->to_id);
+            $crawler->run();
+
+            \DB::commit();
+        }catch (\Exception $e){
+            \DB::rollBack();
+            dump($e->getMessage());
+        }
+
 
         return Command::SUCCESS;
     }

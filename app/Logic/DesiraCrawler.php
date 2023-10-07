@@ -4,6 +4,7 @@ namespace App\Logic;
 
 use App\Models\Desira;
 use Carbon\Carbon;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 
@@ -12,6 +13,8 @@ class DesiraCrawler
     private int $from, $to;
     private string $url = 'https://desira-apps.madgik.di.uoa.gr/kbtbe/indexedtools/getTool?id=%s';
     private const CHUNK_SIZE = 80; // The number of records to insert in a single query.
+    private Collection|null $db_ids = null;
+    private const SLEEP_TIME = 0.6;
 
     /**
      * DesiraCrawler constructor.
@@ -30,20 +33,29 @@ class DesiraCrawler
      */
     public function run(): void
     {
+
         $dataChunk = [];
         foreach (range($this->from, $this->to) as $id) {
             dump('crawling id: ' . $id .'/'. $this->to);
             $data = $this->crawl($id);
-            if ($data) {
-                $dataChunk[] = $data;
 
-                if (count($dataChunk) === self::CHUNK_SIZE) {
-                    Desira::insert($dataChunk);
-                    $dataChunk = [];
-                }
+            if(!$data) continue;
+
+            if (!$this->recordExists($data['DesiraID'])) {
+                dump("Desire ID: {$data['DesiraID']} will be created");
+                $dataChunk[] = $data;
+            }else{
+                dump("Desire ID: {$data['DesiraID']} will be updated");
+                Desira::where('DesiraID',$data['DesiraID'])->update($data);
             }
-            dump('sleeping for 1 second');
-            sleep(0.6);
+
+            if (count($dataChunk) === self::CHUNK_SIZE) {
+                Desira::insert($dataChunk);
+                $dataChunk = [];
+            }
+
+            dump('sleeping for '.self::SLEEP_TIME.' seconds');
+            sleep(self::SLEEP_TIME);
         }
 
         if (!empty($dataChunk)) {
@@ -216,5 +228,24 @@ class DesiraCrawler
         $simplified_data['Domain'] = $data[0]['mappedAttributes'][key($data[0]['data'])];
         $simplified_data['Subdomain'] = $data[0]['mappedAttributes'][$subdomainId];
         $simplified_data['ApplicationScenarios'] = $applicationScenarios;
+    }
+
+    /**
+     * Check if a record with the given DesiraID already exists in the DB.
+     *
+     * @param $desiraID
+     * @return bool
+     */
+    private function recordExists($desiraID):bool
+    {
+        /**
+         * If the IDs have not been fetched from the DB yet, fetch them.
+         * this only need to be done the first time it's called to limite the quires to the DB.
+         */
+        if($this->db_ids==null){
+            $this->db_ids = Desira::all()->pluck('DesiraID');
+        }
+
+        return $this->db_ids->contains($desiraID);
     }
 }
