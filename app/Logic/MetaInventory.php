@@ -2,6 +2,7 @@
 
 namespace App\Logic;
 
+use App\Models\Favorite;
 use App\Models\Scenario;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
@@ -260,5 +261,12 @@ class MetaInventory
             $stats[$vendor['key']] = DB::collection($vendor['key'])->count();
         }
         return $stats;
+    }
+
+    public static function removeFromFavorites($collection, $id):bool
+    {
+        return Favorite::where('collection','=',$collection)
+            ->where('collection_id','=',$id)
+            ->delete();
     }
 }
