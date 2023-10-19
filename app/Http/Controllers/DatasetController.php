@@ -65,7 +65,7 @@ class DatasetController extends Controller
 
 
         try {
-            DB::beginTransaction();
+//            DB::beginTransaction();
 
             if($request->get('status',null) == 'published')
             {
@@ -115,11 +115,11 @@ class DatasetController extends Controller
             }
 
             Toastr::success('Dataset saved');
-            \DB::commit();
+//            \DB::commit();
             return redirect()->route('datasets.index');
         }catch (Exception $e)
         {
-            \DB::rollBack();
+//            \DB::rollBack();
             return redirect()->back()->withErrors($e->getMessage());
         }
     }
