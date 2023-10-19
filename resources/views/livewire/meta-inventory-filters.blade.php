@@ -1,4 +1,4 @@
-<div class="col-lg-3 position-relative">
+<div class="col-lg-3 position-relative" wire:ignore>
     <aside class="sidebar custom_shadow p-4" id="sidebar" data-plugin-sticky data-plugin-options="{'minWidth': 991, 'containerSelector': '.container', 'padding': {'top': 110}}">
 
         <div class="filters-container">
