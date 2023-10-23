@@ -13,8 +13,16 @@
     <title>{{ $title ?? 'Codecs | Maximising the CO-benefits  of agricultural Digitalisation  through conducive digital ECoSystems' }}</title>
 
     <meta name="keywords" content="{{ $keywords ?? 'Codecs, digital, agriculture' }}" />
-    <meta name="description" content="{{ $description ?? 'Codecs | Maximising the CO-benefits  of agricultural Digitalisation  through conducive digital ECoSystems' }}">
+    <meta name="description" content="{{ $description ?? 'CODECS will develop, and turn into concepts, methods, tools, evidence, a vision of “sustainable digitalisation” with the goal of improving the collective capacity to understand, assess and foresee the full range of benefits and costs of farm digitalisation, and to build digital ecosystems that maximise the net benefits of digitalisation.' }}">
     <meta name="author" content="{{ $author ?? 'AUA Sftg' }}">
+
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content='Codecs | Maximising the CO-benefits  of agricultural Digitalisation  through conducive digital ECoSystems' />
+    <meta property="og:description" content="CODECS will develop, and turn into concepts, methods, tools, evidence, a vision of “sustainable digitalisation” with the goal of improving the collective capacity to understand, assess and foresee the full range of benefits and costs of farm digitalisation, and to build digital ecosystems that maximise the net benefits of digitalisation." />
+    <meta property="og:url" content="https://digital-agriculture.horizoncodecs.eu/" />
+    <meta property="og:site_name" content="CODECS" />
+    <meta property="og:image" content="{{asset('img/logos/cropped-codecs-192x192.png')}}" />
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="{{ asset('img/logos/cropped-codecs-32x32.png') }}">
