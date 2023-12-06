@@ -118,7 +118,7 @@ class ScenarioHelper implements BackpackFieldsInterface
             return MetaInventory::cached($scenario);
         }else{
             $criteria = MetaInventory::extractCriteria(
-                json_decode($scenario->filters,true)
+                json_decode($scenario->filters ?? '[]',true)
             );
             return MetaInventory::search(collect($criteria));
         }
