@@ -13,8 +13,17 @@
     <title>{{ $title ?? 'Codecs | Maximising the CO-benefits  of agricultural Digitalisation  through conducive digital ECoSystems' }}</title>
 
     <meta name="keywords" content="{{ $keywords ?? 'Codecs, digital, agriculture' }}" />
-    <meta name="description" content="{{ $description ?? 'Codecs | Maximising the CO-benefits  of agricultural Digitalisation  through conducive digital ECoSystems' }}">
+    <meta name="description" content="{{ $description ?? 'CODECS will develop, and turn into concepts, methods, tools, evidence, a vision of “sustainable digitalisation” with the goal of improving the collective capacity to understand, assess and foresee the full range of benefits and costs of farm digitalisation, and to build digital ecosystems that maximise the net benefits of digitalisation.' }}">
     <meta name="author" content="{{ $author ?? 'AUA Sftg' }}">
+
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content='Codecs | Maximising the CO-benefits  of agricultural Digitalisation' />
+    <meta property="og:description" content="CODECS will develop, and turn into concepts, methods, tools, evidence, a vision of “sustainable digitalisation” with the goal of improving the collective capacity to understand, assess and foresee the full range of benefits and costs of farm digitalisation, and to build digital ecosystems that maximise the net benefits of digitalisation." />
+    <meta property="og:url" content="https://digital-agriculture.horizoncodecs.eu/" />
+    <meta property="og:site_name" content="CODECS" />
+    <meta property="og:image" content="{{asset('img/logos/horizontal/Logo-Codec-horizontal.png')}}" />
+    <meta name="twitter:card" content="summary_large_image" />
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="{{ asset('img/logos/cropped-codecs-32x32.png') }}">
@@ -56,16 +65,29 @@
 
 
 
-    <!-- Cookie Consent by TermsFeed https://www.TermsFeed.com -->
-    <script type="text/javascript" src="//www.termsfeed.com/public/cookie-consent/4.1.0/cookie-consent.js" charset="UTF-8"></script>
-    <script type="text/javascript" charset="UTF-8">
-        document.addEventListener('DOMContentLoaded', function () {
-            cookieconsent.run({"notice_banner_type":"simple","consent_type":"express","palette":"light","language":"en","page_load_consent_levels":["strictly-necessary"],"notice_banner_reject_button_hide":false,"preferences_center_close_button_hide":false,"page_refresh_confirmation_buttons":false,"website_name":"CODECS","website_privacy_policy_url":"https://digital-agriculture.horizoncodecs.eu/privacy-policy"});
-        });
-    </script>
+        <!-- Cookie Consent by TermsFeed https://www.TermsFeed.com -->
+        <script type="text/javascript" src="//www.termsfeed.com/public/cookie-consent/4.1.0/cookie-consent.js" charset="UTF-8"></script>
+        <script type="text/javascript" charset="UTF-8">
+            document.addEventListener('DOMContentLoaded', function () {
+                cookieconsent.run({"notice_banner_type":"simple","consent_type":"express","palette":"light","language":"en","page_load_consent_levels":["strictly-necessary"],"notice_banner_reject_button_hide":false,"preferences_center_close_button_hide":false,"page_refresh_confirmation_buttons":false,"website_name":"CODECS","website_privacy_policy_url":"https://www.digital-agriculture.horizoncodecs.eu/privacy-policy"});
+            });
+        </script>
 
-    <noscript>Free cookie consent management tool by <a href="https://www.termsfeed.com/">TermsFeed</a></noscript>
-    <!-- End Cookie Consent by TermsFeed https://www.TermsFeed.com -->
+        <!-- Google Analytics -->
+        <!-- Google Tag Manager -->
+
+        <script type="text/plain" data-cookie-consent="tracking">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+                j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+                'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+                })(window,document,'script','dataLayer','GTM-TXSXSN9D');
+        </script>
+
+        <!-- End Google Tag Manager -->
+        <!-- end of Google Analytics-->
+
+        <noscript>Free cookie consent management tool by <a href="https://www.termsfeed.com/">TermsFeed</a></noscript>
+        <!-- End Cookie Consent by TermsFeed https://www.TermsFeed.com -->
 
         {{--    <script src="{{asset('js/popper2.9.2.min.js')}}"></script>--}}
 {{--    <script src="{{ asset('vendor/bootstrap/js/bootstrap.min.js') }}"></script>--}}
