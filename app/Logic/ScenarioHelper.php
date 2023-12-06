@@ -98,9 +98,10 @@ class ScenarioHelper implements BackpackFieldsInterface
                 'create'=>false,
             ],[
                 'name'      => 'lft',
-                'type'=>'text',
+                'type'=>'number',
                 'label'     => 'Order',
-                'list'=>true
+                'list'=>true,
+                'create'=>true,
             ],[   // Hidden
                 'name'  => 'creator_id',
                 'type'  => 'hidden',
