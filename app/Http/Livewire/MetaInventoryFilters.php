@@ -2,12 +2,27 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Scenario;
 use Livewire\Component;
 use App\Logic\MetaInventoryFilterHelper;
+use App\Logic\ScenarioHelper;
 
 class MetaInventoryFilters extends Component
 {
+    protected $listeners = ['updateTotalCount' => 'updateTotalCount'];
 
+    public $totalCount;
+    public $scenario;
+    public function mount(Scenario $scenario) {
+        $this->scenario = $scenario;
+        $this->totalCount = ScenarioHelper::get_results_count($this->scenario);
+    }
+
+    public function updateTotalCount($total)
+    {
+        $this->totalCount = $total;
+        $this->dispatchBrowserEvent('updateTotalCount', ['totalCount' => $total]);
+    }
     public array $filterOptions = [
       'sources' => [
           ['value'=>'DesiraID', 'label'=>'Desira'],

@@ -24,7 +24,7 @@
         <div class="container pt-3 pb-2">
 
             <div class="row pt-2">
-                @livewire('meta-inventory-filters')
+                @livewire('meta-inventory-filters', ['scenario' => $scenario])
                 <div class="col-lg-9">
                     @livewire('meta-inventory-search')
                     @livewire('meta-inventory-list', ['scenario' => $scenario])

@@ -52,6 +52,19 @@ class DatasetHelper implements BackpackFieldsInterface
         return $query->orderBy('lft', 'asc')->get();
     }
 
+    public static function get_datasets_count(string $status = Status::STATUS_PUBLISHED) : int
+    {
+        // Define a query builder for datasets
+        $query = Dataset::query();
+
+        in_array($status, [Status::STATUS_PUBLISHED, Status::STATUS_UNPUBLISHED, Status::STATUS_DRAFT])
+            ? $query->where('status', $status)
+            : null;
+
+        // Order the scenarios by 'lft' in ascending order
+        return $query->count();
+    }
+
     public static function stepped_fields(): Collection
     {
         return DatasetHelper::fields()

@@ -4,9 +4,23 @@ namespace App\Http\Livewire\DatasetInventory;
 
 use Livewire\Component;
 use App\Logic\DatasetInventoryFilterHelper;
+use App\Logic\DatasetHelper;
 
 class DatasetsInventoryFilters extends Component
 {
+    protected $listeners = ['updateTotalCount' => 'updateTotalCount'];
+
+    public $totalCount;
+
+    public function mount() {
+        $this->totalCount = DatasetHelper::get_datasets_count();
+    }
+
+    public function updateTotalCount($total)
+    {
+        $this->totalCount = $total;
+        $this->dispatchBrowserEvent('updateTotalCount', ['totalCount' => $total]);
+    }
     public array $filterOptions = [
         'sectors' => [],
         'data_formats'=> [],

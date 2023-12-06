@@ -2,6 +2,9 @@
     <aside class="sidebar custom_shadow p-4" id="sidebar" data-plugin-sticky data-plugin-options="{'minWidth': 991, 'containerSelector': '.container', 'padding': {'top': 110}}">
 
         <div class="filters-container">
+            <div>
+                <p id="totalCount"> {{$totalCount}} results found</p>
+            </div>
             @foreach($filterOptions as $key => $options)
                 <div class="filter">
                     <div id="{{ $key }}_filter" class="dropdown mt-2">
@@ -30,6 +33,11 @@
     </aside>
 
     <script>
+        window.addEventListener('updateTotalCount', event => {
+            console.log("Event: ", event);
+            document.getElementById('totalCount').innerText = event.detail.totalCount + ' results found';
+        });
+
         window.addEventListener('clear-checkboxes', event => {
             let $this = $(this);
             var checkboxes = document.querySelectorAll('input[type="checkbox"]');

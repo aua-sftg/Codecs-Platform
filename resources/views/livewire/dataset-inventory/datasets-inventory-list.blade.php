@@ -12,7 +12,7 @@
         @empty
             <div class="w-100 text-center">
                 <img src="{{ asset('img/undraw_loading_re_5axr.svg') }}" alt="No results found" class="w-100" style="max-width: 300px"/>
-                <p class="mb-0">No results found.</p>
+                <p class="mb-0">No datasets available yet.</p>
             </div>
         @endforelse
     </div>

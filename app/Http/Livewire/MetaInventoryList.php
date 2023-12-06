@@ -98,7 +98,8 @@ class MetaInventoryList extends Component
         $perPage = $this->perPage;
         $filteredDatasets = $results->forPage($this->currentPage, $perPage);
         $total = $results->count();
-
+        //Emit total count to display in the filters sidebar
+        $this->emit('updateTotalCount', $total);
 
         $paginatedResults = new LengthAwarePaginator(
             $filteredDatasets,

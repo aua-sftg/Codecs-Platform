@@ -3,6 +3,9 @@
 
         <div class="filters-container">
             <!-- Filter by Source Inventory Dropdown -->
+            <div>
+                <p id="totalCount"> {{$totalCount}} results found</p>
+            </div>
             <div class="filter">
                 <div id="source_filter" class="dropdown mt-2">
                     <button class="btn filters_color dropdown-toggle w-100" type="button" id="source-inventory-dropdown" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
@@ -47,6 +50,11 @@
         </div>
     </aside>
     <script>
+        window.addEventListener('updateTotalCount', event => {
+            console.log("Event: ", event);
+            document.getElementById('totalCount').innerText = event.detail.totalCount + ' results found';
+        });
+
         window.addEventListener('clear-checkboxes', event => {
             let $this = $(this);
             var checkboxes = document.querySelectorAll('input[type="checkbox"]');

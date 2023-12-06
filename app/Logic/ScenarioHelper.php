@@ -123,4 +123,18 @@ class ScenarioHelper implements BackpackFieldsInterface
             return MetaInventory::search(collect($criteria));
         }
     }
+
+    public static function get_results_count(Scenario $scenario, bool $cache=true): int
+    {
+
+        if($cache && array($scenario->meta_inventory))
+        {
+            return MetaInventory::cached($scenario)->count();
+        }else{
+            $criteria = MetaInventory::extractCriteria(
+                json_decode($scenario->filters,true)
+            );
+            return MetaInventory::search(collect($criteria))->count();
+        }
+    }
 }

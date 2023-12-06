@@ -93,7 +93,8 @@ class DatasetsInventoryList extends Component
         $perPage = $this->perPage;
         $filteredDatasets = $datasets->forPage($this->currentPage, $perPage);
         $total = $datasets->count();
-
+        //Emit total count to display in the filters sidebar
+        $this->emit('updateTotalCount', $total);
 
         $paginatedResults = new LengthAwarePaginator(
             $filteredDatasets,
