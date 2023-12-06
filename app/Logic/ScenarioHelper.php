@@ -98,9 +98,10 @@ class ScenarioHelper implements BackpackFieldsInterface
                 'create'=>false,
             ],[
                 'name'      => 'lft',
-                'type'=>'text',
+                'type'=>'number',
                 'label'     => 'Order',
-                'list'=>true
+                'list'=>true,
+                'create'=>true,
             ],[   // Hidden
                 'name'  => 'creator_id',
                 'type'  => 'hidden',
@@ -118,7 +119,7 @@ class ScenarioHelper implements BackpackFieldsInterface
             return MetaInventory::cached($scenario);
         }else{
             $criteria = MetaInventory::extractCriteria(
-                json_decode($scenario->filters,true)
+                json_decode($scenario->filters ?? '[]',true)
             );
             return MetaInventory::search(collect($criteria));
         }
