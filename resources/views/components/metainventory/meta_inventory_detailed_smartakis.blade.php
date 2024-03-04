@@ -73,14 +73,14 @@
             <h4 class="mb-0 font-weight-semi-bold text-4 text-color-custom-blue">TRL</h4>
             <p class="text-3-5 mb-3">{{$dataset['trl']}}</p>
         </div>
-        <div class="card_subsection smartakis col-sm-12">
-            <h4 class="mb-0 font-weight-semi-bold text-4 text-color-custom-blue">License</h4>
-            @if(!$dataset['license'])
-                <p class="text-3-5 mb-3">Unknown</p>
-            @else
-                <p class="text-3-5 mb-3">{{$dataset['license']}}</p>
-            @endif
-        </div>
+{{--        <div class="card_subsection smartakis col-sm-12">--}}
+{{--            <h4 class="mb-0 font-weight-semi-bold text-4 text-color-custom-blue">License</h4>--}}
+{{--            @if(!$dataset['license'])--}}
+{{--                <p class="text-3-5 mb-3">Unknown</p>--}}
+{{--            @else--}}
+{{--                <p class="text-3-5 mb-3">{{$dataset['license']}}</p>--}}
+{{--            @endif--}}
+{{--        </div>--}}
     </div>
     <div class="col_width">
         <div class="card_column card_column_responsive justify-content-start">
