@@ -287,6 +287,12 @@
     }
 }
 
+@media screen and (max-width: 767px) {
+    .license_container {
+        flex-wrap: wrap;
+    }
+}
+
 @media screen and (max-width: 450px) {
     .keywords-container {
         max-width: 300px;

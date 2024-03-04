@@ -213,11 +213,11 @@
                     </ul>
                 </div>
                 <div class="col-lg-4 mt-5">
-                    <p class="text-color-white text-3 mb-3">The CODECS platform is a dynamic hub for showcasing cutting-edge digital tools and research, promoting technology adoption in line with a sustainable digital vision. Its integrated infrastructure provides a centralized control panel, empowering users to conveniently access and oversee available resources through a unified interface.</p>
+                    <p class="text-color-white text-3 mb-3 text-justify">The CODECS platform is a dynamic hub for showcasing cutting-edge digital tools and research, promoting technology adoption in line with a sustainable digital vision. Its integrated infrastructure provides a centralized control panel, empowering users to conveniently access and oversee available resources through a unified interface.</p>
                 </div>
             </div>
             <div class="row">
-                <div class="col text-center mb-0">
+                <div class="col text-left mb-0">
                     <ul class="footer-social-icons social-icons social-icons-clean social-icons-medium mb-0">
                         <li class="social-icons-facebook">
                             <a href="https://www.facebook.com/horizoneucodecs" target="_blank" title="Facebook"><i class="fab fa-facebook-f text-4 text-color-white"></i></a>
@@ -229,27 +229,31 @@
                             <a href="https://www.linkedin.com/company/horizoncodecs/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in text-4 text-color-white"></i></a>
                         </li>
                     </ul>
-                    <p style="text-align: right">
-{{--                        <a href="demo-construction-services.html" class="text-color-hover-primary">--}}
-{{--                            Terms and conditions--}}
-{{--                        </a>--}}
-{{--                        <span class="text-color-white">|</span>--}}
+                </div>
+
+            </div>
+            <div class="d-flex pb-0 justify-content-between license_container" style="margin-bottom: 20px; margin-top: 20px">
+                <div class="d-flex text-center mb-0 ">
+                    <p class="text-color-white text-3 mb-0 me-2">© 2024. This work is openly licensed via CC BY 4.0. </p>
+                    <img alt="CC" class="mb-2" style="width: 20px; height: 20px" loading="lazy" src="{{ asset('img/cc.svg') }}">
+                    <img alt="BY" class="mb-2" style="width: 20px; height: 20px" loading="lazy" src="{{ asset('img/by.svg') }}">
+                </div>
+                <div>
+                    <p class="mb-0 text-right">
+                        {{--                        <a href="demo-construction-services.html" class="text-color-hover-primary">--}}
+                        {{--                            Terms and conditions--}}
+                        {{--                        </a>--}}
+                        {{--                        <span class="text-color-white">|</span>--}}
                         <a href="{{route('page.show',['page'=>'privacy-policy'])}}" class="text-color-hover-primary">
                             Privacy Policy
                         </a>
                         <span class="text-color-white">|</span>
                         <a href="#" class="text-color-hover-primary" id="open_preferences_center">Update Cookies Preferences</a>
-{{--                        <span class="text-color-white">|</span>--}}
-{{--                        <a href="demo-construction-services.html" class="text-color-hover-primary">--}}
-{{--                            Disclaimer--}}
-{{--                        </a>--}}
+                        {{--                        <span class="text-color-white">|</span>--}}
+                        {{--                        <a href="demo-construction-services.html" class="text-color-hover-primary">--}}
+                        {{--                            Disclaimer--}}
+                        {{--                        </a>--}}
                     </p>
-                </div>
-
-            </div>
-            <div class="row pb-0">
-                <div class="col text-center mb-0">
-                    <p class="text-color-white text-3 mb-0">CODECS © 2023. All Rights Reserved. </p>
                 </div>
             </div>
         </div>
