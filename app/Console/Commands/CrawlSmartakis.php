@@ -56,6 +56,8 @@ class CrawlSmartakis extends Command
                             $tool['smartakis_id'] = $tool['id'];
                             unset($tool['id']);
                         }
+                        // Add the license attribute and set it to 'Unknown'
+                        $tool['license'] = 'Unknown';
                         $tool['createdAt'] = now()->toDateTimeString();
                         $tool['updatedAt'] = now()->toDateTimeString();
                         $tool = array_merge(['smartakis_id' => $tool['smartakis_id'],'createdAt' => $tool['createdAt'], 'updatedAt' => $tool['updatedAt']], $tool);

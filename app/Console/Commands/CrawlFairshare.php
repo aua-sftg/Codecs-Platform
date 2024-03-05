@@ -65,6 +65,8 @@ class CrawlFairshare extends Command
                         if (isset($tool['countries']) && is_array($tool['countries']) && ($key = array_search("Ukrania", $tool['countries'])) !== false) {
                             $tool['countries'][$key] = "Ukraine";
                         }
+                        // Add the license attribute and set it to 'Unknown'
+                        $tool['license'] = 'Unknown';
                         $tool['createdAt'] = now()->toDateTimeString();
                         $tool['updatedAt'] = now()->toDateTimeString();
                         $tool = array_merge(['fairshare_id' => $tool['fairshare_id'],'createdAt' => $tool['createdAt'], 'updatedAt' => $tool['updatedAt']], $tool);

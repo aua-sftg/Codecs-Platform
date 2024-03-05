@@ -98,7 +98,8 @@ class DesiraCrawler
             $simplified_data = [
                 'DesiraID' => $desired_id,
                 'created_at' => Carbon::now()->toDateString(),
-                'updated_at' => Carbon::now()->toDateString()
+                'updated_at' => Carbon::now()->toDateString(),
+                'license'=> 'Unknown'
             ];
 
             foreach ($data as $attribute) {
