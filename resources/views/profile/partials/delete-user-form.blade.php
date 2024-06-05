@@ -10,7 +10,7 @@
     </header>
     <!-- Button trigger modal -->
     <button type="button" class="btn btn-danger" onclick="$('#user-delete-modal').modal('show')" data-toggle="modal" data-target="#exampleModal">
-        Launch demo modal
+        Delete account
     </button>
 
     <!-- Modal -->
