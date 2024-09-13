@@ -102,6 +102,10 @@
     border-left-color: #27c24c;
 }
 
+.dataset_card.nutricheck {
+    border-left-color: #103A4C;
+}
+
 .dataset_card.dataset {
     border-left-color: #1c64b6;
 }
