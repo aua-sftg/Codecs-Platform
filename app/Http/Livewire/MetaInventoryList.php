@@ -47,6 +47,7 @@ class MetaInventoryList extends Component
                     (isset($dataset['Description']) && stripos($dataset['Description'], $this->searchTerm) !==false) ||
                     (isset($dataset['keywords']) && stripos($dataset['keywords'], $this->searchTerm) !==false) ||
                     (isset($dataset['croppingSystem'])  && in_array($this->searchTerm, $dataset['croppingSystem']) !==false) ||
+                    (isset($dataset['description'])  && in_array($this->searchTerm, $dataset['description']) !==false) ||
                     (isset($dataset['Keywords']) && in_array($this->searchTerm, $dataset['Keywords']) !==false));
 
             });

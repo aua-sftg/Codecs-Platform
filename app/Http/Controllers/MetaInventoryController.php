@@ -6,6 +6,7 @@ use App\Models\Scenario;
 use App\Models\Fairshare;
 use App\Models\Smartakis;
 use App\Models\Desira;
+use App\Models\Nutricheck;
 use Illuminate\Http\Request;
 
 class MetaInventoryController extends Controller
@@ -15,6 +16,7 @@ class MetaInventoryController extends Controller
         'fairshare' => Fairshare::class,
         'smartakis' => Smartakis::class,
         'desira' => Desira::class,
+        'nutricheck' => Nutricheck::class,
     ];
 
     public function index(Scenario $scenario) {
@@ -46,6 +48,10 @@ class MetaInventoryController extends Controller
         elseif ($meta_inv_source == 'desira') {
             $meta['keywords'] = $dataset['Keywords'];
             $meta['description'] = $dataset['Description'];
+        }
+        elseif ($meta_inv_source == 'nutricheck') {
+            $meta['keywords'] = [];
+            $meta['description'] = $dataset['description'];
         }
         // Check if 'keywords' is an array and convert it to a string if needed
         if (is_array($meta['keywords'])) {

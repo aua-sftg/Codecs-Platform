@@ -27,7 +27,8 @@ class MetaInventoryFilters extends Component
       'sources' => [
           ['value'=>'DesiraID', 'label'=>'Desira'],
           ['value'=>'fairshare_id', 'label'=>'Fairshare'],
-          ['value'=>'smartakis_id', 'label'=>'smartAKIS']
+          ['value'=>'smartakis_id', 'label'=>'smartAKIS'],
+          ['value'=>'nutricheck_id', 'label'=>'Nutricheck'],
       ],
       'countries'=> []
     ];

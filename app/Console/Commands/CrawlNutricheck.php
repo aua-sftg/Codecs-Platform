@@ -115,7 +115,7 @@ class CrawlNutricheck extends Command
                             foreach ($item['countries'] as $country) {
                                 $countries[] = $country['name']['en'] ?? 'Unknown';
                             }
-                            $tool['countries'] = implode(', ', $countries);
+                            $tool['countries'] = $countries; // Save as an array
                         }
 
                         // Process target audience

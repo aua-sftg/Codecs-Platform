@@ -5,7 +5,8 @@
         [
             Fairshare: {{$results->where('vendor','=','fairshare')->count()}} ,
             Smartakis: {{$results->where('vendor','=','smartakis')->count()}} ,
-            Desira: {{$results->where('vendor','=','desira')->count()}}
+            Desira: {{$results->where('vendor','=','desira')->count()}},
+            Nutricheck: {{$results->where('vendor','=','nutricheck')->count()}}
         ]</h5>
     <div class="row">
         <div class="col-12" style="max-height: 500px; overflow: scroll;">
