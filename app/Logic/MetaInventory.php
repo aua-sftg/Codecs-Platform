@@ -149,6 +149,33 @@ class MetaInventory
                     'type'=> 'string',
                 ],
             ]
+        ],[
+            'label'=>'Nutricheck',
+            'key'=>'nutricheck',
+            'logo'=>'',
+            'filters'=>[
+                [
+                    'id'=> 'description',
+                    'label'=> 'Description',
+                    'name'=> 'description',
+                    'type'=> 'string',
+                ],[
+                    'id'=> 'target_audience',
+                    'label'=> 'Target Audience',
+                    'name'=> 'target_audience',
+                    'type'=> 'string',
+                ],[
+                    'id'=> 'crop_types',
+                    'label'=> 'Crop Types',
+                    'name'=> 'crop_types',
+                    'type'=> 'string',
+                ],[
+                    'id'=> 'tool_type',
+                    'label'=> 'Tool Type',
+                    'name'=> 'tool_type',
+                    'type'=> 'string',
+                ],
+            ]
         ],
     ];
 
@@ -204,11 +231,19 @@ class MetaInventory
     public static function search_results_transform(Collection $results):Collection
     {
         return $results->map(function($record){
-            $vendor = isset($record['fairshare_id']) ? 'fairshare' : (isset($record['smartakis_id']) ? 'smartakis' : 'desira');
+            if (isset($record['fairshare_id'])) {
+                $vendor = 'fairshare';
+            } elseif (isset($record['smartakis_id'])) {
+                $vendor = 'smartakis';
+            } elseif (isset($record['nutricheck_id'])) {
+                $vendor = 'nutricheck';
+            } else {
+                $vendor = 'desira';
+            }
             return [
                 'vendor'=> $vendor,
-                'title'=>$vendor=='desira'?$record['ToolName']:($vendor=='fairshare'?$record['name']:$record['title']),
-                'desc'=> $vendor == 'fairshare' ? $record['desc'] : ($vendor=='smartakis' ? $record['description'] : $record['Description']),
+                'title' => $vendor == 'desira' ? $record['ToolName'] : ($vendor == 'fairshare' ? $record['name'] : ($vendor == 'nutricheck' ? $record['name'] : $record['title'])),
+                'desc' => $vendor == 'fairshare' ? $record['desc'] : ($vendor == 'smartakis' ? $record['description'] : ($vendor == 'nutricheck' ? $record['description'] : $record['Description'])),
             ];
         });
     }
@@ -221,22 +256,34 @@ class MetaInventory
 
     public static function result_transform(array $record):array
     {
-        $vendor = isset($record['fairshare_id']) ? 'fairshare' : (isset($record['smartakis_id']) ? 'smartakis' : 'desira');
+        if (isset($record['fairshare_id'])) {
+            $vendor = 'fairshare';
+        } elseif (isset($record['smartakis_id'])) {
+            $vendor = 'smartakis';
+        } elseif (isset($record['nutricheck_id'])) {
+            $vendor = 'nutricheck';
+        } else {
+            $vendor = 'desira';
+        }
 
         $image = match($vendor) {
             'fairshare'=>   isset($record['imagePath'][0]) ? $record['imagePath'][0] : asset('img/fairshare-logo-light.png'),
             'smartakis'=> isset($record['picAddress'][0]) ? $record['picAddress'][0] : asset('img/smartakis=log.png'),
-            'desira'=> asset('img/Logo-Desira.png')
+            'desira'=> asset('img/Logo-Desira.png'),
+            'nutricheck'=> asset('img/nutricheck_logo.svg'),
         };
         return [
             'vendor'=> $vendor,
             'id'=>$record['_id'],
-            'title'=>$vendor=='desira'?$record['ToolName']:($vendor=='fairshare'?$record['name']:$record['title']),
-            'short_desc'=> $vendor == 'fairshare' ? $record['title'] : ($vendor=='smartakis' ? $record['shortDescription'] : $record['Description']),
-            'keywords'=>$vendor == 'fairshare' ? array_filter(explode(',', $record['keywords']), 'trim') : ($vendor=='smartakis' ? $record['croppingSystem'] : $record['Keywords']),
+            'title' => $vendor == 'desira' ? $record['ToolName'] : ($vendor == 'fairshare' ? $record['name'] : ($vendor == 'nutricheck' ? $record['name'] : $record['title'])),
+            'short_desc' => $vendor == 'fairshare' ? $record['title'] : ($vendor == 'smartakis' ? $record['shortDescription'] : ($vendor == 'nutricheck' ? $record['description'] : $record['Description'])),
+            'keywords' => $vendor == 'fairshare' ? array_filter(explode(',', $record['keywords']), 'trim') : 
+             ($vendor == 'smartakis' ? $record['croppingSystem'] : 
+             ($vendor == 'desira' ? $record['Keywords'] : 
+             ($vendor == 'nutricheck' ? [] : null))),
             'image'=>$image,
             'update_date'=>$vendor == 'desira' ? $record['updated_at'] : $record['updatedAt'],
-            'source'=>$vendor=='desira'?'Desira': ($vendor =='fairshare'?'Fairshare' :($vendor=='smartakis'?'smartAKIS':$vendor)),
+            'source' => $vendor == 'desira' ? 'Desira' : ($vendor == 'fairshare' ? 'Fairshare' : ($vendor == 'smartakis' ? 'smartAKIS' : ($vendor == 'nutricheck' ? 'Nutricheck' : $vendor))),
         ];
     }
 

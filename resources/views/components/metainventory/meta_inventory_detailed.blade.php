@@ -21,6 +21,8 @@
                     smartAKIS Dataset
                 @elseif($meta['source'] == 'desira')
                     Desira Dataset
+                @elseif($meta['source'] == 'nutricheck')
+                    Nutricheck Dataset
                 @endif
             </x-slot:current_view>
         </x-layout.hero_simple>
@@ -42,6 +44,10 @@
                     <x-metainventory.meta_inventory_detailed_deshira :dataset="$dataset">
 
                     </x-metainventory.meta_inventory_detailed_deshira>
+                @elseif($meta['source'] == 'nutricheck')
+                    <x-metainventory.meta_inventory_detailed_nutricheck :dataset="$dataset">
+
+                    </x-metainventory.meta_inventory_detailed_nutricheck>
                 @endif
             </div>
 

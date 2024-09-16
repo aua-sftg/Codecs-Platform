@@ -22,6 +22,7 @@ class MetaInventoryFilterHelper
             'fairshare' => 'countries',
             'smartakis' => 'country',
             'desira' => 'CountriesUsed',
+            'nutricheck' => 'countries',
         ];
 
         foreach ($collections as $collectionName => $fieldName) {
@@ -41,6 +42,11 @@ class MetaInventoryFilterHelper
 
         // Keep unique values
         $distinctCountries = array_unique($distinctCountries);
+
+        // Remove countries with a comma character
+        $distinctCountries = array_filter($distinctCountries, function($country) {
+            return strpos($country, ',') === false && trim($country) === $country;
+        });
 
         if(!empty($countriesToRemove)) {
             $distinctCountries = array_diff($distinctCountries, $countriesToRemove);
