@@ -1,18 +1,22 @@
 @props(['dataset'])
 @php
-    if (!empty($dataset['vendorWebsite'])) {
-        if (!preg_match("~^(?:f|ht)tps?://~i", $dataset['vendorWebsite'])) {
-        $dataset['vendorWebsite'] = "https://" . $dataset['vendorWebsite'];
+    $vendorWebsite = $dataset['vendorWebsite'] ?? null;
+    $website = $dataset['website'] ?? null;
+    $supportingLinks = $dataset['supportingLinks'] ?? [];
+
+    if (!empty($vendorWebsite)) {
+        if (!preg_match("~^(?:f|ht)tps?://~i", $vendorWebsite)) {
+            $vendorWebsite = "https://" . $vendorWebsite;
         }
     }
-    if (!empty($dataset['website'])) {
-        if (!preg_match("~^(?:f|ht)tps?://~i", $dataset['website'])) {
-        $dataset['website'] = "https://" . $dataset['website'];
+    if (!empty($website)) {
+        if (!preg_match("~^(?:f|ht)tps?://~i", $website)) {
+            $website = "https://" . $website;
         }
     }
-    foreach ($dataset['supportingLinks'] as $index=>$link) {
+    foreach ($supportingLinks as $index => $link) {
         if (!preg_match("~^(?:f|ht)tps?://~i", $link)) {
-        $dataset['supportingLinks'][$index] = "https://" . $link;
+            $supportingLinks[$index] = "https://" . $link;
         }
     }
 @endphp
@@ -41,7 +45,7 @@
             @endauth
         </div>
         <p class="mb-0">
-            <a target="_blank" class="text-color-dark" href="{{$dataset['vendorWebsite']}}">{{$dataset['vendor']}}</a>
+            <a target="_blank" class="text-color-dark" href="{{$vendorWebsite}}">{{$dataset['vendor']}}</a>
         </p>
         <div class="divider divider-small">
             <hr class="bg-color-grey-scale-4">
@@ -63,10 +67,10 @@
                 </ul>
             </div>
         @endif
-        @if(!empty($dataset['website']))
+        @if(!empty($website))
                 <div class="card_subsection smartakis col-sm-12">
                     <h4 class="mb-0 font-weight-semi-bold text-4 text-color-custom-blue">Website</h4>
-                    <a target="_blank" class="text-3-5" href="{{$dataset['website']}}" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block; max-width: 100%;">{{$dataset['website']}}</a>
+                    <a target="_blank" class="text-3-5" href="{{$website}}" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block; max-width: 100%;">{{$website}}</a>
                 </div>
         @endif
         <div class="card_subsection smartakis col-sm-12">
@@ -104,7 +108,7 @@
                 <div class="card_subsection smartakis col_custom">
                     <h4 class="mb-0 font-weight-semi-bold text-4 text-color-custom-blue">Resources</h4>
                     <ul class="text-3-5 mb-3 list-unstyled">
-                        @foreach($dataset['supportingLinks'] as $link)
+                        @foreach($supportingLinks as $link)
                             <li> <a target="_blank" class="text-3-5" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block; max-width: 100%;" href="{{$link}}">{{$link}}</a></li>
                         @endforeach
                         <li> <a target="_blank" class="text-3-5" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block; max-width: 100%;" href="{{$dataset['pdf']}}">{{$dataset['pdf']}}</a></li>
@@ -122,5 +126,4 @@
             @endforeach
         </div>
     </div>
-
 </div>

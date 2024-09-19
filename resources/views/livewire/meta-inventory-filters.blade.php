@@ -1,4 +1,4 @@
-<div class="col-lg-3 position-relative" wire:ignore>
+<div class="col-lg-3 position-relative">
     <aside class="sidebar custom_shadow p-4" id="sidebar" data-plugin-sticky data-plugin-options="{'minWidth': 991, 'containerSelector': '.container', 'padding': {'top': 110}}">
 
         <div class="filters-container">
@@ -49,18 +49,28 @@
             </div>
         </div>
     </aside>
+    
     <script>
-        window.addEventListener('updateTotalCount', event => {
-            console.log("Event: ", event);
-            document.getElementById('totalCount').innerText = event.detail.totalCount + ' results found';
-        });
-
-        window.addEventListener('clear-checkboxes', event => {
-            let $this = $(this);
-            var checkboxes = document.querySelectorAll('input[type="checkbox"]');
-            checkboxes.forEach(function (checkbox) {
-                checkbox.checked = false;
+        document.addEventListener('DOMContentLoaded', function () {
+            window.addEventListener('updateTotalCount', event => {
+                // console.log("Event: ", event);
+                document.getElementById('totalCount').innerText = event.detail.totalCount + ' results found';
             });
-        })
+
+            window.addEventListener('clear-checkboxes', () => {
+                // console.log("clear-checkboxes event received");
+                var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+                checkboxes.forEach(function (checkbox) {
+                    checkbox.checked = false;
+                });
+            });
+
+            // Detect when the page is loaded via the back button
+            window.addEventListener('pageshow', function (event) {
+                if (event.persisted || (window.performance && window.performance.navigation.type === 2)) {
+                    @this.call('clearFilters');
+                }
+            });
+        });
     </script>
 </div>

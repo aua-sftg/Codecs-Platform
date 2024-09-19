@@ -189,7 +189,7 @@ class CrawlNutricheck extends Command
             }
 
             // Write the processed data to a text file
-            file_put_contents(storage_path('app/nutricheck_final_data.txt'), print_r($processedData, true));
+            // file_put_contents(storage_path('app/nutricheck_final_data.txt'), print_r($processedData, true));
 
             $this->info(' datasets retrieved from Nutricheck.');
             return Command::SUCCESS;

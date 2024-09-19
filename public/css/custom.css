@@ -106,6 +106,10 @@
     border-left-color: #103A4C;
 }
 
+.dataset_card.ipmworks {
+    border-left-color: #097b32;
+}
+
 .dataset_card.dataset {
     border-left-color: #1c64b6;
 }
@@ -206,6 +210,10 @@
 
 .card_subsection.nutricheck {
     border-left-color: #103A4C;
+}
+
+.card_subsection.ipmworks {
+    border-left-color: #097b32;
 }
 
 .card_subsection.dataset {

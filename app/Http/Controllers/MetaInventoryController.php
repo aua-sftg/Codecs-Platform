@@ -7,6 +7,7 @@ use App\Models\Fairshare;
 use App\Models\Smartakis;
 use App\Models\Desira;
 use App\Models\Nutricheck;
+use App\Models\IPMWorks;
 use Illuminate\Http\Request;
 
 class MetaInventoryController extends Controller
@@ -17,6 +18,7 @@ class MetaInventoryController extends Controller
         'smartakis' => Smartakis::class,
         'desira' => Desira::class,
         'nutricheck' => Nutricheck::class,
+        'ipmworks' => IPMWorks::class,
     ];
 
     public function index(Scenario $scenario) {
@@ -50,6 +52,10 @@ class MetaInventoryController extends Controller
             $meta['description'] = $dataset['Description'];
         }
         elseif ($meta_inv_source == 'nutricheck') {
+            $meta['keywords'] = [];
+            $meta['description'] = $dataset['description'];
+        }
+        elseif ($meta_inv_source == 'ipmworks') {
             $meta['keywords'] = [];
             $meta['description'] = $dataset['description'];
         }

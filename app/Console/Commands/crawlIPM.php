@@ -33,7 +33,7 @@ class crawlIPM extends Command
      */
     public function handle()
     {
-        // Fetch datasets from the Nutricheck API
+        // Fetch datasets from the IPM API
         $apiUrl = 'https://ipmworks.net/ipmworks/resource/smartProtect';
         $client = new Client();
         $response = $client->get($apiUrl);
@@ -112,18 +112,58 @@ class crawlIPM extends Command
                                 'resource_type' => $item['resourceType']['name'] ?? null, // Extract resource type name
                                 'institution' => $item['contactInstitution'] ?? null, // Extract institution name
                                 'source_project' => $item['project'] ?? null,
+                                'source_project_link' => $item['projectWeb'] ?? null,
                                 'image_url' => 'https://ipmworks.net/ipmworks/resource/image/' . $item['idResource'], // Construct image URL
-      
+                                'language' => $item['language']['name'] ?? null, // Extract language name
+                                'ipm_creation_date' => $item['creationDate'] ?? null,
+
                             ];
-                             // Process additional languages if available_in_other_languages is 1
-                            if ($item['available_in_other_languages'] == 1 && !empty($item['languages'])) {
-                                $additionalLanguages = [];
-                                foreach ($item['languages'] as $language) {
-                                    $additionalLanguages[] = $language['name']['en'] ?? 'Unknown';
-                                }
-                                $tool['additional_languages'] = implode(', ', $additionalLanguages);
-                            }
     
+                            // Process links
+                            if (!empty($item['links'])) {
+                                $links = [];
+                                foreach ($item['links'] as $link) {
+                                    $links[] = $link['url'] ?? 'Unknown';
+                                }
+                                $tool['links'] = $links; // Save as an array
+                            }
+
+                            // Process sectors
+                            if (!empty($item['sectors'])) {
+                                $sectors = [];
+                                foreach ($item['sectors'] as $sector) {
+                                    $sectors[] = $sector['name'] ?? 'Unknown';
+                                }
+                                $tool['sectors'] = $sectors; // Save as an array
+                            }
+
+                            // Process regions
+                            if (!empty($item['regions'])) {
+                                $regions = [];
+                                foreach ($item['regions'] as $region) {
+                                    $regions[] = $region['name'] ?? 'Unknown';
+                                }
+                                $tool['regions'] = $regions; // Save as an array
+                            }
+
+                            // Process pests
+                            if (!empty($item['pests'])) {
+                                $pests = [];
+                                foreach ($item['pests'] as $pest) {
+                                    $pests[] = $pest['commonName'] ?? 'Unknown';
+                                }
+                                $tool['pests'] = $pests; // Save as an array
+                            }
+
+                            // Process crops
+                            if (!empty($item['crops'])) {
+                                $crops = [];
+                                foreach ($item['crops'] as $crop) {
+                                    $crops[] = $crop['commonName'] ?? 'Unknown';
+                                }
+                                $tool['crops'] = $crops; // Save as an array
+                            }
+
                             // Process links
                             if (!empty($item['links'])) {
                                 $links = [];
@@ -135,16 +175,16 @@ class crawlIPM extends Command
     
                             $tool['createdAt'] = now()->toDateTimeString();
                             $tool['updatedAt'] = now()->toDateTimeString();
-                            $tool = array_merge(['nutricheck_id' => $tool['nutricheck_id'],'createdAt' => $tool['createdAt'], 'updatedAt' => $tool['updatedAt']], $tool);  
+                            $tool = array_merge(['ipm_id' => $tool['ipm_id'],'createdAt' => $tool['createdAt'], 'updatedAt' => $tool['updatedAt']], $tool);  
                             
                             $processedData[] = $tool;
     
-                            if($this->recordExists($tool['nutricheck_id'])){
-                                dump("Nutricheck ID: {$tool['nutricheck_id']} will be updated");
-                                Nutricheck::where('nutricheck_id',$tool['nutricheck_id'])->update($tool);
+                            if($this->recordExists($tool['ipm_id'])){
+                                dump("IPMWorks ID: {$tool['ipm_id']} will be updated");
+                                IPMWorks::where('ipm_id',$tool['ipm_id'])->update($tool);
                             }else {
-                                dump("Nutricheck ID: {$tool['nutricheck_id']} will be inserted");
-                                Nutricheck::insert($tool);
+                                dump("IPMWorks ID: {$tool['ipm_id']} will be inserted");
+                                IPMWorks::insert($tool);
                             }
                         }
                     }
@@ -156,7 +196,7 @@ class crawlIPM extends Command
             }
 
             // Write the processed data to a text file
-            file_put_contents(storage_path('app/IPM_final_data.txt'), print_r($data, true));
+            // file_put_contents(storage_path('app/IPM_final_data.txt'), print_r($processedData, true));
 
             $this->info(' datasets retrieved from IPM.');
             return Command::SUCCESS;
