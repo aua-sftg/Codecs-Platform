@@ -23,6 +23,7 @@ class MetaInventoryFilterHelper
             'smartakis' => 'country',
             'desira' => 'CountriesUsed',
             'nutricheck' => 'countries',
+            'ipmworks' => 'regions',
         ];
 
         foreach ($collections as $collectionName => $fieldName) {

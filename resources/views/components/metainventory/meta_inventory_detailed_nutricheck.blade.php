@@ -22,6 +22,11 @@
             @endauth
 
         </div>
+        @if (!empty($dataset['manufacturer']))
+            <p class="mb-0 text-color-dark">
+                {{$dataset['manufacturer']}}
+            </p>
+        @endif
         <div class="divider divider-small">
             <hr class="bg-color-grey-scale-4">
         </div>
@@ -67,12 +72,6 @@
     <div class="col_width">
         <div class="card_column card_column_responsive justify-content-start h-100">
             <div class="flex_row align-items-stretch">
-                @if (!empty($dataset['manufacturer']))
-                    <div class="card_subsection nutricheck col_custom">
-                        <h4 class="mb-0 font-weight-semi-bold text-4 text-color-custom-blue">Manufacturer</h4>
-                        <p class="text-3-5 mb-3">{{$dataset['manufacturer']}}</p>
-                    </div>
-                @endif
                 @if (!empty($dataset['target_audience']))
                     <div class="card_subsection nutricheck col_custom">
                         <h4 class="mb-0 font-weight-semi-bold text-4 text-color-custom-blue">Target audience</h4>
@@ -85,10 +84,16 @@
                         <p class="text-3-5 mb-3">{{$dataset['tool_type']}}</p>
                     </div>
                 @endif
+                @if(!empty($dataset['freq_of_assessments']))
+                    <div class="card_subsection nutricheck col_custom">
+                        <h4 class="mb-0 font-weight-semi-bold text-4 text-color-custom-blue">Frequency of Assessments</h4>
+                        <p class="text-3-5 mb-3">{{$dataset['freq_of_assessments']}}</p>
+                    </div>
+                @endif
             </div>
             <div class="flex_row align-items-stretch">
                 @if(!empty($dataset['language']))
-                    <div class="card_subsection nutricheck col_custom">
+                    <div class="card_subsection nutricheck col_custom_duo">
                         <h4 class="mb-0 font-weight-semi-bold text-4 text-color-custom-blue">Languages</h4>
                         @php
                             $languages = [$dataset['language']];
@@ -101,15 +106,9 @@
                     </div>
                 @endif
                 @if (!empty($dataset['crop_types']))
-                    <div class="card_subsection nutricheck col_custom">
+                    <div class="card_subsection nutricheck col_custom_duo">
                         <h4 class="mb-0 font-weight-semi-bold text-4 text-color-custom-blue">Crop types</h4>
                         <p class="text-3-5 mb-3">{{$dataset['crop_types']}}</p>
-                    </div>
-                @endif
-                @if(!empty($dataset['freq_of_assessments']))
-                    <div class="card_subsection nutricheck col_custom">
-                        <h4 class="mb-0 font-weight-semi-bold text-4 text-color-custom-blue">Frequency of Assessments</h4>
-                        <p class="text-3-5 mb-3">{{$dataset['freq_of_assessments']}}</p>
                     </div>
                 @endif
             </div>

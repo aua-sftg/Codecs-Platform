@@ -106,6 +106,10 @@
     border-left-color: #103A4C;
 }
 
+.dataset_card.ipmworks {
+    border-left-color: #097b32;
+}
+
 .dataset_card.dataset {
     border-left-color: #1c64b6;
 }
@@ -208,6 +212,10 @@
     border-left-color: #103A4C;
 }
 
+.card_subsection.ipmworks {
+    border-left-color: #097b32;
+}
+
 .card_subsection.dataset {
     border-left-color: #1c64b6;
 }
@@ -220,6 +228,11 @@
 .col_custom {
     flex: 0 0 auto;
     width: 32%;
+}
+
+.col_custom_duo {
+    flex: 0 0 auto;
+    width: 45%;
 }
 
 .owl-carousel .owl-item img {
@@ -291,6 +304,10 @@
     }
 
     .col_custom {
+        width: 100%;
+    }
+
+    .col_custom_duo {
         width: 100%;
     }
 }

@@ -180,11 +180,11 @@
                 <h4 class="mb-0 font-weight-semi-bold text-4 text-color-custom-blue">Resources</h4>
                 <ul class="text-3-5 mb-3 list-unstyled">
                     @foreach($dataset['documentPath'] as $index=>$document)
-                        <li> <a target="_blank" class="text-3-5" href="{{$document}}">Document {{ $index + 1 }}</a></li>
+                        <li> <a target="_blank" class="text-3" href="{{$document}}">Document {{ $index + 1 }}</a></li>
                     @endforeach
                     @foreach($videos as $index=>$video)
                         @if(!($video=='null' || $video=='https://null'))
-                            <li> <a target="_blank" class="text-3-5" href="{{$video}}">Video {{ $index + 1 }}</a></li>
+                            <li> <a target="_blank" class="text-3" href="{{$video}}">Video {{ $index + 1 }}</a></li>
                         @endif
                     @endforeach
                 </ul>
