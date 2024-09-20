@@ -230,6 +230,11 @@
     width: 32%;
 }
 
+.col_custom_duo {
+    flex: 0 0 auto;
+    width: 45%;
+}
+
 .owl-carousel .owl-item img {
     max-height: 414px;
     object-fit: contain;
@@ -299,6 +304,10 @@
     }
 
     .col_custom {
+        width: 100%;
+    }
+
+    .col_custom_duo {
         width: 100%;
     }
 }

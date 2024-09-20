@@ -109,9 +109,9 @@
                     <h4 class="mb-0 font-weight-semi-bold text-4 text-color-custom-blue">Resources</h4>
                     <ul class="text-3-5 mb-3 list-unstyled">
                         @foreach($supportingLinks as $link)
-                            <li> <a target="_blank" class="text-3-5" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block; max-width: 100%;" href="{{$link}}">{{$link}}</a></li>
+                            <li> <a target="_blank" class="text-3" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block; max-width: 100%;" href="{{$link}}">{{$link}}</a></li>
                         @endforeach
-                        <li> <a target="_blank" class="text-3-5" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block; max-width: 100%;" href="{{$dataset['pdf']}}">{{$dataset['pdf']}}</a></li>
+                        <li> <a target="_blank" class="text-3" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block; max-width: 100%;" href="{{$dataset['pdf']}}">{{$dataset['pdf']}}</a></li>
                     </ul>
                 </div>
             </div>
