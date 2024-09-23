@@ -34,6 +34,8 @@ class UpdateScenarioCache
             'fairshare'=>[],
             'smartakis'=>[],
             'desira'=>[],
+            'nutricheck'=>[],
+            'ipmworks'=>[],
         ];
 
         $results->each(function($result) use (&$collection_results){
@@ -41,6 +43,10 @@ class UpdateScenarioCache
                 $key = 'fairshare';
             elseif(isset($result['smartakis_id']))
                 $key='smartakis';
+            elseif(isset($result['nutricheck_id']))
+                $key='nutricheck';
+            elseif(isset($result['ipm_id']))
+                $key='ipmworks';
             else
                 $key='desira';
 

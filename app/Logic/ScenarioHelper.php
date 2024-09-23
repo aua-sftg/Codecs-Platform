@@ -113,7 +113,6 @@ class ScenarioHelper implements BackpackFieldsInterface
 
     public static function get_results(Scenario $scenario, bool $cache=true):Collection
     {
-
         if($cache && array($scenario->meta_inventory))
         {
             return MetaInventory::cached($scenario);

@@ -15,8 +15,8 @@ class MetaInventoryList extends Component
     use WithPagination;
 
     public $scenario;
-    public $searchTerm='';
-    public $metaFilters;
+    public $searchTerm = '';
+    public $metaFilters = [];
     public $currentPage = 1;
     public $perPage = 20;
 
@@ -37,22 +37,21 @@ class MetaInventoryList extends Component
         $datasets = ScenarioHelper::get_results($this->scenario);
 
         // Apply search filter
-        if($this->searchTerm!='') {
-            $datasets = $datasets->filter(function ($dataset){
-
-                return ((isset($dataset['name']) && stripos($dataset['name'], $this->searchTerm) !==false) ||
-                    (isset($dataset['title']) && stripos($dataset['title'], $this->searchTerm) !==false) ||
-                    (isset($dataset['ToolName']) && stripos($dataset['ToolName'], $this->searchTerm) !==false) ||
-                    (isset($dataset['shortDescription']) && stripos($dataset['shortDescription'], $this->searchTerm) !==false) ||
-                    (isset($dataset['Description']) && stripos($dataset['Description'], $this->searchTerm) !==false) ||
-                    (isset($dataset['keywords']) && stripos($dataset['keywords'], $this->searchTerm) !==false) ||
-                    (isset($dataset['croppingSystem'])  && in_array($this->searchTerm, $dataset['croppingSystem']) !==false) ||
-                    (isset($dataset['Keywords']) && in_array($this->searchTerm, $dataset['Keywords']) !==false));
-
+        if ($this->searchTerm != '') {
+            $datasets = $datasets->filter(function ($dataset) {
+                return ((isset($dataset['name']) && stripos($dataset['name'], $this->searchTerm) !== false) ||
+                    (isset($dataset['title']) && stripos($dataset['title'], $this->searchTerm) !== false) ||
+                    (isset($dataset['ToolName']) && stripos($dataset['ToolName'], $this->searchTerm) !== false) ||
+                    (isset($dataset['shortDescription']) && stripos($dataset['shortDescription'], $this->searchTerm) !== false) ||
+                    (isset($dataset['Description']) && stripos($dataset['Description'], $this->searchTerm) !== false) ||
+                    (isset($dataset['keywords']) && stripos($dataset['keywords'], $this->searchTerm) !== false) ||
+                    (isset($dataset['croppingSystem']) && is_array($dataset['croppingSystem']) && in_array($this->searchTerm, $dataset['croppingSystem'])) ||
+                    (isset($dataset['description']) && is_array($dataset['description']) && in_array($this->searchTerm, $dataset['description'])) ||
+                    (isset($dataset['Keywords']) && is_array($dataset['Keywords']) && in_array($this->searchTerm, $dataset['Keywords'])));
             });
         }
 
-        //Apply metaFilters
+        // Apply metaFilters
         if (!empty($this->metaFilters)) {
             $datasets = $datasets->filter(function ($dataset) {
                 $showDataset = true;
@@ -63,25 +62,24 @@ class MetaInventoryList extends Component
                             case 'sources':
                                 // Find the count of the common elements between selected sources($values) and the set of keys in the dataset array
                                 // E.g. $values=[fairshare_id] $dataset=[fairshare_id=>...]
-                                //Count of this intersect returns 1 which means that this dataset is from Fairshare collection (similarly for smartAKIS, Desira)
+                                // Count of this intersect returns 1 which means that this dataset is from Fairshare collection (similarly for smartAKIS, Desira)
                                 $showDataset = count(
                                     array_intersect(
                                         $values, array_keys($dataset)
                                     )
-                                )>0;
+                                ) > 0;
                                 break;
                             case 'countries':
                                 // Find the appropriate key for the dataset from the list of values['countries','country','CountriesUsed']
                                 $datasetCountries = array_intersect(
-                                    ['countries','country','CountriesUsed'], array_keys($dataset)
+                                    ['countries', 'country', 'CountriesUsed', 'regions'], array_keys($dataset)
                                 );
-                                //If we found the datasets country key and at least one of the selected countries (values) intersects (exists) in the dataset value key show the dataset
+                                // If we found the datasets country key and at least one of the selected countries (values) intersects (exists) in the dataset value key show the dataset
                                 $showDataset = count($datasetCountries) == 1 && count(
-                                        array_intersect(
-                                            $dataset[current($datasetCountries)], $values
-                                        )
-                                    ) > 0;
-
+                                    array_intersect(
+                                        $dataset[current($datasetCountries)], $values
+                                    )
+                                ) > 0;
                                 break;
                         }
                     }
@@ -94,11 +92,10 @@ class MetaInventoryList extends Component
         $results = MetaInventory::results_transform($datasets);
         $results = $results->sortBy('title');
 
-
         $perPage = $this->perPage;
         $filteredDatasets = $results->forPage($this->currentPage, $perPage);
         $total = $results->count();
-        //Emit total count to display in the filters sidebar
+        // Emit total count to display in the filters sidebar
         $this->emit('updateTotalCount', $total);
 
         $paginatedResults = new LengthAwarePaginator(
@@ -111,22 +108,24 @@ class MetaInventoryList extends Component
             ]
         );
 
-        //I use this to only display up to 3 numbered button for choosing pages
+        // I use this to only display up to 3 numbered button for choosing pages
         $this->startPage = max(1, $this->currentPage - 1);
         $this->endPage = min($this->startPage + 2, $paginatedResults->lastPage());
 
-
         return view('livewire.meta-inventory-list', compact('paginatedResults'));
-
     }
 
-    public function searchParam($searchTerm) {
+    public function searchParam($searchTerm)
+    {
         $searchTerm = trim($searchTerm);
         $this->searchTerm = $searchTerm;
+        $this->resetPage();
     }
 
-    public function metaFilters($metaFilters) {
+    public function metaFilters($metaFilters)
+    {
         $this->metaFilters = $metaFilters;
+        $this->resetPage();
     }
 
     public function gotoPage($page)
@@ -142,5 +141,10 @@ class MetaInventoryList extends Component
     public function previousPage()
     {
         $this->currentPage--; // Decrement the currentPage
+    }
+
+    public function resetPage()
+    {
+        $this->currentPage = 1;
     }
 }
