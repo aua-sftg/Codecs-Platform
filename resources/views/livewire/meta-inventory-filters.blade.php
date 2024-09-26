@@ -1,4 +1,4 @@
-<div class="col-lg-3 position-relative">
+<div class="col-lg-3 position-relative" wire:ignore>
     <aside class="sidebar custom_shadow p-4" id="sidebar" data-plugin-sticky data-plugin-options="{'minWidth': 991, 'containerSelector': '.container', 'padding': {'top': 110}}">
 
         <div class="filters-container">
@@ -17,7 +17,17 @@
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" wire:click="toggleFilter('{{$source['value']}}','sources')" value="{{$source['value']}}" id="source-{{$source['value']}}">
                                     <label class="form-check-label" for="source-{{$source['value']}}">
-                                        {{$source['label']}}
+                                        @if($source['label'] === 'Desira')
+                                            DESIRA
+                                        @elseif($source['label'] === 'Fairshare')
+                                            FAIRshare
+                                        @elseif($source['label'] === 'Nutricheck')
+                                            NUTRI-CHECK NET
+                                        @elseif($source['label'] === 'IPMWorks')
+                                            IPMworks
+                                        @else
+                                            {{$source['label']}}
+                                        @endif
                                     </label>
                                 </div>
                             @endforeach

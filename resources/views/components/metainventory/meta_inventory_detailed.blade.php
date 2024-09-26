@@ -16,15 +16,17 @@
             </x-slot:sub_section>
             <x-slot:current_view>
                 @if($meta['source'] == 'fairshare')
-                    Fairshare Dataset
+                    FAIRshare Dataset
                 @elseif($meta['source'] == 'smartakis')
                     smartAKIS Dataset
                 @elseif($meta['source'] == 'desira')
-                    Desira Dataset
+                    DESIRA Dataset
                 @elseif($meta['source'] == 'nutricheck')
-                    Nutricheck Dataset
+                    NUTRI-CHECK NET Dataset
                 @elseif($meta['source'] == 'ipmworks')  
-                    IPMWorks Dataset
+                    IPMworks Dataset
+                @else
+                    {{$meta['source']}} Dataset
                 @endif
             </x-slot:current_view>
         </x-layout.hero_simple>
