@@ -133,6 +133,11 @@
                                                     Inventory of datasets
                                                 </a>
                                             </li>
+                                            <li>
+                                                <a class="nav-link {{ (request()->routeIs('assessment_tools')) ? ' active' : '' }}" href="{{route('assessment_tools')}}">
+                                                    Assessment Tools
+                                                </a>
+                                            </li>
                                         </ul>
                                     </nav>
                                 </div>
@@ -140,7 +145,7 @@
                                     <i class="fas fa-bars"></i>
                                 </button>
                             </div>
-                            <div class="header-nav-features header-nav-features-no-border header-nav-features-lg-show-border d-none d-sm-flex ms-3 order-1 order-lg-2">
+                            <div class="header-nav-features header_socials header-nav-features-no-border header-nav-features-lg-show-border d-none d-sm-flex ms-3 order-1 order-lg-2">
                                 <ul class="header-social-icons social-icons d-none d-sm-block social-icons-clean social-icons-medium ms-0">
                                     <li class="social-icons-facebook"><a href="https://www.facebook.com/horizoneucodecs" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a></li>
                                     <li class="social-icons-twitter"><a href="https://twitter.com/HORIZONCODECS" target="_blank" title="Twitter"><i class="fa-brands fa-x-twitter"></i></a></li>

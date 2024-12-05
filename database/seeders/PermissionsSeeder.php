@@ -38,6 +38,16 @@ class PermissionsSeeder extends Seeder
 
         Permission::updateOrCreate(
             [
+                'guard_name'=>PermissionHelper::PERMISSION_MANAGE_ASSESSMENTOOLS
+            ],
+            [
+                'name'=>'Manage assessment tools',
+                'guard_name'=>PermissionHelper::PERMISSION_MANAGE_ASSESSMENTOOLS
+            ]
+        );
+
+        Permission::updateOrCreate(
+            [
                 'guard_name'=>PermissionHelper::PERMISSION_ADMIN_PERMISSIONS
             ],
             [
