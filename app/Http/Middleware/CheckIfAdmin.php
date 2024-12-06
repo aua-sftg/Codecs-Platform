@@ -31,7 +31,8 @@ class CheckIfAdmin
     {
         return Gate::forUser($user)->any([
             PermissionHelper::PERMISSION_ADMIN_PERMISSIONS,
-            PermissionHelper::PERMISSION_MANAGE_SCENARIOS
+            PermissionHelper::PERMISSION_MANAGE_SCENARIOS,
+            PermissionHelper::PERMISSION_MANAGE_ASSESSMENTOOLS
         ]);
     }
 

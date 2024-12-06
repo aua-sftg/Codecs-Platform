@@ -336,3 +336,12 @@
 a:hover{
     text-decoration: none !important;
 }
+
+
+@media screen and (max-width:1199px) and (min-width:992px) {
+    .header_socials {
+        display: none!important;
+    }
+    
+}
+

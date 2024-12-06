@@ -116,7 +116,7 @@
                         <div class="header-row">
                             <div class="header-nav header-nav-links order-3 order-lg-1">
                                 <div class="header-nav-main header-nav-main-square header-nav-main-text-capitalize header-nav-main-effect-1 header-nav-main-sub-effect-1">
-                                    <nav class="collapse px-3-5">
+                                    <nav class="collapse">
                                         <ul class="nav nav-pills" id="mainNav">
                                             <li>
                                                 <a class="nav-link {{ (request()->routeIs('home')) ? ' active' : '' }}" href="{{route('home')}}">
@@ -133,6 +133,11 @@
                                                     Inventory of datasets
                                                 </a>
                                             </li>
+                                            <li>
+                                                <a class="nav-link {{ (request()->routeIs('assessment_tools')) ? ' active' : '' }}" href="{{route('assessment_tools')}}">
+                                                    Assessment Toolkit
+                                                </a>
+                                            </li>
                                         </ul>
                                     </nav>
                                 </div>
@@ -140,7 +145,7 @@
                                     <i class="fas fa-bars"></i>
                                 </button>
                             </div>
-                            <div class="header-nav-features header-nav-features-no-border header-nav-features-lg-show-border d-none d-sm-flex ms-3 order-1 order-lg-2">
+                            <div class="header-nav-features header_socials header-nav-features-no-border header-nav-features-lg-show-border d-none d-sm-flex ms-3 order-1 order-lg-2">
                                 <ul class="header-social-icons social-icons d-none d-sm-block social-icons-clean social-icons-medium ms-0">
                                     <li class="social-icons-facebook"><a href="https://www.facebook.com/horizoneucodecs" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a></li>
                                     <li class="social-icons-twitter"><a href="https://twitter.com/HORIZONCODECS" target="_blank" title="Twitter"><i class="fa-brands fa-x-twitter"></i></a></li>

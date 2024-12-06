@@ -42,6 +42,11 @@ Route::group(['prefix' => 'inventory-of-datasets'], function(){
     Route::get('/details/{data_inv_title}/{data_inv_id}', [\App\Http\Controllers\DatasetInventoryController::class, 'show'])->name('dataset_inventory_detailed');
 });
 
+Route::group(['prefix' => 'assessment-tools'], function(){
+    // Route for Assessment Tools List view
+    Route::get('/', [\App\Http\Controllers\AssessmentToolController::class, 'index'])->name('assessment_tools');
+});
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
