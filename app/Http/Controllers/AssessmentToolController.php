@@ -7,6 +7,6 @@ use Illuminate\Http\Request;
 class AssessmentToolController extends Controller
 {
     public function index() {
-        return view('datasets.data_inventory_list');
+        return view('assessmenttools.assessment_tools_list');
     }
 }

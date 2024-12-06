@@ -30,6 +30,11 @@
                 </div>
 
                 <p class="text-3-5 mb-3 text-justify">{{ $exceptr }}</p>
+                @isset ($fileUrl)
+                    <div class="mt-3">
+                        <a href="{{ $fileUrl }}" class="btn btn-primary" download>Download Tool</a>
+                    </div>
+                @endisset
             </div>
         </div>
     </div>

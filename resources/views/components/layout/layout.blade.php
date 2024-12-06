@@ -116,7 +116,7 @@
                         <div class="header-row">
                             <div class="header-nav header-nav-links order-3 order-lg-1">
                                 <div class="header-nav-main header-nav-main-square header-nav-main-text-capitalize header-nav-main-effect-1 header-nav-main-sub-effect-1">
-                                    <nav class="collapse px-3-5">
+                                    <nav class="collapse">
                                         <ul class="nav nav-pills" id="mainNav">
                                             <li>
                                                 <a class="nav-link {{ (request()->routeIs('home')) ? ' active' : '' }}" href="{{route('home')}}">
@@ -135,7 +135,7 @@
                                             </li>
                                             <li>
                                                 <a class="nav-link {{ (request()->routeIs('assessment_tools')) ? ' active' : '' }}" href="{{route('assessment_tools')}}">
-                                                    Assessment Tools
+                                                    Assessment Toolkit
                                                 </a>
                                             </li>
                                         </ul>
