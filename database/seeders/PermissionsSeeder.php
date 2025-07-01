@@ -48,6 +48,16 @@ class PermissionsSeeder extends Seeder
 
         Permission::updateOrCreate(
             [
+                'guard_name'=>PermissionHelper::PERMISSION_MANAGE_LLDATASETS
+            ],
+            [
+                'name'=>'Manage ll datasets',
+                'guard_name'=>PermissionHelper::PERMISSION_MANAGE_LLDATASETS
+            ]
+        );
+
+        Permission::updateOrCreate(
+            [
                 'guard_name'=>PermissionHelper::PERMISSION_ADMIN_PERMISSIONS
             ],
             [

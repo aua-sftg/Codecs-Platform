@@ -25,6 +25,10 @@ class MetaInventoryController extends Controller
         return view('components.metainventory.meta_inventory_list', compact('scenario'));
     }
 
+    public function ll_index() {
+        return view('lldatasets.ll_datasets_list');
+    }
+
     public function show($meta_inv_title, $meta_inv_id, $meta_inv_source) {
         $modelClass = $this->getModelClass($meta_inv_source);
 

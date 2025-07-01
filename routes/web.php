@@ -30,8 +30,12 @@ Route::group(['prefix' => 'meta-inventory'], function () {
     // Route for Meta Inventory Details
     Route::get('/details/{meta_inv_title}_{meta_inv_id}_{meta_inv_source}', [\App\Http\Controllers\MetaInventoryController::class, 'show'])->name('meta_inventory_detailed');
 
+    Route::get('/living-lab', action: [\App\Http\Controllers\MetaInventoryController::class, 'll_index'])->name('living_lab_inventory');
+    
     // Route for Meta Inventory List by Scenario
     Route::get('/{scenario:slug}', [\App\Http\Controllers\MetaInventoryController::class, 'index'])->name('meta_inventory_list');
+
+    
 });
 
 Route::group(['prefix' => 'inventory-of-datasets'], function(){
