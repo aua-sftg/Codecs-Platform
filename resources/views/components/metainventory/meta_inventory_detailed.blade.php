@@ -25,6 +25,8 @@
                     NUTRI-CHECK NET Dataset
                 @elseif($meta['source'] == 'ipmworks')  
                     IPMworks Dataset
+                @elseif($meta['source'] == 'living_lab')
+                    Living Lab Dataset
                 @else
                     {{$meta['source']}} Dataset
                 @endif
@@ -56,8 +58,12 @@
                     <x-metainventory.meta_inventory_detailed_ipmworks :dataset="$dataset">
 
                     </x-metainventory.meta_inventory_detailed_ipmworks>
+                @elseif($meta['source'] == 'living_lab')
+                    <x-metainventory.meta_inventory_detailed_livinglab :dataset="$dataset">
+
+                    </x-metainventory.meta_inventory_detailed_livinglab>
                 @endif
-            </div>
+            </div>  
 
         </div>
     </x-slot:main_body>

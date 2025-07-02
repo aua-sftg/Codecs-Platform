@@ -3,6 +3,10 @@
                     containerClass="dataset"
                     :image="$image"
                     :keywords="$keywords"
+                    :link="route('meta_inventory_ll_detailed', [
+                        'meta_inv_title' => $dataset['name'],
+                        'meta_inv_id' => $dataset['id']
+                    ]) ?? '#'"
 >
     <x-slot:afterTitle>
         <div class="flex_row">

@@ -27,6 +27,9 @@ Route::group(['prefix' => 'meta-inventory'], function () {
         return view('components.metainventory.meta_inventory_home');
     })->name('meta_inventory_home');
 
+    // Route for Meta Inventory LivingLabs Details
+    Route::get('/details/living-lab/{meta_inv_title}_{meta_inv_id}', [\App\Http\Controllers\MetaInventoryController::class, 'll_show'])->name('meta_inventory_ll_detailed');
+
     // Route for Meta Inventory Details
     Route::get('/details/{meta_inv_title}_{meta_inv_id}_{meta_inv_source}', [\App\Http\Controllers\MetaInventoryController::class, 'show'])->name('meta_inventory_detailed');
 
