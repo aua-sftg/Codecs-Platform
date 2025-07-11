@@ -55,6 +55,12 @@ Route::group(['prefix' => 'assessment-tools'], function(){
 });
 
 
+Route::group(['prefix' => 'storybooks'], function(){
+    // Route for Storybooks List view
+    Route::get('/', [\App\Http\Controllers\StoryBookController::class, 'index'])->name('storybooks');
+});
+
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');

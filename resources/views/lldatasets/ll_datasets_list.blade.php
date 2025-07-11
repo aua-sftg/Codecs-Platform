@@ -33,9 +33,11 @@
                                     $imageUrl = Storage::disk('lldatasets')->url($dataset->images[0]);
                                 }
 
-                                $keywordsArray = !empty($dataset['keywords']) 
-                                ? array_map('trim', explode(',', $dataset['keywords'])) 
-                                : [];
+                                $keywordsArray = [];
+                                if (!empty($dataset->keywords)) {
+                                    $keywordsArray = preg_split('/[;,]/', $dataset->keywords);
+                                    $keywordsArray = array_filter(array_map('trim', $keywordsArray));
+                                }
                             @endphp
                             <x-metainventory.ll_inventory_card :dataset="$dataset" :image="$imageUrl" :keywords="$keywordsArray">
 

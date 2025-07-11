@@ -135,7 +135,7 @@
                     <div class="card_subsection lldatasets col_custom">
                         <h4 class="mb-0 font-weight-semi-bold text-4 text-color-custom-blue">Country of Origin</h4>
                         <ul class="text-3-5 mb-3 list-unstyled">
-                            <li>{{$dataset['origincounty']}}</li>
+                            <li>{{$dataset['origincountry']}}</li>
                         </ul>
                     </div>
                 @endif

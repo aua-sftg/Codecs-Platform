@@ -138,6 +138,11 @@
                                                     Assessment Toolkit
                                                 </a>
                                             </li>
+                                            <li>
+                                                <a class="nav-link {{ (request()->routeIs('storybooks')) ? ' active' : '' }}" href="{{route('storybooks')}}">
+                                                    Storybooks
+                                                </a>
+                                            </li>
                                         </ul>
                                     </nav>
                                 </div>
@@ -145,13 +150,13 @@
                                     <i class="fas fa-bars"></i>
                                 </button>
                             </div>
-                            <div class="header-nav-features header_socials header-nav-features-no-border header-nav-features-lg-show-border d-none d-sm-flex ms-3 order-1 order-lg-2">
+                            {{-- <div class="header-nav-features header_socials header-nav-features-no-border header-nav-features-lg-show-border d-none d-sm-flex ms-3 order-1 order-lg-2">
                                 <ul class="header-social-icons social-icons d-none d-sm-block social-icons-clean social-icons-medium ms-0">
                                     <li class="social-icons-facebook"><a href="https://www.facebook.com/horizoneucodecs" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a></li>
                                     <li class="social-icons-twitter"><a href="https://twitter.com/HORIZONCODECS" target="_blank" title="Twitter"><i class="fa-brands fa-x-twitter"></i></a></li>
                                     <li class="social-icons-linkedin"><a href="https://www.linkedin.com/company/horizoncodecs/" target="_blank" title="Linkedin"><i class="fab fa-linkedin-in"></i></a></li>
                                 </ul>
-                            </div>
+                            </div> --}}
                             <div class="header-nav-features header-nav-features-no-border header-nav-features-sm-show-border ms-3 ps-4 order-2 order-lg-3">
                                 <div class="header-nav-feature header-nav-features-search d-inline-flex">
 
@@ -269,7 +274,7 @@
 {{--        </div>--}}
     </footer>
     <div class="row pb-2 pt-2">
-        <img alt="Codecs" style="max-width: 300px" loading="lazy" src="{{ asset('img/co-funded-by-the-eu.svg') }}">
+        <img alt="Codecs" style="max-width: 300px" loading="lazy" src="{{ asset('img/co-funded-by-the-eu.png') }}">
     </div>
 
 </div>
