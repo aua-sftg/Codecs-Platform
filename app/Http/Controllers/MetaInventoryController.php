@@ -25,6 +25,25 @@ class MetaInventoryController extends Controller
         return view('components.metainventory.meta_inventory_list', compact('scenario'));
     }
 
+    public function ll_index() {
+        return view('lldatasets.ll_datasets_list');
+    }
+
+    public function ll_show($meta_inv_title, $meta_inv_id) {
+        $dataset = \App\Models\LLDataset::findOrFail($meta_inv_id);
+        //Used for the seo of the page
+        $meta = [
+            'title' => $meta_inv_title,
+            'keywords' => '',
+            'description' => '',
+            'source' => 'living_lab',
+        ];
+        $meta['keywords'] = $dataset['keywords'];
+        $meta['description'] = $dataset['description'];
+
+        return view('components.metainventory.meta_inventory_detailed', compact('dataset', 'meta'));
+    }
+
     public function show($meta_inv_title, $meta_inv_id, $meta_inv_source) {
         $modelClass = $this->getModelClass($meta_inv_source);
 

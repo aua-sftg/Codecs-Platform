@@ -266,7 +266,7 @@ html:not(.sticky-header-active) #header.header-semi-transparent-light .header-bo
 
 @media (min-width: 992px) and (max-width: 1199px) {
 		html #header .header-nav-main nav > ul > li > a {
-				padding: 0 0.5rem !important;
+				padding: 0 0.3rem !important;
 		}
 }
 

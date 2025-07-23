@@ -27,11 +27,18 @@ Route::group(['prefix' => 'meta-inventory'], function () {
         return view('components.metainventory.meta_inventory_home');
     })->name('meta_inventory_home');
 
+    // Route for Meta Inventory LivingLabs Details
+    Route::get('/details/living-lab/{meta_inv_title}_{meta_inv_id}', [\App\Http\Controllers\MetaInventoryController::class, 'll_show'])->name('meta_inventory_ll_detailed');
+
     // Route for Meta Inventory Details
     Route::get('/details/{meta_inv_title}_{meta_inv_id}_{meta_inv_source}', [\App\Http\Controllers\MetaInventoryController::class, 'show'])->name('meta_inventory_detailed');
 
+    Route::get('/living-lab', action: [\App\Http\Controllers\MetaInventoryController::class, 'll_index'])->name('living_lab_inventory');
+    
     // Route for Meta Inventory List by Scenario
     Route::get('/{scenario:slug}', [\App\Http\Controllers\MetaInventoryController::class, 'index'])->name('meta_inventory_list');
+
+    
 });
 
 Route::group(['prefix' => 'inventory-of-datasets'], function(){
@@ -45,6 +52,12 @@ Route::group(['prefix' => 'inventory-of-datasets'], function(){
 Route::group(['prefix' => 'assessment-tools'], function(){
     // Route for Assessment Tools List view
     Route::get('/', [\App\Http\Controllers\AssessmentToolController::class, 'index'])->name('assessment_tools');
+});
+
+
+Route::group(['prefix' => 'storybooks'], function(){
+    // Route for Storybooks List view
+    Route::get('/', [\App\Http\Controllers\StoryBookController::class, 'index'])->name('storybooks');
 });
 
 

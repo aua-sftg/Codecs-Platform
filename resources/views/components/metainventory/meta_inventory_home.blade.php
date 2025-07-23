@@ -37,6 +37,19 @@
                                 </a>
                             </div>
                         @endforeach
+                        <div class="col-lg-3 mt-5">
+                            <a href="{{route('living_lab_inventory')}}">
+                            <span  class="thumb-info thumb-info-no-borders thumb-info-no-borders-rounded thumb-info-lighten thumb-info-bottom-info thumb-info-bottom-info thumb-info-bottom-info-show-more thumb-info-no-zoom">
+                                    <span class="thumb-info-wrapper">
+                                        <img src="{{ asset('img/13241854_5180175.svg') }}" class="img-fluid appl_scen_img" alt="Living Lab Datasets">
+                                        <span class="thumb-info-title">
+                                            <span class="thumb-info-inner line-height-1">LivingLab Datasets</span>
+                                            <span class="thumb-info-show-more-content opacity-7"><p class="text-color-dark mb-0 text-1 line-height-5">Explore the digital technologies deployed in the CODECS Living Labs to deliver context-specific, applied services that support sustainable agricultural digitalisation.</p></span>
+                                        </span>
+                                    </span>
+                            </span>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
