@@ -12,7 +12,7 @@
     <x-slot:hero_section>
         <x-layout.hero_simple>
             <x-slot:current_view>
-                Assessment Toolkit
+                Calculators
             </x-slot:current_view>
         </x-layout.hero_simple>
     </x-slot:hero_section>

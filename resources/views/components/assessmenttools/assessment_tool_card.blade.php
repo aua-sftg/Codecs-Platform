@@ -1,19 +1,17 @@
 <x-layout.base-card :title="$dataset['name']"
                     :exceptr="$dataset['description']"
-                    containerClass="dataset"
+                    :country="$dataset['country'] ?? 'N/A'"
+                    containerClass="assessment_tool"
                     :image="$image"
                     :fileUrl="$fileUrl"
+                    :link="route('assessment_tool_detailed', [
+                        'tool_slug' => $dataset['slug'],
+                        'tool_inv_id' => $dataset['_id']
+                    ]) ?? '#'"
 >
     <x-slot:afterTitle>
-        <div class="flex_row">
-            <p class="mb-0"><strong class="text-color-dark">Creator:&nbsp;</strong>
-                @if (!empty($dataset['organization']['link']))
-                    <a href="{{ $dataset['organization']['link'] }}" target="_blank">{{ $dataset['organization']['name'] }}</a>
-                @else
-                    {{ $dataset['organization']['name'] ?? 'N/A' }}
-                @endif
+                {{ $dataset['country'] }}
             </p>
-            <p class="mb-0 mr_2"><strong class="text-color-dark">Last update:&nbsp;</strong>{{ date('d-m-y', strtotime($dataset['updated_at'])) }}</p>
         </div>
     </x-slot:afterTitle>
 </x-layout.base-card>

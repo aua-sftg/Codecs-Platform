@@ -118,6 +118,9 @@
     border-left-color: #1c64b6;
 }
 
+.dataset_card.assessment_tool {
+    border-left-color: #A0B63C;
+}
 /*Extra padding for pills*/
 .badge-primary {
     --bs-badge-padding-x: 0.85em;

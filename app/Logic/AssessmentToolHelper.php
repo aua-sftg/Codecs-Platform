@@ -68,6 +68,12 @@ class AssessmentToolHelper implements BackpackFieldsInterface
                 'type'     => 'textarea',
                 'list'=>false,
                 'create'=>true,
+            ],[
+                'name'=>'country',
+                'label'=>'Country',
+                'type'=>'text',
+                'list'=>true,
+                'create'=>true,
             ],[   // Upload
                 'name'      => 'image',
                 'label'     => 'Image',
