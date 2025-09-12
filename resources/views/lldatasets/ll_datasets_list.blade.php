@@ -6,7 +6,7 @@
         Codecs, meta-inventory, LivingLab Datasets
     </x-slot:keywords>
     <x-slot:description>
-        Codecs | Meta-Inventory / Lorem ipsum
+        Codecs | Meta-Inventory / Explore the digital technologies deployed in the CODECS Living Labs to deliver context-specific, applied services that support sustainable agricultural digitalisation
     </x-slot:description>
 
     <x-slot:hero_section>

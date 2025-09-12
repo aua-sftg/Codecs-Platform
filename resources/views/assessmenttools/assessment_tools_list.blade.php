@@ -3,7 +3,7 @@
         Codecs | Assessment Toolkit
     </x-slot:title>
     <x-slot:keywords>
-        Codecs, Inventory, Assessment Toolkit, agriculture, digitalization, tools
+        Codecs, Inventory, Assessment Toolkit, agriculture, digitalization, tools, Calculators
     </x-slot:keywords>
     <x-slot:description>
         Codecs | Inventory of Datasets, A structured digital repository for CODECS Assessments Tools

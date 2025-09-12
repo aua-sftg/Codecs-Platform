@@ -38,7 +38,12 @@
     padding: 6px;
 }
 
-.filters_color {
+.text-custom-green {
+    color: #A0B63C;
+}
+
+.filters_color,
+.subsection_green {
     background-color: #A0B63C;
     color: #FFF;
 }
@@ -354,5 +359,10 @@ a:hover{
         display: none!important;
     }
     
+}
+
+.tool_shadow_section {
+    box-shadow: 0px 0px 6px #00000029;
+    padding: 24px;
 }
 
