@@ -44,6 +44,10 @@ class AuthServiceProvider extends ServiceProvider
             return $user->hasPermissionTo(PermissionHelper::PERMISSION_MANAGE_ASSESSMENTOOLS);
         });
 
+        Gate::define(PermissionHelper::PERMISSION_MANAGE_VIRTUALTOURS, function (User $user) {
+            return $user->hasPermissionTo(PermissionHelper::PERMISSION_MANAGE_VIRTUALTOURS);
+        });
+
         Gate::define(PermissionHelper::PERMISSION_MANAGE_LLDATASETS, function (User $user) {
             return $user->hasPermissionTo(PermissionHelper::PERMISSION_MANAGE_LLDATASETS);
         });

@@ -68,6 +68,14 @@ return [
             'throw' => false,
         ],
 
+        'virtualtours' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/virtualtours'),
+            'url' => env('APP_URL') . '/storage/virtualtours',
+            'visibility' => 'public',
+            'throw' => false,
+        ],
+
         'lldatasets' => [
             'driver' => 'local',
             'root' => storage_path('app/public/lldatasets'),

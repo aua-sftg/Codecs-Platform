@@ -123,7 +123,8 @@
     border-left-color: #1c64b6;
 }
 
-.dataset_card.assessment_tool {
+.dataset_card.assessment_tool,
+.dataset_card.virtual_tour {
     border-left-color: #A0B63C;
 }
 /*Extra padding for pills*/
@@ -358,11 +359,23 @@ a:hover{
     .header_socials {
         display: none!important;
     }
+
+    .logo_column {
+        max-width: 200px;
+    }
     
 }
 
 .tool_shadow_section {
     box-shadow: 0px 0px 6px #00000029;
     padding: 24px;
+}
+
+
+.virtual-tool-btn {
+    font-size: 0.8rem;
+    cursor: pointer;
+    font-weight: 600;
+    color: #A0B63C;
 }
 

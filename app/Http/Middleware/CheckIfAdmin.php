@@ -33,6 +33,7 @@ class CheckIfAdmin
             PermissionHelper::PERMISSION_ADMIN_PERMISSIONS,
             PermissionHelper::PERMISSION_MANAGE_SCENARIOS,
             PermissionHelper::PERMISSION_MANAGE_ASSESSMENTOOLS,
+            PermissionHelper::PERMISSION_MANAGE_VIRTUALTOURS,
             PermissionHelper::PERMISSION_MANAGE_LLDATASETS
         ]);
     }

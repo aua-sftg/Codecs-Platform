@@ -56,6 +56,11 @@ Route::group(['prefix' => 'assessment-tools'], function(){
     Route::get('/details/{tool_slug}_{tool_inv_id}', [\App\Http\Controllers\AssessmentToolController::class, 'show'])->name('assessment_tool_detailed');
 });
 
+Route::group(['prefix' => 'virtual-tours'], function(){
+    // Route for Virtual Tours List view
+    Route::get('/', [\App\Http\Controllers\VirtualToursController::class, 'index'])->name('virtual_tours');
+});
+
 
 Route::group(['prefix' => 'storybooks'], function(){
     // Route for Storybooks List view
