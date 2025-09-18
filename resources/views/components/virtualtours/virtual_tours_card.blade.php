@@ -1,13 +1,9 @@
 <x-layout.base-card :title="$dataset['name']"
                     :exceptr="$dataset['description']"
                     :country="$dataset['country'] ?? 'N/A'"
-                    containerClass="assessment_tool"
+                    containerClass="virtual_tour"
                     :image="$image"
-                    :fileUrl="$fileUrl"
-                    :link="route('assessment_tool_detailed', [
-                        'tool_slug' => $dataset['slug'],
-                        'tool_inv_id' => $dataset['_id']
-                    ]) ?? '#'"
+                    :link="'https://example.com'"
 >
     <x-slot:afterTitle>
                 {{ $dataset['country'] }}

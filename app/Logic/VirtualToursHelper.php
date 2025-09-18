@@ -3,11 +3,11 @@
 namespace App\Logic;
 
 use App\Interfaces\BackpackFieldsInterface;
-use App\Models\AssessmentTool;
+use App\Models\VirtualTours;
 use App\Traits\BackpackFieldsTrait;
 use Illuminate\Support\Collection;
 
-class AssessmentToolHelper implements BackpackFieldsInterface
+class VirtualToursHelper implements BackpackFieldsInterface
 {
     use BackpackFieldsTrait;
 
@@ -26,7 +26,7 @@ class AssessmentToolHelper implements BackpackFieldsInterface
     public static function get_tools(string $status = Status::STATUS_PUBLISHED) : Collection
     {
         // Define a query builder for scenarios
-        $query = AssessmentTool::query();
+        $query = VirtualTours::query();
 
         in_array($status, [Status::STATUS_PUBLISHED, Status::STATUS_UNPUBLISHED])
             ? $query->where('status', $status)
@@ -50,7 +50,7 @@ class AssessmentToolHelper implements BackpackFieldsInterface
             [
                 'name'      => 'name',
                 'type'=>'text',
-                'label'     => 'Assessment Tool Name',
+                'label'     => 'Virtual Tour Name',
                 'list'=>true,
                 'create'=>true,
             ], [   // Text
@@ -79,7 +79,7 @@ class AssessmentToolHelper implements BackpackFieldsInterface
                 'label'     => 'Image',
                 'type'      => 'upload',
                 'upload'=>true,
-                'disk'=>'assessmenttools',
+                'disk'=>'virtualtours',
                 'create'=>true
             ],[  // Select
                 'label'     => "Organization",
@@ -108,13 +108,6 @@ class AssessmentToolHelper implements BackpackFieldsInterface
                 'hint'=>'The person or entity responsible for creating the dataset',
                 'create'=>true,
                 'list'=>true
-            ],[
-                'name'      => 'file',
-                'label'     => 'Assessment Tool File',
-                'type'      => 'upload',
-                'upload'    => true,
-                'disk'      => 'assessmenttools',
-                'create'    => true
             ],[
                 'name'        => 'status',
                 'label'       => "Status",

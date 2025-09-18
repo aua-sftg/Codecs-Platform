@@ -1,18 +1,18 @@
 <x-layout.layout :livewire_enable="true">
     <x-slot:title>
-        Codecs | Assessment Toolkit
+        Codecs | Virtual Tours
     </x-slot:title>
     <x-slot:keywords>
-        Codecs, Inventory, Assessment Toolkit, agriculture, digitalization, tools, Calculators
+        Codecs, Inventory, Virtual Tours, agriculture, digitalization
     </x-slot:keywords>
     <x-slot:description>
-        Codecs | Inventory of Datasets, A structured digital repository for CODECS Assessments Tools
+        Codecs | Virtual Tours, A structured digital repository for CODECS Virtual Tours
     </x-slot:description>
 
     <x-slot:hero_section>
         <x-layout.hero_simple>
             <x-slot:current_view>
-                Calculators
+                Virtual Tours
             </x-slot:current_view>
         </x-layout.hero_simple>
     </x-slot:hero_section>
@@ -22,15 +22,14 @@
             <div class="row">
                 <div class="col">
                     <div class="products product-thumb-info-list" data-plugin-masonry data-plugin-options="{'layoutMode': 'fitRows'}">
-                        @forelse(App\Logic\AssessmentToolHelper::get_tools() as $tool)
+                        @forelse(App\Logic\VirtualToursHelper::get_tools() as $tool)
                             <div class="column">
                                 @php
-                                    $imageUrl = $tool->image ? Storage::disk('assessmenttools')->url($tool->image) : null;
-                                    $fileUrl = $tool->file ? Storage::disk('assessmenttools')->url($tool->file) : null;
+                                    $imageUrl = $tool->image ? Storage::disk('virtualtours')->url($tool->image) : null;
                                 @endphp
-                                <x-assessmenttools.assessment_tool_card :dataset="$tool" :image="$imageUrl" :fileUrl="$fileUrl">
+                                <x-virtualtours.virtual_tours_card :dataset="$tool" :image="$imageUrl">
 
-                                </x-assessmenttools.assessment_tool_card>
+                                </x-virtualtours.virtual_tours_card>
                                 <div class="col">
                                     <hr class="my-4">
                                 </div>
@@ -38,7 +37,7 @@
                         @empty
                             <div class="w-100 text-center">
                                 <img src="{{ asset('img/undraw_loading_re_5axr.svg') }}" alt="No results found" class="w-100" style="max-width: 300px"/>
-                                <p class="mb-0">No tools found.</p>
+                                <p class="mb-0">No virtual tours found.</p>
                             </div>
                         @endforelse
                     </div>

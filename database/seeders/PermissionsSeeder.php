@@ -48,6 +48,16 @@ class PermissionsSeeder extends Seeder
 
         Permission::updateOrCreate(
             [
+                'guard_name'=>PermissionHelper::PERMISSION_MANAGE_VIRTUALTOURS
+            ],
+            [
+                'name'=>'Manage virtual tours',
+                'guard_name'=>PermissionHelper::PERMISSION_MANAGE_VIRTUALTOURS
+            ]
+        );
+
+        Permission::updateOrCreate(
+            [
                 'guard_name'=>PermissionHelper::PERMISSION_MANAGE_LLDATASETS
             ],
             [

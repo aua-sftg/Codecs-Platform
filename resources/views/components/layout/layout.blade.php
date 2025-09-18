@@ -102,10 +102,12 @@
         <div class="header-body border-0">
             <div class="header-container container">
                 <div class="header-row">
-                    <div class="header-column">
+                    <div class="header-column logo_column">
                         <div class="header-row">
                             <div class="header-logo custom-header-logo">
-                                <img class="logo" alt="Codecs" width="150"  src="{{ asset('img/logos/horizontal/Logo-Codec-horizontal-light.png') }}">
+                                <a href="{{route('home')}}">
+                                    <img class="logo" alt="Codecs" width="150"  src="{{ asset('img/logos/horizontal/Logo-Codec-horizontal-light.png') }}">
+                                </a>
                                 <a href="{{route('home')}}">
                                     <img class="logo-sticky" alt="Codecs" width="150" src="{{ asset('img/logos/horizontal/Logo-Codec-horizontal.png') }}">
                                 </a>
@@ -118,11 +120,6 @@
                                 <div class="header-nav-main header-nav-main-square header-nav-main-text-capitalize header-nav-main-effect-1 header-nav-main-sub-effect-1">
                                     <nav class="collapse">
                                         <ul class="nav nav-pills" id="mainNav">
-                                            <li>
-                                                <a class="nav-link {{ (request()->routeIs('home')) ? ' active' : '' }}" href="{{route('home')}}">
-                                                    Home
-                                                </a>
-                                            </li>
                                             <li>
                                                 <a class="nav-link {{ (request()->routeIs('meta_inventory_home')) ? ' active' : '' }}" href="{{route('meta_inventory_home')}}">
                                                     Meta-inventory
@@ -141,6 +138,11 @@
                                             <li>
                                                 <a class="nav-link {{ (request()->routeIs('storybooks')) ? ' active' : '' }}" href="{{route('storybooks')}}">
                                                     Storybooks
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a class="nav-link {{ (request()->routeIs('virtual_tours')) ? ' active' : '' }}" href="{{route('virtual_tours')}}">
+                                                    Virtual Tours
                                                 </a>
                                             </li>
                                         </ul>
@@ -244,7 +246,7 @@
             </div>
             <div class="d-flex pb-0 justify-content-between license_container" style="margin-bottom: 20px; margin-top: 20px">
                 <div class="d-flex text-center mb-0 ">
-                    <p class="text-color-white text-3 mb-0 me-2">© 2024. This work is openly licensed via CC BY 4.0. </p>
+                    <p class="text-color-white text-3 mb-0 me-2">© 2025. This work is openly licensed via CC BY 4.0. </p>
                     <img alt="CC" class="mb-2" style="width: 20px; height: 20px" loading="lazy" src="{{ asset('img/cc.svg') }}">
                     <img alt="BY" class="mb-2" style="width: 20px; height: 20px" loading="lazy" src="{{ asset('img/by.svg') }}">
                 </div>

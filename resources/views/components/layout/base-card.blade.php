@@ -35,6 +35,11 @@
                         <a href="{{ $fileUrl }}" class="btn btn-primary" download>Download Tool</a>
                     </div>
                 @endisset
+                @if ($containerClass === 'virtual_tour')
+                    <div class="mt-3 text-end">
+                        <a href="{{ $link }}" class="virtual-tool-btn text-4-5" target="_blank" rel="noopener noreferrer">Access virtual tour →</a>
+                    </div>
+                @endif
             </div>
         </div>
     </div>

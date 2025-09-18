@@ -20,6 +20,10 @@
     <li class="nav-item"><a class="nav-link" href="{{ backpack_url('assessment-tool') }}"><i class="nav-icon la la-question"></i> Assessment tools</a></li>
 @endif
 
+@if(\Illuminate\Support\Facades\Gate::forUser(backpack_user())->allows(\App\Logic\PermissionHelper::PERMISSION_MANAGE_VIRTUALTOURS))
+    <li class="nav-item"><a class="nav-link" href="{{ backpack_url('virtual-tour') }}"><i class="nav-icon la la-eye"></i> Virtual Tours</a></li>
+@endif
+
 @if(\Illuminate\Support\Facades\Gate::forUser(backpack_user())->allows(\App\Logic\PermissionHelper::PERMISSION_MANAGE_LLDATASETS))
     <li class="nav-item"><a class="nav-link" href="{{ backpack_url('ll-dataset') }}"><i class="nav-icon la la-question"></i> LL Datasets</a></li>
 @endif
