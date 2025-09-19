@@ -14,6 +14,12 @@ class StoryBookController extends Controller
                 'cover' => 'img/storybooks/cover_pecorino.jpg',
                 'iframe_url' => 'https://heyzine.com/flip-book/b8490ab038.html',
             ],
+            [
+                'id' => 2,
+                'title' => 'Experimental Farm in Agricultural University of Athens',
+                'cover' => 'img/storybooks/cover_greek.jpg',
+                'iframe_url' => 'https://heyzine.com/flip-book/5a9de681e3.html',
+            ],
         ];
 
         return view('storybooks.storybooks', compact('storybooks'));
