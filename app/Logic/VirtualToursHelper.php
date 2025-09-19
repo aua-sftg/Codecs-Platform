@@ -74,6 +74,12 @@ class VirtualToursHelper implements BackpackFieldsInterface
                 'type'=>'text',
                 'list'=>true,
                 'create'=>true,
+            ],[
+                'name'      => 'link',
+                'type'=>'text',
+                'label'     => 'Link to the vr if it exists',
+                'list'=>false,
+                'create'=>true,
             ],[   // Upload
                 'name'      => 'image',
                 'label'     => 'Image',

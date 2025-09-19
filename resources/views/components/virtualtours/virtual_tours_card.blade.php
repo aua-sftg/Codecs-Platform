@@ -3,7 +3,7 @@
                     :country="$dataset['country'] ?? 'N/A'"
                     containerClass="virtual_tour"
                     :image="$image"
-                    :link="'https://example.com'"
+                    :link="$dataset['link'] ?? '#'"
 >
     <x-slot:afterTitle>
                 {{ $dataset['country'] }}
