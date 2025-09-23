@@ -54,6 +54,10 @@ Route::group(['prefix' => 'assessment-tools'], function(){
     Route::get('/', [\App\Http\Controllers\AssessmentToolController::class, 'index'])->name('assessment_tools');
 
     Route::get('/details/{tool_slug}_{tool_inv_id}', [\App\Http\Controllers\AssessmentToolController::class, 'show'])->name('assessment_tool_detailed');
+
+    Route::get('/environmental-calculator', function () {
+        return view('assessmenttools.environmental-calculator-app');
+    })->name('environmental_calculator');
 });
 
 Route::group(['prefix' => 'virtual-tours'], function(){
