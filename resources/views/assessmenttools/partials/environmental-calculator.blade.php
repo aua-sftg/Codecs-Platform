@@ -86,3 +86,9 @@
     </figure>
 </div>
 
+<div class="subsection_green text-4 font-weight-bold text-center mt-4 mb-5" style="padding: 24px 12px;">
+    <a href="{{ route('environmental_calculator') }}" class="text-white">
+        TO THE CALCULATOR
+    </a>
+</div>
+
