@@ -21,18 +21,19 @@
         <div class="container py-4 mt-4 mb-5">
             <div class="row">
                 <div class="col-lg-12">
-                     @forelse(App\Logic\AssessmentToolHelper::get_tools() as $tool)
-                        <div class="column">
-                            @php
-                                $imageUrl = $tool->image ? Storage::disk('assessmenttools')->url($tool->image) : null;
-                                $fileUrl = $tool->file ? Storage::disk('assessmenttools')->url($tool->file) : null;
-                            @endphp
+                    @forelse(App\Logic\AssessmentToolHelper::get_tools() as $tool)
+                        @php
+                            $imageUrl = $tool->image ? Storage::disk('assessmenttools')->url($tool->image) : null;
+                            $fileUrl = $tool->file ? Storage::disk('assessmenttools')->url($tool->file) : null;
+                        @endphp
+                        
+                        <div class="mb-4">
                             <x-assessmenttools.assessment_tool_card :dataset="$tool" :image="$imageUrl" :fileUrl="$fileUrl">
-
                             </x-assessmenttools.assessment_tool_card>
-                            <div class="col">
+                            
+                            @if(!$loop->last)
                                 <hr class="my-4">
-                            </div>
+                            @endif
                         </div>
                     @empty
                         <div class="w-100 text-center">
@@ -44,6 +45,4 @@
             </div>
         </div>
     </x-slot:main_body>
-
-
 </x-layout.layout>
