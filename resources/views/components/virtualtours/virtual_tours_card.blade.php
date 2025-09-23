@@ -7,7 +7,5 @@
 >
     <x-slot:afterTitle>
                 {{ $dataset['country'] }}
-            </p>
-        </div>
     </x-slot:afterTitle>
 </x-layout.base-card>
