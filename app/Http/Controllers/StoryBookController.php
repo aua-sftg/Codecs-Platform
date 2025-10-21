@@ -18,7 +18,7 @@ class StoryBookController extends Controller
                 'id' => 2,
                 'title' => 'Experimental Farm in Agricultural University of Athens',
                 'cover' => 'img/storybooks/cover_greek.jpg',
-                'iframe_url' => 'https://heyzine.com/flip-book/5a9de681e3.html',
+                'iframe_url' => 'https://heyzine.com/flip-book/7eba608198.html',
             ],
         ];
 
