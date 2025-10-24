@@ -20,6 +20,12 @@ class StoryBookController extends Controller
                 'cover' => 'img/storybooks/cover_greek.jpg',
                 'iframe_url' => 'https://heyzine.com/flip-book/7eba608198.html',
             ],
+            [
+                'id' => 3,
+                'title' => 'Living Lab Smart Villages Network, Slovenia',
+                'cover' => 'img/storybooks/cover_slovenia.jpg',
+                'iframe_url' => 'https://heyzine.com/flip-book/25e4fef9cd.html',
+            ],
         ];
 
         return view('storybooks.storybooks', compact('storybooks'));
