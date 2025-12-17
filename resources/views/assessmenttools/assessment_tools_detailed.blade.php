@@ -25,6 +25,8 @@
             <div class="col-12 mt-5 mb-5">
                 @if($isEnvironmentalCalculator)
                     @include('assessmenttools.partials.environmental-calculator')
+                @elseif($isEconomicCalculator)
+                    @include('assessmenttools.partials.economic-calculator')
                 @else
                     <div class="row">
                         <div class="col-12">

@@ -1,0 +1,1 @@
+const e={background:"#F2F2F2",bluePrimary:"#1C64B6",trueWhite:"#ffffff",textDark:"#444444",primaryGreen:"#BCD364",chartRed:"#F17F78",chartGreen:"#BCD364",gray:"#D2D2D2",headerBlue:"#1C64B6",primaryBlue:"#1C64B6",secondaryBlue:"#D3E3FD",hoverBlue:"#C0D8F9",gray_old:"#B8B8B8"};export{e as c};

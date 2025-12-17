@@ -1,0 +1,1 @@
+import{j as o,O as r}from"./index-BUEdVt4E.js";import{c as s}from"./colorTheme-Ddwe1rom.js";import{B as e}from"./Box-CDWeXPV9.js";const l=()=>o.jsx(e,{id:"CODECS__BasicPageContainer",sx:{backgroundColor:s.background,position:"relative",height:"100vh",display:"flex",flexDirection:"column"},children:o.jsx(e,{sx:{display:"flex",flex:1},children:o.jsx(r,{})})});export{l as default};
