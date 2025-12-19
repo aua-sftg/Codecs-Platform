@@ -379,3 +379,20 @@ a:hover{
     color: #A0B63C;
 }
 
+
+.green-border {
+    border: 1px solid #A0B63C;
+    padding: 12px;
+}
+
+.roadmap-box {
+    border: 2px solid #1C64B6;
+    border-radius: 8px;
+    padding: 0 0 31px 0;
+    background-color: #DAE9FA;
+}
+
+.blue-outline {
+    text-shadow: -1px -1px 0 #1C64B6, 1px -1px 0 #1C64B6, -1px 1px 0 #1C64B6, 1px 1px 0 #1C64B6;
+}
+

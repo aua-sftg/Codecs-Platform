@@ -18,7 +18,8 @@ class AssessmentToolController extends Controller
             'description' => $assessment_tool['description'] ?? '',
         ];
         $isEnvironmentalCalculator = $tool_slug === 'environmental-calculator';
+        $isEconomicCalculator = $tool_slug === 'economic-cost-calculator';
         
-        return view('assessmenttools.assessment_tools_detailed', compact('assessment_tool', 'meta', 'tool_slug', 'isEnvironmentalCalculator'));
+        return view('assessmenttools.assessment_tools_detailed', compact('assessment_tool', 'meta', 'tool_slug', 'isEnvironmentalCalculator', 'isEconomicCalculator'));
     }
 }

@@ -58,6 +58,12 @@ Route::group(['prefix' => 'assessment-tools'], function(){
     Route::get('/environmental-calculator', function () {
         return view('assessmenttools.environmental-calculator-app');
     })->name('environmental_calculator');
+
+    Route::get('/economic-calculator', function () {
+        return view('assessmenttools.economic-calculator-app');
+    })->name('economic_calculator');
+
+    
 });
 
 Route::group(['prefix' => 'virtual-tours'], function(){
