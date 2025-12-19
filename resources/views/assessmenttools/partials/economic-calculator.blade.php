@@ -72,12 +72,12 @@
     <div class="col-md-4 mb-3">
         <div class="h-100 roadmap-box">
             <div class="d-flex justify-content-between align-items-start mb-3">
-                <span class="text-12 font-weight-bold text-white" style="margin-top: 10px; margin-left: 8px;">1.</span>
+                <span class="text-12 font-weight-bold text-white blue-outline" style="margin-top: 10px; margin-left: 8px;">1.</span>
                 <img src="{{ asset('img/assessment-tools/economic/dollar.png') }}" alt="Investment">
             </div>
             <div>
-                <h6 class="font-weight-bold text-primary">Specify the Investment</h6>
-                <ul class="text-3-5 pl-3 mb-0">
+                <h6 class="font-weight-bold text-3-5" style="padding-left: 12px; color:#1C64B6;">Specify the Investment</h6>
+                <ul class="text-3-5 pl-3 mb-0 font-weight-medium">
                     <li>Define the scope of the analysis (type of technology and time frame)</li>
                     <li>List all changes in costs and benefits expected from adopting the digital technology</li>
                 </ul>
@@ -88,12 +88,12 @@
     <div class="col-md-4 mb-3">
         <div class="h-100 roadmap-box">
             <div class="d-flex justify-content-between align-items-start mb-3">
-                <span class="text-12 font-weight-bold text-white" style="margin-top: 10px; margin-left: 8px;">2.</span>
+                <span class="text-12 font-weight-bold text-white blue-outline" style="margin-top: 10px; margin-left: 8px;">2.</span>
                 <img src="{{ asset('img/assessment-tools/economic/calc.png') }}" alt="Calculator">
             </div>
             <div>
-                <h6 class="font-weight-bold text-primary">Use the Calculator to estimate the NPV</h6>
-                <ul class="text-3-5 pl-3 mb-0">
+                <h6 class="font-weight-bold text-3-5" style="padding-left: 12px; color:#1C64B6;">Use the Calculator to estimate the NPV</h6>
+                <ul class="text-3-5 pl-3 mb-0 font-weight-medium">
                     <li>Enter annual costs, benefits, investment period, and discount rate into the calculator</li>
                     <li>Run the calculation to obtain your NPV result</li>
                 </ul>
@@ -104,12 +104,12 @@
     <div class="col-md-4 mb-3">
         <div class="h-100 roadmap-box">
             <div class="d-flex justify-content-between align-items-start mb-3">
-                <span class="text-12 font-weight-bold text-white" style="margin-top: 10px; margin-left: 8px;">3.</span>
+                <span class="text-12 font-weight-bold text-white blue-outline" style="margin-top: 10px; margin-left: 8px;">3.</span>
                 <img src="{{ asset('img/assessment-tools/economic/search.png') }}" alt="Analysis">
             </div>
             <div>
-                <h6 class="font-weight-bold text-primary">Interpret Results & Run Sensitivity Analysis</h6>
-                <ul class="text-3-5 pl-3 mb-0">
+                <h6 class="font-weight-bold text-3-5" style="padding-left: 12px; color:#1C64B6;">Interpret Results & Run Sensitivity Analysis</h6>
+                <ul class="text-3-5 pl-3 mb-0 font-weight-medium">
                     <li>Assess NPV >0 indicates economic viability; &lt;0 indicates the investment is not justified</li>
                     <li>Test how results change with key variables (e.g., modify the discount rate)</li>
                 </ul>
@@ -121,17 +121,18 @@
 
 
 <div class="tool_shadow_section my-5 text-center">
-    <p class="text-color-custom-blue text-4 font-weight-bold mb-3">
+    <p class="text-custom-green text-3-5 font-weight-bold mb-3">
         Evaluate Your Investment
     </p>
     <p class="text-3-5">
         Use the Economic Calculator to compare costs and benefits of digital technologies. Find out if your investment will pay off over time.
     </p>
+    <div class="subsection_green text-4 font-weight-bold text-center mt-4 ms-auto me-auto" style="padding: 24px 12px; max-width: 317px;">
+        <a href="{{ route('economic_calculator') }}" class="text-white">
+            GO TO CALCULATOR
+        </a>
+    </div>
 </div>
 
-<div class="subsection_green text-4 font-weight-bold text-center mt-4 mb-5" style="padding: 24px 12px;">
-    <a href="{{ route('economic_calculator') }}" class="text-white">
-        GO TO CALCULATOR
-    </a>
-</div>
+
 

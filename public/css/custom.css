@@ -392,3 +392,7 @@ a:hover{
     background-color: #DAE9FA;
 }
 
+.blue-outline {
+    text-shadow: -1px -1px 0 #1C64B6, 1px -1px 0 #1C64B6, -1px 1px 0 #1C64B6, 1px 1px 0 #1C64B6;
+}
+
