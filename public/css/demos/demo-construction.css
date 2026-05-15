@@ -198,13 +198,19 @@ html #header .header-container {
 		transition: ease height 300ms;
 }
 
+@media screen and (max-width: 1200px) and (min-width: 991px) {
+	html #header .header-container {
+		max-width: 984px !important;
+	}
+}
+
 html #header .header-nav-main nav > ul > li > a {
 		font-size: 14px;
 }
 
 @media (min-width: 1200px) {
 		html #header .header-nav-main nav > ul > li > a {
-				padding: 0 1.1rem !important;
+				padding: 0 0.5rem !important;
 		}
 }
 

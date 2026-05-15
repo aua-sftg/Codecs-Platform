@@ -36,7 +36,7 @@ class LinkList
                 'group' => 'footer_navigation',
                 'order'=>1
             ],[
-                'label' => __('Meta-inventory'),
+                'label' => __('Digital Technologies Inventory'),
                 'url' => route('meta_inventory_home'),
                 'group' => 'footer_navigation',
                 'order'=>2

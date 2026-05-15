@@ -122,7 +122,7 @@
                                         <ul class="nav nav-pills" id="mainNav">
                                             <li>
                                                 <a class="nav-link {{ (request()->routeIs('meta_inventory_home')) ? ' active' : '' }}" href="{{route('meta_inventory_home')}}">
-                                                    Meta-inventory
+                                                    Digital Technologies Inventory
                                                 </a>
                                             </li>
                                             <li>
@@ -159,7 +159,7 @@
                                     <li class="social-icons-linkedin"><a href="https://www.linkedin.com/company/horizoncodecs/" target="_blank" title="Linkedin"><i class="fab fa-linkedin-in"></i></a></li>
                                 </ul>
                             </div> --}}
-                            <div class="header-nav-features header-nav-features-no-border header-nav-features-sm-show-border ms-3 ps-4 order-2 order-lg-3">
+                            <div class="header-nav-features header-nav-features-no-border header-nav-features-sm-show-border ms-3 ps-1 order-2 order-lg-3">
                                 <div class="header-nav-feature header-nav-features-search d-inline-flex">
 
                                     <a href="{{route('profile.edit')}}" class="mx-2">
@@ -279,6 +279,55 @@
         <img alt="Codecs" style="max-width: 300px" loading="lazy" src="{{ asset('img/co-funded-by-the-eu.png') }}">
     </div>
 
+    <!-- Role Selection Modal -->
+    <div class="modal fade" id="roleSelectionModal" tabindex="-1" aria-labelledby="roleSelectionModalLabel" aria-hidden="true" data-bs-backdrop="false" data-bs-keyboard="true">
+        <div class="modal-dialog">
+            <div class="modal-content border-0 rounded-3 role-modal-content">
+                <div class="modal-body modal-padding">
+                    <h4 class="font-weight-bold mb-2" style="color: #1C64B6;">Choose your role</h4>
+                    <p class="text-muted mb-4">Your role helps us customize content, tools, and recommendations for you.<br>Please select one or more options:</p>
+                    <div class="row g-3 justify-content-center mb-4" id="roleOptions">
+                        <div class="col-6 col-sm-4 col-md-auto">
+                            <div class="role-card text-center p-3" data-role="researcher">
+                                <div class="role-icon mb-2"><img src="{{ asset('img/popup/researcher.png') }}" alt="Researcher" style="width:80px;height:80px;object-fit:contain;"></div>
+                                <span class="role-label d-block font-weight-bold" style="color: #1C64B6;">Researcher</span>
+                            </div>
+                        </div>
+                        <div class="col-6 col-sm-4 col-md-auto">
+                            <div class="role-card text-center p-3" data-role="advisor">
+                                <div class="role-icon mb-2"><img src="{{ asset('img/popup/advisor.png') }}" alt="Advisor" style="width:80px;height:80px;object-fit:contain;"></div>
+                                <span class="role-label d-block font-weight-bold" style="color: #1C64B6;">Advisor</span>
+                            </div>
+                        </div>
+                        <div class="col-6 col-sm-4 col-md-auto">
+                            <div class="role-card text-center p-3" data-role="policymaker">
+                                <div class="role-icon mb-2"><img src="{{ asset('img/popup/policymaker.png') }}" alt="Policymaker" style="width:80px;height:80px;object-fit:contain;"></div>
+                                <span class="role-label d-block font-weight-bold" style="color: #1C64B6;">Policy-Maker</span>
+                            </div>
+                        </div>
+                        <div class="col-6 col-sm-4 col-md-auto">
+                            <div class="role-card text-center p-3" data-role="farmer_forester">
+                                <div class="role-icon mb-2"><img src="{{ asset('img/popup/farmer.png') }}" alt="Farmer / Forester" style="width:80px;height:80px;object-fit:contain;"></div>
+                                <span class="role-label d-block font-weight-bold" style="color: #1C64B6;">Farmer</span>
+                            </div>
+                        </div>
+                        <div class="col-6 col-sm-4 col-md-auto">
+                            <div class="role-card text-center p-3" data-role="technology_producer">
+                                <div class="role-icon mb-2"><img src="{{ asset('img/popup/other.png') }}" alt="Other" style="width:80px;height:80px;object-fit:contain;"></div>
+                                <span class="role-label d-block font-weight-bold" style="color: #1C64B6;">Other</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-end">
+                        <button type="button" class="btn px-5 py-2 text-white font-weight-bold role-apply-btn" id="applyRoleBtn" style="background-color: #A0B63C; letter-spacing: 1px;">
+                            SUBMIT
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>
 {{--<script src="{{ asset('vendor/bootstrap/js/bootstrap.min.js') }}"></script>--}}
 
@@ -304,13 +353,43 @@
 
 @include('partials.sweet-alert-setup')
 <script>
-    $(document).ready(function (){
+    $(document).ready(function () {
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': '{{csrf_token()}}'
             }
         });
-    })
+
+        // Role selection popup — show after 4s unless a role has already been applied this session
+        if (!sessionStorage.getItem('roleApplied')) {
+            setTimeout(function () {
+                var modalEl = document.getElementById('roleSelectionModal');
+                if (modalEl) {
+                    new bootstrap.Modal(modalEl).show();
+                }
+            }, 4000);
+        }
+
+        // Single role selection
+        $(document).on('click', '.role-card', function () {
+            if ($(this).hasClass('selected')) {
+                $(this).removeClass('selected');
+            } else {
+                $('.role-card').removeClass('selected');
+                $(this).addClass('selected');
+            }
+        });
+
+        // Apply button — close modal and remember the applied role for this session
+        $('#applyRoleBtn').on('click', function () {
+            var $selected = $('.role-card.selected');
+            if ($selected.length === 0) return;
+            var selectedRole = $selected.data('role');
+            sessionStorage.setItem('roleApplied', selectedRole);
+            var modalEl = document.getElementById('roleSelectionModal');
+            bootstrap.Modal.getInstance(modalEl).hide();
+        });
+    });
 </script>
 {{$body_scripts??''}}
 </body>

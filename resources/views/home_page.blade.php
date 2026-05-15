@@ -45,9 +45,9 @@
 {{--                </div>--}}
                 <div class="row">
                     <div class="col-md-6 mb-5 appear-animation box-shadow-2" data-appear-animation="fadeInUpShorterPlus" data-appear-animation-delay="550">
-                        <div class="d-flex">
-                            <div class="px-4 py-2">
-                                <h3 class="text-color-dark font-weight-bold text-transform-none text-5 mb-2">Meta-inventory</h3>
+                        <div class="d-flex h-100">
+                            <div class="px-4 py-2 d-flex flex-column h-100">
+                                <h3 class="text-color-dark font-weight-bold text-transform-none text-5 mb-2">Digital Technologies Inventory</h3>
                                 <img src="{{ asset('img/metainventory.webp') }}" loading="lazy" alt="Meta-Inventory Image" class="platform_img"/>
                                 <div class="row counters gy-4 gy-md-0">
                                     <div class="col-md-auto mt-0">
@@ -57,31 +57,31 @@
                                         </div>
                                     </div>
                                 </div>
-                                <p class="font-weight-light text-3-5 mb-3-5">A comprehensive inventory of digital technologies, offering a centralized, tailored to the user needs overview of technologies, across various domains, supporting understanding of the dynamic technological landscape and the emerging trends, for better-informed decisions in technology adoption and innovation.</p>
-                                <a {{ (request()->routeIs('meta_inventory_home')) ? 'class="active"' : '' }} href="{{ route('meta_inventory_home') }}" class="custom-view-more d-inline-flex font-weight-medium text-color-primary text-decoration-none">
+                                <p class="font-weight-light text-3-5 mb-3-5">Discover more than 2.000 digital technologies in use through all production sectors and application scenarios in European agriculture. Inventory can inspire broader use of digital technologies in this field (farmers and advisors) and help understanding of the dynamic technological landscape and emerging trends (policy-makers)</p>
+                                <a {{ (request()->routeIs('meta_inventory_home')) ? 'class="active"' : '' }} href="{{ route('meta_inventory_home') }}" class="custom-view-more d-inline-flex align-items-center align-self-start font-weight-medium text-decoration-none mt-auto px-3 py-2 rounded" style="background-color: #A0B63C; color: #fff;">
                                     Explore
-                                    <img width="27" height="27" loading="lazy" src="{{ asset('img/demos/construction/icons/arrow-right.svg') }}" alt="" data-icon data-plugin-options="{'onlySVG': true, 'extraClass': 'svg-fill-color-primary ms-2'}" />
+                                    <img width="27" height="27" loading="lazy" src="{{ asset('img/demos/construction/icons/arrow-right.svg') }}" alt="" data-icon data-plugin-options="{'onlySVG': true, 'extraClass': 'svg-fill-color-light ms-2'}" />
                                 </a>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-6 mb-5 appear-animation box-shadow-2" data-appear-animation="fadeInUpShorterPlus" data-appear-animation-delay="750">
-                        <div class="d-flex">
-                            <div class="px-4 py-2">
+                        <div class="d-flex h-100">
+                            <div class="px-4 py-2 d-flex flex-column h-100">
                                 <h3 class="text-color-dark font-weight-bold text-transform-none text-5 mb-2">Inventory of Datasets</h3>
                                 <img src="{{ asset('img/dataset.webp') }}" loading="lazy" alt="Dataset-Inventory Image" class="platform_img"/>
                                 <div class="row counters gy-4 gy-md-0">
                                     <div class="col-md-auto mt-0">
                                         <div class="counter">
-                                            <strong class="text-color-secondary text-6" data-to="0" data-append="+" data-plugin-options="{'accY': -200}">0</strong>
+                                            <strong class="text-color-secondary text-6" data-to="10" data-append="+" data-plugin-options="{'accY': -200}">0</strong>
                                             {{--                                            <span class="text-color-primary font-weight-bold text-4">Business Year</span>--}}
                                         </div>
                                     </div>
                                 </div>
                                 <p class="font-weight-light text-3-5 mb-3-5">A structured digital repository for CODECS datasets, offering storing abilities to authorized users and centralized access for all its users to harness the potential of data sources and empower objective decision-making and conflict resolution related to various facets of digitalization.</p>
-                                <a {{ (request()->routeIs('inventory_of_datasets')) ? 'class="active"' : '' }} href="{{ route('inventory_of_datasets') }}" class="custom-view-more d-inline-flex font-weight-medium text-color-primary text-decoration-none">
+                                <a {{ (request()->routeIs('inventory_of_datasets')) ? 'class="active"' : '' }} href="{{ route('inventory_of_datasets') }}" class="custom-view-more d-inline-flex align-items-center align-self-start font-weight-medium text-decoration-none mt-auto px-3 py-2 rounded" style="background-color: #A0B63C; color: #fff;">
                                     Explore
-                                    <img width="27" height="27" loading="lazy" src="{{ asset('img/demos/construction/icons/arrow-right.svg') }}" alt="" data-icon data-plugin-options="{'onlySVG': true, 'extraClass': 'svg-fill-color-primary ms-2'}" />
+                                    <img width="27" height="27" loading="lazy" src="{{ asset('img/demos/construction/icons/arrow-right.svg') }}" alt="" data-icon data-plugin-options="{'onlySVG': true, 'extraClass': 'svg-fill-color-light ms-2'}" />
                                 </a>
                             </div>
                         </div>
