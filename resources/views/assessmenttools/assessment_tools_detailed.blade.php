@@ -27,6 +27,8 @@
                     @include('assessmenttools.partials.environmental-calculator')
                 @elseif($isEconomicCalculator)
                     @include('assessmenttools.partials.economic-calculator')
+                @elseif($isTatCalculator)
+                    @include('assessmenttools.partials.tat-calculator')
                 @else
                     <div class="row">
                         <div class="col-12">

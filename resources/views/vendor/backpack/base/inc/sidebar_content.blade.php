@@ -5,6 +5,7 @@
 @if(Gate::forUser(backpack_user())->allows(\App\Logic\PermissionHelper::PERMISSION_ADMIN_PERMISSIONS))
     <li class="nav-item"><a class="nav-link" href="{{ backpack_url('user') }}"><i class="nav-icon la la-user-alt"></i> Users</a></li>
     <li class="nav-item"><a class="nav-link" href="{{ backpack_url('pages') }}"><i class="nav-icon la la-file"></i> Pages</a></li>
+    <li class="nav-item"><a class="nav-link" href="{{ backpack_url('role-selection') }}"><i class="nav-icon la la-chart-bar"></i> Role Selections</a></li>
 @endif
 
 

@@ -21,7 +21,7 @@ Route::get('/', function () {
 })->name('home');
 
 
-Route::group(['prefix' => 'meta-inventory'], function () {
+Route::group(['prefix' => 'digital-technologies-inventory'], function () {
     // Route for Meta Inventory Home Page
     Route::get('/', function () {
         return view('components.metainventory.meta_inventory_home');
@@ -63,6 +63,10 @@ Route::group(['prefix' => 'assessment-tools'], function(){
         return view('assessmenttools.economic-calculator-app');
     })->name('economic_calculator');
 
+    Route::get('/tat-calculator', function () {
+        return view('assessmenttools.tat-calculator-app');
+    })->name('tat_calculator');
+
     
 });
 
@@ -103,6 +107,8 @@ Route::get('/cache',function(){
 
     dump(\App\Logic\ScenarioHelper::get_results(scenario: $scenario,cache: true));
 });
+
+Route::post('/role-selection', [\App\Http\Controllers\RoleSelectionController::class, 'store'])->name('role.selection.store');
 
 require __DIR__.'/auth.php';
 Route::get('email',function () {

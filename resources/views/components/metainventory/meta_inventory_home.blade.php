@@ -12,7 +12,7 @@
     <x-slot:hero_section>
         <x-layout.hero_simple>
             <x-slot:current_view>
-                Meta-inventory
+                Digital Technologies Inventory
             </x-slot:current_view>
         </x-layout.hero_simple>
     </x-slot:hero_section>
@@ -21,6 +21,7 @@
         <div class="container py-4 mt-4 mb-5">
             <div class="row">
                 <div class="col">
+                    <p class="font-weight-medium text-3-5">If you are a farmer, advisor or a policymaker, choose the application scenario the closest to your interest and situation, and explore digital technologies to learn about, test, assess and apply.</p>
                     <div class="row">
                         @foreach(App\Logic\ScenarioHelper::get_scenarios() as $scenario)
                             <div class="col-lg-3 mt-5">

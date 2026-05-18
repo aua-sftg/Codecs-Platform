@@ -396,3 +396,64 @@ a:hover{
     text-shadow: -1px -1px 0 #1C64B6, 1px -1px 0 #1C64B6, -1px 1px 0 #1C64B6, 1px 1px 0 #1C64B6;
 }
 
+/* Role selection modal */
+.role-modal-content {
+    box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.25);
+    border-left: 7px solid rgba(160, 182, 60, 1) !important;
+    border-radius: 10px 0 0 10px !important;
+}
+
+#roleSelectionModal {
+    pointer-events: none;
+}
+
+#roleSelectionModal .modal-dialog {
+    pointer-events: auto;
+    position: fixed;
+    bottom: 25%;
+    right: 0;
+    margin: 0;
+    max-width: 744px;
+    width: calc(100% - 3rem);
+    max-height: 73vh !important;
+}
+
+.role-card {
+    cursor: pointer;
+    border: 3px solid transparent;
+    border-radius: 12px;
+    min-width: 110px;
+    transition: background-color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+    user-select: none;
+}
+
+.role-card:hover {
+    transform: translateY(-2px);
+}
+
+.role-card.selected {
+    border-color: #A0B63C;
+    border-width: 3px;
+    background-color: #f0f5d8;
+    box-shadow: 0 4px 12px rgba(160, 182, 60, 0.25);
+}
+
+.role-card.selected .role-label,
+.role-card.selected i {
+    color: #A0B63C !important;
+}
+
+.role-apply-btn:hover {
+    background-color: #8fa032 !important;
+}
+
+.modal-padding {
+    padding: 12px 50px 24px 12px;
+}
+
+@media screen and (max-width: 991px) and (min-width: 849px) {
+    .header-span {
+        width: 360px;
+    }
+}
+
