@@ -32,4 +32,5 @@ Route::group([
     Route::crud('assessment-tool', 'AssessmentToolCrudController');
     Route::crud('virtual-tour', 'VirtualToursController');
     Route::crud('ll-dataset', 'LLDatasetCrudController');
+    Route::crud('role-selection', 'RoleSelectionCrudController');
 }); // this should be the absolute last line of this file

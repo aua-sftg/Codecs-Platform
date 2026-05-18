@@ -108,6 +108,8 @@ Route::get('/cache',function(){
     dump(\App\Logic\ScenarioHelper::get_results(scenario: $scenario,cache: true));
 });
 
+Route::post('/role-selection', [\App\Http\Controllers\RoleSelectionController::class, 'store'])->name('role.selection.store');
+
 require __DIR__.'/auth.php';
 Route::get('email',function () {
     return view('email');

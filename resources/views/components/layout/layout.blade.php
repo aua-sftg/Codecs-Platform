@@ -285,7 +285,7 @@
             <div class="modal-content border-0 rounded-3 role-modal-content">
                 <div class="modal-body modal-padding">
                     <h4 class="font-weight-bold mb-2" style="color: #1C64B6;">Choose your role</h4>
-                    <p class="text-muted mb-4">Your role helps us customize content, tools, and recommendations for you.<br>Please select one or more options:</p>
+                    <p class="text-muted mb-4">Your role helps us customize content, tools, and recommendations for you.<br>Please the option that best reflects your role:</p>
                     <div class="row g-3 justify-content-center mb-4" id="roleOptions">
                         <div class="col-6 col-sm-4 col-md-auto">
                             <div class="role-card text-center p-3" data-role="researcher">
@@ -312,7 +312,7 @@
                             </div>
                         </div>
                         <div class="col-6 col-sm-4 col-md-auto">
-                            <div class="role-card text-center p-3" data-role="technology_producer">
+                            <div class="role-card text-center p-3" data-role="other">
                                 <div class="role-icon mb-2"><img src="{{ asset('img/popup/other.png') }}" alt="Other" style="width:80px;height:80px;object-fit:contain;"></div>
                                 <span class="role-label d-block font-weight-bold" style="color: #1C64B6;">Other</span>
                             </div>
@@ -386,8 +386,16 @@
             if ($selected.length === 0) return;
             var selectedRole = $selected.data('role');
             sessionStorage.setItem('roleApplied', selectedRole);
-            var modalEl = document.getElementById('roleSelectionModal');
-            bootstrap.Modal.getInstance(modalEl).hide();
+
+            // Persist the selection to the database
+            $.post('{{ route('role.selection.store') }}', { role: selectedRole }, function () {
+                var modalEl = document.getElementById('roleSelectionModal');
+                bootstrap.Modal.getInstance(modalEl).hide();
+            }).fail(function () {
+                // Still close the modal even if the request fails
+                var modalEl = document.getElementById('roleSelectionModal');
+                bootstrap.Modal.getInstance(modalEl).hide();
+            });
         });
     });
 </script>
