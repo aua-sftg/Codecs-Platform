@@ -360,8 +360,8 @@
             }
         });
 
-        // Role selection popup — show after 4s unless a role has already been applied this session
-        if (!sessionStorage.getItem('roleApplied')) {
+        // Role selection popup — show after 4s unless a role has already been saved locally
+        if (!localStorage.getItem('roleApplied')) {
             setTimeout(function () {
                 var modalEl = document.getElementById('roleSelectionModal');
                 if (modalEl) {
@@ -385,7 +385,7 @@
             var $selected = $('.role-card.selected');
             if ($selected.length === 0) return;
             var selectedRole = $selected.data('role');
-            sessionStorage.setItem('roleApplied', selectedRole);
+            localStorage.setItem('roleApplied', selectedRole);
 
             // Persist the selection to the database
             $.post('{{ route('role.selection.store') }}', { role: selectedRole }, function () {
