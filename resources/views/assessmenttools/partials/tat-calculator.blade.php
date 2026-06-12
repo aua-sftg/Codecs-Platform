@@ -22,6 +22,8 @@
     </figure>
 </div>
 
+<a href="https://www.youtube.com/watch?v=USxsfLb4Qhg" target="_blank" class="font-weight-bold text-custom-green text-3-5 green-border text-center ms-auto me-auto d-block text-decoration-none" style="max-width: 317px">See example</a>
+
 <h4 class="text-color-custom-blue font-weight-bold mb-4">
     Methodology
 </h4>
