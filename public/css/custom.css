@@ -54,6 +54,24 @@
     color: #FFF;
 }
 
+/*CODECS website button in the header - keep the same color on hover/press*/
+.header-website-btn,
+.header-website-btn:hover,
+.header-website-btn:focus,
+.header-website-btn:active,
+.header-website-btn:focus-visible {
+    background-color: #A0B63C !important;
+    border-color: #A0B63C !important;
+    color: #FFF !important;
+    box-shadow: none !important;
+}
+
+/*Reserve enough header height for the stacked CODECS Website button,
+  in both the normal and the sticky (scrolled) header state*/
+#header .header-container {
+    min-height: 110px;
+}
+
 /*Make filter dropdown scrollable for big filter arrays*/
 .filter_height {
     max-height: 200px;
