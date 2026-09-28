@@ -43,12 +43,12 @@
 {{--                        <p class="text-4 font-weight-light appear-animation" data-appear-animation="fadeInUpShorterPlus" data-appear-animation-delay="500">Cras a elit sit amet leo accumsan volutsudisse. </p>--}}
 {{--                    </div>--}}
 {{--                </div>--}}
-                <div class="row">
-                    <div class="col-md-6 mb-5 appear-animation box-shadow-2" data-appear-animation="fadeInUpShorterPlus" data-appear-animation-delay="550">
-                        <div class="d-flex h-100">
+                <div class="row g-4">
+                    <div class="col-md-6 mb-5 appear-animation" data-appear-animation="fadeInUpShorterPlus" data-appear-animation-delay="550">
+                        <div class="d-flex h-100 box-shadow-2" style="background: white;">
                             <div class="px-4 py-2 d-flex flex-column h-100">
-                                <h3 class="text-color-dark font-weight-bold text-transform-none text-5 mb-2">Digital Technologies Inventory</h3>
-                                <img src="{{ asset('img/metainventory.webp') }}" loading="lazy" alt="Meta-Inventory Image" class="platform_img"/>
+                                <img src="{{ asset('img/technologies.png') }}" loading="lazy" alt="Meta-Inventory Image" class="platform_img"/>
+                                <h3 class="text-color-custom-blue font-weight-bold text-transform-none text-5 mb-2">Digital Technologies Inventory</h3>
                                 <div class="row counters gy-4 gy-md-0">
                                     <div class="col-md-auto mt-0">
                                         <div class="counter">
@@ -65,11 +65,11 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6 mb-5 appear-animation box-shadow-2" data-appear-animation="fadeInUpShorterPlus" data-appear-animation-delay="750">
-                        <div class="d-flex h-100">
+                    <div class="col-md-6 mb-5 appear-animation" data-appear-animation="fadeInUpShorterPlus" data-appear-animation-delay="750">
+                        <div class="d-flex h-100 box-shadow-2" style="background: white;">
                             <div class="px-4 py-2 d-flex flex-column h-100">
-                                <h3 class="text-color-dark font-weight-bold text-transform-none text-5 mb-2">Inventory of Datasets</h3>
-                                <img src="{{ asset('img/dataset.webp') }}" loading="lazy" alt="Dataset-Inventory Image" class="platform_img"/>
+                                <img src="{{ asset('img/datasets.png') }}" loading="lazy" alt="Dataset-Inventory Image" class="platform_img"/>
+                                <h3 class="text-color-custom-blue font-weight-bold text-transform-none text-5 mb-2">Inventory of Datasets</h3>
                                 <div class="row counters gy-4 gy-md-0">
                                     <div class="col-md-auto mt-0">
                                         <div class="counter">
