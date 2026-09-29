@@ -81,6 +81,13 @@ Route::group(['prefix' => 'storybooks'], function(){
     Route::get('/', [\App\Http\Controllers\StoryBookController::class, 'index'])->name('storybooks');
 });
 
+Route::group(['prefix' => 'methodological-handbook'], function(){
+    // Route for Methodological Handbook view
+    Route::get('/', function () {
+        return view('storybooks.methodological_handbook');
+    })->name('methodological_handbook');
+});
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
