@@ -115,64 +115,69 @@
                         </div>
                     </div>
                     <div class="header-column justify-content-end">
-                        <div class="d-flex flex-column align-items-end">
-                        <a href="https://www.horizoncodecs.eu/" target="_blank" rel="noopener"
-                           class="btn header-website-btn font-weight-bold mb-2">
-                            CODECS Website
-                        </a>
-                        <div class="header-row">
-                            <div class="header-nav header-nav-links order-3 order-lg-1">
-                                <div class="header-nav-main header-nav-main-square header-nav-main-text-capitalize header-nav-main-effect-1 header-nav-main-sub-effect-1">
-                                    <nav class="collapse">
-                                        <ul class="nav nav-pills" id="mainNav">
-                                            <li>
-                                                <a class="nav-link {{ (request()->routeIs('meta_inventory_home')) ? ' active' : '' }}" href="{{route('meta_inventory_home')}}">
-                                                    Digital Technologies Inventory
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a class="nav-link {{ (request()->routeIs('inventory_of_datasets')) ? ' active' : '' }}" href="{{route('inventory_of_datasets')}}">
-                                                    Inventory of datasets
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a class="nav-link {{ (request()->routeIs('assessment_tools')) ? ' active' : '' }}" href="{{route('assessment_tools')}}">
-                                                    Assessment Toolkit
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a class="nav-link {{ (request()->routeIs('storybooks')) ? ' active' : '' }}" href="{{route('storybooks')}}">
-                                                    Storybooks
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a class="nav-link {{ (request()->routeIs('virtual_tours')) ? ' active' : '' }}" href="{{route('virtual_tours')}}">
-                                                    Virtual Tours
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </nav>
-                                </div>
-                                <button class="btn header-btn-collapse-nav" data-bs-toggle="collapse" data-bs-target=".header-nav-main nav">
-                                    <i class="fas fa-bars"></i>
-                                </button>
-                            </div>
-                            {{-- <div class="header-nav-features header_socials header-nav-features-no-border header-nav-features-lg-show-border d-none d-sm-flex ms-3 order-1 order-lg-2">
-                                <ul class="header-social-icons social-icons d-none d-sm-block social-icons-clean social-icons-medium ms-0">
-                                    <li class="social-icons-facebook"><a href="https://www.facebook.com/horizoneucodecs" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a></li>
-                                    <li class="social-icons-twitter"><a href="https://twitter.com/HORIZONCODECS" target="_blank" title="Twitter"><i class="fa-brands fa-x-twitter"></i></a></li>
-                                    <li class="social-icons-linkedin"><a href="https://www.linkedin.com/company/horizoncodecs/" target="_blank" title="Linkedin"><i class="fab fa-linkedin-in"></i></a></li>
-                                </ul>
-                            </div> --}}
-                            <div class="header-nav-features header-nav-features-no-border header-nav-features-sm-show-border ms-3 ps-1 order-2 order-lg-3">
-                                <div class="header-nav-feature header-nav-features-search d-inline-flex">
+                        <div class="d-flex flex-column align-items-end pb-3">
+                            <a href="https://www.horizoncodecs.eu/" target="_blank" rel="noopener"
+                               class="btn header-website-btn font-weight-bold mb-2">
+                                CODECS Website
+                            </a>
 
-                                    <a href="{{route('profile.edit')}}" class="mx-2">
-                                        <img src="{{asset('img/icons/account_circle.svg')}}" alt="">
-                                    </a>
+                            <div class="d-flex align-items-center">
+                                <div class="d-flex flex-column align-items-end">
+                                    <div class="header-nav header-nav-links header-nav-compact">
+                                        <div class="header-nav-main header-nav-main-square header-nav-main-text-capitalize header-nav-main-effect-1 header-nav-main-sub-effect-1">
+                                            <nav class="collapse">
+                                                <ul class="nav nav-pills" id="mainNavRow1">
+                                                    <li>
+                                                        <a class="nav-link {{ (request()->routeIs('meta_inventory_home')) ? ' active' : '' }}" href="{{route('meta_inventory_home')}}">
+                                                            Digital Technologies Inventory
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="nav-link {{ (request()->routeIs('inventory_of_datasets')) ? ' active' : '' }}" href="{{route('inventory_of_datasets')}}">
+                                                            Inventory of datasets
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="nav-link {{ (request()->routeIs('assessment_tools')) ? ' active' : '' }}" href="{{route('assessment_tools')}}">
+                                                            Assessment Toolkit
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </nav>
+                                        </div>
+                                    </div>
+
+                                    <div class="header-nav header-nav-links header-nav-compact">
+                                        <div class="header-nav-main header-nav-main-square header-nav-main-text-capitalize header-nav-main-effect-1 header-nav-main-sub-effect-1">
+                                            <nav class="collapse">
+                                                <ul class="nav nav-pills" id="mainNavRow2">
+                                                    <li>
+                                                        <a class="nav-link {{ (request()->routeIs('storybooks')) ? ' active' : '' }}" href="{{route('storybooks')}}">
+                                                            Storybooks
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="nav-link {{ (request()->routeIs('virtual_tours')) ? ' active' : '' }}" href="{{route('virtual_tours')}}">
+                                                            Virtual Tours
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="nav-link {{ (request()->routeIs('methodological_handbook')) ? ' active' : '' }}" href="{{route('methodological_handbook')}}">
+                                                            Methodological Handbook
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </nav>
+                                        </div>
+                                        <button class="btn header-btn-collapse-nav" data-bs-toggle="collapse" data-bs-target=".header-nav-main nav">
+                                            <i class="fas fa-bars"></i>
+                                        </button>
+                                    </div>
                                 </div>
+                                <a href="{{route('profile.edit')}}" class="ms-3">
+                                    <img src="{{asset('img/icons/account_circle.svg')}}" alt="">
+                                </a>
                             </div>
-                        </div>
                         </div>
                     </div>
                 </div>

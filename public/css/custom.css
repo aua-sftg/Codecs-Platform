@@ -66,10 +66,29 @@
     box-shadow: none !important;
 }
 
-/*Reserve enough header height for the stacked CODECS Website button,
+/*Reserve enough header height for the stacked button + two nav rows,
   in both the normal and the sticky (scrolled) header state*/
 #header .header-container {
-    min-height: 110px;
+    min-height: 120px;
+}
+
+/*Compact stacked nav rows in the header - the theme gives .header-nav 1rem vertical
+  padding plus a 70px min-height, and stretches each link to fill it via height:100%*/
+#header .header-nav.header-nav-compact {
+    padding: 0;
+    min-height: 0;
+}
+
+@media (min-width: 992px) {
+    /*The :hover variant is needed too - the theme re-applies min-height/height:100%
+      on hover, which would otherwise make the link grow and jump out of the row*/
+    #header .header-nav.header-nav-compact nav > ul > li > a,
+    #header .header-nav.header-nav-compact nav > ul > li:hover > a {
+        min-height: 0;
+        height: auto;
+        padding-top: 0.25rem;
+        padding-bottom: 0.25rem;
+    }
 }
 
 /*Make filter dropdown scrollable for big filter arrays*/
