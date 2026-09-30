@@ -91,6 +91,61 @@
     }
 }
 
+/*MAT calculator: keep its internal scroll targets clear of the sticky header*/
+[data-codecs-mat] {
+    --mat-scroll-offset: 150px;
+}
+
+/*MAT (Multicriteria Analysis Tool) - align the delivered styles with the other calculators.
+  codecs-mat.css loads after this file, so every rule is prefixed with body to outrank
+  its .mat-root selectors. The vendor files stay untouched so new deliveries are drop-in*/
+body .mat-root {
+    --mat-green-fill: #A0B63C;
+    --mat-green-fill-hover: #BCD364;
+}
+
+/*Landing page corners are square, like the TAT landing blocks*/
+body .mat-root.mat-landing {
+    --mat-radius: 0;
+}
+
+/*Primary buttons green, like the TAT calculator's buttons*/
+body .mat-root .mat-button {
+    background: #A0B63C;
+    border-color: #A0B63C;
+}
+
+body .mat-root .mat-button--ghost {
+    color: #A0B63C;
+    background: transparent;
+}
+
+/*"Go to the calculator" buttons - same as the TAT "GO TO CALCULATOR" block*/
+body .mat-root a.mat-button--cta {
+    display: block;
+    width: 100%;
+    max-width: 317px;
+    margin: 0 auto;
+    padding: 24px 12px;
+    border-radius: 0;
+    font-size: 1.2em;
+    font-weight: 700;
+    letter-spacing: normal;
+    text-align: center;
+}
+
+/*Closing call to action box - same as the TAT .tool_shadow_section box*/
+body .mat-root .mat-landing-cta {
+    background: #FFF;
+    box-shadow: 0px 0px 6px #00000029;
+    border-radius: 0;
+    padding: 24px;
+}
+
+body .mat-root .mat-landing-cta .mat-heading {
+    color: #A0B63C;
+}
+
 /*Make filter dropdown scrollable for big filter arrays*/
 .filter_height {
     max-height: 200px;

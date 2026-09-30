@@ -1,0 +1,25 @@
+{
+  "tool": "CODECS MAT – Multicriteria Analysis Tool",
+  "version": "1.0.0",
+  "commit": "526e78b",
+  "builtAt": "2026-09-25T13:42:20.112Z",
+  "data": {
+    "workbook": "CODECS_MCA_Tool_V12_FINAL_DV.xlsx",
+    "schemaVersion": "2.1.0",
+    "generatedAt": "2026-09-23T13:21:41+00:00",
+    "counts": {
+      "livingLabs": 9,
+      "criteria": 27,
+      "observations": 290,
+      "weightProfiles": 6,
+      "scenarios": 5,
+      "technologyGroups": 5
+    }
+  },
+  "files": {
+    "landing": "landing.html",
+    "calculator": "calculator.html",
+    "script": "codecs-mat.js",
+    "stylesheet": "codecs-mat.css"
+  }
+}

@@ -20,7 +20,8 @@ class AssessmentToolController extends Controller
         $isEnvironmentalCalculator = $tool_slug === 'environmental-calculator';
         $isEconomicCalculator = $tool_slug === 'economic-cost-calculator';
         $isTatCalculator = $tool_slug === 'technology-assessment-tool';
-        
-        return view('assessmenttools.assessment_tools_detailed', compact('assessment_tool', 'meta', 'tool_slug', 'isEnvironmentalCalculator', 'isEconomicCalculator', 'isTatCalculator'));
+        $isMatCalculator = $tool_slug === 'multi-criteria-assessment-tool';
+
+        return view('assessmenttools.assessment_tools_detailed', compact('assessment_tool', 'meta', 'tool_slug', 'isEnvironmentalCalculator', 'isEconomicCalculator', 'isTatCalculator', 'isMatCalculator'));
     }
 }

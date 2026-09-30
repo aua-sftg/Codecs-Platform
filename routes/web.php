@@ -67,6 +67,10 @@ Route::group(['prefix' => 'assessment-tools'], function(){
         return view('assessmenttools.tat-calculator-app');
     })->name('tat_calculator');
 
+    Route::get('/mat-calculator', function () {
+        return view('assessmenttools.mat-calculator-app');
+    })->name('mat_calculator');
+
     
 });
 

@@ -9,6 +9,12 @@
         Codecs | Assessment Tools / {{ $meta['description'] }}
     </x-slot:description>
 
+    <x-slot:head_scripts>
+        @if($isMatCalculator)
+            <link rel="stylesheet" href="{{ asset('assessment_tools/mat_calculator/codecs-mat.css') }}?v={{ filemtime(public_path('assessment_tools/mat_calculator/codecs-mat.css')) }}">
+        @endif
+    </x-slot:head_scripts>
+
     <x-slot:hero_section>
         <x-layout.hero_simple>
             <x-slot:sub_section>
@@ -29,6 +35,8 @@
                     @include('assessmenttools.partials.economic-calculator')
                 @elseif($isTatCalculator)
                     @include('assessmenttools.partials.tat-calculator')
+                @elseif($isMatCalculator)
+                    @include('assessmenttools.partials.mat-calculator')
                 @else
                     <div class="row">
                         <div class="col-12">

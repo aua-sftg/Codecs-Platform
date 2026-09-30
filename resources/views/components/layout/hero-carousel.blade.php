@@ -4,10 +4,7 @@
 
             <!-- Carousel Slide 1 -->
             <div class="owl-item position-relative">
-                <video class="position-absolute top-0 left-0 right-0 bottom-0 w-100 h-100" style="object-fit: cover;" autoplay muted loop playsinline>
-                    <source src="{{ asset('img/hero_section/5014225_Two_Agronomists_3840x2160.mp4') }}" type="video/mp4" media="(min-width: 1200px)">
-                    <source src="{{ asset('img/hero_section/5014225_Two_Agronomists_1280x720.mp4') }}" type="video/mp4">
-                </video>
+                <div class="background-image-wrapper position-absolute top-0 left-0 right-0 bottom-0" data-appear-animation="kenBurnsToRight" data-appear-animation-duration="30s" data-plugin-options="{'minWindowWidth': 0}" data-carousel-onchange-show style="background-image: url({{ asset('img/hero_section/5014225_Two_Agronomists_3840x2160.00_00_04_15.Still002.jpg') }}); background-size: cover; background-position: center;"></div>
                 <div class="container position-relative z-index-1 h-100">
                     <p class="position-absolute bottom-15 right-0 text-color-light font-weight-bold text-5-5 line-height-3 text-end pb-0 pb-lg-5 mb-0 d-none d-sm-block">
                         <span class="d-block position-relative z-index-1 pb-5 ps-lg-3 mb-5-5 appear-animation" data-appear-animation="fadeInLeftShorterPlus" data-appear-animation-delay="1900">CODECS platform</span>
