@@ -1,0 +1,1395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Criteria</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: "Poppins", Arial, sans-serif;
+            font-size: 1.1em;
+            color: #777;
+        }
+
+        .container {
+            max-width: 1300px;
+            margin-top: 50px;
+        }
+
+        h2 {
+            font-weight: 700;
+            /*color: #355e3b;*/
+            color: #1c64b6;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .criteria-card {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            /* border-left: 6px solid #8bc34a; */
+            border-left: 10px solid #1c64b6;
+            padding: 40px;
+            margin-bottom: 50px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+            .criteria-card:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+            }
+
+        .nav-tabs {
+            border: none;
+            justify-content: center;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+        }
+
+            .nav-tabs .nav-link {
+                border: none;
+                /* color: #355e3b; */
+                color: #A0B63C;
+                background-color: #e8f5e9;
+                border-radius: 30px;
+                margin: 0 6px 10px 6px;
+                padding: 10px 20px;
+                font-weight: 500;
+                transition: all 0.3s ease;
+            }
+
+                .nav-tabs .nav-link:hover {
+                    background-color: #aed581;
+                    color: white;
+                }
+
+                .nav-tabs .nav-link.active {
+                    /* background-color: #558b2f; */
+                    background-color: #A0B63C;
+                    color: white;
+                }
+
+        .form-label {
+            font-weight: 600;
+            /* color: #355e3b; */
+            color: #1c64b6;
+        }
+
+        .form-select {
+            border-radius: 10px;
+            border: 1px solid #c5e1a5;
+            transition: all 0.2s;
+        }
+
+        .form-select:focus {
+            box-shadow: 0 0 0 3px rgba(139, 195, 74, 0.25);
+            /* border-color: #7cb342; */
+            border-color: #A0B63C;
+        }
+
+        .btn-primary {
+            /* background-color: #558b2f;  */
+            background-color: #A0B63C;
+            border: none;
+            border-radius: 30px;
+            padding: 12px 35px;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+            display: block;
+            margin: 0 auto;
+            transition: all 0.3s ease;
+        }
+
+            .btn-primary:hover {
+                /* background-color: #558b2f; */
+                background-color: #A0B63C;
+                transform: translateY(-2px);
+                box-shadow: 0 5px 12px rgba(85, 139, 47, 0.3);
+            }
+
+
+            .btn-primary:disabled,
+            .btn-primary.disabled {
+                background-color: #a5d6a7 !important;
+                border: none !important;
+                opacity: 0.8;
+                cursor: not-allowed;
+                box-shadow: none !important;
+            }
+
+        .tab-pane {
+            animation: fadeIn 0.4s ease-in-out;
+        }
+
+        .form-section-title {
+            /* color: #558b2f; */
+            color: #A0B63C;
+            font-weight: 600;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+
+        input.form-control {
+            border-radius: 10px;
+            border: 1px solid #c5e1a5;
+            transition: all 0.2s;
+        }
+
+            input.form-control:focus {
+                box-shadow: 0 0 0 3px rgba(139, 195, 74, 0.25);
+                /* border-color: #7cb342; */
+                border-color: #A0B63C;
+            }
+
+        .is-invalid {
+            border: 2px solid #dc3545 !important;
+            background-color: #f8d7da !important;
+        }
+
+
+
+        #rankingContainer {
+            padding-top: 2rem;
+            padding-bottom: 2rem;
+        }
+
+        .ranking-card {
+            background: #f9fff9;
+            border-radius: 16px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .ranking-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .ranking-card {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            border-left: 10px solid #1c64b6;
+            /* border-left: 6px solid #8bc34a;  */
+            padding: 40px;
+            margin-bottom: 50px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .ranking-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+        }
+
+        .ranking-icon {
+            margin-right: 10px;
+            font-size: 1.9rem;
+            vertical-align: middle;
+        }
+
+        .accordion-button {
+            /* background-color: #A0B63C; */
+            background-color: #1c64b6;
+            color: white;
+            /* color: #355e3b; */
+            font-weight: 600;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .accordion-button:not(.collapsed) {
+            background-color: #c8e6c9;
+            /* color: #1b5e20; */
+            color: #A0B63C;
+        }
+
+        .accordion-item {
+            border: none;
+            border-radius: 10px;
+            margin-bottom: 8px;
+        }
+
+        .accordion-button::after {
+            display: none !important;
+        }
+
+        .accordion-button {
+            display: flex;
+            flex-wrap: wrap; /* allow content to wrap on small screens */
+            align-items: center;
+        }
+
+        .accordion-button .rank-badge {
+            margin-left: auto; /* stays on the right */
+            white-space: nowrap; /* prevents breaking inside the badge */
+            margin-top: 4px; /* optional: ensures it moves to next line cleanly */
+            font-weight: bold;
+        }
+
+        .text-color-custom-blue {
+            color: #1c64b6;
+        }
+
+        .font-weight-bold {
+            font-weight: 700 !important;
+        }
+
+        .text-3-5 {
+            font-size: 1.1em !important;
+        }
+
+        .ranking-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .ranking-item {
+            background-color: #1c64b6;
+            color: white;
+            border-radius: 12px;
+            padding: 18px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.25s ease;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+        }
+
+            .ranking-item:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 6px 14px rgba(0,0,0,0.12);
+            }
+
+        .ranking-left {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            min-width: 0;
+        }
+
+        .ranking-medal {
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .ranking-tech {
+            font-weight: 600;
+            font-size: 1rem;
+            word-break: break-word;
+        }
+
+        .ranking-right {
+            font-weight: bold;
+            background: rgba(255,255,255,0.15);
+            padding: 6px 12px;
+            border-radius: 20px;
+            white-space: nowrap;
+            margin-left: 12px;
+        }
+
+        @media (max-width: 768px) {
+            .ranking-item
+
+        {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .ranking-right {
+            margin-left: 0;
+        }
+
+        }
+
+        .ranking-item-selected {
+            background-color: #A0B63C !important;
+            border: 2px solid #8ca032;
+            transform: scale(1.01);
+            box-shadow: 0 6px 16px rgba(160, 182, 60, 0.35);
+        }
+
+        .tech-info-icon {
+            cursor: pointer;
+            margin-right: 8px;
+            color: white;
+            font-size: 16px;
+        }
+
+        .tech-popup {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.4);
+            z-index: 9999;
+        }
+
+        .popup-content {
+            width: 400px;
+            max-width: 90%;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 100px auto;
+            position: relative;
+        }
+
+        #closePopup {
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            border: none;
+            background: none;
+            cursor: pointer;
+        }
+
+        .popup-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .popup-header h3 {
+            margin: 0;
+            font-size: 18px;
+            padding-right: 10px;
+        }
+
+        #closePopup {
+            border: none;
+            background: none;
+            cursor: pointer;
+            font-size: 22px;
+        }
+
+        .tech-info-trigger {
+            cursor: pointer;
+            transition: opacity 0.2s ease;
+        }
+
+        .tech-info-trigger:hover {
+            opacity: 0.85;
+        }
+
+        .ranking-hint {
+            margin-top: -5px;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+            color: #666;
+            font-style: italic;
+        }
+    </style>
+    <style id="z9sk2p">
+        .bi {
+            cursor: pointer;
+        }
+    </style>
+        <script src="../js/tat_datasources.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="criteria-card">
+            <h2>How to Use the Tool</h2>
+            <div class="row mt-4">
+                <div class="col-md-6 mb-3">
+                    <div class="h-100 roadmap-box">
+                        <div class="d-flex justify-content-between align-items-start mb-3">
+                            <span class="text-12 font-weight-bold text-white blue-outline" style="margin-top: 10px; margin-left: 8px;">1.</span>
+                        </div>
+                        <div>
+                            <h6 class="font-weight-bold text-3-5" style="padding-left: 12px; color:#1C64B6;">Technology assessment by experts or technology providers</h6>
+                            <ul class="text-3-5 pl-3 mb-0 font-weight-medium">
+                                <li>Experts or providers assess their own technologies in comparison with other solutions available in the tool. This case requires a thorough understanding of the technology’s technical characteristics and functionalities to ensure accurate and reliable assessments</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <div class="h-100 roadmap-box">
+                        <div class="d-flex justify-content-between align-items-start mb-3">
+                            <span class="text-12 font-weight-bold text-white blue-outline" style="margin-top: 10px; margin-left: 8px;">2.</span>
+                        </div>
+                        <div>
+                            <h6 class="font-weight-bold text-3-5" style="padding-left: 12px; color:#1C64B6;">Need-based exploration by farmers</h6>
+                            <ul class="text-3-5 pl-3 mb-0 font-weight-medium">
+                                <li>Farmers can use the tool to identify technologies that best match their needs. Instead of evaluating existing technical characteristics, farmers define their ideal technology by assigning values to the assessment criteria based on their priorities, regional context, and production goals. The tool then compares these preferences with the technologies in the database to identify the best matches.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <p class="text-3-5 mb-3">
+                    To begin with, users insert the name of the technology they wish to assess or define their ideal technology profile. Experts evaluate technologies across predefined criteria using the Likert scale, while farmers and end users assign priority levels to the same criteria. The tool automatically aggregates and weights these inputs, generating comparative scores, rankings, and insights that clearly indicate which technologies best align with user requirements.
+                </p>
+
+                <p class="text-3-5 mb-3">
+                    Overall, the Technology Assessment Tool offers a robust, flexible, and forward-looking framework for evaluating digital solutions in agriculture. By enabling structured, data-driven comparisons, it supports the adoption of sustainable and effective innovations that respond to the real needs of farming systems.
+                </p>
+            </div>
+        </div>
+        <div class="criteria-card">
+            <h2>🌿 Technology Assessment Tool</h2>
+            <div class="small text-muted mb-2">
+                The <span class="text-danger">*</span> indicates that the field is required. Please fill in all required fields before running the assessment tool.
+            </div>
+            <form id="criteriaForm" method="post">
+                <div class="mb-4">
+                    <label for="criteriaName" class="form-label">
+                        Technology name <i class="bi bi-info-circle text-muted ms-1"
+                                           data-bs-toggle="popover"
+                                           data-bs-placement="right"
+                                           data-bs-trigger="hover focus"
+                                           title="Technology name"
+                                           data-bs-content="Specify the technology depending on your role: farmers should describe their need using the format “FARMER_type of need” (e.g. FARMER_irrigation management), while technology providers or experts should enter the exact name of the technology or solution being assessed.">
+                        </i>
+                    </label>
+                    <input type="text" id="criteriaName" name="criteriaName" class="form-control"
+                           placeholder="Enter technology name" required>
+                </div>
+
+                <ul class="nav nav-tabs" id="criteriaTabs" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active d-flex align-items-center gap-1"
+                                id="tab1-tab"
+                                data-bs-toggle="tab"
+                                data-bs-target="#tab1"
+                                type="button"
+                                role="tab">
+
+                            User Experience & Accessibility
+
+                            <i class="bi bi-info-circle text-muted"
+                               data-bs-toggle="popover"
+                               data-bs-placement="right"
+                               data-bs-trigger="hover focus"
+                               data-bs-html="true"
+                               title="User Experience & Accessibility"
+                               data-bs-content="This section evaluates how easy the technology is to use, access, and integrate into daily workflows."
+                               onclick="event.stopPropagation();">
+                            </i>
+
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link d-flex align-items-center gap-1"
+                                id="tab2-tab"
+                                data-bs-toggle="tab"
+                                data-bs-target="#tab2"
+                                type="button"
+                                role="tab">
+
+                            Enabling Factors
+
+                            <i class="bi bi-info-circle text-muted"
+                               data-bs-toggle="popover"
+                               data-bs-placement="right"
+                               data-bs-trigger="hover focus"
+                               title="Enabling Factors"
+                               data-bs-content="Assesses the supporting conditions required for successful implementation, including infrastructure, connectivity, technical support, and regulatory readiness."
+                               onclick="event.stopPropagation();">
+                            </i>
+
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link d-flex align-items-center gap-1"
+                                id="tab3-tab"
+                                data-bs-toggle="tab"
+                                data-bs-target="#tab3"
+                                type="button"
+                                role="tab">
+
+                            Data Management
+
+                            <i class="bi bi-info-circle text-muted"
+                               data-bs-toggle="popover"
+                               data-bs-placement="right"
+                               data-bs-trigger="hover focus"
+                               title="Data Management"
+                               data-bs-content="Examines how the technology collects, processes, stores, and protects data, ensuring data quality, security, interoperability, and compliance with standards."
+                               onclick="event.stopPropagation();">
+                            </i>
+
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link d-flex align-items-center gap-1"
+                                id="tab4-tab"
+                                data-bs-toggle="tab"
+                                data-bs-target="#tab4"
+                                type="button"
+                                role="tab">
+                            Economic Impacts
+                            <i class="bi bi-info-circle text-muted"
+                               data-bs-toggle="popover"
+                               data-bs-placement="right"
+                               data-bs-trigger="hover focus"
+                               title="Economic Impacts"
+                               data-bs-content="Analyzes the costs and financial benefits of the technology, including investment requirements, operational efficiency, return on investment, and potential economic risks."
+                               onclick="event.stopPropagation();">
+                            </i>
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link d-flex align-items-center gap-1"
+                                id="tab5-tab"
+                                data-bs-toggle="tab"
+                                data-bs-target="#tab5"
+                                type="button"
+                                role="tab">
+                            Knowledge Exchange
+                            <i class="bi bi-info-circle text-muted"
+                               data-bs-toggle="popover"
+                               data-bs-placement="right"
+                               data-bs-trigger="hover focus"
+                               title="Knowledge Exchange"
+                               data-bs-content="Evaluates the extent to which the technology supports learning, information sharing, and collaboration among users, advisors, and stakeholders."
+                               onclick="event.stopPropagation();">
+                            </i>
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link d-flex align-items-center gap-1"
+                                id="tab6-tab"
+                                data-bs-toggle="tab"
+                                data-bs-target="#tab6"
+                                type="button"
+                                role="tab">
+                            Environmental Outcomes
+                            <i class="bi bi-info-circle text-muted"
+                               data-bs-toggle="popover"
+                               data-bs-placement="right"
+                               data-bs-trigger="hover focus"
+                               title="Environmental Outcomes"
+                               data-bs-content="Assesses the technology’s contribution to environmental sustainability, including resource efficiency, emission reduction, and impacts on soil, water, and biodiversity."
+                               onclick="event.stopPropagation();">
+                            </i>
+                        </button>
+                    </li>
+                </ul>
+
+                <div class="tab-content mt-4" id="criteriaTabsContent">
+                    <div class="tab-pane fade show active" id="tab1" role="tabpanel">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Is user friendly</label>
+                                <select class="form-select" id="userFriendly" name="userFriendly" data-source="isUserFriendly" required>
+                                    <option value="" disabled selected>Select criteria</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Can be accessed online and offline</label>
+                                <select class="form-select" id="onAndOffline" name="onAndOffline" data-source="accessibleOnlineOffline" required>
+                                    <option value="" disabled selected>Select criteria</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Is free to use</label>
+                                <select class="form-select" id="freeToUse" name="freeToUse" data-source="isFreeToUse" required>
+                                    <option value="" disabled selected>Select criteria</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Supports notifications</label>
+                                <select class="form-select" id="notifications" name="notifications" data-source="supportsNotifications" required>
+                                    <option value="" disabled selected>Select criteria</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Enables customer support</label>
+                                <select class="form-select" id="customerSupport" name="customerSupport" data-source="enablesCustomerSupport" required>
+                                    <option value="" disabled selected>Select criteria</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Is usable from multiple devices</label>
+                                <select class="form-select" id="multipleDevices" name="multipleDevices" data-source="isUsableOnMultipleDevices" required>
+                                    <option value="" disabled selected>Select criteria</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Seamless integration with other tools</label>
+                                <select class="form-select" id="toolsIntegration" name="toolsIntegration" data-source="toolsIntegration" required>
+                                    <option value="" disabled selected>Select criteria</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Offers multilanguage tool</label>
+                                <select class="form-select" id="multilingual" name="multilingual" data-source="multilinguatTools" required>
+                                    <option value="" disabled selected>Select criteria</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Uses open standards, data, source, and innovation</label>
+                                <select class="form-select" id="openSource" name="openSource" data-source="openStandardDatasource" required>
+                                    <option value="" disabled selected>Select criteria</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Requires training</label>
+                                <select class="form-select" id="requiresTraining" name="requiresTraining" data-source="requiredTraining" required>
+                                    <option value="" disabled selected>Select criteria</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="tab2" role="tabpanel">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Enables systematic farm management</label>
+                                <select class="form-select" id="farmManagement" name="farmManagement" data-source="holisticFarmManagement" required>
+                                    <option value="" disabled selected>Select criteria</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Provides region-specific recommendations</label>
+                                <select class="form-select" id="providesRecommendation" name="providesRecommendation" data-source="regionSpecificRecommendations" required>
+                                    <option value="" disabled selected>Select criteria</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Enables alerts for weather risks</label>
+                                <select class="form-select" id="enablesAlerts" name="enablesAlerts" data-source="weatherAndPestAlerts" required>
+                                    <option value="" disabled selected>Select criteria</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Provides AI-driven recommendations</label>
+                                <select class="form-select" id="aiDrivenRecommendations" name="aiDrivenRecommendations" data-source="aiDrivenRecommendations" required>
+                                    <option value="" disabled selected>Select criteria</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Offers scenario planning tool</label>
+                                <select class="form-select" id="scenarioPlaning" name="scenarioPlaning" data-source="scenarioPlanningTool" required>
+                                    <option value="" disabled selected>Select criteria</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Offers productivity tracking metrics</label>
+                                <select class="form-select" id="productivityTracking" name="productivityTracking" data-source="productivityMetrics" required>
+                                    <option value="" disabled selected>Select criteria</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Improves diagnostic support</label>
+                                <select class="form-select" id="improvesDiagnostics" name="improvesDiagnostics" data-source="diagnosticSupport" required>
+                                    <option value="" disabled selected>Select criteria</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Strengthens farmer-advisor interaction</label>
+                                <select class="form-select" id="strengthensInteraction" name="strengthensInteraction" data-source="farmAdvisorInteraction" required>
+                                    <option value="" disabled selected>Select criteria</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Increases farm profitability</label>
+                                <select class="form-select" id="increasesProfitability" name="increasesProfitability" data-source="increasesFarmProfitability" required>
+                                    <option value="" disabled selected>Select criteria</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Saves time</label>
+                                <select class="form-select" id="savesTime" name="savesTime" data-source="savesTime" required>
+                                    <option value="" disabled selected>Select criteria</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Saves money</label>
+                                <select class="form-select" id="savesMoney" name="savesMoney" data-source="savesMoney" required>
+                                    <option value="" disabled selected>Select criteria</option>
+                                </select>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="tab3" role="tabpanel">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Uses farm-specific data input</label>
+                                <select class="form-select" id="farmSpecificInput" name="farmSpecificInput" data-source="usesFarmSpecificData" required>
+                                    <option value="" disabled selected>Select criteria</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Pulls data from other systems</label>
+                                <select class="form-select" id="usesOtherServices" name="usesOtherServices" data-source="pullsDataFromOtherSystems" required>
+                                    <option value="" disabled selected>Select criteria</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Is data driven</label>
+                                <select class="form-select" id="isDataDriven" name="isDataDriven" data-source="isDataDriven" required>
+                                    <option value="" disabled selected>Select criteria</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Allows interoperability</label>
+                                <select class="form-select" id="allowsInteroperability" name="allowsInteroperability" data-source="allowsInteroperability" required>
+                                    <option value="" disabled selected>Select criteria</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Enables role-based access control</label>
+                                <select class="form-select" id="roleBasedAccess" name="roleBasedAccess" data-source="yesNo" required>
+                                    <option value="" disabled selected>Select criteria</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Enables data tagging and categorization</label>
+                                <select class="form-select" id="dataTagingAndCategorization" name="dataTagingAndCategorization" data-source="yesNo" required>
+                                    <option value="" disabled selected>Select criteria</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Uses multi-format data export options</label>
+                                <select class="form-select" id="dataExport" name="dataExport" data-source="yesNo" required>
+                                    <option value="" disabled selected>Select criteria</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Uses AI-powered data analytics</label>
+                                <select class="form-select" id="aiAnalytics" name="aiAnalytics" data-source="yesNo" required>
+                                    <option value="" disabled selected>Select criteria</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Supports quality control of the data</label>
+                                <select class="form-select" id="qualityControl" name="qualityControl" data-source="yesNo" required>
+                                    <option value="" disabled selected>Select criteria</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Ensures data security and privacy procedures</label>
+                                <select class="form-select" id="dataSecurity" name="dataSecurity" data-source="ensuresDataSecurity" required>
+                                    <option value="" disabled selected>Select criteria</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="tab4" role="tabpanel">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Improves advisory service profitability</label>
+                                <select class="form-select" id="advisoryService" name="advisoryService" data-source="improvesProfitability" required>
+                                    <option value="" disabled selected>Select criteria</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Aligns with existing organization strategy and services</label>
+                                <select class="form-select" id="strategyAndServices" name="strategyAndServices" data-source="alignsWithStrategy" required>
+                                    <option value="" disabled selected>Select criteria</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Enhances fast change and challenge management</label>
+                                <select class="form-select" id="changeManagement" name="changeManagement" data-source="changeManagement" required>
+                                    <option value="" disabled selected>Select criteria</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Provides market trends insights</label>
+                                <select class="form-select" id="marketTrends" name="marketTrends" data-source="marketTrendInsights" required>
+                                    <option value="" disabled selected>Select criteria</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Adds value to existing services</label>
+                                <select class="form-select" id="valueToServices" name="valueToServices" data-source="addsValueToServices" required>
+                                    <option value="" disabled selected>Select criteria</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Gives general economic advantages</label>
+                                <select class="form-select" id="economicAdvantages" name="economicAdvantages" data-source="generalEconomicAdvantages" required>
+                                    <option value="" disabled selected>Select criteria</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Identifies cost-saving opportunities</label>
+                                <select class="form-select" id="costSaving" name="costSaving" data-source="costSavingOpportunities" required>
+                                    <option value="" disabled selected>Select criteria</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="tab5" role="tabpanel">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Enhances advisor-to-advisor networking</label>
+                                <select class="form-select" id="advisorNetworking" name="advisorNetworking" data-source="yesNo" required>
+                                    <option value="" disabled selected>Select criteria</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Enhances advisor-to-farmer communication</label>
+                                <select class="form-select" id="advisorToFarmerComs" name="advisorToFarmerComs" data-source="yesNo" required>
+                                    <option value="" disabled selected>Select criteria</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Increased advisory frequency</label>
+                                <select class="form-select" id="advisorFrequency" name="advisorFrequency" data-source="yesNo" required>
+                                    <option value="" disabled selected>Select criteria</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Features live advisory chat</label>
+                                <select class="form-select" id="liveChat" name="liveChat" data-source="yesNo" required>
+                                    <option value="" disabled selected>Select criteria</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Is collaborative, advisor and farmer interact with the same tool/dataset</label>
+                                <select class="form-select" id="collaborative" name="collaborative" data-source="yesNo" required>
+                                    <option value="" disabled selected>Select criteria</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Enables Q&A section for farmers</label>
+                                <select class="form-select" id="qa" name="qa" data-source="yesNo" required>
+                                    <option value="" disabled selected>Select criteria</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Enables sharing advisory notes and scientific studies</label>
+                                <select class="form-select" id="sharingNotes" name="sharingNotes" data-source="yesNo" required>
+                                    <option value="" disabled selected>Select criteria</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Best practices repository</label>
+                                <select class="form-select" id="bestPractices" name="bestPractices" data-source="yesNo" required>
+                                    <option value="" disabled selected>Select criteria</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Offers AI-driven recommendation tool for users</label>
+                                <select class="form-select" id="aiToolsForUsers" name="aiToolsForUsers" data-source="yesNo" required>
+                                    <option value="" disabled selected>Select criteria</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Multimedia knowledge sharing (pictures, videos, presentations)</label>
+                                <select class="form-select" id="knowledgeSharing" name="knowledgeSharing" data-source="yesNo" required>
+                                    <option value="" disabled selected>Select criteria</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-pane fade" id="tab6" role="tabpanel">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Adapts to climate change</label>
+                                <select class="form-select" id="adaptsToChange" name="adaptsToChange" data-source="sustainabilityScale" required>
+                                    <option value="" disabled selected>Select criteria</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Reduces CO2 emissions/ energy use (mitigation)</label>
+                                <select class="form-select" id="reducesCO2" name="reducesCO2" data-source="sustainabilityScale" required>
+                                    <option value="" disabled selected>Select criteria</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Advances ecosystem services</label>
+                                <select class="form-select" id="advancedEcosystem" name="advancedEcosystem" data-source="sustainabilityScale" required>
+                                    <option value="" disabled selected>Select criteria</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Increases resource efficiency</label>
+                                <select class="form-select" id="resourceEfficiency" name="resourceEfficiency" data-source="sustainabilityScale" required>
+                                    <option value="" disabled selected>Select criteria</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Improves waste management</label>
+                                <select class="form-select" id="wasteManagement" name="wasteManagement" data-source="sustainabilityScale" required>
+                                    <option value="" disabled selected>Select criteria</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Improves water use and quality</label>
+                                <select class="form-select" id="waterQuality" name="waterQuality" data-source="sustainabilityScale" required>
+                                    <option value="" disabled selected>Select criteria</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Improves soil quality</label>
+                                <select class="form-select" id="soilQuality" name="soilQuality" data-source="sustainabilityScale" required>
+                                    <option value="" disabled selected>Select criteria</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Enhances biodiversity</label>
+                                <select class="form-select" id="enhancesBiodiversity" name="enhancesBiodiversity" data-source="sustainabilityScale" required>
+                                    <option value="" disabled selected>Select criteria</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary mt-4">💾 Calculate</button>
+            </form>
+        </div>
+
+        <div class="ranking-card" id="rankingContainer">
+            <h2>
+                <span class="ranking-icon">🏆</span>
+                Ranking of alternatives
+            </h2>
+            <p class="ranking-hint">💡 Click on any technology in the ranking to view more information and useful links.</p>
+
+            <div id="top6Container" class="ranking-list">
+                <!-- Dynamic content -->
+            </div>
+        </div>
+    </div>
+
+
+    <div id="techPopup" class="tech-popup" style="display:none;">
+    <div class="popup-content">
+
+        <div class="popup-header">
+            <h3 id="popupTitle"></h3>
+            <button id="closePopup">✕</button>
+        </div>
+
+        <div id="llLinksSection"></div>
+
+        <div id="techLinksSection"></div>
+
+    </div>
+</div>
+
+    @*  <div class="container mt-4" id="rankingContainer" style="display: none;">
+        <h2 class="mb-3 text-center">Ranking of alternatives</h2>
+        <div id="top6Container" class="row g-3">
+        </div>
+    </div> *@
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+
+        $(document).ready(function () {
+            loadTop6Technologies();
+        });
+        $(document).ready(function () {
+            $("#criteriaForm").on("submit", function (e) {
+                e.preventDefault();
+
+                const formData = {
+                    technologyName: $("#criteriaName").val(),
+                    // TAB 1
+                    userFriendly: $("#userFriendly").val(),
+                    onAndOffline: $("#onAndOffline").val(),
+                    freeToUse: $("#freeToUse").val(),
+                    notifications: $("#notifications").val(),
+                    customerSupport: $("#customerSupport").val(),
+                    multipleDevices: $("#multipleDevices").val(),
+                    toolsIntegration: $("#toolsIntegration").val(),
+                    multilingual: $("#multilingual").val(),
+                    openSource: $("#openSource").val(),
+                    requiresTraining: $("#requiresTraining").val(),
+                    // TAB 2
+                    farmManagement: $("#farmManagement").val(),
+                    providesRecommendation: $("#providesRecommendation").val(),
+                    enablesAlerts: $("#enablesAlerts").val(),
+                    aiDrivenRecommendations: $("#aiDrivenRecommendations").val(),
+                    scenarioPlaning: $("#scenarioPlaning").val(),
+                    productivityTracking: $("#productivityTracking").val(),
+                    improvesDiagnostics: $("#improvesDiagnostics").val(),
+                    strengthensInteraction: $("#strengthensInteraction").val(),
+                    increasesProfitability: $("#increasesProfitability").val(),
+                    savesTime: $("#savesTime").val(),
+                    savesMoney: $("#savesMoney").val(),
+                    // TAB 3
+                    farmSpecificInput: $("#farmSpecificInput").val(),
+                    usesOtherServices: $("#usesOtherServices").val(),
+                    isDataDriven: $("#isDataDriven").val(),
+                    allowsInteroperability: $("#allowsInteroperability").val(),
+                    roleBasedAccess: $("#roleBasedAccess").val(),
+                    dataTagingAndCategorization: $("#dataTagingAndCategorization").val(),
+                    dataExport: $("#dataExport").val(),
+                    aiAnalytics: $("#aiAnalytics").val(),
+                    qualityControl: $("#qualityControl").val(),
+                    dataSecurity: $("#dataSecurity").val(),
+                    // 🟢 TAB 4: Economic Impacts
+                    advisoryService: $("#advisoryService").val(),
+                    strategyAndServices: $("#strategyAndServices").val(),
+                    changeManagement: $("#changeManagement").val(),
+                    marketTrends: $("#marketTrends").val(),
+                    valueToServices: $("#valueToServices").val(),
+                    economicAdvantages: $("#economicAdvantages").val(),
+                    costSaving: $("#costSaving").val(),
+                    // 🟢 TAB 5: Knowledge Exchange
+                    advisorNetworking: $("#advisorNetworking").val(),
+                    advisorToFarmerComs: $("#advisorToFarmerComs").val(),
+                    advisorFrequency: $("#advisorFrequency").val(),
+                    liveChat: $("#liveChat").val(),
+                    collaborative: $("#collaborative").val(),
+                    qa: $("#qa").val(),
+                    sharingNotes: $("#sharingNotes").val(),
+                    bestPractices: $("#bestPractices").val(),
+                    aiToolsForUsers: $("#aiToolsForUsers").val(),
+                    knowledgeSharing: $("#knowledgeSharing").val(),
+                    // 🟢 TAB 6: Environmental Outcomes
+                    adaptsToChange: $("#adaptsToChange").val(),
+                    reducesCO2: $("#reducesCO2").val(),
+                    advancedEcosystem: $("#advancedEcosystem").val(),
+                    resourceEfficiency: $("#resourceEfficiency").val(),
+                    wasteManagement: $("#wasteManagement").val(),
+                    waterQuality: $("#waterQuality").val(),
+                    soilQuality: $("#soilQuality").val(),
+                    enhancesBiodiversity: $("#enhancesBiodiversity").val()
+                };
+
+
+                $.ajax({
+                    url: "https://cdx.mojagronom.mk/api/Criteria",
+                    //url: "/Home/SendDataToService",
+                    type: "POST",
+                    contentType: "application/json",
+                    data: JSON.stringify(formData),
+                    success: function (response) {
+                        const enteredTechnology = formData.technologyName;
+
+                        loadTop6Technologies(enteredTechnology, function () {
+
+                            deleteLastTech();
+
+                            document
+                                .getElementById("top6Container")
+                                .scrollIntoView({
+                                    behavior: "smooth",
+                                    block: "start"
+                                });
+                        });
+
+                        
+                        let message = typeof response === "object" && response.message
+                            ? response.message
+                            : response;
+
+                        Swal.fire({
+                            title: "Success!",
+                            text: message || "The technology has been added successfully.",
+                            icon: "success",
+                            confirmButtonText: "OK",
+                            confirmButtonColor: "#198754",
+                            timer: 2000,
+                            timerProgressBar: true
+                        });
+
+                        //deleteLastTech();
+                    },
+                    error: function (xhr) {
+                        console.error(xhr);
+                        Swal.fire({
+                            title: "Error!",
+                            text: xhr.responseText || "Failed to save the technology.",
+                            icon: "error",
+                            confirmButtonText: "Try again",
+                            confirmButtonColor: "#dc3545"
+                        });
+                    }
+                });
+
+            });
+        });
+
+        // 🔹 Функција за вчитување на Top 6 Technologies
+
+        function loadTop6Technologies(selectedTechnology = "", onComplete = null) {
+
+            $.ajax({
+                //url: "/Home/GetRankings",
+                url: "https://cdx.mojagronom.mk/api/Criteria/top6",
+                type: "GET",
+
+                success: function (data) {
+
+                    let html = "";
+
+                    if (data && data.length > 0) {
+
+                        data.sort((a, b) => a.rank - b.rank);
+
+                                        data.forEach((t) => {
+
+                                            const isSelected =
+                                                t.technology.trim().toLowerCase() ===
+                                                selectedTechnology.trim().toLowerCase();
+
+                                            const selectedClass =
+                                                isSelected ? "ranking-item-selected" : "";
+
+                                            const hasLinks = t.llLink || t.techLink;
+
+                                            const clickableClass =
+                                                !isSelected && hasLinks ? "tech-info-trigger" : "";
+
+                                            const dataAttributes =
+                                                !isSelected && hasLinks
+                                                    ? `
+                                                        data-tech-name="${t.technology}"
+                                                        data-ll-link="${t.llLink || ""}"
+                                                        data-tech-link="${t.techLink || ""}"
+                                                      `
+                                                    : "";
+
+                                            html += `
+                                                <div class="ranking-item ${selectedClass} ${clickableClass}"
+                                                     ${dataAttributes}>
+
+                                                    <div class="ranking-left">
+
+                                                        <span class="ranking-tech">
+                                                            ${t.technology}
+                                                        </span>
+
+                                                    </div>
+
+                                                    <div class="ranking-right">
+                                                        Rank #${t.rank}
+                                                    </div>
+
+                                                </div>
+                                            `;
+                                        });
+
+                    } else {
+
+                        html = `
+                            <p class='text-center text-muted'>
+                                No technologies available.
+                            </p>
+                        `;
+                    }
+
+                    $("#top6Container").html(html);
+
+                    if (onComplete) {
+                        onComplete();
+                    }
+                },
+
+                error: function (xhr) {
+
+                    console.error("❌ Error loading technologies:", xhr);
+
+                    $("#top6Container").html(`
+                        <p class='text-danger text-center'>
+                            Error loading data.
+                        </p>
+                    `);
+                }
+            });
+        }
+        
+        function deleteLastTech() {           
+            $.ajax({
+                //url: "/Home/DeleteLastTechnology",
+                url: "https://cdx.mojagronom.mk/api/Criteria/last",
+                type: "DELETE",
+                success: function () {
+                    console.log("Temporary technology removed.");
+                },
+                error: function (xhr) {
+                    console.error("Delete failed:", xhr);
+                }
+            });
+        }
+
+
+        $(document).ready(function () {
+            const $form = $("#criteriaForm");
+            const $saveBtn = $form.find("button[type='submit']");
+
+            // Функција: додава * (required)
+            function appendStarToLabel($label) {
+                if (!$label || $label.length === 0) return;
+
+                if ($label.find("span.required-star").length === 0) {
+                    $label.append(" <span class='required-star text-danger fw-bold'>*</span>");
+                }
+            }
+
+            // Пронајди сите required полиња и им додади ѕвезда на соодветниот label
+            $form.find(":input[required]").each(function () {
+                const $el = $(this);
+                const id = $el.attr("id");
+                let $label = $();
+
+
+                if (id) {
+                    $label = $form.find("label[for='" + id + "']");
+                }
+
+
+                if (!$label || $label.length === 0) {
+
+                    const $closestGroup = $el.closest(".mb-3, .form-group, .col-md-6, .row, .form-floating");
+                    if ($closestGroup && $closestGroup.length) {
+                        $label = $closestGroup.find("label").first();
+                    }
+                }
+
+
+                if (!$label || $label.length === 0) {
+                    $label = $el.prevAll("label").first();
+                }
+
+
+                if (!$label || $label.length === 0) {
+
+                    $label = $el.closest("div").siblings("label").first();
+                }
+
+                appendStarToLabel($label);
+            });
+
+            // Функција што проверува дали сите required полиња се пополнети
+            function checkRequiredFields() {
+                let allFilled = true;
+
+                $form.find(":input[required]").each(function () {
+                    const $this = $(this);
+                    const tag = ($this.prop("tagName") || "").toLowerCase();
+
+                    let val = $this.val();
+
+
+                    if (val === null || val === undefined) val = "";
+
+
+                    if (typeof val === "string") val = val.trim();
+
+                    if (val === "") {
+                        allFilled = false;
+                        return false;
+                    }
+                });
+
+                $saveBtn.prop("disabled", !allFilled);
+            }
+
+
+            $form.on("input change", ":input[required]", checkRequiredFields);
+
+
+            checkRequiredFields();
+
+
+            $form.on("submit", function (e) {
+                if ($saveBtn.prop("disabled")) {
+                    e.preventDefault();
+
+                    alert("⚠️ Please fill in all required fields before saving.");
+
+                }
+            });
+        });
+
+        function populateSelect(select, sourceKey) {
+            if (!dataSources[sourceKey]) return;
+
+            dataSources[sourceKey].forEach(item => {
+                const option = document.createElement("option");
+                option.value = item.value;
+                option.textContent = item.label;
+                select.appendChild(option);
+            });
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            document.querySelectorAll("select[data-source]")
+                .forEach(select => {
+                    populateSelect(select, select.dataset.source);
+                });
+        });
+                
+     
+    
+    </script>
+    <script id="7fj2k1">
+        document.addEventListener('DOMContentLoaded', function () {
+            var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+            popoverTriggerList.map(function (popoverTriggerEl) {
+                return new bootstrap.Popover(popoverTriggerEl)
+            })
+        });
+
+                $(document).on("click", ".tech-info-trigger", function () {
+
+                    const techName = $(this).data("tech-name");
+                    const llLink = $(this).data("ll-link");
+                    const techLink = $(this).data("tech-link");
+
+                    $("#popupTitle").text(techName);
+
+                    let llHtml = "";
+                    let techHtml = "";
+
+                    if (llLink) {
+                        llHtml = `
+                            <h4>Living Lab Links</h4>
+                            <ul>
+                                <li>
+                                    <a href="${llLink}" target="_blank">
+                                        Open Living Lab link
+                                    </a>
+                                </li>
+                            </ul>
+                        `;
+                    }
+
+                    if (techLink) {
+                        techHtml = `
+                            <h4>Technology Information</h4>
+                            <ul>
+                                <li>
+                                    <a href="${techLink}" target="_blank">
+                                        Open Technology Information Link
+                                    </a>
+                                </li>
+                            </ul>
+                        `;
+                    }
+
+                    $("#llLinksSection").html(llHtml);
+                    $("#techLinksSection").html(techHtml);
+
+                    $("#techPopup").show();
+                });
+
+        $("#closePopup").on("click", function () {
+            $("#techPopup").hide();
+        });
+    </script>
+</body>
+</html>

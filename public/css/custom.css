@@ -1,0 +1,551 @@
+.about_col {
+    text-align: center;
+}
+
+.platform_img {
+    max-width: 100%;
+}
+
+.appl_scen_img {
+    height: 150px;
+}
+
+
+/*Try images for hero section*/
+/*.section.section {*/
+/*    background-image: url(http://localhost/img/hero_section/matthew-smith-Rfflri94rs8-unsplash.jpg);*/
+/*    background-size: cover;*/
+/*    background-position: center center;*/
+/*}*/
+
+/*Shadow for filters column*/
+.custom_shadow {
+    box-shadow: 0px 0px 6px #00000029;
+}
+
+/*Text color for titles (blue) */
+.text-color-custom-blue {
+    color: #1c64b6;
+}
+
+/*Color for search button*/
+.orange_color_btn {
+    color: #ffffff;
+    background-color: #F4C01E;
+}
+
+.filter .orange_color_btn {
+    padding: 6px;
+}
+
+.text-custom-green {
+    color: #A0B63C;
+}
+
+.filters_color,
+.subsection_green {
+    background-color: #A0B63C;
+    color: #FFF;
+}
+
+.filters_color:hover {
+    border-color: #BCD364;
+    background-color: #BCD364;
+    color: #FFF;
+}
+
+/*CODECS website button in the header - keep the same color on hover/press*/
+.header-website-btn,
+.header-website-btn:hover,
+.header-website-btn:focus,
+.header-website-btn:active,
+.header-website-btn:focus-visible {
+    background-color: #A0B63C !important;
+    border-color: #A0B63C !important;
+    color: #FFF !important;
+    box-shadow: none !important;
+}
+
+/*Reserve enough header height for the stacked button + two nav rows,
+  in both the normal and the sticky (scrolled) header state*/
+#header .header-container {
+    min-height: 120px;
+}
+
+/*Compact stacked nav rows in the header - the theme gives .header-nav 1rem vertical
+  padding plus a 70px min-height, and stretches each link to fill it via height:100%*/
+#header .header-nav.header-nav-compact {
+    padding: 0;
+    min-height: 0;
+}
+
+@media (min-width: 992px) {
+    /*The :hover variant is needed too - the theme re-applies min-height/height:100%
+      on hover, which would otherwise make the link grow and jump out of the row*/
+    #header .header-nav.header-nav-compact nav > ul > li > a,
+    #header .header-nav.header-nav-compact nav > ul > li:hover > a {
+        min-height: 0;
+        height: auto;
+        padding-top: 0.25rem;
+        padding-bottom: 0.25rem;
+    }
+}
+
+/*MAT calculator: keep its internal scroll targets clear of the sticky header*/
+[data-codecs-mat] {
+    --mat-scroll-offset: 150px;
+}
+
+/*MAT (Multicriteria Analysis Tool) - align the delivered styles with the other calculators.
+  codecs-mat.css loads after this file, so every rule is prefixed with body to outrank
+  its .mat-root selectors. The vendor files stay untouched so new deliveries are drop-in*/
+body .mat-root {
+    --mat-green-fill: #A0B63C;
+    --mat-green-fill-hover: #BCD364;
+}
+
+/*Landing page corners are square, like the TAT landing blocks*/
+body .mat-root.mat-landing {
+    --mat-radius: 0;
+}
+
+/*Primary buttons green, like the TAT calculator's buttons*/
+body .mat-root .mat-button {
+    background: #A0B63C;
+    border-color: #A0B63C;
+}
+
+body .mat-root .mat-button--ghost {
+    color: #A0B63C;
+    background: transparent;
+}
+
+/*"Go to the calculator" buttons - same as the TAT "GO TO CALCULATOR" block*/
+body .mat-root a.mat-button--cta {
+    display: block;
+    width: 100%;
+    max-width: 317px;
+    margin: 0 auto;
+    padding: 24px 12px;
+    border-radius: 0;
+    font-size: 1.2em;
+    font-weight: 700;
+    letter-spacing: normal;
+    text-align: center;
+}
+
+/*Closing call to action box - same as the TAT .tool_shadow_section box*/
+body .mat-root .mat-landing-cta {
+    background: #FFF;
+    box-shadow: 0px 0px 6px #00000029;
+    border-radius: 0;
+    padding: 24px;
+}
+
+body .mat-root .mat-landing-cta .mat-heading {
+    color: #A0B63C;
+}
+
+/*Make filter dropdown scrollable for big filter arrays*/
+.filter_height {
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.form-check {
+    font-size: 0.8rem;
+    padding-left: 2em;
+    font-weight: 600;
+}
+
+.form-check-input {
+    margin-top: 0.5em;
+}
+
+.form-check-input, .form-check-label {
+    cursor: pointer;
+}
+
+.form-check-input:checked {
+    background-color: #A0B63C;
+}
+
+/* Change color on hover */
+.form-check:hover {
+    background-color: rgba(38, 38, 38, 0.09);
+}
+
+.column {
+    width: 100%;
+}
+
+/*Set the left border for the cards*/
+.dataset_card {
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 0px 0px 6px #00000029;
+    border-radius: 5px;
+    padding: 9px 20px 11px 20px;
+    border-left: 6px solid;
+}
+.dataset_card.fairshare {
+    border-left-color: #96c619;
+}
+
+.dataset_card.desira {
+    border-left-color: #07C19A;
+}
+
+.dataset_card.smartakis {
+    border-left-color: #27c24c;
+}
+
+.dataset_card.nutricheck {
+    border-left-color: #103A4C;
+}
+
+.dataset_card.ipmworks {
+    border-left-color: #097b32;
+}
+
+.dataset_card.dataset {
+    border-left-color: #1c64b6;
+}
+
+.dataset_card.lldatasets {
+    border-left-color: #1c64b6;
+}
+
+.dataset_card.assessment_tool,
+.dataset_card.virtual_tour {
+    border-left-color: #A0B63C;
+}
+/*Extra padding for pills*/
+.badge-primary {
+    --bs-badge-padding-x: 0.85em;
+    --bs-badge-padding-y: 0.65em;
+}
+
+/*Set max height for images of list-items*/
+.product .product-thumb-info img {
+    max-height: 200px;
+    margin-bottom: 15px;
+}
+
+.mr-1 {
+    margin-right: 5px;
+}
+
+.mr_2 {
+    margin-right: 10px;
+}
+
+.ml_2 {
+    margin-left: 5px!important;
+}
+
+/*Remove background color from theme css*/
+.product .product-thumb-info {
+    background: unset;
+}
+
+.flex_row,
+.flex_row_responsive{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.selected-link
+{
+    background-color:#BCD364;
+}
+
+.bg-yellow{
+    background: var(--unnamed-color-f4c01e) 0% 0% no-repeat padding-box;
+    background: #F4C01E 0% 0% no-repeat padding-box;
+}
+
+.bg-blue{
+    background: var(--unnamed-color-007cc2) 0% 0% no-repeat padding-box;
+    background: #007CC2 0% 0% no-repeat padding-box;
+}
+
+/* Css for add to favorites heart */
+.heart_custom {
+    font-size: 32px;
+    width: 32px;
+    height: 32px;
+    transition: color 0.3s;
+    color: #b2b2b2;
+    margin-left: auto;
+}
+
+.heart_custom:hover,
+.heart_custom.enabled{
+    color: #F4C01E;
+}
+
+.card_column {
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 0px 0px 6px #00000029;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.card_subsection {
+    padding: 0 20px;
+    border-left: 3px solid;
+    border-left-color: #96c619;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    margin-left: 10px;
+    flex-grow: 1;
+}
+
+.card_subsection.desira {
+    border-left-color: #07C19A;
+}
+
+.card_subsection.smartakis {
+    border-left-color: #27c24c;
+}
+
+.card_subsection.nutricheck {
+    border-left-color: #103A4C;
+}
+
+.card_subsection.ipmworks {
+    border-left-color: #097b32;
+}
+
+.card_subsection.dataset {
+    border-left-color: #1c64b6;
+}
+
+.card_subsection.lldatasets {
+    border-left-color: #1c64b6;
+}
+
+.col_width {
+    flex: 0 0 auto;
+    width: 64.6%;
+}
+
+.col_custom {
+    flex: 0 0 auto;
+    width: 32%;
+}
+
+.col_custom_duo {
+    flex: 0 0 auto;
+    width: 45%;
+}
+
+.owl-carousel .owl-item img {
+    max-height: 414px;
+    object-fit: contain;
+}
+
+.keywords-container {
+    max-width: 420px;
+    /*overflow-x: auto;*/
+    /*margin-left: 20px;*/
+}
+
+.keywords-scroll {
+    white-space: nowrap;
+    scrollbar-width: thin; /* for Firefox */
+    scrollbar-color: #ccc transparent; /* for Firefox */
+
+    /* For Webkit-based browsers like Chrome and Safari */
+    &::-webkit-scrollbar {
+        height: 4px; /* Set the width of the scrollbar */
+    }
+
+    /* For Webkit-based browsers like Chrome and Safari */
+    &::-webkit-scrollbar-thumb {
+        background-color: #ccc; /* Color of the scrollbar thumb */
+        border-radius: 4px; /* Rounded corners for the thumb */
+        margin-top: 10px;
+    }
+
+    /* For Webkit-based browsers like Chrome and Safari */
+    &::-webkit-scrollbar-track {
+        background-color: transparent; /* Color of the scrollbar track */
+    }
+}
+
+.keywords {
+    align-items: start;
+}
+
+/*Rules for responsive */
+@media screen and (max-width: 991px) {
+
+    .flex_row_responsive {
+        flex-direction: column;
+    }
+
+    .card_column_responsive {
+        width: 100%;
+    }
+
+    .col_width {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+
+    .col_width .flex_row {
+        flex-direction: column;
+    }
+
+    .owl-carousel .owl-item img {
+        max-height: 300px;
+    }
+
+    .flex_row_responsive2 {
+        flex-direction: column;
+    }
+
+    .col_custom {
+        width: 100%;
+    }
+
+    .col_custom_duo {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .license_container {
+        flex-wrap: wrap;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .keywords-container {
+        max-width: 300px;
+    }
+
+    .keywords {
+        flex-wrap: wrap;
+    }
+}
+
+.card-list-container > div
+{
+    margin-bottom: 20px;
+}
+
+a:hover{
+    text-decoration: none !important;
+}
+
+
+@media screen and (max-width:1199px) and (min-width:992px) {
+    .header_socials {
+        display: none!important;
+    }
+
+    .logo_column {
+        max-width: 200px;
+    }
+    
+}
+
+.tool_shadow_section {
+    box-shadow: 0px 0px 6px #00000029;
+    padding: 24px;
+}
+
+
+.virtual-tool-btn {
+    font-size: 0.8rem;
+    cursor: pointer;
+    font-weight: 600;
+    color: #A0B63C;
+}
+
+
+.green-border {
+    border: 1px solid #A0B63C;
+    padding: 12px;
+}
+
+.roadmap-box {
+    border: 2px solid #1C64B6;
+    border-radius: 8px;
+    padding: 0 0 31px 0;
+    background-color: #DAE9FA;
+}
+
+.blue-outline {
+    text-shadow: -1px -1px 0 #1C64B6, 1px -1px 0 #1C64B6, -1px 1px 0 #1C64B6, 1px 1px 0 #1C64B6;
+}
+
+/* Role selection modal */
+.role-modal-content {
+    box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.25);
+    border-left: 7px solid rgba(160, 182, 60, 1) !important;
+    border-radius: 10px 0 0 10px !important;
+}
+
+#roleSelectionModal {
+    pointer-events: none;
+}
+
+#roleSelectionModal .modal-dialog {
+    pointer-events: auto;
+    position: fixed;
+    bottom: 25%;
+    right: 0;
+    margin: 0;
+    max-width: 744px;
+    width: calc(100% - 3rem);
+    max-height: 73vh !important;
+}
+
+.role-card {
+    cursor: pointer;
+    border: 3px solid transparent;
+    border-radius: 12px;
+    min-width: 110px;
+    transition: background-color 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+    user-select: none;
+}
+
+.role-card:hover {
+    transform: translateY(-2px);
+}
+
+.role-card.selected {
+    border-color: #A0B63C;
+    border-width: 3px;
+    background-color: #f0f5d8;
+    box-shadow: 0 4px 12px rgba(160, 182, 60, 0.25);
+}
+
+.role-card.selected .role-label,
+.role-card.selected i {
+    color: #A0B63C !important;
+}
+
+.role-apply-btn:hover {
+    background-color: #8fa032 !important;
+}
+
+.modal-padding {
+    padding: 12px 50px 24px 12px;
+}
+
+@media screen and (max-width: 991px) and (min-width: 849px) {
+    .header-span {
+        width: 360px;
+    }
+}
+

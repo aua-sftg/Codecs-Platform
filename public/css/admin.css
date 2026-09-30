@@ -1,0 +1,34 @@
+.bg-blue,.bg-primary,.btn-primary,.badge-primary,.alert-primary,.table-primary,.list-group-item-primary,.list-group-item-primary:hover,.list-group-item-primary:focus,.list-group-item-primary.focus,.list-group-item-primary.active,.list-group-item-primary.active:hover,.list-group-item-primary.active:focus,.list-group-item-primary.active.focus,.btn-primary:hover,.btn-primary:focus,.btn-primary:active,.btn-primary.active,.open>.btn-primary.dropdown-toggle,.btn-primary:active,.btn-primary.active,.show>.btn-primary.dropdown-toggle,.btn-primary:active,.btn-primary.active,.btn-primary:active:hover,.btn-primary.active:hover,.show>.btn-primary.dropdown-toggle:hover,.btn-primary:active:focus,.btn-primary.active:focus,.show>.btn-primary.dropdown-toggle:focus,.btn-primary:active:focus,.btn-primary.active:focus,.btn-primary:active:focus,.btn-primary.active:focus,.show>.btn-primary.dropdown-toggle:focus
+.btn-outline-primary:hover,.page-item.active .page-link
+{
+    background-color: rgba(28, 100, 182, 0.6);
+    color:#fff !important;
+}
+
+.btn-primary.disabled, .btn-primary:disabled, .dataTables_wrapper .dataTables_paginate .disabled.paginate_button.current, .dataTables_wrapper .dataTables_paginate .paginate_button.current:disabled {
+    background-color:  rgba(28, 100, 182, 0.6);
+    border-color:  rgba(28, 100, 182, 0.6);
+    color: #fff;
+}
+
+.btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .dataTables_wrapper .dataTables_paginate .paginate_button.current:not(:disabled):not(.disabled).active, .dataTables_wrapper .dataTables_paginate .paginate_button.current:not(:disabled):not(.disabled):active, .dataTables_wrapper .dataTables_paginate .show>.dropdown-toggle.paginate_button.current, .show>.btn-primary.dropdown-toggle {
+    background-color: #1C64B6;
+    border-color: #1C64B6;
+    color: #fff;
+}
+
+
+a,
+.sidebar.sidebar-pills .nav-link.active, .sidebar.sidebar-pills .nav-link:hover
+{
+    color:#1C64B6 !important;
+}
+
+.btn-outline-primary{
+    border-color:#1C64B6 !important;
+}
+
+
+.navbar-brand{
+    color:#fff !important;
+}

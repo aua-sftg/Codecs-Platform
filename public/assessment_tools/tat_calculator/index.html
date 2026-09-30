@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Technology Assessment Tool</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: "Poppins", Arial, sans-serif;
+            font-size: 1.1em;
+            color: #777;
+        }
+
+        .container {
+            max-width: 1300px;
+            margin-top: 50px;
+        }
+
+        h2 {
+            font-weight: 700;
+            /*color: #355e3b;*/
+            color: #1c64b6;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .criteria-card {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            /* border-left: 6px solid #8bc34a; */
+            border-left: 10px solid #1c64b6;
+            padding: 40px;
+            margin-bottom: 50px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .criteria-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-tabs {
+            border: none;
+            justify-content: center;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+        }
+
+        .nav-tabs .nav-link {
+            border: none;
+            /* color: #355e3b; */
+            color: #A0B63C;
+            background-color: #e8f5e9;
+            border-radius: 30px;
+            margin: 0 6px 10px 6px;
+            padding: 10px 20px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .nav-tabs .nav-link:hover {
+            background-color: #aed581;
+            color: white;
+        }
+
+        .nav-tabs .nav-link.active {
+            /* background-color: #558b2f; */
+            background-color: #A0B63C;
+            color: white;
+        }
+
+        .form-label {
+            font-weight: 600;
+            /* color: #355e3b; */
+            color: #1c64b6;
+        }
+
+        .form-select {
+            border-radius: 10px;
+            border: 1px solid #c5e1a5;
+            transition: all 0.2s;
+        }
+
+        .form-select:focus {
+            box-shadow: 0 0 0 3px rgba(139, 195, 74, 0.25);
+            /* border-color: #7cb342; */
+            border-color: #A0B63C;
+        }
+
+        .btn-primary {
+            /* background-color: #558b2f;  */
+            background-color: #A0B63C;
+            border: none;
+            border-radius: 30px;
+            padding: 12px 35px;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+            display: block;
+            margin: 0 auto;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            /* background-color: #558b2f; */
+            background-color: #A0B63C;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 12px rgba(85, 139, 47, 0.3);
+        }
+
+
+        .btn-primary:disabled,
+        .btn-primary.disabled {
+            background-color: #a5d6a7 !important;
+            border: none !important;
+            opacity: 0.8;
+            cursor: not-allowed;
+            box-shadow: none !important;
+        }
+
+        .tab-pane {
+            animation: fadeIn 0.4s ease-in-out;
+        }
+
+        .form-section-title {
+            /* color: #558b2f; */
+            color: #A0B63C;
+            font-weight: 600;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+
+        input.form-control {
+            border-radius: 10px;
+            border: 1px solid #c5e1a5;
+            transition: all 0.2s;
+        }
+
+            input.form-control:focus {
+                box-shadow: 0 0 0 3px rgba(139, 195, 74, 0.25);
+                /* border-color: #7cb342; */
+                border-color: #A0B63C;
+            }
+
+        .is-invalid {
+            border: 2px solid #dc3545 !important;
+            background-color: #f8d7da !important;
+        }
+
+
+
+        #rankingContainer {
+            padding-top: 2rem;
+            padding-bottom: 2rem;
+        }
+
+        .ranking-card {
+            background: #f9fff9;
+            border-radius: 16px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+            .ranking-card:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+            }
+
+        .ranking-card {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            border-left: 10px solid #1c64b6;
+            /* border-left: 6px solid #8bc34a;  */
+            padding: 40px;
+            margin-bottom: 50px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .ranking-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+        }
+
+        .ranking-card h2 {
+            /*   color: #558b2f; */
+            color: #1c64b6;
+            font-weight: 600;
+            font-size: 1.8rem;
+            font-family: "Poppins", sans-serif;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .ranking-icon {
+            margin-right: 10px;
+            font-size: 1.9rem;
+            vertical-align: middle;
+        }
+
+        .accordion-button {
+            /* background-color: #A0B63C; */
+            background-color: #1c64b6;
+            color: white;
+            /* color: #355e3b; */
+            font-weight: 600;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .accordion-button:not(.collapsed) {
+            background-color: #c8e6c9;
+            /* color: #1b5e20; */
+            color: #A0B63C;
+        }
+
+        .accordion-item {
+            border: none;
+            border-radius: 10px;
+            margin-bottom: 8px;
+        }
+
+        .accordion-button::after {
+            display: none !important;
+        }
+
+        .accordion-button {
+            display: flex;
+            flex-wrap: wrap; /* allow content to wrap on small screens */
+            align-items: center;
+        }
+
+        .accordion-button .rank-badge {
+            margin-left: auto; /* stays on the right */
+            white-space: nowrap; /* prevents breaking inside the badge */
+            margin-top: 4px; /* optional: ensures it moves to next line cleanly */
+            font-weight: bold;
+        }
+
+        .text-color-custom-blue {
+            color: #1c64b6;
+        }
+
+        .font-weight-bold {
+            font-weight: 700 !important;
+        }
+
+        .text-3-5 {
+            font-size: 1.1em !important;
+        }
+        
+        #atimg {
+            max-width: 800px;   /* limits how wide it gets */
+            width: 100%;        /* still responsive on smaller screens */
+            height: auto;       /* keeps correct proportions */
+            display: block;
+            margin: 20px auto;  /* centers the image */
+        }
+
+        @media (max-width: 1024px) {
+            #atimg {
+                height: 500px;
+                width: 100%;
+            }
+        }
+</style>
+</head>
+<body>
+
+    <div class="container pt-3 pb-2">
+        <div class="col-12 mt-5 mb-5">
+            <h3 class="text-color-custom-blue font-weight-bold mb-4">
+                Technology Assessment Tool for Digital Agriculture
+            </h3>
+            <p class="text-3-5 mb-3">
+                The Technology Assessment Tool is designed to support a systematic, transparent, and user-centred evaluation of digital agricultural technologies, with a particular focus on solutions tested and implemented within Living Labs. It enables a structured comparison of technologies based on nearly 60 assessment criteria, covering key dimensions such as technical performance, usability, data management, interoperability, economic impact, sustainability, and advisory value. All criteria are assessed using a Likert scale, ensuring consistency, comparability, and clarity across evaluations.
+            </p>
+
+            <p class="text-3-5 mb-3">
+                The primary users of the tool include farmers, agricultural advisors, researchers, and technology providers. For these stakeholders, the tool serves as a robust decision-support framework to better understand the strengths, limitations, and suitability of different digital solutions. The resulting insights support informed technology adoption decisions, strengthen advisory services, and contribute to improved productivity, sustainability, and overall farm management efficiency.
+            </p>
+            <p class="text-3-5 mb-3">
+                The results are displayed as a straightforward ranking list, starting with the highest-scoring technology in first place and continuing in order for all technologies included in the tool.
+            </p>
+            <img id="atimg" src="../img/tat_v2.jpg" />
+            <!-- <img src="/img/tat_v2.jpg"> -->
+            <h4 class="text-color-custom-blue font-weight-bold mb-4">
+                Methodology
+            </h4>
+
+            <p class="text-3-5">
+                The Technology Assessment Tool applies a Multi-Criteria Decision Analysis (MCDA) approach by integrating the Entropy Weight Method (EWM) and the Technique for Order Preference by Similarity to Ideal Solution (TOPSIS) to evaluate and rank digital agricultural technologies. This combined methodology ensures an objective, data-driven, and transparent assessment of technologies across a large and diverse set of criteria.
+            </p>
+
+            
+
+            <h4 class="text-color-custom-blue font-weight-bold mb-4">
+                Entropy Weight Method (EWM)
+            </h4>
+
+            <p class="text-3-5">
+                The Entropy Weight Method is used to determine the relative importance (weights) of the assessment criteria based on the variability of the data. Unlike subjective weighting methods, entropy weighting relies solely on the information contained in the evaluation matrix. Criteria that show higher variability across technologies are assigned higher weights, as they provide greater discriminatory power in the assessment process. This makes entropy particularly suitable for evaluations involving a large number of criteria, where traditional methods such as Analytic Hierarchy Process (AHP) become impractical.
+            </p>
+            
+            <p class="text-3-5">
+                The entropy weighting process involves normalizing the decision matrix, calculating entropy values for each criterion, determining the degree of divergence, and finally computing objective criterion weights. These weights reflect the informational contribution of each criterion to the overall assessment.
+            </p>
+
+
+            <h4 class="text-color-custom-blue font-weight-bold mb-4 mt-4">
+                TOPSIS Ranking Method
+            </h4>
+
+            <p class="text-3-5 mb-3">
+                Once the criteria weights are established, TOPSIS is applied to rank the assessed technologies. TOPSIS is based on the principle that the best-performing technology should have the shortest distance from the positive ideal solution (best possible performance across all criteria) and the farthest distance from the negative ideal solution (worst possible performance).
+            </p>
+            <p class="text-3-5">
+                The TOPSIS procedure includes normalizing the weighted decision matrix, identifying ideal and anti-ideal solutions, calculating separation distances for each technology, and computing a relative closeness score. Technologies are then ranked according to these scores, providing a clear and interpretable comparison of their overall performance.
+            </p>
+
+            <h4 class="text-color-custom-blue font-weight-bold mb-4 mt-4">
+                Integrated Assessment Approach
+            </h4>
+            <p class="text-3-5 mb-3">
+                The integration of Entropy weighting and TOPSIS combines objective criterion weighting with robust ranking capabilities, making it a well-suited methodology for evaluating digital agricultural technologies. This approach ensures fairness, scalability, and transparency, while supporting evidence-based decision-making for farmers, advisors, and technology providers.
+            </p>
+
+
+        </div>
+        <a class="btn btn-primary btn-lg" href="/tat/TAT.html"> Go to calculator </a>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+</html>
