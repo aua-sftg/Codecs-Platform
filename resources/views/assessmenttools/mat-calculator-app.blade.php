@@ -25,6 +25,8 @@
     </x-slot:hero_section>
 
     <x-slot:main_body>
+        {{-- codecs-mat.js is patched locally: the intro (#mat-about) and Methodology (#mat-methodology)
+             sections are no longer rendered. Re-apply if a new MAT delivery replaces the script. --}}
         <div class="container py-4 mt-4 mb-5">
             <div data-codecs-mat></div>
         </div>

@@ -1,9 +1,9 @@
 <x-layout.layout :livewire_enable="true">
     <x-slot:title>
-        Codecs | Meta-Inventory / LivingLab Datasets
+        Codecs | Meta-Inventory / LivingLab Technologies
     </x-slot:title>
     <x-slot:keywords>
-        Codecs, meta-inventory, LivingLab Datasets
+        Codecs, meta-inventory, LivingLab Technologies
     </x-slot:keywords>
     <x-slot:description>
         Codecs | Meta-Inventory / Explore the digital technologies deployed in the CODECS Living Labs to deliver context-specific, applied services that support sustainable agricultural digitalisation
@@ -15,7 +15,7 @@
                 <a role="button" href="{{route('meta_inventory_home')}}">Meta-Inventory</a>
             </x-slot:sub_section>
             <x-slot:current_view>
-                LivingLab Datasets
+                LivingLab Technologies
             </x-slot:current_view>
         </x-layout.hero_simple>
     </x-slot:hero_section>

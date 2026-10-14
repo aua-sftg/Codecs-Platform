@@ -91,6 +91,27 @@
     }
 }
 
+/*The two nav rows live in ONE collapsible <nav>: the theme's mobile menu script animates the
+  header height for a single nav, two separate navs made it jump and close on the hamburger click.
+  Desktop: stack the two lists as right-aligned rows*/
+@media (min-width: 992px) {
+    #header .header-nav-main nav {
+        flex-direction: column;
+        align-items: flex-end;
+    }
+}
+
+/*Mobile: one continuous list, no double padding between the two groups*/
+@media (max-width: 991px) {
+    #header .header-nav-main nav > ul#mainNavRow1 {
+        padding-bottom: 0;
+    }
+
+    #header .header-nav-main nav > ul#mainNavRow2 {
+        padding-top: 0;
+    }
+}
+
 /*MAT calculator: keep its internal scroll targets clear of the sticky header*/
 [data-codecs-mat] {
     --mat-scroll-offset: 150px;
@@ -546,6 +567,15 @@ a:hover{
 @media screen and (max-width: 991px) and (min-width: 849px) {
     .header-span {
         width: 360px;
+    }
+}
+
+
+@media screen and (max-width: 767px) {
+    /*The counters row has gy-4, which pulls it up by 1.5rem (negative row margin) while the
+      column's mt-0 cancels the compensation - reset it and add a small gap under the title*/
+    .counters {
+        --bs-gutter-y: 0.5rem;
     }
 }
 
