@@ -104,6 +104,13 @@
 		}
 }
 
+
+@media screen and (max-width: 849px) {
+	.custom-svg-position-1 > svg {
+		min-height: 110px;
+	}
+}
+
 /*
 * Custom Navigation Buttons
 */

@@ -44,7 +44,7 @@
                                     <span class="thumb-info-wrapper">
                                         <img src="{{ asset('img/13241854_5180175.svg') }}" class="img-fluid appl_scen_img" alt="Living Lab Datasets">
                                         <span class="thumb-info-title">
-                                            <span class="thumb-info-inner line-height-1">LivingLab Datasets</span>
+                                            <span class="thumb-info-inner line-height-1">LivingLab Technologies</span>
                                             <span class="thumb-info-show-more-content opacity-7"><p class="text-color-dark mb-0 text-1 line-height-5">Explore the digital technologies deployed in the CODECS Living Labs to deliver context-specific, applied services that support sustainable agricultural digitalisation.</p></span>
                                         </span>
                                     </span>

@@ -122,57 +122,48 @@
                             </a>
 
                             <div class="d-flex align-items-center">
-                                <div class="d-flex flex-column align-items-end">
-                                    <div class="header-nav header-nav-links header-nav-compact">
-                                        <div class="header-nav-main header-nav-main-square header-nav-main-text-capitalize header-nav-main-effect-1 header-nav-main-sub-effect-1">
-                                            <nav class="collapse">
-                                                <ul class="nav nav-pills" id="mainNavRow1">
-                                                    <li>
-                                                        <a class="nav-link {{ (request()->routeIs('meta_inventory_home')) ? ' active' : '' }}" href="{{route('meta_inventory_home')}}">
-                                                            Digital Technologies Inventory
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="nav-link {{ (request()->routeIs('inventory_of_datasets')) ? ' active' : '' }}" href="{{route('inventory_of_datasets')}}">
-                                                            Inventory of datasets
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="nav-link {{ (request()->routeIs('assessment_tools')) ? ' active' : '' }}" href="{{route('assessment_tools')}}">
-                                                            Assessment Toolkit
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </nav>
-                                        </div>
+                                <div class="header-nav header-nav-links header-nav-compact">
+                                    <div class="header-nav-main header-nav-main-square header-nav-main-text-capitalize header-nav-main-effect-1 header-nav-main-sub-effect-1">
+                                        <nav class="collapse">
+                                            <ul class="nav nav-pills" id="mainNavRow1">
+                                                <li>
+                                                    <a class="nav-link {{ (request()->routeIs('meta_inventory_home')) ? ' active' : '' }}" href="{{route('meta_inventory_home')}}">
+                                                        Digital Technologies Inventory
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a class="nav-link {{ (request()->routeIs('inventory_of_datasets')) ? ' active' : '' }}" href="{{route('inventory_of_datasets')}}">
+                                                        Inventory of datasets
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a class="nav-link {{ (request()->routeIs('assessment_tools')) ? ' active' : '' }}" href="{{route('assessment_tools')}}">
+                                                        Assessment Toolkit
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                            <ul class="nav nav-pills" id="mainNavRow2">
+                                                <li>
+                                                    <a class="nav-link {{ (request()->routeIs('storybooks')) ? ' active' : '' }}" href="{{route('storybooks')}}">
+                                                        Storybooks
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a class="nav-link {{ (request()->routeIs('virtual_tours')) ? ' active' : '' }}" href="{{route('virtual_tours')}}">
+                                                        Virtual Tours
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a class="nav-link {{ (request()->routeIs('methodological_handbook')) ? ' active' : '' }}" href="{{route('methodological_handbook')}}">
+                                                        Methodological Handbook
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </nav>
                                     </div>
-
-                                    <div class="header-nav header-nav-links header-nav-compact">
-                                        <div class="header-nav-main header-nav-main-square header-nav-main-text-capitalize header-nav-main-effect-1 header-nav-main-sub-effect-1">
-                                            <nav class="collapse">
-                                                <ul class="nav nav-pills" id="mainNavRow2">
-                                                    <li>
-                                                        <a class="nav-link {{ (request()->routeIs('storybooks')) ? ' active' : '' }}" href="{{route('storybooks')}}">
-                                                            Storybooks
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="nav-link {{ (request()->routeIs('virtual_tours')) ? ' active' : '' }}" href="{{route('virtual_tours')}}">
-                                                            Virtual Tours
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="nav-link {{ (request()->routeIs('methodological_handbook')) ? ' active' : '' }}" href="{{route('methodological_handbook')}}">
-                                                            Methodological Handbook
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </nav>
-                                        </div>
-                                        <button class="btn header-btn-collapse-nav" data-bs-toggle="collapse" data-bs-target=".header-nav-main nav">
-                                            <i class="fas fa-bars"></i>
-                                        </button>
-                                    </div>
+                                    <button class="btn header-btn-collapse-nav" data-bs-toggle="collapse" data-bs-target=".header-nav-main nav">
+                                        <i class="fas fa-bars"></i>
+                                    </button>
                                 </div>
                                 <a href="{{route('profile.edit')}}" class="ms-3">
                                     <img src="{{asset('img/icons/account_circle.svg')}}" alt="">
